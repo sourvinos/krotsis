@@ -1,0 +1,55 @@
+:host {
+    align-items: center;
+    display: flex;
+}
+
+#theme-menu {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    padding: 0 1rem;
+}
+
+#switch-button {
+    display: none;
+    padding: 5px;
+}
+
+label {
+    background-color: #77779a;
+    border-radius: 30px;
+    cursor: pointer;
+    display: flex;
+    padding: 5px;
+}
+
+label:hover {
+    cursor: pointer;
+}
+
+.fa-sun {
+    color: #ffeb6f;
+    transition: 0.3s;
+}
+
+.fa-moon {
+    color: #ffffff;
+    transition: 0.3s;
+}
+
+#switch-button:checked ~ label > .fa-moon {
+    opacity: 0;
+}
+
+#switch-button:checked ~ label > .fa-sun {
+    opacity: 1;
+}
+
+#switch-button:not(:checked) ~ label > .fa-moon {
+    opacity: 1;
+}
+
+#switch-button:not(:checked) ~ label > .fa-sun {
+    opacity: 0;
+}

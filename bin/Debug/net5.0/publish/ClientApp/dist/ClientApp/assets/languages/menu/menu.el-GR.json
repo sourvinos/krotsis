@@ -1,0 +1,111 @@
+[
+    {
+        "feature": "menus",
+        "labels": [
+            {
+                "id": "home",
+                "description": "Αρχική"
+            },
+            {
+                "id": "passengers",
+                "description": "Επιβάτες"
+            },
+            {
+                "id": "embarkation" ,
+                "description": "Επιβίβαση"
+            },
+            {
+                "id": "manifest",
+                "description": "Κατάσταση πλοίου"
+            },
+            {
+                "id": "reservations",
+                "description": "Κρατήσεις"
+            },
+            {
+                "id": "dashboard",
+                "description": "Κεντρικός πίνακας"
+            },
+            {
+                "id": "invoicing",
+                "description": "Τιμολόγηση"
+            },
+            {
+                "id": "tables",
+                "description": "Πίνακες"
+            },
+            {
+                "id": "customers",
+                "description": "Πελάτες"
+            },
+            {
+                "id": "destinations",
+                "description": "Προορισμοί"
+            },
+            {
+                "id": "drivers",
+                "description": "Οδηγοί"
+            },
+            {
+                "id": "genders",
+                "description": "Φύλα"
+            },
+            {
+                "id": "pickupPoints",
+                "description": "Σημεία παραλαβής"
+            },
+            {
+                "id": "ports",
+                "description": "Λιμάνια"
+            },
+            {
+                "id": "routes",
+                "description": "Διαδρομές"
+            },
+            {
+                "id": "schedules",
+                "description": "Πρόγραμμα"
+            },
+            {
+                "id": "users",
+                "description": "Χρήστες"
+            },
+            {
+                "id": "vessels",
+                "description": "Πλοία"
+            },
+            {
+                "id": "vesselManagement",
+                "description": "Διαχείρηση"
+            },
+            {
+                "id": "vesselOwners",
+                "description": "Πλοιοκτήτες"
+            },
+            {
+                "id": "vesselRegistrars",
+                "description": "Καταγραφείς επιβατών"
+            },
+            {
+                "id": "vesselRoutes",
+                "description": "Διαδρομές"
+            },
+            {
+                "id": "vesselCrews",
+                "description": "Πληρώματα"
+            },
+            {
+                "id": "logout",
+                "description": "Αποσύνδεση"
+            },
+            {
+                "id": "myAccount",
+                "description": "Ο λογαριασμός μου"
+            },
+            {
+                "id": "editAccount",
+                "description": "Επεξεργασία"
+            }
+        ]
+    }
+]

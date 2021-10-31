@@ -1,0 +1,79 @@
+#loader {
+    align-items: center;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    font-family: Roboto, serif;
+    font-weight: 300;
+    height: 100%;
+    justify-content: center;
+    width: 100vw;
+}
+
+#loader p:nth-child(1) {
+    color: #355070 !important;
+    font-size: var(--font-size-logo-loader-first-child) !important;
+    margin: 0;
+}
+
+#loader p:nth-child(2) {
+    color: #b56576 !important;
+    font-size: var(--font-size-logo-loader-second-child) !important;
+    margin: -0.25rem 0 0 0 !important;
+}
+
+#loading-message {
+    color: #355070;
+    font-size: var(--font-size-loading-message);
+    margin-top: 0.5rem !important;
+}
+
+.progress-line, .progress-line::before {
+    height: 0.1875rem;
+    width: 30rem;
+}
+
+.progress-line {
+    background-color: #734230;
+    display: -webkit-flex;
+    display: flex;
+    margin: 2rem 0;
+}
+
+.progress-line::before {
+    background-color: #ffa500;
+    content: '';
+    animation: running-progress 1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+@keyframes running-progress {
+    0% {
+        margin-left: 0;
+        margin-right: 100%;
+    }
+
+    50% {
+        margin-left: 25%;
+        margin-right: 0%;
+    }
+
+    100% {
+        margin-left: 100%;
+        margin-right: 0;
+    }
+}
+@keyframes running-progress {
+    0% {
+        margin-left: 0;
+        margin-right: 100%;
+    }
+
+    50% {
+        margin-left: 25%;
+        margin-right: 0%;
+    }
+
+    100% {
+        margin-left: 100%;
+        margin-right: 0;
+    }
+}

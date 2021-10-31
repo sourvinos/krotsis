@@ -1,0 +1,90 @@
+2021-09-30 17:58:47 [Error] - Generating browser application bundles (phase: setup)...
+ 
+2021-09-30 18:00:52 [Error] ΓêÜ Browser application bundle generation complete.
+ 
+2021-09-30 18:01:00 [Error] ΓêÜ Browser application bundle generation complete.
+ 
+2021-09-30 18:09:20 [Error] ΓêÜ Browser application bundle generation complete.
+ 
+2021-09-30 18:12:58 [Error] ΓêÜ Browser application bundle generation complete.
+ 
+2021-09-30 18:14:11 [Error] ΓêÜ Browser application bundle generation complete.
+ 
+2021-09-30 18:21:16 [Error] ΓêÜ Browser application bundle generation complete.
+ 
+2021-09-30 18:21:59 [Error] ΓêÜ Browser application bundle generation complete.
+ 
+2021-09-30 18:22:33 [Error] ΓêÜ Browser application bundle generation complete.
+ 
+2021-09-30 18:23:57 [Error] ΓêÜ Browser application bundle generation complete.
+ 
+2021-09-30 18:25:47 [Error] - Generating browser application bundles (phase: setup)...
+ 
+2021-09-30 18:27:45 [Error] ΓêÜ Browser application bundle generation complete.
+ 
+2021-09-30 18:27:53 [Error] ΓêÜ Browser application bundle generation complete.
+ 
+2021-09-30 18:30:14 [Error] ΓêÜ Browser application bundle generation complete.
+ 
+2021-09-30 18:33:21 [Error] ΓêÜ Browser application bundle generation complete.
+ 
+2021-09-30 18:36:42 [Error] ΓêÜ Browser application bundle generation complete.
+ 
+2021-09-30 18:37:29 [Error] ΓêÜ Browser application bundle generation complete.
+ 
+2021-09-30 18:40:45 [Error] An unhandled exception has occurred while executing the request. OOPS!System.AggregateException: One or more errors occurred. (The remote party closed the WebSocket connection without completing the close handshake.)
+ ---> System.Net.WebSockets.WebSocketException (0x80004005): The remote party closed the WebSocket connection without completing the close handshake.
+   at System.Net.WebSockets.ManagedWebSocket.ThrowIfEOFUnexpected(Boolean throwOnPrematureClosure)
+   at System.Net.WebSockets.ManagedWebSocket.EnsureBufferContainsAsync(Int32 minimumRequiredBytes, CancellationToken cancellationToken, Boolean throwOnPrematureClosure)
+   at System.Net.WebSockets.ManagedWebSocket.ReceiveAsyncPrivate[TWebSocketReceiveResultGetter,TWebSocketReceiveResult](Memory`1 payloadBuffer, CancellationToken cancellationToken, TWebSocketReceiveResultGetter resultGetter)
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at Microsoft.AspNetCore.SpaServices.Extensions.Proxy.SpaProxy.PumpWebSocket(WebSocket source, WebSocket destination, Int32 bufferSize, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.SpaServices.Extensions.Proxy.SpaProxy.AcceptProxyWebSocketRequest(HttpContext context, Uri destinationUri, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.SpaServices.Extensions.Proxy.SpaProxy.PerformProxyRequest(HttpContext context, HttpClient httpClient, Task`1 baseUriTask, CancellationToken applicationStoppingToken, Boolean proxy404s)
+   at Microsoft.AspNetCore.Builder.SpaProxyingExtensions.<>c__DisplayClass2_0.<<UseProxyToSpaDevelopmentServer>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2021-09-30 18:40:46 [Error] Connection id "0HMC44Q1UFG8J", Request id "0HMC44Q1UFG8J:00000002": An unhandled exception was thrown by the application. OOPS!System.AggregateException: One or more errors occurred. (The remote party closed the WebSocket connection without completing the close handshake.)
+ ---> System.Net.WebSockets.WebSocketException (0x80004005): The remote party closed the WebSocket connection without completing the close handshake.
+   at System.Net.WebSockets.ManagedWebSocket.ThrowIfEOFUnexpected(Boolean throwOnPrematureClosure)
+   at System.Net.WebSockets.ManagedWebSocket.EnsureBufferContainsAsync(Int32 minimumRequiredBytes, CancellationToken cancellationToken, Boolean throwOnPrematureClosure)
+   at System.Net.WebSockets.ManagedWebSocket.ReceiveAsyncPrivate[TWebSocketReceiveResultGetter,TWebSocketReceiveResult](Memory`1 payloadBuffer, CancellationToken cancellationToken, TWebSocketReceiveResultGetter resultGetter)
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at Microsoft.AspNetCore.SpaServices.Extensions.Proxy.SpaProxy.PumpWebSocket(WebSocket source, WebSocket destination, Int32 bufferSize, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.SpaServices.Extensions.Proxy.SpaProxy.AcceptProxyWebSocketRequest(HttpContext context, Uri destinationUri, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.SpaServices.Extensions.Proxy.SpaProxy.PerformProxyRequest(HttpContext context, HttpClient httpClient, Task`1 baseUriTask, CancellationToken applicationStoppingToken, Boolean proxy404s)
+   at Microsoft.AspNetCore.Builder.SpaProxyingExtensions.<>c__DisplayClass2_0.<<UseProxyToSpaDevelopmentServer>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserRefreshMiddleware.InvokeAsync(HttpContext context)
+   at Microsoft.AspNetCore.Builder.Extensions.MapMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.ProcessRequests[TContext](IHttpApplication`1 application)
+2021-09-30 18:41:15 [Error] ΓêÜ Browser application bundle generation complete.
+ 
+2021-09-30 18:41:18 [Error] ΓêÜ Browser application bundle generation complete.
+ 
+2021-09-30 18:44:56 [Error] ΓêÜ Browser application bundle generation complete.
+ 
+2021-09-30 18:46:15 [Error] ΓêÜ Browser application bundle generation complete.
+ 
+2021-09-30 18:48:27 [Error] ΓêÜ Browser application bundle generation complete.
+ 
+2021-09-30 18:49:47 [Error] ΓêÜ Browser application bundle generation complete.
+ 
+2021-09-30 18:51:13 [Error] ΓêÜ Browser application bundle generation complete.
+ 
+2021-09-30 19:03:48 [Error] ΓêÜ Browser application bundle generation complete.
+ 
+2021-09-30 19:06:03 [Error] ΓêÜ Browser application bundle generation complete.
+ 
+2021-09-30 19:10:36 [Error] ΓêÜ Browser application bundle generation complete.
+ 
+2021-09-30 19:16:54 [Error] ΓêÜ Browser application bundle generation complete.
+ 
+2021-09-30 19:19:08 [Error] ΓêÜ Browser application bundle generation complete.
+ 

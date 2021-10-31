@@ -1,0 +1,111 @@
+[
+    {
+        "feature": "menus",
+        "labels": [
+            {
+                "id": "home",
+                "description": "(CZ) Home"
+            },
+            {
+                "id": "passengers",
+                "description": "Cestující"
+            },
+            {
+                "id": "embarkation",
+                "description": "Nalodění"
+            },
+            {
+                "id": "manifest",
+                "description": "Zpráva o plavidle"
+            },
+            {
+                "id": "reservations",
+                "description": "Rezervace"
+            },
+            {
+                "id": "dashboard",
+                "description": "Hlavní panel"
+            },
+            {
+                "id": "invoicing",
+                "description": "Fakturace"
+            },
+            {
+                "id": "tables",
+                "description": "Tabulky"
+            },
+            {
+                "id": "customers",
+                "description": "Zákazníci"
+            },
+            {
+                "id": "destinations",
+                "description": "Destinace"
+            },
+            {
+                "id": "drivers",
+                "description": "Řidiči"
+            },
+            {
+                "id": "genders",
+                "description": "Pohlaví"
+            },
+            {
+                "id": "pickupPoints",
+                "description": "Nástupní místa"
+            },
+            {
+                "id": "ports",
+                "description": "Přístavy"
+            },
+            {
+                "id": "routes",
+                "description": "Trasy"
+            },
+            {
+                "id": "schedules",
+                "description": "Rozvrhy"
+            },
+            {
+                "id": "users",
+                "description": "Uživatelé"
+            },
+            {
+                "id": "vessels",
+                "description": "Lodě"
+            },
+            {
+                "id": "vesselManagement",
+                "description": "(CZ) Management"
+            },
+            {
+                "id": "vesselOwners",
+                "description": "(CZ) Owners"
+            },
+            {
+                "id": "vesselRegistrars",
+                "description": "(CZ) Registrars"
+            },
+            {
+                "id": "vesselRoutes",
+                "description": "(CZ) Routes"
+            },
+            {
+                "id": "vesselCrews",
+                "description": "(CZ) Crews"
+            },
+            {
+                "id": "logout",
+                "description": "Odhlásit set"
+            },
+            {
+                "id": "myAccount",
+                "description": "Můj účet"
+            },
+            {
+                "id": "editAccount",
+                "description": "(CZ) Edit"
+            }
+        ]
+    }
+]

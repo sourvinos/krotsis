@@ -1,0 +1,32 @@
+{
+    "labels": [
+        {
+            "id": "required",
+            "description": "Το πεδίο είναι υποχρεωτικό"
+        },
+        {
+            "id": "minLength",
+            "description": "Το πεδίο πρέπει να έχει μήκος τουλάχιστον xx χαρακτήρες"
+        },
+        {
+            "id": "maxLength",
+            "description": "Το πεδίο μπορεί να έχει μήκος μέχρι xx χαρακτήρες"
+        },
+        {
+            "id": "invalid",
+            "description": "Το πεδίο είναι λάθος"
+        },
+        {
+            "id": "passwordsNoMatch",
+            "description": "Ο κωδικός και η επιβεβαίωση κωδικού πρέπει να συμφωνούν"
+        },
+        {
+            "id": "spacesNotAllowed",
+            "description": "Τα κενά απαγορεύονται"
+        },
+        {
+            "id": "otherErrors",
+            "description": "Το πεδίο έχει λάθη"
+        }
+    ]
+}

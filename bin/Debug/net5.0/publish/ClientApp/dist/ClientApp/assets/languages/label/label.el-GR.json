@@ -1,0 +1,1918 @@
+[
+    {
+        "feature": "loginForm",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Σύνδεση"
+            },
+            {
+                "id": "usernameLabel",
+                "description": "Χρήστης"
+            },
+            {
+                "id": "passwordLabel",
+                "description": "Κωδικός"
+            },
+            {
+                "id": "noRobotCheckbox",
+                "description": "Δεν είμαι ρομπότ"
+            },
+            {
+                "id": "forgotPasswordButton",
+                "description": "ΞΕΧΑΣΑ ΤΟΝ ΚΩΔΙΚΟ ΜΟΥ"
+            },
+            {
+                "id": "loginButton",
+                "description": "ΣΥΝΔΕΣΗ"
+            }
+        ]
+    },
+    {
+        "feature": "catalogList",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Πελάτες"
+            },
+            {
+                "id": "headerIsActive",
+                "description": "Ενεργός"
+            },
+            {
+                "id": "headerName",
+                "description": "Επωνυμία"
+            },
+            {
+                "id": "headerPhones",
+                "description": "Τηλέφωνα"
+            },
+            {
+                "id": "headerEmail",
+                "description": "Email"
+            },
+            {
+                "id": "newButton",
+                "description": "ΝΕΟΣ"
+            }
+        ]
+    },
+    {
+        "feature": "customerForm",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Πελάτης"
+            },
+            {
+                "id": "description",
+                "description": "Επωνυμία"
+            },
+            {
+                "id": "profession",
+                "description": "Δραστηριότητα"
+            },
+            {
+                "id": "address",
+                "description": "Διεύθυνση"
+            },
+            {
+                "id": "phones",
+                "description": "Τηλέφωνα"
+            },
+            {
+                "id": "personInCharge",
+                "description": "Υπεύθυνος επικοινωνίας"
+            },
+            {
+                "id": "email",
+                "description": "Email"
+            },
+            {
+                "id": "isActive",
+                "description": "Ενεργός"
+            },
+            {
+                "id": "deleteButton",
+                "description": "ΔΙΑΓΡΑΦΗ"
+            },
+            {
+                "id": "saveButton",
+                "description": "ΑΠΟΘΗΚΕΥΣΗ"
+            }
+        ]
+    },
+    {
+        "feature": "destinationList",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Προορισμοί"
+            },
+            {
+                "id": "headerIsActive",
+                "description": "Ενεργός"
+            },
+            {
+                "id": "headerAbbreviation",
+                "description": "Συντ."
+            },
+            {
+                "id": "headerDescription",
+                "description": "Περιγραφή"
+            },
+            {
+                "id": "newButton",
+                "description": "ΝΕΟΣ"
+            }
+        ]
+    },
+    {
+        "feature": "destinationForm",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Προορισμός"
+            },
+            {
+                "id": "abbreviation",
+                "description": "Συντ."
+            },
+            {
+                "id": "description",
+                "description": "Περιγραφη"
+            },
+            {
+                "id": "isActive",
+                "description": "Ενεργος"
+            },
+            {
+                "id": "deleteButton",
+                "description": "ΔΙΑΓΡΑΦΗ"
+            },
+            {
+                "id": "saveButton",
+                "description": "ΑΠΟΘΗΚΕΥΣΗ"
+            }
+        ]
+    },
+    {
+        "feature": "driverList",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Οδηγοί"
+            },
+            {
+                "id": "headerIsActive",
+                "description": "Ενεργός"
+            },
+            {
+                "id": "headerFullname",
+                "description": "Πλήρες όνομα"
+            },
+            {
+                "id": "headerPhones",
+                "description": "Τηλέφωνα"
+            },
+            {
+                "id": "newButton",
+                "description": "ΝΕΟΣ"
+            }
+        ]
+    },
+    {
+        "feature": "driverForm",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Οδηγός"
+            },
+            {
+                "id": "description",
+                "description": "Όνομα"
+            },
+            {
+                "id": "phones",
+                "description": "Αριθμοί τηλεφώνων"
+            },
+            {
+                "id": "isActive",
+                "description": "Ενεργός"
+            },
+            {
+                "id": "deleteButton",
+                "description": "ΔΙΑΓΡΑΦΗ"
+            },
+            {
+                "id": "saveButton",
+                "description": "ΑΠΟΘΗΚΕΥΣΗ"
+            }
+        ]
+    },
+    {
+        "feature": "pickupPointList",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Σημεία Παραλαβής"
+            },
+            {
+                "id": "headerIsActive",
+                "description": "Ενεργό"
+            },
+            {
+                "id": "headerRouteAbbreviation",
+                "description": "Διαδρομή"
+            },
+            {
+                "id": "headerDescription",
+                "description": "Περιγραφή"
+            },
+            {
+                "id": "headerExactPoint",
+                "description": "Ακριβές σημείο"
+            },
+            {
+                "id": "headerTime",
+                "description": "Ώρα"
+            },
+            {
+                "id": "newButton",
+                "description": "ΝΕΟ"
+            }
+        ]
+    },
+    {
+        "feature": "pickupPointForm",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Σημείο παραλαβής"
+            },
+            {
+                "id": "route",
+                "description": "Διαδρομή"
+            },
+            {
+                "id": "description",
+                "description": "Περιγραφή"
+            },
+            {
+                "id": "exactPoint",
+                "description": "Ακριβές σημείο"
+            },
+            {
+                "id": "time",
+                "description": "Ώρα"
+            },
+            {
+                "id": "coordinates",
+                "description": "GPS Συντεταγμένες"
+            },
+            {
+                "id": "isActive",
+                "description": "Ενεργό"
+            },
+            {
+                "id": "deleteButton",
+                "description": "ΔΙΑΓΡΑΦΗ"
+            },
+            {
+                "id": "saveButton",
+                "description": "ΑΠΟΘΗΚΕΥΣΗ"
+            },
+            {
+                "id": "formTab",
+                "description": "ΦΟΡΜΑ"
+            },
+            {
+                "id": "mapTab",
+                "description": "ΧΑΡΤΗΣ"
+            }
+        ]
+    },
+    {
+        "feature": "portList",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Λιμάνια"
+            },
+            {
+                "id": "headerIsActive",
+                "description": "Ενεργό"
+            },
+            {
+                "id": "headerDescription",
+                "description": "Περιγραφή"
+            },
+            {
+                "id": "newButton",
+                "description": "ΝΕΟ"
+            }
+        ]
+    },
+    {
+        "feature": "portForm",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Λιμάνι"
+            },
+            {
+                "id": "description",
+                "description": "Περιγραφή"
+            },
+            {
+                "id": "isPrimary",
+                "description": "Πρωτεύον"
+            },
+            {
+                "id": "isActive",
+                "description": "Ενεργό"
+            },
+            {
+                "id": "deleteButton",
+                "description": "ΔΙΑΓΡΑΦΗ"
+            },
+            {
+                "id": "saveButton",
+                "description": "ΑΠΟΘΗΚΕΥΣΗ"
+            }
+        ]
+    },
+    {
+        "feature": "routeList",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Διαδρομές"
+            },
+            {
+                "id": "headerIsActive",
+                "description": "Ενεργή"
+            },
+            {
+                "id": "headerIsTransfer",
+                "description": "Μεταφορά"
+            },
+            {
+                "id": "headerAbbreviation",
+                "description": "Συντ."
+            },
+            {
+                "id": "headerDescription",
+                "description": "Περιγραφή"
+            },
+            {
+                "id": "newButton",
+                "description": "ΝΕΑ"
+            }
+        ]
+    },
+    {
+        "feature": "routeForm",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Διαδρομη"
+            },
+            {
+                "id": "abbreviation",
+                "description": "Συντ."
+            },
+            {
+                "id": "description",
+                "description": "Περιγραφη"
+            },
+            {
+                "id": "port",
+                "description": "Λιμανι"
+            },
+            {
+                "id": "isTransfer",
+                "description": "Εχει μεταφορα"
+            },
+            {
+                "id": "isActive",
+                "description": "Ενεργο"
+            },
+            {
+                "id": "deleteButton",
+                "description": "ΔΙΑΓΡΑΦΗ"
+            },
+            {
+                "id": "saveButton",
+                "description": "ΑΠΟΘΗΚΕΥΣΗ"
+            },
+            {
+                "id": "formTab",
+                "description": "Στοιχεια"
+            },
+            {
+                "id": "mapTab",
+                "description": "Χαρτης"
+            }
+        ]
+    },
+    {
+        "feature": "reservationWrapper",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Κρατήσεις"
+            },
+            {
+                "id": "searchLabel",
+                "description": "Ημερομηνία"
+            },
+            {
+                "id": "searchHint",
+                "description": "Δώστε Ημερ/νία"
+            },
+            {
+                "id": "searchButton",
+                "description": "ΑΝΑΖΗΤΗΣΗ"
+            }
+        ]
+    },
+    {
+        "feature": "userList",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Χρήστες"
+            },
+            {
+                "id": "headerIsActive",
+                "description": "Ενεργός"
+            },
+            {
+                "id": "headerIsAdmin",
+                "description": "Δχστής"
+            },
+            {
+                "id": "headerUsername",
+                "description": "Όνομα χρήστη"
+            },
+            {
+                "id": "headerDisplayname",
+                "description": "Εμφανιζόμενο όνομα"
+            },
+            {
+                "id": "headerEmail",
+                "description": "Email"
+            },
+            {
+                "id": "newButton",
+                "description": "ΝΕΟΣ"
+            }
+        ]
+    },
+    {
+        "feature": "editUserForm",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Χρήστης"
+            },
+            {
+                "id": "userName",
+                "description": "Όνομα"
+            },
+            {
+                "id": "displayName",
+                "description": "Εμφανιζόμενο όνομα"
+            },
+            {
+                "id": "customer",
+                "description": "Συνδεδεμένος πελάτης"
+            },
+            {
+                "id": "email",
+                "description": "Email"
+            },
+            {
+                "id": "isAdmin",
+                "description": "Διαχειριστής"
+            },
+            {
+                "id": "isActive",
+                "description": "Ενεργός"
+            },
+            {
+                "id": "deleteButton",
+                "description": "ΔΙΑΓΡΑΦΗ"
+            },
+            {
+                "id": "changePasswordButton",
+                "description": "ΑΛΛΑΓΗ ΚΩΔΙΚΟΥ"
+            },
+            {
+                "id": "saveButton",
+                "description": "ΑΠΟΘΗΚΕΥΣΗ"
+            }
+        ]
+    },
+    {
+        "feature": "registerUserForm",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Χρήστης"
+            },
+            {
+                "id": "userName",
+                "description": "Όνομα"
+            },
+            {
+                "id": "displayName",
+                "description": "Εμφανιζόμενο όνομα"
+            },
+            {
+                "id": "email",
+                "description": "Email"
+            },
+            {
+                "id": "password",
+                "description": "Κωδικός"
+            },
+            {
+                "id": "confirmPassword",
+                "description": "Επιβεβαίωση κωδικού"
+            },
+            {
+                "id": "customer",
+                "description": "Συνδεδεμένος πελάτης"
+            },
+            {
+                "id": "isAdmin",
+                "description": "Διαχειριστής"
+            },
+            {
+                "id": "isActive",
+                "description": "Ενεργός"
+            },
+            {
+                "id": "sendLoginCredentials",
+                "description": "ΑΠΟΣΤΟΛΗ ΣΤΟ EMAIL"
+            },
+            {
+                "id": "saveButton",
+                "description": "ΑΠΟΘΗΚΕΥΣΗ"
+            }
+        ]
+    },
+    {
+        "feature": "changePasswordForm",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Αλλαγη κωδικου"
+            },
+            {
+                "id": "currentPassword",
+                "description": "Τρεχων κωδικος"
+            },
+            {
+                "id": "newPassword",
+                "description": "Νεος κωδικος"
+            },
+            {
+                "id": "confirmPassword",
+                "description": "Επιβεβαιωση νεου κωδικου"
+            },
+            {
+                "id": "saveButton",
+                "description": "ΑΠΟΘΗΚΕΥΣΗ"
+            }
+        ]
+    },
+    {
+        "feature": "reservationList",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Κρατήσεις για "
+            },
+            {
+                "id": "summaryTab",
+                "description": "Συνοπτικά"
+            },
+            {
+                "id": "listTab",
+                "description": "Εγγραφές"
+            },
+            {
+                "id": "summaryHeaderDestinations",
+                "description": "Προορισμοί"
+            },
+            {
+                "id": "summaryHeaderCustomers",
+                "description": "Πελάτες"
+            },
+            {
+                "id": "summaryHeaderRoutes",
+                "description": "Διαδρομές"
+            },
+            {
+                "id": "summaryHeaderDrivers",
+                "description": "Οδηγοί"
+            },
+            {
+                "id": "summaryHeaderPorts",
+                "description": "Λιμάνια"
+            },
+            {
+                "id": "summaryHeaderShips",
+                "description": "Πλοία"
+            },
+            {
+                "id": "assignToDriverButton",
+                "description": "Αναθεση επιβατων σε οδηγο"
+            },
+            {
+                "id": "assignToShipButton",
+                "description": "Αναθεση επιβατων σε πλοιο"
+            },
+            {
+                "id": "createPdfButton",
+                "description": "Δημιουργια PDF οδηγων"
+            },
+            {
+                "id": "createPdfReportButton",
+                "description": "Create PDF with list"
+            },
+            {
+                "id": "newButton",
+                "description": "ΝΕΑ"
+            },
+            {
+                "id": "total",
+                "description": "Σύνολο ατόμων"
+            },
+            {
+                "id": "displayed",
+                "description": "Εμφανίζονται"
+            },
+            {
+                "id": "selected",
+                "description": "Επιλεγμένα"
+            },
+            {
+                "id": "headerSelected",
+                "description": "Ε"
+            },
+            {
+                "id": "headerTicketNo",
+                "description": "Αρ. εισιτηρίου"
+            },
+            {
+                "id": "headerDestination",
+                "description": "Προορισμός"
+            },
+            {
+                "id": "headerRoute",
+                "description": "Διαδρομή"
+            },
+            {
+                "id": "headerCustomer",
+                "description": "Πελάτης"
+            },
+            {
+                "id": "headerPickupPoint",
+                "description": "Σημείο παραλαβής"
+            },
+            {
+                "id": "headerAdults",
+                "description": "Ε"
+            },
+            {
+                "id": "headerKids",
+                "description": "Π"
+            },
+            {
+                "id": "headerFree",
+                "description": "Δ"
+            },
+            {
+                "id": "headerTotal",
+                "description": "Σύνολο"
+            },
+            {
+                "id": "headerDriver",
+                "description": "Οδηγός"
+            },
+            {
+                "id": "headerPort",
+                "description": "Λιμάνι"
+            },
+            {
+                "id": "headerShip",
+                "description": "Πλοίο"
+            }
+        ]
+    },
+    {
+        "feature": "reservationForm",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Κράτηση"
+            },
+            {
+                "id": "tabGeneral",
+                "description": "Γενικά"
+            },
+            {
+                "id": "tabPassengers",
+                "description": "Επιβάτες"
+            },
+            {
+                "id": "tabMoreInfo",
+                "description": "Λοιπά"
+            },
+            {
+                "id": "destination",
+                "description": "Προορισμός"
+            },
+            {
+                "id": "customer",
+                "description": "Πελάτης"
+            },
+            {
+                "id": "pickupPoint",
+                "description": "Σημείο παραλαβής"
+            },
+            {
+                "id": "ticketNo",
+                "description": "Αρ. εισιτηρίου"
+            },
+            {
+                "id": "adults",
+                "description": "Ενήλικες"
+            },
+            {
+                "id": "kids",
+                "description": "Παιδιά"
+            },
+            {
+                "id": "free",
+                "description": "Δωρεάν"
+            },
+            {
+                "id": "totalPersons",
+                "description": "Σύνολο"
+            },
+            {
+                "id": "driver",
+                "description": "Οδηγός"
+            },
+            {
+                "id": "port",
+                "description": "Λιμάνι"
+            },
+            {
+                "id": "ship",
+                "description": "Πλοίο"
+            },
+            {
+                "id": "email",
+                "description": "Email"
+            },
+            {
+                "id": "phones",
+                "description": "Τηλέφωνα"
+            },
+            {
+                "id": "remarks",
+                "description": "Παρατηρήσεις"
+            },
+            {
+                "id": "abortButton",
+                "description": "ΑΚΥΡΟ"
+            },
+            {
+                "id": "deleteButton",
+                "description": "ΔΙΑΓΡΑΦΗ"
+            },
+            {
+                "id": "printVoucherButton",
+                "description": "ΕΚΤΥΠΩΣΗ"
+            },
+            {
+                "id": "sendVoucherButton",
+                "description": "ΑΠΟΣΤΟΛΗ ΣΕ EMAIL"
+            },
+            {
+                "id": "saveButton",
+                "description": "ΑΠΟΘΗΚΕΥΣΗ"
+            }
+        ]
+    },
+    {
+        "feature": "forgotPasswordForm",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Απωλεια κωδικου"
+            },
+            {
+                "id": "email",
+                "description": "Email"
+            },
+            {
+                "id": "submitButton",
+                "description": "Υποβολη"
+            },
+            {
+                "id": "weNeedYourEmail",
+                "description": "Δώστε μας το email σας και θα σας στειλουμε οδηγιες για να δημιουργησετε νεο κωδικο"
+            }
+        ]
+    },
+    {
+        "feature": "resetPasswordForm",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Επαναφορα κωδικου"
+            },
+            {
+                "id": "password",
+                "description": "Κωδικος"
+            },
+            {
+                "id": "confirmPassword",
+                "description": "Επιβεβαιωση κωδικου"
+            },
+            {
+                "id": "saveButton",
+                "description": "ΑΠΟΘΗΚΕΥΣΗ"
+            }
+        ]
+    },
+    {
+        "feature": "dialog",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Επιβεβαίωση"
+            },
+            {
+                "id": "okButton",
+                "description": "OK"
+            },
+            {
+                "id": "noButton",
+                "description": "ΑΚΥΡΟ"
+            }
+        ]
+    },
+    {
+        "feature": "assignToDriver",
+        "labels": [
+            {
+                "id": "searchHint",
+                "description": "Επιλέξτε από τη λίστα"
+            },
+            {
+                "id": "header",
+                "description": "Αναθεση σε οδηγο"
+            },
+            {
+                "id": "driver",
+                "description": "Οδηγος"
+            },
+            {
+                "id": "okButton",
+                "description": "OK"
+            },
+            {
+                "id": "noButton",
+                "description": "Ακυρο"
+            }
+        ]
+    },
+    {
+        "feature": "assignToShip",
+        "labels": [
+            {
+                "id": "searchHint",
+                "description": "Επιλέξτε από τη λίστα"
+            },
+            {
+                "id": "header",
+                "description": "Αναθεση σε πλοιο"
+            },
+            {
+                "id": "ship",
+                "description": "Πλοιο"
+            },
+            {
+                "id": "okButton",
+                "description": "OK"
+            },
+            {
+                "id": "noButton",
+                "description": "Ακυρο"
+            }
+        ]
+    },
+    {
+        "feature": "index",
+        "labels": [
+            {
+                "id": "ports",
+                "description": "Λιμανια"
+            },
+            {
+                "id": "portId",
+                "description": "Id"
+            },
+            {
+                "id": "portDescription",
+                "description": "Περιγραφη"
+            },
+            {
+                "id": "destinations",
+                "description": "Προορισμοι"
+            },
+            {
+                "id": "destinationId",
+                "description": "Id"
+            },
+            {
+                "id": "destinationDescription",
+                "description": "Περιγραφη"
+            },
+            {
+                "id": "customers",
+                "description": "Πελατες"
+            },
+            {
+                "id": "customerId",
+                "description": "Id"
+            },
+            {
+                "id": "customerDescription",
+                "description": "Επωνυμια"
+            },
+            {
+                "id": "pickupPoints",
+                "description": "Σημεια παραλαβης"
+            },
+            {
+                "id": "pickupPointId",
+                "description": "Id"
+            },
+            {
+                "id": "pickupPointDescription",
+                "description": "Περιγραφη"
+            },
+            {
+                "id": "exactPoint",
+                "description": "Ακριβες σημειο"
+            },
+            {
+                "id": "time",
+                "description": "Ωρα"
+            },
+            {
+                "id": "selectButton",
+                "description": "Επιλογη"
+            },
+            {
+                "id": "nationalityDescription",
+                "description": "Εθνικοτητα"
+            },
+            {
+                "id": "genderDescription",
+                "description": "Φυλο"
+            }
+        ]
+    },
+    {
+        "feature": "credits",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Πηγες"
+            },
+            {
+                "id": "closeButton",
+                "description": "Κλεισιμο"
+            }
+        ]
+    },
+    {
+        "feature": "shipList",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Πλοία"
+            },
+            {
+                "id": "headerIsActive",
+                "description": "Ενεργό"
+            },
+            {
+                "id": "headerDescription",
+                "description": "Όνομα"
+            },
+            {
+                "id": "headerOwnerDescription",
+                "description": "Πλοιοκτήτης"
+            },
+            {
+                "id": "headerIMO",
+                "description": "IMO"
+            },
+            {
+                "id": "newButton",
+                "description": "ΝΕΟ"
+            }
+        ]
+    },
+    {
+        "feature": "shipForm",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Πλοίο"
+            },
+            {
+                "id": "description",
+                "description": "Όνομα"
+            },
+            {
+                "id": "shipOwner",
+                "description": "Πλοιοκτήτης"
+            },
+            {
+                "id": "imo",
+                "description": "ΙΜΟ"
+            },
+            {
+                "id": "flag",
+                "description": "Σημαία"
+            },
+            {
+                "id": "registryNo",
+                "description": "Αρ. νηολογίου"
+            },
+            {
+                "id": "manager",
+                "description": "Διαχειριστής"
+            },
+            {
+                "id": "managerInGreece",
+                "description": "Διαχειριστής στην Ελλάδα"
+            },
+            {
+                "id": "agent",
+                "description": "Υπεύθυνοι ναυτικοί πράκτορες"
+            },
+            {
+                "id": "isActive",
+                "description": "Ενεργό"
+            },
+            {
+                "id": "deleteButton",
+                "description": "ΔΙΑΓΡΑΦΗ"
+            },
+            {
+                "id": "saveButton",
+                "description": "ΑΠΟΘΗΚΕΥΣΗ"
+            }
+        ]
+    },
+    {
+        "feature": "calendarWrapper",
+        "labels": [
+            {
+                "id": "newButton",
+                "description": "ΝΕΟ"
+            }
+        ]
+    },
+    {
+        "feature": "calendar",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Πρόγραμμα"
+            }
+        ]
+    },
+    {
+        "feature": "scheduleCreateForm",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Νεο προγραμμα"
+            },
+            {
+                "id": "destination",
+                "description": "Προορισμός"
+            },
+            {
+                "id": "port",
+                "description": "Λιμανι"
+            },
+            {
+                "id": "dateRange",
+                "description": "Διαστημα"
+            },
+            {
+                "id": "maxPersons",
+                "description": "Μεγιστη χωρητικοτητα"
+            },
+            {
+                "id": "invalidPeriod",
+                "description": "Το διαστημα δεν ειναι σωστο"
+            },
+            {
+                "id": "saveButton",
+                "description": "ΑΠΟΘΗΚΕΥΣΗ"
+            }
+        ]
+    },
+    {
+        "feature": "passengerList",
+        "labels": [
+            {
+                "id": "headerLastname",
+                "description": "Επώνυμο"
+            },
+            {
+                "id": "headerFirstname",
+                "description": "Όνομα"
+            },
+            {
+                "id": "headerActions",
+                "description": "Ενέργειες"
+            },
+            {
+                "id": "headerNationality",
+                "description": "Εθνικοτητα"
+            },
+            {
+                "id": "headerBirthdate",
+                "description": "Ημερομηνια γεννησης"
+            },
+            {
+                "id": "headerSpecialCare",
+                "description": "Ειδικη φροντιδα"
+            },
+            {
+                "id": "headerRemarks",
+                "description": "Παρατηρησεις"
+            },
+            {
+                "id": "headerIsCheckedIn",
+                "description": "Εχει επιβιβαστει"
+            },
+            {
+                "id": "newPassengerButton",
+                "description": "Νεος επιβατης"
+            }
+        ]
+    },
+    {
+        "feature": "passengerForm",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Επιβάτης"
+            },
+            {
+                "id": "lastname",
+                "description": "Επώνυμο"
+            },
+            {
+                "id": "firstname",
+                "description": "Όνομα"
+            },
+            {
+                "id": "nationality",
+                "description": "Εθνικότητα"
+            },
+            {
+                "id": "birthdate",
+                "description": "Ημερ/νία γέννησης"
+            },
+            {
+                "id": "gender",
+                "description": "Φύλο"
+            },
+            {
+                "id": "specialCare",
+                "description": "Ειδική φροντίδα"
+            },
+            {
+                "id": "remarks",
+                "description": "Παρατηρήσεις"
+            },
+            {
+                "id": "isCheckedIn",
+                "description": "Έχει επιβιβαστεί"
+            },
+            {
+                "id": "saveButton",
+                "description": "OK"
+            },
+            {
+                "id": "searchAutocompleteHint",
+                "description": "Επιλέξτε από τη λίστα"
+            }
+        ]
+    },
+    {
+        "feature": "genderList",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Φύλα"
+            },
+            {
+                "id": "headerIsActive",
+                "description": "Ενεργό"
+            },
+            {
+                "id": "headerDescription",
+                "description": "Περιγραφή"
+            },
+            {
+                "id": "newButton",
+                "description": "ΝΕΟ"
+            }
+        ]
+    },
+    {
+        "feature": "genderForm",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Φύλο"
+            },
+            {
+                "id": "description",
+                "description": "Περιγραφή"
+            },
+            {
+                "id": "isActive",
+                "description": "Ενεργό"
+            },
+            {
+                "id": "deleteButton",
+                "description": "ΔΙΑΓΡΑΦΗ"
+            },
+            {
+                "id": "saveButton",
+                "description": "ΑΠΟΘΗΚΕΥΣΗ"
+            }
+        ]
+    },
+    {
+        "feature": "embarkationCriteria",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Επιβίβαση"
+            },
+            {
+                "id": "date",
+                "description": "Ημερ/νία"
+            },
+            {
+                "id": "searchDateHint",
+                "description": "Ημερ/νία αναχώρησης"
+            },
+            {
+                "id": "searchAutocompleteHint",
+                "description": "Επιλέξτε από τη λίστα"
+            },
+            {
+                "id": "destination",
+                "description": "Προορισμός"
+            },
+            {
+                "id": "port",
+                "description": "Λιμάνι"
+            },
+            {
+                "id": "ship",
+                "description": "Πλοίο"
+            },
+            {
+                "id": "searchButton",
+                "description": "ΑΝΑΖΗΤΗΣΗ"
+            }
+        ]
+    },
+    {
+        "feature": "embarkationList",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Επιβίβαση"
+            },
+            {
+                "id": "all",
+                "description": "Όλοι"
+            },
+            {
+                "id": "boarded",
+                "description": "Έχουν επιβιβαστεί"
+            },
+            {
+                "id": "pending",
+                "description": "Σε εκκρεμότητα"
+            },
+            {
+                "id": "filtered",
+                "description": "Φιλτραρισμένοι"
+            },
+            {
+                "id": "headerTicketNo",
+                "description": "Αρ. εισιτηρίου"
+            },
+            {
+                "id": "headerCustomer",
+                "description": "Πελάτης"
+            },
+            {
+                "id": "headerDriver",
+                "description": "Οδηγός"
+            },
+            {
+                "id": "headerPersons",
+                "description": "Άτομα"
+            },
+            {
+                "id": "headerStatus",
+                "description": "Κατάσταση"
+            },
+            {
+                "id": "headerLastname",
+                "description": "Επώνυμο"
+            },
+            {
+                "id": "headerFirstname",
+                "description": "Όνομα"
+            },
+            {
+                "id": "scanOpenButton",
+                "description": "ΣΚΑΝΑΡΙΣΜΑ ΚΟΥΠΟΝΙΟΥ"
+            },
+            {
+                "id": "scanCloseButton",
+                "description": "X"
+            },
+            {
+                "id": "buttonEmbarkPassenger",
+                "description": "ΚAΝΤΕ ΚΛΙΚ ΓΙΑ ΕΠΙΒIΒΑΣΗ ΕΠΙΒAΤΗ"
+            },
+            {
+                "id": "buttonDisembarkPassenger",
+                "description": "ΚAΝΤΕ ΚΛΙΚ ΓΙΑ ΑΠΟΒIΒΑΣΗ ΕΠΙΒAΤΗ"
+            }
+        ]
+    },
+    {
+        "feature": "nationalityList",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Εθνικοτητες"
+            },
+            {
+                "id": "searchLabel",
+                "description": "Αναζητηση"
+            },
+            {
+                "id": "searchHint",
+                "description": "Με βάση την περιγραφή"
+            },
+            {
+                "id": "newButton",
+                "description": "Νεα"
+            },
+            {
+                "id": "headerDescription",
+                "description": "Περιγραφη"
+            },
+            {
+                "id": "headerFlag",
+                "description": "Σημαια"
+            }
+        ]
+    },
+    {
+        "feature": "nationalityForm",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Εθνικοτητα"
+            },
+            {
+                "id": "description",
+                "description": "Περιγραφη"
+            },
+            {
+                "id": "code",
+                "description": "Code"
+            },
+            {
+                "id": "isActive",
+                "description": "Ενεργη"
+            },
+            {
+                "id": "deleteButton",
+                "description": "ΔΙΑΓΡΑΦΗ"
+            },
+            {
+                "id": "saveButton",
+                "description": "ΑΠΟΘΗΚΕΥΣΗ"
+            }
+        ]
+    },
+    {
+        "feature": "invoicingCriteria",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Τιμολόγηση"
+            },
+            {
+                "id": "searchLabel",
+                "description": "Ημερομηνία"
+            },
+            {
+                "id": "searchDateHint",
+                "description": "Ημερ/νία αναχώρησης"
+            },
+            {
+                "id": "customer",
+                "description": "Πελάτης"
+            },
+            {
+                "id": "destination",
+                "description": "Προορισμός"
+            },
+            {
+                "id": "vessel",
+                "description": "Πλοίο"
+            },
+            {
+                "id": "searchAutocompleteHint",
+                "description": "Επιλέξτε από τη λίστα"
+            },
+            {
+                "id": "searchButton",
+                "description": "ΑΝΑΖΗΤΗΣΗ"
+            }
+        ]
+    },
+    {
+        "feature": "invoicingList",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Τιμολόγηση"
+            },
+            {
+                "id": "headerDestination",
+                "description": "Προορισμός"
+            },
+            {
+                "id": "headerShip",
+                "description": "Πλοίο"
+            },
+            {
+                "id": "headerTicketNo",
+                "description": "Αρ. εισιτηρίου"
+            },
+            {
+                "id": "headerIsTransfer",
+                "description": "Μεταφορά"
+            },
+            {
+                "id": "headerAdults",
+                "description": "Ε"
+            },
+            {
+                "id": "headerKids",
+                "description": "Π"
+            },
+            {
+                "id": "headerFree",
+                "description": "Δ"
+            },
+            {
+                "id": "headerTotalPersons",
+                "description": "Σύνολο"
+            },
+            {
+                "id": "headerRemarks",
+                "description": "Παρατηρήσεις"
+            },
+            {
+                "id": "headerTotals",
+                "description": "Σύνολα"
+            },
+            {
+                "id": "exportAllButton",
+                "description": "ΕΞΑΓΩΓΗ ΟΛΩΝ ΣΕ PDF"
+            },
+            {
+                "id": "no-results",
+                "description": "Δεν βρήκαμε τίποτα!"
+            }
+        ]
+    },
+    {
+        "feature": "manifestCriteria",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Επιβαίνοντες πλοίου"
+            },
+            {
+                "id": "date",
+                "description": "Ημερ/νία"
+            },
+            {
+                "id": "searchDateHint",
+                "description": "Ημερ/νία αναχώρησης"
+            },
+            {
+                "id": "vessel",
+                "description": "Πλοίο"
+            },
+            {
+                "id": "destination",
+                "description": "Προορισμός"
+            },
+            {
+                "id": "port",
+                "description": "Λιμάνι"
+            },
+            {
+                "id": "route",
+                "description": "Δρομολόγιο"
+            },
+            {
+                "id": "searchAutocompleteHint",
+                "description": "Επιλέξτε από τη λίστα"
+            },
+            {
+                "id": "searchButton",
+                "description": "ΑΝΑΖΗΤΗΣΗ"
+            }
+        ]
+    },
+    {
+        "feature": "manifestList",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Επιβαίνοντες πλοίου"
+            },
+            {
+                "id": "headerLastname",
+                "description": "Επώνυμο"
+            },
+            {
+                "id": "headerFirstname",
+                "description": "Όνομα"
+            },
+            {
+                "id": "headerNationality",
+                "description": "Χώρα"
+            },
+            {
+                "id": "headerGender",
+                "description": "Φύλο"
+            },
+            {
+                "id": "headerBirthdate",
+                "description": "Ημερ/νία γέννησης"
+            },
+            {
+                "id": "allRecordCount",
+                "description": "Όλοι"
+            },
+            {
+                "id": "passengerCount",
+                "description": "Επιβάτες"
+            },
+            {
+                "id": "crewCount",
+                "description": "Πλήρωμα"
+            },
+            {
+                "id": "exportToPdfButton",
+                "description": "ΔΗΜΙΟΥΡΓΙΑ PDF"
+            }
+        ]
+    },
+    {
+        "feature": "shipOwnerList",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Πλοιοκτήτες"
+            },
+            {
+                "id": "headerIsActive",
+                "description": "Ενεργός"
+            },
+            {
+                "id": "headerDescription",
+                "description": "Επωνυμία εταιρίας"
+            },
+            {
+                "id": "newButton",
+                "description": "ΝΕΟΣ"
+            }
+        ]
+    },
+    {
+        "feature": "shipOwnerForm",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Πλοιοκτητης"
+            },
+            {
+                "id": "description",
+                "description": "Επωνυμια"
+            },
+            {
+                "id": "profession",
+                "description": "Δραστηριοτητα"
+            },
+            {
+                "id": "address",
+                "description": "Διευθυνση"
+            },
+            {
+                "id": "taxNo",
+                "description": "ΑΦΜ"
+            },
+            {
+                "id": "city",
+                "description": "Πολη"
+            },
+            {
+                "id": "phones",
+                "description": "Τηλεφωνα"
+            },
+            {
+                "id": "email",
+                "description": "Email"
+            },
+            {
+                "id": "isActive",
+                "description": "Ενεργος"
+            },
+            {
+                "id": "deleteButton",
+                "description": "ΔΙΑΓΡΑΦΗ"
+            },
+            {
+                "id": "saveButton",
+                "description": "ΑΠΟΘΗΚΕΥΣΗ"
+            }
+        ]
+    },
+    {
+        "feature": "shipRouteList",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Δρομολόγια πλοίων"
+            },
+            {
+                "id": "headerIsActive",
+                "description": "Ενεργό"
+            },
+            {
+                "id": "headerFromPort",
+                "description": "Λιμένας αφετηρίας"
+            },
+            {
+                "id": "headerViaPort",
+                "description": "Ενδιάμεσοι λιμένες"
+            },
+            {
+                "id": "headerToPort",
+                "description": "Λιμένας προορισμού"
+            },
+            {
+                "id": "newButton",
+                "description": "ΝΕΟ"
+            }
+        ]
+    },
+    {
+        "feature": "shipRouteForm",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Διαδρομή"
+            },
+            {
+                "id": "isActive",
+                "description": "Ενεργή"
+            },
+            {
+                "id": "fromPort",
+                "description": "Λιμάνι αναχώρησης"
+            },
+            {
+                "id": "fromTime",
+                "description": "Ώρα αναχώρησης"
+            },
+            {
+                "id": "viaPort",
+                "description": "Ενδιάμεσοι λιμένες προσέγγισης"
+            },
+            {
+                "id": "viaTime",
+                "description": "Ώρες προσεγγίσεων"
+            },
+            {
+                "id": "toPort",
+                "description": "Λιμένας τελικού προορισμού"
+            },
+            {
+                "id": "toTime",
+                "description": "Ώρα άφιξης"
+            },
+            {
+                "id": "isActive",
+                "description": "Ενεργή"
+            },
+            {
+                "id": "deleteButton",
+                "description": "ΔΙΑΓΡΑΦΗ"
+            },
+            {
+                "id": "saveButton",
+                "description": "ΑΠΟΘΗΚΕΥΣΗ"
+            }
+        ]
+    },
+    {
+        "feature": "registrarList",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Καταγραφείς επιβατών"
+            },
+            {
+                "id": "headerIsActive",
+                "description": "Ενεργός"
+            },
+            {
+                "id": "headerFullname",
+                "description": "Πλήρες όνομα"
+            },
+            {
+                "id": "newButton",
+                "description": "ΝΕΟΣ"
+            }
+        ]
+    },
+    {
+        "feature": "registrarForm",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Καταγραφεας επιβατων"
+            },
+            {
+                "id": "fullname",
+                "description": "Πληρες ονομα"
+            },
+            {
+                "id": "vessel",
+                "description": "Πλοιο"
+            },
+            {
+                "id": "phones",
+                "description": "Τηλεφωνα"
+            },
+            {
+                "id": "email",
+                "description": "Email"
+            },
+            {
+                "id": "fax",
+                "description": "Fax"
+            },
+            {
+                "id": "address",
+                "description": "Διευθυνση"
+            },
+            {
+                "id": "isPrimary",
+                "description": "Πρωτευον"
+            },
+            {
+                "id": "isActive",
+                "description": "Ενεργος"
+            },
+            {
+                "id": "deleteButton",
+                "description": "ΔΙΑΓΡΑΦΗ"
+            },
+            {
+                "id": "saveButton",
+                "description": "ΑΠΟΘΗΚΕΥΣΗ"
+            }
+        ]
+    },
+    {
+        "feature": "crewList",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Πληρώματα"
+            },
+            {
+                "id": "headerIsActive",
+                "description": "Ενεργό"
+            },
+            {
+                "id": "headerShipDescription",
+                "description": "Πλοίο"
+            },
+            {
+                "id": "headerLastname",
+                "description": "Επώνυμο"
+            },
+            {
+                "id": "headerFirstname",
+                "description": "Όνομα"
+            },
+            {
+                "id": "headerBirthdate",
+                "description": "Ημερ/νία γέννησης"
+            },
+            {
+                "id": "newButton",
+                "description": "ΝΕΟ"
+            }
+        ]
+    },
+    {
+        "feature": "crewForm",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Πλήρωμα"
+            },
+            {
+                "id": "lastname",
+                "description": "Επώνυμο"
+            },
+            {
+                "id": "firstname",
+                "description": "'Ονομα"
+            },
+            {
+                "id": "birthdate",
+                "description": "Ημερ/νία γέννησης"
+            },
+            {
+                "id": "vessel",
+                "description": "Πλοίο"
+            },
+            {
+                "id": "nationality",
+                "description": "Εθνικότητα"
+            },
+            {
+                "id": "gender",
+                "description": "Φύλο"
+            },
+            {
+                "id": "isActive",
+                "description": "Ενεργό"
+            },
+            {
+                "id": "deleteButton",
+                "description": "ΔΙΑΓΡΑΦΗ"
+            },
+            {
+                "id": "saveButton",
+                "description": "ΑΠΟΘΗΚΕΥΣΗ"
+            }
+        ]
+    }
+]

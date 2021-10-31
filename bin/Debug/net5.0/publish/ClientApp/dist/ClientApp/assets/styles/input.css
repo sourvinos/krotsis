@@ -1,0 +1,90 @@
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+    display: none;
+}
+
+input.center {
+    text-align: center !important;
+}
+
+input::selection {
+    background-color: var(--color-text-selected);
+}
+
+input.mat-input-element {
+    margin-top: 5px !important;
+}
+
+input[type=text], input[type=email], input[type=number], input[type=password], input.mat-form-field-autofill-control {
+    caret-color: var(--color-text-secondary);
+    cursor: text !important;
+    font-size: var(--font-size-input) !important;
+    outline: none;
+}
+
+input[type=number] {
+    text-align: right;
+    -moz-appearance: textfield;
+}
+
+input:disabled {
+    cursor: not-allowed !important;
+    pointer-events: all !important;
+}
+
+.mat-form-field {
+    line-height: 132%;
+    width: 100% !important;
+    margin-top: var(--form-field-margin) !important;
+}
+
+.no-margin {
+    margin: 0 !important;
+}
+
+input:-webkit-autofill, input:-webkit-autofill:focus, input:-webkit-autofill:active, input:-webkit-autofill:hover {
+    font-size: var(--font-size-input) !important;
+}
+
+.mat-form-field-infix {
+    border-top: 20px solid transparent;
+    font-size: var(--font-size-input-height) !important;
+    padding: 0 !important;
+    width: 100% !important;
+}
+
+.mat-form-field-infix span {
+    font-size: var(--font-size-label) !important;
+}
+
+.mat-form-field-subscript-wrapper {
+    margin-top: 2px !important;
+}
+
+.mat-hint, .mat-error {
+    font-size: var(--font-size-input-hint) !important;
+}
+
+.mat-date-range-input-separator {
+    color: var(--color-text-primary) !important;
+}
+
+.mat-form-field-label-wrapper {
+    top: -20px !important;
+}
+
+.mat-date-range-input {
+    margin-top: 0.9rem !important;
+}
+
+.mat-form-field-type-mat-date-range-input .mat-form-field-wrapper .mat-form-field-flex .mat-form-field-infix {
+    font-size: unset !important;
+}
+
+.mat-form-field-flex {
+    align-items: center !important;
+    display: flex !important;
+}
+
+.mat-form-field-label {
+    font-size: var(--font-size-label) !important;
+}

@@ -1,0 +1,12 @@
+#sidemenu {
+    background: var(--color-menu-background);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - var(--top-bar-height) - var(--gap));
+    justify-content: space-between;
+    padding: 0.5rem;
+    transition: background-color var(--change-theme-delay) ease;
+    width: var(--side-bar-width);
+    z-index: 2;
+}

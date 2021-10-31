@@ -1,0 +1,32 @@
+{
+    "labels": [
+        {
+            "id": "required",
+            "description": "Toto pole je povinné."
+        },
+        {
+            "id": "minLength",
+            "description": "Toto pole musí mít minimálně xx znaků."
+        },
+        {
+            "id": "maxLength",
+            "description": "Toto pole může mít maximálně xx znaků."
+        },
+        {
+            "id": "invalid",
+            "description": "Toto pole je neplatné."
+        },
+        {
+            "id": "passwordsNoMatch",
+            "description": "Heslo a potvrďte heslo nesouhlasí."
+        },
+        {
+            "id": "spacesNotAllowed",
+            "description": "Mezery nejsou povolené."
+        },
+        {
+            "id": "otherErrors",
+            "description": "Toto pole je chybné."
+        }
+    ]
+}

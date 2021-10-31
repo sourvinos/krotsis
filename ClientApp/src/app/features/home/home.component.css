@@ -1,0 +1,9 @@
+#wrapper {
+    background-size: cover;
+    background-color: var(--color-common-background);
+    display: flex;
+    height: calc(100% - 6px);
+    justify-content: center;
+    width: 100%;
+    transition: background-color var(--change-theme-delay) ease;
+}

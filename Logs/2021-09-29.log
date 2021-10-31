@@ -1,0 +1,1428 @@
+2021-09-29 17:39:12 [Error] - Generating browser application bundles (phase: setup)...
+ 
+2021-09-29 17:40:56 [Error] ΓêÜ Browser application bundle generation complete.
+ 
+2021-09-29 17:40:56 [Error] ./src/app/features/home/home.component.css - Error: Module Error (from ./node_modules/postcss-loader/dist/cjs.js):
+ 
+2021-09-29 17:40:56 [Error] F:\Krotsis\ClientApp\src\app\features\home\home.component.css:2:22: Can't resolve '../../../assets/images/background/background.svg' in 'F:\Krotsis\ClientApp\src\app\features\home'
+ 
+2021-09-29 17:40:56 [Error] ./src/assets/styles/forms.css - Error: Module Error (from ./node_modules/postcss-loader/dist/cjs.js):
+ 
+2021-09-29 17:40:56 [Error] F:\Krotsis\ClientApp\src\assets\styles\forms.css:2:22: Can't resolve '../../assets/images/background/background.svg' in 'F:\Krotsis\ClientApp\src\assets\styles'
+ 
+2021-09-29 17:40:56 [Error] ./src/assets/styles/lists.css - Error: Module Error (from ./node_modules/postcss-loader/dist/cjs.js):
+ 
+2021-09-29 17:40:56 [Error] F:\Krotsis\ClientApp\src\assets\styles\lists.css:2:22: Can't resolve '../../assets/images/background/background.svg' in 'F:\Krotsis\ClientApp\src\assets\styles'
+ 
+2021-09-29 17:41:02 [Error] ΓêÜ Browser application bundle generation complete.
+ 
+2021-09-29 17:41:07 [Error] ΓêÜ Browser application bundle generation complete.
+ 
+2021-09-29 17:46:13 [Error] ΓêÜ Browser application bundle generation complete.
+ 
+2021-09-29 17:50:16 [Error] ΓêÜ Browser application bundle generation complete.
+ 
+2021-09-29 17:59:47 [Error] ΓêÜ Browser application bundle generation complete.
+ 
+2021-09-29 18:00:16 [Error] ΓêÜ Browser application bundle generation complete.
+ 
+2021-09-29 18:01:43 [Error] ΓêÜ Browser application bundle generation complete.
+ 
+2021-09-29 18:06:27 [Error] ΓêÜ Browser application bundle generation complete.
+ 
+2021-09-29 18:10:52 [Error] - Generating browser application bundles (phase: setup)...
+ 
+2021-09-29 18:12:36 [Error] ΓêÜ Browser application bundle generation complete.
+ 
+2021-09-29 18:12:43 [Error] ΓêÜ Browser application bundle generation complete.
+ 
+2021-09-29 18:20:12 [Error] - Generating browser application bundles (phase: setup)...
+ 
+2021-09-29 18:21:24 [Error] An unhandled exception has occurred while executing the request. OOPS!System.InvalidOperationException: Cannot create a DbSet for 'Catalog' because this type is not included in the model for the context.
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.get_EntityType()
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.CheckState()
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.get_EntityQueryable()
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.System.Linq.IQueryable.get_Provider()
+   at System.Linq.Queryable.Where[TSource](IQueryable`1 source, Expression`1 predicate)
+   at Krotsis.Repository`1.Get(Expression`1 expression) in F:\Krotsis\Infrastructure\Implementations\Repository.cs:line 19
+   at Krotsis.CatalogController.Get() in F:\Krotsis\Features\Catalog\Controllers\CatalogController.cs:line 24
+   at lambda_method4(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2021-09-29 18:21:49 [Error] ΓêÜ Browser application bundle generation complete.
+ 
+2021-09-29 18:21:50 [Error] ./src/app/root/app.module.ts:10:0-87 - Error: Module not found: Error: Can't resolve '../features/customers/classes/modules/customer.module' in 'F:\Krotsis\ClientApp\src\app\root'
+ 
+2021-09-29 18:21:50 [Error] ./src/app/root/app.routing.module.ts:10:45-108 - Error: Module not found: Error: Can't resolve '../features/customers/classes/modules/customer.module' in 'F:\Krotsis\ClientApp\src\app\root'
+ 
+2021-09-29 18:21:50 [Error] Error: src/app/root/app.component.html:3:5 - error NG8001: 'side-bar' is not a known element:
+ 
+2021-09-29 18:21:50 [Error] 1. If 'side-bar' is an Angular component, then verify that it is part of this module.
+ 
+2021-09-29 18:21:50 [Error] 2. If 'side-bar' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+ 
+2021-09-29 18:21:50 [Error] 3     <side-bar></side-bar>
+ 
+2021-09-29 18:21:50 [Error]       ~~~~~~~~~~
+ 
+2021-09-29 18:21:50 [Error]   src/app/root/app.component.ts:6:18
+ 
+2021-09-29 18:21:50 [Error]     6     templateUrl: './app.component.html',
+ 
+2021-09-29 18:21:50 [Error]                        ~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:21:50 [Error]     Error occurs in the template of component AppComponent.
+ 
+2021-09-29 18:21:50 [Error] Error: src/app/root/app.component.html:8:13 - error NG8001: 'router-outlet' is not a known element:
+ 
+2021-09-29 18:21:50 [Error] 1. If 'router-outlet' is an Angular component, then verify that it is part of this module.
+ 
+2021-09-29 18:21:50 [Error] 2. If 'router-outlet' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+ 
+2021-09-29 18:21:50 [Error] 8             <router-outlet></router-outlet>
+ 
+2021-09-29 18:21:50 [Error]               ~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:21:50 [Error]   src/app/root/app.component.ts:6:18
+ 
+2021-09-29 18:21:50 [Error]     6     templateUrl: './app.component.html',
+ 
+2021-09-29 18:21:50 [Error]                        ~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:21:50 [Error]     Error occurs in the template of component AppComponent.
+ 
+2021-09-29 18:21:50 [Error] Error: src/app/root/app.module.ts:10:32 - error TS2307: Cannot find module '../features/customers/classes/modules/customer.module' or its corresponding type declarations.
+ 
+2021-09-29 18:21:50 [Error] 10 import { CustomerModule } from '../features/customers/classes/modules/customer.module'
+ 
+2021-09-29 18:21:50 [Error]                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:21:50 [Error] Error: src/app/root/app.module.ts:34:14 - error NG1010: Value at position 3 in the NgModule.imports of AppModule is not a reference
+ 
+2021-09-29 18:21:50 [Error]   Value could not be determined statically.
+ 
+2021-09-29 18:21:50 [Error]  34     imports: [
+ 
+2021-09-29 18:21:50 [Error]                  ~
+ 
+2021-09-29 18:21:50 [Error]  35         AppRoutingModule,
+ 
+2021-09-29 18:21:50 [Error]     ~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:21:50 [Error] ... 
+ 
+2021-09-29 18:21:50 [Error]  42         ReactiveFormsModule,
+ 
+2021-09-29 18:21:50 [Error]     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:21:50 [Error]  43     ],
+ 
+2021-09-29 18:21:50 [Error]     ~~~~~
+ 
+2021-09-29 18:21:50 [Error]   src/app/root/app.module.ts:38:9
+ 
+2021-09-29 18:21:50 [Error]     38         CustomerModule,
+ 
+2021-09-29 18:21:50 [Error]                ~~~~~~~~~~~~~~
+ 
+2021-09-29 18:21:50 [Error]     Unknown reference.
+ 
+2021-09-29 18:21:50 [Error] Error: src/app/root/app.routing.module.ts:12:58 - error TS2307: Cannot find module '../features/customers/classes/modules/customer.module' or its corresponding type declarations.
+ 
+2021-09-29 18:21:50 [Error] 12     { path: 'customers', loadChildren: (): any => import('../features/customers/classes/modules/customer.module').then(m => m.CustomerModule) },
+ 
+2021-09-29 18:21:50 [Error]                                                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:21:50 [Error] Error: src/app/shared/components/side-bar-wrapper/side-bar/side-bar.component.html:2:5 - error NG8001: 'side-menu' is not a known element:
+ 
+2021-09-29 18:21:50 [Error] 1. If 'side-menu' is an Angular component, then verify that it is part of this module.
+ 
+2021-09-29 18:21:50 [Error] 2. If 'side-menu' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+ 
+2021-09-29 18:21:50 [Error] 2     <side-menu></side-menu>
+ 
+2021-09-29 18:21:50 [Error]       ~~~~~~~~~~~
+ 
+2021-09-29 18:21:50 [Error]   src/app/shared/components/side-bar-wrapper/side-bar/side-bar.component.ts:6:18
+ 
+2021-09-29 18:21:50 [Error]     6     templateUrl: './side-bar.component.html',
+ 
+2021-09-29 18:21:50 [Error]                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:21:50 [Error]     Error occurs in the template of component SideBarComponent.
+ 
+2021-09-29 18:21:50 [Error] Error: src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.html:2:5 - error NG8001: 'p-panelMenu' is not a known element:
+ 
+2021-09-29 18:21:50 [Error] 1. If 'p-panelMenu' is an Angular component, then verify that it is part of this module.
+ 
+2021-09-29 18:21:50 [Error] 2. If 'p-panelMenu' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+ 
+2021-09-29 18:21:50 [Error] 2     <p-panelMenu class="vertical-menu" [model]="topItems" [multiple]=false></p-panelMenu>
+ 
+2021-09-29 18:21:50 [Error]       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:21:50 [Error]   src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.ts:12:18
+ 
+2021-09-29 18:21:50 [Error]     12     templateUrl: './side-menu.component.html',
+ 
+2021-09-29 18:21:50 [Error]                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:21:50 [Error]     Error occurs in the template of component SideMenuComponent.
+ 
+2021-09-29 18:21:50 [Error] Error: src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.html:2:40 - error NG8002: Can't bind to 'model' since it isn't a known property of 'p-panelMenu'.
+ 
+2021-09-29 18:21:50 [Error] 1. If 'p-panelMenu' is an Angular component and it has 'model' input, then verify that it is part of this module.
+ 
+2021-09-29 18:21:50 [Error] 2. If 'p-panelMenu' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+ 
+2021-09-29 18:21:50 [Error] 3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.
+ 
+2021-09-29 18:21:50 [Error] 2     <p-panelMenu class="vertical-menu" [model]="topItems" [multiple]=false></p-panelMenu>
+ 
+2021-09-29 18:21:50 [Error]                                          ~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:21:50 [Error]   src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.ts:12:18
+ 
+2021-09-29 18:21:50 [Error]     12     templateUrl: './side-menu.component.html',
+ 
+2021-09-29 18:21:50 [Error]                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:21:50 [Error]     Error occurs in the template of component SideMenuComponent.
+ 
+2021-09-29 18:21:50 [Error] Error: src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.html:2:59 - error NG8002: Can't bind to 'multiple' since it isn't a known property of 'p-panelMenu'.
+ 
+2021-09-29 18:21:50 [Error] 1. If 'p-panelMenu' is an Angular component and it has 'multiple' input, then verify that it is part of this module.
+ 
+2021-09-29 18:21:50 [Error] 2. If 'p-panelMenu' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+ 
+2021-09-29 18:21:50 [Error] 3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.
+ 
+2021-09-29 18:21:50 [Error] 2     <p-panelMenu class="vertical-menu" [model]="topItems" [multiple]=false></p-panelMenu>
+ 
+2021-09-29 18:21:50 [Error]                                                             ~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:21:50 [Error]   src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.ts:12:18
+ 
+2021-09-29 18:21:50 [Error]     12     templateUrl: './side-menu.component.html',
+ 
+2021-09-29 18:21:50 [Error]                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:21:50 [Error]     Error occurs in the template of component SideMenuComponent.
+ 
+2021-09-29 18:21:50 [Error] Error: src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.html:3:5 - error NG8001: 'p-panelMenu' is not a known element:
+ 
+2021-09-29 18:21:50 [Error] 1. If 'p-panelMenu' is an Angular component, then verify that it is part of this module.
+ 
+2021-09-29 18:21:50 [Error] 2. If 'p-panelMenu' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+ 
+2021-09-29 18:21:50 [Error] 3     <p-panelMenu [model]="bottomItems"></p-panelMenu>
+ 
+2021-09-29 18:21:50 [Error]       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:21:50 [Error]   src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.ts:12:18
+ 
+2021-09-29 18:21:50 [Error]     12     templateUrl: './side-menu.component.html',
+ 
+2021-09-29 18:21:50 [Error]                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:21:50 [Error]     Error occurs in the template of component SideMenuComponent.
+ 
+2021-09-29 18:21:50 [Error] Error: src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.html:3:18 - error NG8002: Can't bind to 'model' since it isn't a known property of 'p-panelMenu'.
+ 
+2021-09-29 18:21:50 [Error] 1. If 'p-panelMenu' is an Angular component and it has 'model' input, then verify that it is part of this module.
+ 
+2021-09-29 18:21:50 [Error] 2. If 'p-panelMenu' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+ 
+2021-09-29 18:21:50 [Error] 3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.
+ 
+2021-09-29 18:21:50 [Error] 3     <p-panelMenu [model]="bottomItems"></p-panelMenu>
+ 
+2021-09-29 18:21:50 [Error]                    ~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:21:50 [Error]   src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.ts:12:18
+ 
+2021-09-29 18:21:50 [Error]     12     templateUrl: './side-menu.component.html',
+ 
+2021-09-29 18:21:50 [Error]                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:21:50 [Error]     Error occurs in the template of component SideMenuComponent.
+ 
+2021-09-29 18:21:50 [Error] Error: src/app/shared/components/top-bar-wrapper/logo/logo.component.html:1:38 - error NG8002: Can't bind to 'routerLink' since it isn't a known property of 'div'.
+ 
+2021-09-29 18:21:50 [Error] 1 <div data-cy="companyLogo" id="logo" [routerLink]="['/']">
+ 
+2021-09-29 18:21:50 [Error]                                        ~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:21:50 [Error]   src/app/shared/components/top-bar-wrapper/logo/logo.component.ts:7:18
+ 
+2021-09-29 18:21:50 [Error]     7     templateUrl: './logo.component.html',
+ 
+2021-09-29 18:21:50 [Error]                        ~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:21:50 [Error]     Error occurs in the template of component LogoComponent.
+ 
+2021-09-29 18:21:55 [Error] ΓêÜ Browser application bundle generation complete.
+ 
+2021-09-29 18:21:55 [Error] ./src/app/root/app.module.ts:10:0-87 - Error: Module not found: Error: Can't resolve '../features/customers/classes/modules/customer.module' in 'F:\Krotsis\ClientApp\src\app\root'
+ 
+2021-09-29 18:21:55 [Error] ./src/app/root/app.routing.module.ts:10:45-108 - Error: Module not found: Error: Can't resolve '../features/customers/classes/modules/customer.module' in 'F:\Krotsis\ClientApp\src\app\root'
+ 
+2021-09-29 18:21:55 [Error] Error: src/app/root/app.component.html:3:5 - error NG8001: 'side-bar' is not a known element:
+ 
+2021-09-29 18:21:55 [Error] 1. If 'side-bar' is an Angular component, then verify that it is part of this module.
+ 
+2021-09-29 18:21:55 [Error] 2. If 'side-bar' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+ 
+2021-09-29 18:21:55 [Error] 3     <side-bar></side-bar>
+ 
+2021-09-29 18:21:55 [Error]       ~~~~~~~~~~
+ 
+2021-09-29 18:21:55 [Error]   src/app/root/app.component.ts:6:18
+ 
+2021-09-29 18:21:55 [Error]     6     templateUrl: './app.component.html',
+ 
+2021-09-29 18:21:55 [Error]                        ~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:21:55 [Error]     Error occurs in the template of component AppComponent.
+ 
+2021-09-29 18:21:55 [Error] Error: src/app/root/app.component.html:8:13 - error NG8001: 'router-outlet' is not a known element:
+ 
+2021-09-29 18:21:55 [Error] 1. If 'router-outlet' is an Angular component, then verify that it is part of this module.
+ 
+2021-09-29 18:21:55 [Error] 2. If 'router-outlet' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+ 
+2021-09-29 18:21:55 [Error] 8             <router-outlet></router-outlet>
+ 
+2021-09-29 18:21:55 [Error]               ~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:21:55 [Error]   src/app/root/app.component.ts:6:18
+ 
+2021-09-29 18:21:55 [Error]     6     templateUrl: './app.component.html',
+ 
+2021-09-29 18:21:55 [Error]                        ~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:21:55 [Error]     Error occurs in the template of component AppComponent.
+ 
+2021-09-29 18:21:55 [Error] Error: src/app/root/app.module.ts:10:32 - error TS2307: Cannot find module '../features/customers/classes/modules/customer.module' or its corresponding type declarations.
+ 
+2021-09-29 18:21:55 [Error] 10 import { CustomerModule } from '../features/customers/classes/modules/customer.module'
+ 
+2021-09-29 18:21:55 [Error]                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:21:55 [Error] Error: src/app/root/app.module.ts:34:14 - error NG1010: Value at position 3 in the NgModule.imports of AppModule is not a reference
+ 
+2021-09-29 18:21:55 [Error]   Value could not be determined statically.
+ 
+2021-09-29 18:21:55 [Error]  34     imports: [
+ 
+2021-09-29 18:21:55 [Error]                  ~
+ 
+2021-09-29 18:21:55 [Error]  35         AppRoutingModule,
+ 
+2021-09-29 18:21:55 [Error]     ~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:21:55 [Error] ... 
+ 
+2021-09-29 18:21:55 [Error]  42         ReactiveFormsModule,
+ 
+2021-09-29 18:21:55 [Error]     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:21:55 [Error]  43     ],
+ 
+2021-09-29 18:21:55 [Error]     ~~~~~
+ 
+2021-09-29 18:21:55 [Error]   src/app/root/app.module.ts:38:9
+ 
+2021-09-29 18:21:55 [Error]     38         CustomerModule,
+ 
+2021-09-29 18:21:55 [Error]                ~~~~~~~~~~~~~~
+ 
+2021-09-29 18:21:55 [Error]     Unknown reference.
+ 
+2021-09-29 18:21:55 [Error] Error: src/app/root/app.routing.module.ts:12:58 - error TS2307: Cannot find module '../features/customers/classes/modules/customer.module' or its corresponding type declarations.
+ 
+2021-09-29 18:21:55 [Error] 12     { path: 'customers', loadChildren: (): any => import('../features/customers/classes/modules/customer.module').then(m => m.CustomerModule) },
+ 
+2021-09-29 18:21:55 [Error]                                                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:21:55 [Error] Error: src/app/shared/components/side-bar-wrapper/side-bar/side-bar.component.html:2:5 - error NG8001: 'side-menu' is not a known element:
+ 
+2021-09-29 18:21:55 [Error] 1. If 'side-menu' is an Angular component, then verify that it is part of this module.
+ 
+2021-09-29 18:21:55 [Error] 2. If 'side-menu' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+ 
+2021-09-29 18:21:55 [Error] 2     <side-menu></side-menu>
+ 
+2021-09-29 18:21:55 [Error]       ~~~~~~~~~~~
+ 
+2021-09-29 18:21:55 [Error]   src/app/shared/components/side-bar-wrapper/side-bar/side-bar.component.ts:6:18
+ 
+2021-09-29 18:21:55 [Error]     6     templateUrl: './side-bar.component.html',
+ 
+2021-09-29 18:21:55 [Error]                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:21:55 [Error]     Error occurs in the template of component SideBarComponent.
+ 
+2021-09-29 18:21:55 [Error] Error: src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.html:2:5 - error NG8001: 'p-panelMenu' is not a known element:
+ 
+2021-09-29 18:21:55 [Error] 1. If 'p-panelMenu' is an Angular component, then verify that it is part of this module.
+ 
+2021-09-29 18:21:55 [Error] 2. If 'p-panelMenu' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+ 
+2021-09-29 18:21:55 [Error] 2     <p-panelMenu class="vertical-menu" [model]="topItems" [multiple]=false></p-panelMenu>
+ 
+2021-09-29 18:21:55 [Error]       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:21:55 [Error]   src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.ts:12:18
+ 
+2021-09-29 18:21:55 [Error]     12     templateUrl: './side-menu.component.html',
+ 
+2021-09-29 18:21:55 [Error]                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:21:55 [Error]     Error occurs in the template of component SideMenuComponent.
+ 
+2021-09-29 18:21:55 [Error] Error: src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.html:2:40 - error NG8002: Can't bind to 'model' since it isn't a known property of 'p-panelMenu'.
+ 
+2021-09-29 18:21:55 [Error] 1. If 'p-panelMenu' is an Angular component and it has 'model' input, then verify that it is part of this module.
+ 
+2021-09-29 18:21:55 [Error] 2. If 'p-panelMenu' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+ 
+2021-09-29 18:21:55 [Error] 3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.
+ 
+2021-09-29 18:21:55 [Error] 2     <p-panelMenu class="vertical-menu" [model]="topItems" [multiple]=false></p-panelMenu>
+ 
+2021-09-29 18:21:55 [Error]                                          ~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:21:55 [Error]   src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.ts:12:18
+ 
+2021-09-29 18:21:55 [Error]     12     templateUrl: './side-menu.component.html',
+ 
+2021-09-29 18:21:55 [Error]                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:21:55 [Error]     Error occurs in the template of component SideMenuComponent.
+ 
+2021-09-29 18:21:55 [Error] Error: src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.html:2:59 - error NG8002: Can't bind to 'multiple' since it isn't a known property of 'p-panelMenu'.
+ 
+2021-09-29 18:21:55 [Error] 1. If 'p-panelMenu' is an Angular component and it has 'multiple' input, then verify that it is part of this module.
+ 
+2021-09-29 18:21:55 [Error] 2. If 'p-panelMenu' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+ 
+2021-09-29 18:21:55 [Error] 3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.
+ 
+2021-09-29 18:21:55 [Error] 2     <p-panelMenu class="vertical-menu" [model]="topItems" [multiple]=false></p-panelMenu>
+ 
+2021-09-29 18:21:55 [Error]                                                             ~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:21:55 [Error]   src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.ts:12:18
+ 
+2021-09-29 18:21:55 [Error]     12     templateUrl: './side-menu.component.html',
+ 
+2021-09-29 18:21:55 [Error]                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:21:55 [Error]     Error occurs in the template of component SideMenuComponent.
+ 
+2021-09-29 18:21:55 [Error] Error: src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.html:3:5 - error NG8001: 'p-panelMenu' is not a known element:
+ 
+2021-09-29 18:21:55 [Error] 1. If 'p-panelMenu' is an Angular component, then verify that it is part of this module.
+ 
+2021-09-29 18:21:55 [Error] 2. If 'p-panelMenu' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+ 
+2021-09-29 18:21:55 [Error] 3     <p-panelMenu [model]="bottomItems"></p-panelMenu>
+ 
+2021-09-29 18:21:55 [Error]       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:21:55 [Error]   src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.ts:12:18
+ 
+2021-09-29 18:21:55 [Error]     12     templateUrl: './side-menu.component.html',
+ 
+2021-09-29 18:21:55 [Error]                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:21:55 [Error]     Error occurs in the template of component SideMenuComponent.
+ 
+2021-09-29 18:21:55 [Error] Error: src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.html:3:18 - error NG8002: Can't bind to 'model' since it isn't a known property of 'p-panelMenu'.
+ 
+2021-09-29 18:21:55 [Error] 1. If 'p-panelMenu' is an Angular component and it has 'model' input, then verify that it is part of this module.
+ 
+2021-09-29 18:21:55 [Error] 2. If 'p-panelMenu' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+ 
+2021-09-29 18:21:55 [Error] 3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.
+ 
+2021-09-29 18:21:55 [Error] 3     <p-panelMenu [model]="bottomItems"></p-panelMenu>
+ 
+2021-09-29 18:21:55 [Error]                    ~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:21:55 [Error]   src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.ts:12:18
+ 
+2021-09-29 18:21:55 [Error]     12     templateUrl: './side-menu.component.html',
+ 
+2021-09-29 18:21:55 [Error]                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:21:55 [Error]     Error occurs in the template of component SideMenuComponent.
+ 
+2021-09-29 18:21:55 [Error] Error: src/app/shared/components/top-bar-wrapper/logo/logo.component.html:1:38 - error NG8002: Can't bind to 'routerLink' since it isn't a known property of 'div'.
+ 
+2021-09-29 18:21:55 [Error] 1 <div data-cy="companyLogo" id="logo" [routerLink]="['/']">
+ 
+2021-09-29 18:21:55 [Error]                                        ~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:21:55 [Error]   src/app/shared/components/top-bar-wrapper/logo/logo.component.ts:7:18
+ 
+2021-09-29 18:21:55 [Error]     7     templateUrl: './logo.component.html',
+ 
+2021-09-29 18:21:55 [Error]                        ~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:21:55 [Error]     Error occurs in the template of component LogoComponent.
+ 
+2021-09-29 18:26:43 [Error] - Generating browser application bundles (phase: setup)...
+ 
+2021-09-29 18:27:59 [Error] ΓêÜ Browser application bundle generation complete.
+ 
+2021-09-29 18:27:59 [Error] ./src/app/root/app.module.ts:10:0-87 - Error: Module not found: Error: Can't resolve '../features/customers/classes/modules/customer.module' in 'F:\Krotsis\ClientApp\src\app\root'
+ 
+2021-09-29 18:27:59 [Error] ./src/app/root/app.routing.module.ts:10:45-108 - Error: Module not found: Error: Can't resolve '../features/customers/classes/modules/customer.module' in 'F:\Krotsis\ClientApp\src\app\root'
+ 
+2021-09-29 18:27:59 [Error] Error: src/app/root/app.component.html:3:5 - error NG8001: 'side-bar' is not a known element:
+ 
+2021-09-29 18:27:59 [Error] 1. If 'side-bar' is an Angular component, then verify that it is part of this module.
+ 
+2021-09-29 18:27:59 [Error] 2. If 'side-bar' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+ 
+2021-09-29 18:27:59 [Error] 3     <side-bar></side-bar>
+ 
+2021-09-29 18:27:59 [Error]       ~~~~~~~~~~
+ 
+2021-09-29 18:27:59 [Error]   src/app/root/app.component.ts:6:18
+ 
+2021-09-29 18:27:59 [Error]     6     templateUrl: './app.component.html',
+ 
+2021-09-29 18:27:59 [Error]                        ~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:27:59 [Error]     Error occurs in the template of component AppComponent.
+ 
+2021-09-29 18:27:59 [Error] Error: src/app/root/app.component.html:8:13 - error NG8001: 'router-outlet' is not a known element:
+ 
+2021-09-29 18:27:59 [Error] 1. If 'router-outlet' is an Angular component, then verify that it is part of this module.
+ 
+2021-09-29 18:27:59 [Error] 2. If 'router-outlet' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+ 
+2021-09-29 18:27:59 [Error] 8             <router-outlet></router-outlet>
+ 
+2021-09-29 18:27:59 [Error]               ~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:27:59 [Error]   src/app/root/app.component.ts:6:18
+ 
+2021-09-29 18:27:59 [Error]     6     templateUrl: './app.component.html',
+ 
+2021-09-29 18:27:59 [Error]                        ~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:27:59 [Error]     Error occurs in the template of component AppComponent.
+ 
+2021-09-29 18:27:59 [Error] Error: src/app/root/app.module.ts:10:32 - error TS2307: Cannot find module '../features/customers/classes/modules/customer.module' or its corresponding type declarations.
+ 
+2021-09-29 18:27:59 [Error] 10 import { CustomerModule } from '../features/customers/classes/modules/customer.module'
+ 
+2021-09-29 18:27:59 [Error]                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:27:59 [Error] Error: src/app/root/app.module.ts:34:14 - error NG1010: Value at position 3 in the NgModule.imports of AppModule is not a reference
+ 
+2021-09-29 18:27:59 [Error]   Value could not be determined statically.
+ 
+2021-09-29 18:27:59 [Error]  34     imports: [
+ 
+2021-09-29 18:27:59 [Error]                  ~
+ 
+2021-09-29 18:27:59 [Error]  35         AppRoutingModule,
+ 
+2021-09-29 18:27:59 [Error]     ~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:27:59 [Error] ... 
+ 
+2021-09-29 18:27:59 [Error]  42         ReactiveFormsModule,
+ 
+2021-09-29 18:27:59 [Error]     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:27:59 [Error]  43     ],
+ 
+2021-09-29 18:27:59 [Error]     ~~~~~
+ 
+2021-09-29 18:27:59 [Error]   src/app/root/app.module.ts:38:9
+ 
+2021-09-29 18:27:59 [Error]     38         CustomerModule,
+ 
+2021-09-29 18:27:59 [Error]                ~~~~~~~~~~~~~~
+ 
+2021-09-29 18:27:59 [Error]     Unknown reference.
+ 
+2021-09-29 18:27:59 [Error] Error: src/app/root/app.routing.module.ts:12:58 - error TS2307: Cannot find module '../features/customers/classes/modules/customer.module' or its corresponding type declarations.
+ 
+2021-09-29 18:27:59 [Error] 12     { path: 'customers', loadChildren: (): any => import('../features/customers/classes/modules/customer.module').then(m => m.CustomerModule) },
+ 
+2021-09-29 18:27:59 [Error]                                                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:27:59 [Error] Error: src/app/shared/components/side-bar-wrapper/side-bar/side-bar.component.html:2:5 - error NG8001: 'side-menu' is not a known element:
+ 
+2021-09-29 18:27:59 [Error] 1. If 'side-menu' is an Angular component, then verify that it is part of this module.
+ 
+2021-09-29 18:27:59 [Error] 2. If 'side-menu' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+ 
+2021-09-29 18:27:59 [Error] 2     <side-menu></side-menu>
+ 
+2021-09-29 18:27:59 [Error]       ~~~~~~~~~~~
+ 
+2021-09-29 18:27:59 [Error]   src/app/shared/components/side-bar-wrapper/side-bar/side-bar.component.ts:6:18
+ 
+2021-09-29 18:27:59 [Error]     6     templateUrl: './side-bar.component.html',
+ 
+2021-09-29 18:27:59 [Error]                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:27:59 [Error]     Error occurs in the template of component SideBarComponent.
+ 
+2021-09-29 18:27:59 [Error] Error: src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.html:2:5 - error NG8001: 'p-panelMenu' is not a known element:
+ 
+2021-09-29 18:27:59 [Error] 1. If 'p-panelMenu' is an Angular component, then verify that it is part of this module.
+ 
+2021-09-29 18:27:59 [Error] 2. If 'p-panelMenu' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+ 
+2021-09-29 18:27:59 [Error] 2     <p-panelMenu class="vertical-menu" [model]="topItems" [multiple]=false></p-panelMenu>
+ 
+2021-09-29 18:27:59 [Error]       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:27:59 [Error]   src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.ts:12:18
+ 
+2021-09-29 18:27:59 [Error]     12     templateUrl: './side-menu.component.html',
+ 
+2021-09-29 18:27:59 [Error]                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:27:59 [Error]     Error occurs in the template of component SideMenuComponent.
+ 
+2021-09-29 18:27:59 [Error] Error: src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.html:2:40 - error NG8002: Can't bind to 'model' since it isn't a known property of 'p-panelMenu'.
+ 
+2021-09-29 18:27:59 [Error] 1. If 'p-panelMenu' is an Angular component and it has 'model' input, then verify that it is part of this module.
+ 
+2021-09-29 18:27:59 [Error] 2. If 'p-panelMenu' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+ 
+2021-09-29 18:27:59 [Error] 3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.
+ 
+2021-09-29 18:27:59 [Error] 2     <p-panelMenu class="vertical-menu" [model]="topItems" [multiple]=false></p-panelMenu>
+ 
+2021-09-29 18:27:59 [Error]                                          ~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:27:59 [Error]   src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.ts:12:18
+ 
+2021-09-29 18:27:59 [Error]     12     templateUrl: './side-menu.component.html',
+ 
+2021-09-29 18:27:59 [Error]                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:27:59 [Error]     Error occurs in the template of component SideMenuComponent.
+ 
+2021-09-29 18:27:59 [Error] Error: src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.html:2:59 - error NG8002: Can't bind to 'multiple' since it isn't a known property of 'p-panelMenu'.
+ 
+2021-09-29 18:27:59 [Error] 1. If 'p-panelMenu' is an Angular component and it has 'multiple' input, then verify that it is part of this module.
+ 
+2021-09-29 18:27:59 [Error] 2. If 'p-panelMenu' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+ 
+2021-09-29 18:27:59 [Error] 3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.
+ 
+2021-09-29 18:27:59 [Error] 2     <p-panelMenu class="vertical-menu" [model]="topItems" [multiple]=false></p-panelMenu>
+ 
+2021-09-29 18:27:59 [Error]                                                             ~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:27:59 [Error]   src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.ts:12:18
+ 
+2021-09-29 18:27:59 [Error]     12     templateUrl: './side-menu.component.html',
+ 
+2021-09-29 18:27:59 [Error]                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:27:59 [Error]     Error occurs in the template of component SideMenuComponent.
+ 
+2021-09-29 18:27:59 [Error] Error: src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.html:3:5 - error NG8001: 'p-panelMenu' is not a known element:
+ 
+2021-09-29 18:27:59 [Error] 1. If 'p-panelMenu' is an Angular component, then verify that it is part of this module.
+ 
+2021-09-29 18:27:59 [Error] 2. If 'p-panelMenu' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+ 
+2021-09-29 18:27:59 [Error] 3     <p-panelMenu [model]="bottomItems"></p-panelMenu>
+ 
+2021-09-29 18:27:59 [Error]       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:27:59 [Error]   src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.ts:12:18
+ 
+2021-09-29 18:27:59 [Error]     12     templateUrl: './side-menu.component.html',
+ 
+2021-09-29 18:27:59 [Error]                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:27:59 [Error]     Error occurs in the template of component SideMenuComponent.
+ 
+2021-09-29 18:27:59 [Error] Error: src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.html:3:18 - error NG8002: Can't bind to 'model' since it isn't a known property of 'p-panelMenu'.
+ 
+2021-09-29 18:27:59 [Error] 1. If 'p-panelMenu' is an Angular component and it has 'model' input, then verify that it is part of this module.
+ 
+2021-09-29 18:27:59 [Error] 2. If 'p-panelMenu' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+ 
+2021-09-29 18:27:59 [Error] 3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.
+ 
+2021-09-29 18:27:59 [Error] 3     <p-panelMenu [model]="bottomItems"></p-panelMenu>
+ 
+2021-09-29 18:27:59 [Error]                    ~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:27:59 [Error]   src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.ts:12:18
+ 
+2021-09-29 18:27:59 [Error]     12     templateUrl: './side-menu.component.html',
+ 
+2021-09-29 18:27:59 [Error]                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:27:59 [Error]     Error occurs in the template of component SideMenuComponent.
+ 
+2021-09-29 18:27:59 [Error] Error: src/app/shared/components/top-bar-wrapper/logo/logo.component.html:1:38 - error NG8002: Can't bind to 'routerLink' since it isn't a known property of 'div'.
+ 
+2021-09-29 18:27:59 [Error] 1 <div data-cy="companyLogo" id="logo" [routerLink]="['/']">
+ 
+2021-09-29 18:27:59 [Error]                                        ~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:27:59 [Error]   src/app/shared/components/top-bar-wrapper/logo/logo.component.ts:7:18
+ 
+2021-09-29 18:27:59 [Error]     7     templateUrl: './logo.component.html',
+ 
+2021-09-29 18:27:59 [Error]                        ~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:27:59 [Error]     Error occurs in the template of component LogoComponent.
+ 
+2021-09-29 18:28:04 [Error] ΓêÜ Browser application bundle generation complete.
+ 
+2021-09-29 18:28:04 [Error] ./src/app/root/app.module.ts:10:0-87 - Error: Module not found: Error: Can't resolve '../features/customers/classes/modules/customer.module' in 'F:\Krotsis\ClientApp\src\app\root'
+ 
+2021-09-29 18:28:04 [Error] ./src/app/root/app.routing.module.ts:10:45-108 - Error: Module not found: Error: Can't resolve '../features/customers/classes/modules/customer.module' in 'F:\Krotsis\ClientApp\src\app\root'
+ 
+2021-09-29 18:28:04 [Error] Error: src/app/root/app.component.html:3:5 - error NG8001: 'side-bar' is not a known element:
+ 
+2021-09-29 18:28:04 [Error] 1. If 'side-bar' is an Angular component, then verify that it is part of this module.
+ 
+2021-09-29 18:28:04 [Error] 2. If 'side-bar' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+ 
+2021-09-29 18:28:04 [Error] 3     <side-bar></side-bar>
+ 
+2021-09-29 18:28:04 [Error]       ~~~~~~~~~~
+ 
+2021-09-29 18:28:04 [Error]   src/app/root/app.component.ts:6:18
+ 
+2021-09-29 18:28:04 [Error]     6     templateUrl: './app.component.html',
+ 
+2021-09-29 18:28:04 [Error]                        ~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:28:04 [Error]     Error occurs in the template of component AppComponent.
+ 
+2021-09-29 18:28:04 [Error] Error: src/app/root/app.component.html:8:13 - error NG8001: 'router-outlet' is not a known element:
+ 
+2021-09-29 18:28:04 [Error] 1. If 'router-outlet' is an Angular component, then verify that it is part of this module.
+ 
+2021-09-29 18:28:04 [Error] 2. If 'router-outlet' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+ 
+2021-09-29 18:28:04 [Error] 8             <router-outlet></router-outlet>
+ 
+2021-09-29 18:28:04 [Error]               ~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:28:04 [Error]   src/app/root/app.component.ts:6:18
+ 
+2021-09-29 18:28:04 [Error]     6     templateUrl: './app.component.html',
+ 
+2021-09-29 18:28:04 [Error]                        ~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:28:04 [Error]     Error occurs in the template of component AppComponent.
+ 
+2021-09-29 18:28:04 [Error] Error: src/app/root/app.module.ts:10:32 - error TS2307: Cannot find module '../features/customers/classes/modules/customer.module' or its corresponding type declarations.
+ 
+2021-09-29 18:28:04 [Error] 10 import { CustomerModule } from '../features/customers/classes/modules/customer.module'
+ 
+2021-09-29 18:28:04 [Error]                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:28:04 [Error] Error: src/app/root/app.module.ts:34:14 - error NG1010: Value at position 3 in the NgModule.imports of AppModule is not a reference
+ 
+2021-09-29 18:28:04 [Error]   Value could not be determined statically.
+ 
+2021-09-29 18:28:04 [Error]  34     imports: [
+ 
+2021-09-29 18:28:04 [Error]                  ~
+ 
+2021-09-29 18:28:04 [Error]  35         AppRoutingModule,
+ 
+2021-09-29 18:28:04 [Error]     ~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:28:04 [Error] ... 
+ 
+2021-09-29 18:28:04 [Error]  42         ReactiveFormsModule,
+ 
+2021-09-29 18:28:04 [Error]     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:28:04 [Error]  43     ],
+ 
+2021-09-29 18:28:04 [Error]     ~~~~~
+ 
+2021-09-29 18:28:04 [Error]   src/app/root/app.module.ts:38:9
+ 
+2021-09-29 18:28:04 [Error]     38         CustomerModule,
+ 
+2021-09-29 18:28:04 [Error]                ~~~~~~~~~~~~~~
+ 
+2021-09-29 18:28:04 [Error]     Unknown reference.
+ 
+2021-09-29 18:28:04 [Error] Error: src/app/root/app.routing.module.ts:12:58 - error TS2307: Cannot find module '../features/customers/classes/modules/customer.module' or its corresponding type declarations.
+ 
+2021-09-29 18:28:04 [Error] 12     { path: 'customers', loadChildren: (): any => import('../features/customers/classes/modules/customer.module').then(m => m.CustomerModule) },
+ 
+2021-09-29 18:28:04 [Error]                                                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:28:04 [Error] Error: src/app/shared/components/side-bar-wrapper/side-bar/side-bar.component.html:2:5 - error NG8001: 'side-menu' is not a known element:
+ 
+2021-09-29 18:28:04 [Error] 1. If 'side-menu' is an Angular component, then verify that it is part of this module.
+ 
+2021-09-29 18:28:04 [Error] 2. If 'side-menu' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+ 
+2021-09-29 18:28:04 [Error] 2     <side-menu></side-menu>
+ 
+2021-09-29 18:28:04 [Error]       ~~~~~~~~~~~
+ 
+2021-09-29 18:28:04 [Error]   src/app/shared/components/side-bar-wrapper/side-bar/side-bar.component.ts:6:18
+ 
+2021-09-29 18:28:04 [Error]     6     templateUrl: './side-bar.component.html',
+ 
+2021-09-29 18:28:04 [Error]                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:28:04 [Error]     Error occurs in the template of component SideBarComponent.
+ 
+2021-09-29 18:28:04 [Error] Error: src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.html:2:5 - error NG8001: 'p-panelMenu' is not a known element:
+ 
+2021-09-29 18:28:04 [Error] 1. If 'p-panelMenu' is an Angular component, then verify that it is part of this module.
+ 
+2021-09-29 18:28:04 [Error] 2. If 'p-panelMenu' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+ 
+2021-09-29 18:28:04 [Error] 2     <p-panelMenu class="vertical-menu" [model]="topItems" [multiple]=false></p-panelMenu>
+ 
+2021-09-29 18:28:04 [Error]       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:28:04 [Error]   src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.ts:12:18
+ 
+2021-09-29 18:28:04 [Error]     12     templateUrl: './side-menu.component.html',
+ 
+2021-09-29 18:28:04 [Error]                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:28:04 [Error]     Error occurs in the template of component SideMenuComponent.
+ 
+2021-09-29 18:28:04 [Error] Error: src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.html:2:40 - error NG8002: Can't bind to 'model' since it isn't a known property of 'p-panelMenu'.
+ 
+2021-09-29 18:28:04 [Error] 1. If 'p-panelMenu' is an Angular component and it has 'model' input, then verify that it is part of this module.
+ 
+2021-09-29 18:28:04 [Error] 2. If 'p-panelMenu' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+ 
+2021-09-29 18:28:04 [Error] 3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.
+ 
+2021-09-29 18:28:04 [Error] 2     <p-panelMenu class="vertical-menu" [model]="topItems" [multiple]=false></p-panelMenu>
+ 
+2021-09-29 18:28:04 [Error]                                          ~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:28:04 [Error]   src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.ts:12:18
+ 
+2021-09-29 18:28:04 [Error]     12     templateUrl: './side-menu.component.html',
+ 
+2021-09-29 18:28:04 [Error]                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:28:04 [Error]     Error occurs in the template of component SideMenuComponent.
+ 
+2021-09-29 18:28:04 [Error] Error: src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.html:2:59 - error NG8002: Can't bind to 'multiple' since it isn't a known property of 'p-panelMenu'.
+ 
+2021-09-29 18:28:04 [Error] 1. If 'p-panelMenu' is an Angular component and it has 'multiple' input, then verify that it is part of this module.
+ 
+2021-09-29 18:28:04 [Error] 2. If 'p-panelMenu' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+ 
+2021-09-29 18:28:04 [Error] 3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.
+ 
+2021-09-29 18:28:04 [Error] 2     <p-panelMenu class="vertical-menu" [model]="topItems" [multiple]=false></p-panelMenu>
+ 
+2021-09-29 18:28:04 [Error]                                                             ~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:28:04 [Error]   src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.ts:12:18
+ 
+2021-09-29 18:28:04 [Error]     12     templateUrl: './side-menu.component.html',
+ 
+2021-09-29 18:28:04 [Error]                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:28:04 [Error]     Error occurs in the template of component SideMenuComponent.
+ 
+2021-09-29 18:28:04 [Error] Error: src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.html:3:5 - error NG8001: 'p-panelMenu' is not a known element:
+ 
+2021-09-29 18:28:04 [Error] 1. If 'p-panelMenu' is an Angular component, then verify that it is part of this module.
+ 
+2021-09-29 18:28:04 [Error] 2. If 'p-panelMenu' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+ 
+2021-09-29 18:28:04 [Error] 3     <p-panelMenu [model]="bottomItems"></p-panelMenu>
+ 
+2021-09-29 18:28:04 [Error]       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:28:04 [Error]   src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.ts:12:18
+ 
+2021-09-29 18:28:04 [Error]     12     templateUrl: './side-menu.component.html',
+ 
+2021-09-29 18:28:04 [Error]                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:28:04 [Error]     Error occurs in the template of component SideMenuComponent.
+ 
+2021-09-29 18:28:04 [Error] Error: src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.html:3:18 - error NG8002: Can't bind to 'model' since it isn't a known property of 'p-panelMenu'.
+ 
+2021-09-29 18:28:04 [Error] 1. If 'p-panelMenu' is an Angular component and it has 'model' input, then verify that it is part of this module.
+ 
+2021-09-29 18:28:04 [Error] 2. If 'p-panelMenu' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+ 
+2021-09-29 18:28:04 [Error] 3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.
+ 
+2021-09-29 18:28:04 [Error] 3     <p-panelMenu [model]="bottomItems"></p-panelMenu>
+ 
+2021-09-29 18:28:04 [Error]                    ~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:28:04 [Error]   src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.ts:12:18
+ 
+2021-09-29 18:28:04 [Error]     12     templateUrl: './side-menu.component.html',
+ 
+2021-09-29 18:28:04 [Error]                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:28:04 [Error]     Error occurs in the template of component SideMenuComponent.
+ 
+2021-09-29 18:28:04 [Error] Error: src/app/shared/components/top-bar-wrapper/logo/logo.component.html:1:38 - error NG8002: Can't bind to 'routerLink' since it isn't a known property of 'div'.
+ 
+2021-09-29 18:28:04 [Error] 1 <div data-cy="companyLogo" id="logo" [routerLink]="['/']">
+ 
+2021-09-29 18:28:04 [Error]                                        ~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:28:04 [Error]   src/app/shared/components/top-bar-wrapper/logo/logo.component.ts:7:18
+ 
+2021-09-29 18:28:04 [Error]     7     templateUrl: './logo.component.html',
+ 
+2021-09-29 18:28:04 [Error]                        ~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:28:04 [Error]     Error occurs in the template of component LogoComponent.
+ 
+2021-09-29 18:38:31 [Error] npm ERR! code ELIFECYCLE
+ 
+2021-09-29 18:38:31 [Error] npm ERR! errno 1
+ 
+2021-09-29 18:38:31 [Error] npm ERR! shipcruises@2.0.0 start: `ng serve "--port" "58249"`
+ 
+2021-09-29 18:38:31 [Error] npm ERR! Exit status 1
+ 
+2021-09-29 18:38:31 [Error] npm ERR! 
+ 
+2021-09-29 18:38:31 [Error] npm ERR! Failed at the shipcruises@2.0.0 start script.
+ 
+2021-09-29 18:38:31 [Error] npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+ 
+2021-09-29 18:39:42 [Error] - Generating browser application bundles (phase: setup)...
+ 
+2021-09-29 18:41:46 [Error] ΓêÜ Browser application bundle generation complete.
+ 
+2021-09-29 18:41:46 [Error] ./src/app/root/app.module.ts:10:0-87 - Error: Module not found: Error: Can't resolve '../features/customers/classes/modules/customer.module' in 'F:\Krotsis\ClientApp\src\app\root'
+ 
+2021-09-29 18:41:46 [Error] ./src/app/root/app.routing.module.ts:10:45-108 - Error: Module not found: Error: Can't resolve '../features/customers/classes/modules/customer.module' in 'F:\Krotsis\ClientApp\src\app\root'
+ 
+2021-09-29 18:41:46 [Error] Error: src/app/root/app.component.html:3:5 - error NG8001: 'side-bar' is not a known element:
+ 
+2021-09-29 18:41:46 [Error] 1. If 'side-bar' is an Angular component, then verify that it is part of this module.
+ 
+2021-09-29 18:41:46 [Error] 2. If 'side-bar' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+ 
+2021-09-29 18:41:46 [Error] 3     <side-bar></side-bar>
+ 
+2021-09-29 18:41:46 [Error]       ~~~~~~~~~~
+ 
+2021-09-29 18:41:46 [Error]   src/app/root/app.component.ts:6:18
+ 
+2021-09-29 18:41:46 [Error]     6     templateUrl: './app.component.html',
+ 
+2021-09-29 18:41:46 [Error]                        ~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:41:46 [Error]     Error occurs in the template of component AppComponent.
+ 
+2021-09-29 18:41:46 [Error] Error: src/app/root/app.component.html:8:13 - error NG8001: 'router-outlet' is not a known element:
+ 
+2021-09-29 18:41:46 [Error] 1. If 'router-outlet' is an Angular component, then verify that it is part of this module.
+ 
+2021-09-29 18:41:46 [Error] 2. If 'router-outlet' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+ 
+2021-09-29 18:41:46 [Error] 8             <router-outlet></router-outlet>
+ 
+2021-09-29 18:41:46 [Error]               ~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:41:46 [Error]   src/app/root/app.component.ts:6:18
+ 
+2021-09-29 18:41:46 [Error]     6     templateUrl: './app.component.html',
+ 
+2021-09-29 18:41:46 [Error]                        ~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:41:46 [Error]     Error occurs in the template of component AppComponent.
+ 
+2021-09-29 18:41:46 [Error] Error: src/app/root/app.module.ts:10:32 - error TS2307: Cannot find module '../features/customers/classes/modules/customer.module' or its corresponding type declarations.
+ 
+2021-09-29 18:41:46 [Error] 10 import { CustomerModule } from '../features/customers/classes/modules/customer.module'
+ 
+2021-09-29 18:41:46 [Error]                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:41:46 [Error] Error: src/app/root/app.module.ts:34:14 - error NG1010: Value at position 3 in the NgModule.imports of AppModule is not a reference
+ 
+2021-09-29 18:41:46 [Error]   Value could not be determined statically.
+ 
+2021-09-29 18:41:46 [Error]  34     imports: [
+ 
+2021-09-29 18:41:46 [Error]                  ~
+ 
+2021-09-29 18:41:46 [Error]  35         AppRoutingModule,
+ 
+2021-09-29 18:41:46 [Error]     ~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:41:46 [Error] ... 
+ 
+2021-09-29 18:41:46 [Error]  42         ReactiveFormsModule,
+ 
+2021-09-29 18:41:46 [Error]     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:41:46 [Error]  43     ],
+ 
+2021-09-29 18:41:46 [Error]     ~~~~~
+ 
+2021-09-29 18:41:46 [Error]   src/app/root/app.module.ts:38:9
+ 
+2021-09-29 18:41:46 [Error]     38         CustomerModule,
+ 
+2021-09-29 18:41:46 [Error]                ~~~~~~~~~~~~~~
+ 
+2021-09-29 18:41:46 [Error]     Unknown reference.
+ 
+2021-09-29 18:41:46 [Error] Error: src/app/root/app.routing.module.ts:12:58 - error TS2307: Cannot find module '../features/customers/classes/modules/customer.module' or its corresponding type declarations.
+ 
+2021-09-29 18:41:46 [Error] 12     { path: 'customers', loadChildren: (): any => import('../features/customers/classes/modules/customer.module').then(m => m.CustomerModule) },
+ 
+2021-09-29 18:41:46 [Error]                                                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:41:46 [Error] Error: src/app/shared/components/side-bar-wrapper/side-bar/side-bar.component.html:2:5 - error NG8001: 'side-menu' is not a known element:
+ 
+2021-09-29 18:41:46 [Error] 1. If 'side-menu' is an Angular component, then verify that it is part of this module.
+ 
+2021-09-29 18:41:46 [Error] 2. If 'side-menu' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+ 
+2021-09-29 18:41:46 [Error] 2     <side-menu></side-menu>
+ 
+2021-09-29 18:41:46 [Error]       ~~~~~~~~~~~
+ 
+2021-09-29 18:41:46 [Error]   src/app/shared/components/side-bar-wrapper/side-bar/side-bar.component.ts:6:18
+ 
+2021-09-29 18:41:46 [Error]     6     templateUrl: './side-bar.component.html',
+ 
+2021-09-29 18:41:46 [Error]                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:41:46 [Error]     Error occurs in the template of component SideBarComponent.
+ 
+2021-09-29 18:41:46 [Error] Error: src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.html:2:5 - error NG8001: 'p-panelMenu' is not a known element:
+ 
+2021-09-29 18:41:46 [Error] 1. If 'p-panelMenu' is an Angular component, then verify that it is part of this module.
+ 
+2021-09-29 18:41:46 [Error] 2. If 'p-panelMenu' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+ 
+2021-09-29 18:41:46 [Error] 2     <p-panelMenu class="vertical-menu" [model]="topItems" [multiple]=false></p-panelMenu>
+ 
+2021-09-29 18:41:46 [Error]       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:41:46 [Error]   src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.ts:12:18
+ 
+2021-09-29 18:41:46 [Error]     12     templateUrl: './side-menu.component.html',
+ 
+2021-09-29 18:41:46 [Error]                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:41:46 [Error]     Error occurs in the template of component SideMenuComponent.
+ 
+2021-09-29 18:41:46 [Error] Error: src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.html:2:40 - error NG8002: Can't bind to 'model' since it isn't a known property of 'p-panelMenu'.
+ 
+2021-09-29 18:41:46 [Error] 1. If 'p-panelMenu' is an Angular component and it has 'model' input, then verify that it is part of this module.
+ 
+2021-09-29 18:41:46 [Error] 2. If 'p-panelMenu' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+ 
+2021-09-29 18:41:46 [Error] 3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.
+ 
+2021-09-29 18:41:46 [Error] 2     <p-panelMenu class="vertical-menu" [model]="topItems" [multiple]=false></p-panelMenu>
+ 
+2021-09-29 18:41:46 [Error]                                          ~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:41:46 [Error]   src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.ts:12:18
+ 
+2021-09-29 18:41:46 [Error]     12     templateUrl: './side-menu.component.html',
+ 
+2021-09-29 18:41:46 [Error]                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:41:46 [Error]     Error occurs in the template of component SideMenuComponent.
+ 
+2021-09-29 18:41:46 [Error] Error: src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.html:2:59 - error NG8002: Can't bind to 'multiple' since it isn't a known property of 'p-panelMenu'.
+ 
+2021-09-29 18:41:46 [Error] 1. If 'p-panelMenu' is an Angular component and it has 'multiple' input, then verify that it is part of this module.
+ 
+2021-09-29 18:41:46 [Error] 2. If 'p-panelMenu' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+ 
+2021-09-29 18:41:46 [Error] 3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.
+ 
+2021-09-29 18:41:46 [Error] 2     <p-panelMenu class="vertical-menu" [model]="topItems" [multiple]=false></p-panelMenu>
+ 
+2021-09-29 18:41:46 [Error]                                                             ~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:41:46 [Error]   src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.ts:12:18
+ 
+2021-09-29 18:41:46 [Error]     12     templateUrl: './side-menu.component.html',
+ 
+2021-09-29 18:41:46 [Error]                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:41:46 [Error]     Error occurs in the template of component SideMenuComponent.
+ 
+2021-09-29 18:41:46 [Error] Error: src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.html:3:5 - error NG8001: 'p-panelMenu' is not a known element:
+ 
+2021-09-29 18:41:46 [Error] 1. If 'p-panelMenu' is an Angular component, then verify that it is part of this module.
+ 
+2021-09-29 18:41:46 [Error] 2. If 'p-panelMenu' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+ 
+2021-09-29 18:41:46 [Error] 3     <p-panelMenu [model]="bottomItems"></p-panelMenu>
+ 
+2021-09-29 18:41:46 [Error]       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:41:46 [Error]   src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.ts:12:18
+ 
+2021-09-29 18:41:46 [Error]     12     templateUrl: './side-menu.component.html',
+ 
+2021-09-29 18:41:46 [Error]                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:41:46 [Error]     Error occurs in the template of component SideMenuComponent.
+ 
+2021-09-29 18:41:46 [Error] Error: src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.html:3:18 - error NG8002: Can't bind to 'model' since it isn't a known property of 'p-panelMenu'.
+ 
+2021-09-29 18:41:46 [Error] 1. If 'p-panelMenu' is an Angular component and it has 'model' input, then verify that it is part of this module.
+ 
+2021-09-29 18:41:46 [Error] 2. If 'p-panelMenu' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+ 
+2021-09-29 18:41:46 [Error] 3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.
+ 
+2021-09-29 18:41:46 [Error] 3     <p-panelMenu [model]="bottomItems"></p-panelMenu>
+ 
+2021-09-29 18:41:46 [Error]                    ~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:41:46 [Error]   src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.ts:12:18
+ 
+2021-09-29 18:41:46 [Error]     12     templateUrl: './side-menu.component.html',
+ 
+2021-09-29 18:41:46 [Error]                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:41:46 [Error]     Error occurs in the template of component SideMenuComponent.
+ 
+2021-09-29 18:41:46 [Error] Error: src/app/shared/components/top-bar-wrapper/logo/logo.component.html:1:38 - error NG8002: Can't bind to 'routerLink' since it isn't a known property of 'div'.
+ 
+2021-09-29 18:41:46 [Error] 1 <div data-cy="companyLogo" id="logo" [routerLink]="['/']">
+ 
+2021-09-29 18:41:46 [Error]                                        ~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:41:46 [Error]   src/app/shared/components/top-bar-wrapper/logo/logo.component.ts:7:18
+ 
+2021-09-29 18:41:46 [Error]     7     templateUrl: './logo.component.html',
+ 
+2021-09-29 18:41:46 [Error]                        ~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:41:46 [Error]     Error occurs in the template of component LogoComponent.
+ 
+2021-09-29 18:41:53 [Error] ΓêÜ Browser application bundle generation complete.
+ 
+2021-09-29 18:41:53 [Error] ./src/app/root/app.module.ts:10:0-87 - Error: Module not found: Error: Can't resolve '../features/customers/classes/modules/customer.module' in 'F:\Krotsis\ClientApp\src\app\root'
+ 
+2021-09-29 18:41:53 [Error] ./src/app/root/app.routing.module.ts:10:45-108 - Error: Module not found: Error: Can't resolve '../features/customers/classes/modules/customer.module' in 'F:\Krotsis\ClientApp\src\app\root'
+ 
+2021-09-29 18:41:53 [Error] Error: src/app/root/app.component.html:3:5 - error NG8001: 'side-bar' is not a known element:
+ 
+2021-09-29 18:41:53 [Error] 1. If 'side-bar' is an Angular component, then verify that it is part of this module.
+ 
+2021-09-29 18:41:53 [Error] 2. If 'side-bar' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+ 
+2021-09-29 18:41:53 [Error] 3     <side-bar></side-bar>
+ 
+2021-09-29 18:41:53 [Error]       ~~~~~~~~~~
+ 
+2021-09-29 18:41:53 [Error]   src/app/root/app.component.ts:6:18
+ 
+2021-09-29 18:41:53 [Error]     6     templateUrl: './app.component.html',
+ 
+2021-09-29 18:41:53 [Error]                        ~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:41:53 [Error]     Error occurs in the template of component AppComponent.
+ 
+2021-09-29 18:41:53 [Error] Error: src/app/root/app.component.html:8:13 - error NG8001: 'router-outlet' is not a known element:
+ 
+2021-09-29 18:41:53 [Error] 1. If 'router-outlet' is an Angular component, then verify that it is part of this module.
+ 
+2021-09-29 18:41:53 [Error] 2. If 'router-outlet' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+ 
+2021-09-29 18:41:53 [Error] 8             <router-outlet></router-outlet>
+ 
+2021-09-29 18:41:53 [Error]               ~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:41:53 [Error]   src/app/root/app.component.ts:6:18
+ 
+2021-09-29 18:41:53 [Error]     6     templateUrl: './app.component.html',
+ 
+2021-09-29 18:41:53 [Error]                        ~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:41:53 [Error]     Error occurs in the template of component AppComponent.
+ 
+2021-09-29 18:41:53 [Error] Error: src/app/root/app.module.ts:10:32 - error TS2307: Cannot find module '../features/customers/classes/modules/customer.module' or its corresponding type declarations.
+ 
+2021-09-29 18:41:53 [Error] 10 import { CustomerModule } from '../features/customers/classes/modules/customer.module'
+ 
+2021-09-29 18:41:53 [Error]                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:41:53 [Error] Error: src/app/root/app.module.ts:34:14 - error NG1010: Value at position 3 in the NgModule.imports of AppModule is not a reference
+ 
+2021-09-29 18:41:53 [Error]   Value could not be determined statically.
+ 
+2021-09-29 18:41:53 [Error]  34     imports: [
+ 
+2021-09-29 18:41:53 [Error]                  ~
+ 
+2021-09-29 18:41:53 [Error]  35         AppRoutingModule,
+ 
+2021-09-29 18:41:53 [Error]     ~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:41:53 [Error] ... 
+ 
+2021-09-29 18:41:53 [Error]  42         ReactiveFormsModule,
+ 
+2021-09-29 18:41:53 [Error]     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:41:53 [Error]  43     ],
+ 
+2021-09-29 18:41:53 [Error]     ~~~~~
+ 
+2021-09-29 18:41:53 [Error]   src/app/root/app.module.ts:38:9
+ 
+2021-09-29 18:41:53 [Error]     38         CustomerModule,
+ 
+2021-09-29 18:41:53 [Error]                ~~~~~~~~~~~~~~
+ 
+2021-09-29 18:41:53 [Error]     Unknown reference.
+ 
+2021-09-29 18:41:53 [Error] Error: src/app/root/app.routing.module.ts:12:58 - error TS2307: Cannot find module '../features/customers/classes/modules/customer.module' or its corresponding type declarations.
+ 
+2021-09-29 18:41:53 [Error] 12     { path: 'customers', loadChildren: (): any => import('../features/customers/classes/modules/customer.module').then(m => m.CustomerModule) },
+ 
+2021-09-29 18:41:53 [Error]                                                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:41:53 [Error] Error: src/app/shared/components/side-bar-wrapper/side-bar/side-bar.component.html:2:5 - error NG8001: 'side-menu' is not a known element:
+ 
+2021-09-29 18:41:53 [Error] 1. If 'side-menu' is an Angular component, then verify that it is part of this module.
+ 
+2021-09-29 18:41:53 [Error] 2. If 'side-menu' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+ 
+2021-09-29 18:41:53 [Error] 2     <side-menu></side-menu>
+ 
+2021-09-29 18:41:53 [Error]       ~~~~~~~~~~~
+ 
+2021-09-29 18:41:53 [Error]   src/app/shared/components/side-bar-wrapper/side-bar/side-bar.component.ts:6:18
+ 
+2021-09-29 18:41:53 [Error]     6     templateUrl: './side-bar.component.html',
+ 
+2021-09-29 18:41:53 [Error]                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:41:53 [Error]     Error occurs in the template of component SideBarComponent.
+ 
+2021-09-29 18:41:53 [Error] Error: src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.html:2:5 - error NG8001: 'p-panelMenu' is not a known element:
+ 
+2021-09-29 18:41:53 [Error] 1. If 'p-panelMenu' is an Angular component, then verify that it is part of this module.
+ 
+2021-09-29 18:41:53 [Error] 2. If 'p-panelMenu' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+ 
+2021-09-29 18:41:53 [Error] 2     <p-panelMenu class="vertical-menu" [model]="topItems" [multiple]=false></p-panelMenu>
+ 
+2021-09-29 18:41:53 [Error]       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:41:53 [Error]   src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.ts:12:18
+ 
+2021-09-29 18:41:53 [Error]     12     templateUrl: './side-menu.component.html',
+ 
+2021-09-29 18:41:53 [Error]                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:41:53 [Error]     Error occurs in the template of component SideMenuComponent.
+ 
+2021-09-29 18:41:53 [Error] Error: src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.html:2:40 - error NG8002: Can't bind to 'model' since it isn't a known property of 'p-panelMenu'.
+ 
+2021-09-29 18:41:53 [Error] 1. If 'p-panelMenu' is an Angular component and it has 'model' input, then verify that it is part of this module.
+ 
+2021-09-29 18:41:53 [Error] 2. If 'p-panelMenu' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+ 
+2021-09-29 18:41:53 [Error] 3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.
+ 
+2021-09-29 18:41:53 [Error] 2     <p-panelMenu class="vertical-menu" [model]="topItems" [multiple]=false></p-panelMenu>
+ 
+2021-09-29 18:41:53 [Error]                                          ~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:41:53 [Error]   src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.ts:12:18
+ 
+2021-09-29 18:41:53 [Error]     12     templateUrl: './side-menu.component.html',
+ 
+2021-09-29 18:41:53 [Error]                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:41:53 [Error]     Error occurs in the template of component SideMenuComponent.
+ 
+2021-09-29 18:41:53 [Error] Error: src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.html:2:59 - error NG8002: Can't bind to 'multiple' since it isn't a known property of 'p-panelMenu'.
+ 
+2021-09-29 18:41:53 [Error] 1. If 'p-panelMenu' is an Angular component and it has 'multiple' input, then verify that it is part of this module.
+ 
+2021-09-29 18:41:53 [Error] 2. If 'p-panelMenu' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+ 
+2021-09-29 18:41:53 [Error] 3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.
+ 
+2021-09-29 18:41:53 [Error] 2     <p-panelMenu class="vertical-menu" [model]="topItems" [multiple]=false></p-panelMenu>
+ 
+2021-09-29 18:41:53 [Error]                                                             ~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:41:53 [Error]   src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.ts:12:18
+ 
+2021-09-29 18:41:53 [Error]     12     templateUrl: './side-menu.component.html',
+ 
+2021-09-29 18:41:53 [Error]                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:41:53 [Error]     Error occurs in the template of component SideMenuComponent.
+ 
+2021-09-29 18:41:53 [Error] Error: src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.html:3:5 - error NG8001: 'p-panelMenu' is not a known element:
+ 
+2021-09-29 18:41:53 [Error] 1. If 'p-panelMenu' is an Angular component, then verify that it is part of this module.
+ 
+2021-09-29 18:41:53 [Error] 2. If 'p-panelMenu' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+ 
+2021-09-29 18:41:53 [Error] 3     <p-panelMenu [model]="bottomItems"></p-panelMenu>
+ 
+2021-09-29 18:41:53 [Error]       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:41:53 [Error]   src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.ts:12:18
+ 
+2021-09-29 18:41:53 [Error]     12     templateUrl: './side-menu.component.html',
+ 
+2021-09-29 18:41:53 [Error]                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:41:53 [Error]     Error occurs in the template of component SideMenuComponent.
+ 
+2021-09-29 18:41:53 [Error] Error: src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.html:3:18 - error NG8002: Can't bind to 'model' since it isn't a known property of 'p-panelMenu'.
+ 
+2021-09-29 18:41:53 [Error] 1. If 'p-panelMenu' is an Angular component and it has 'model' input, then verify that it is part of this module.
+ 
+2021-09-29 18:41:53 [Error] 2. If 'p-panelMenu' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+ 
+2021-09-29 18:41:53 [Error] 3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.
+ 
+2021-09-29 18:41:53 [Error] 3     <p-panelMenu [model]="bottomItems"></p-panelMenu>
+ 
+2021-09-29 18:41:53 [Error]                    ~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:41:53 [Error]   src/app/shared/components/side-bar-wrapper/side-menu/side-menu.component.ts:12:18
+ 
+2021-09-29 18:41:53 [Error]     12     templateUrl: './side-menu.component.html',
+ 
+2021-09-29 18:41:53 [Error]                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:41:53 [Error]     Error occurs in the template of component SideMenuComponent.
+ 
+2021-09-29 18:41:53 [Error] Error: src/app/shared/components/top-bar-wrapper/logo/logo.component.html:1:38 - error NG8002: Can't bind to 'routerLink' since it isn't a known property of 'div'.
+ 
+2021-09-29 18:41:53 [Error] 1 <div data-cy="companyLogo" id="logo" [routerLink]="['/']">
+ 
+2021-09-29 18:41:53 [Error]                                        ~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:41:53 [Error]   src/app/shared/components/top-bar-wrapper/logo/logo.component.ts:7:18
+ 
+2021-09-29 18:41:53 [Error]     7     templateUrl: './logo.component.html',
+ 
+2021-09-29 18:41:53 [Error]                        ~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2021-09-29 18:41:53 [Error]     Error occurs in the template of component LogoComponent.
+ 
+2021-09-29 19:02:04 [Error] An unhandled exception has occurred while executing the request. OOPS!MySqlConnector.MySqlException (0x80004005): Table 'krotsis.catalogs' doesn't exist
+ ---> MySqlConnector.MySqlException (0x80004005): Table 'krotsis.catalogs' doesn't exist
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 49
+   at MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 131
+   at MySqlConnector.MySqlDataReader.CreateAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 436
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(IReadOnlyList`1 commands, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 60
+   at MySqlConnector.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 310
+   at MySqlConnector.MySqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 304
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(DbContext _, Boolean result, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Krotsis.Repository`1.Get(Expression`1 expression) in F:\Krotsis\Infrastructure\Implementations\Repository.cs:line 19
+   at Krotsis.CatalogController.Get() in F:\Krotsis\Features\Catalog\Controllers\CatalogController.cs:line 24
+   at lambda_method4(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2021-09-29 19:02:22 [Error] - Generating browser application bundles (phase: setup)...
+ 
+2021-09-29 19:02:26 [Error] An unhandled exception has occurred while executing the request. OOPS!System.AggregateException: One or more errors occurred. (One or more errors occurred. (The npm script 'start' exited without indicating that the Angular CLI was listening for requests. The error output was: - Generating browser application bundles (phase: setup)...
+
+))
+ ---> System.AggregateException: One or more errors occurred. (The npm script 'start' exited without indicating that the Angular CLI was listening for requests. The error output was: - Generating browser application bundles (phase: setup)...
+
+)
+ ---> System.InvalidOperationException: The npm script 'start' exited without indicating that the Angular CLI was listening for requests. The error output was: - Generating browser application bundles (phase: setup)...
+
+
+ ---> System.IO.EndOfStreamException: Attempted to read past the end of the stream.
+   at Microsoft.AspNetCore.SpaServices.AngularCli.AngularCliMiddleware.StartAngularCliServerAsync(String sourcePath, String scriptName, String pkgManagerCommand, Int32 portNumber, ILogger logger, DiagnosticSource diagnosticSource, CancellationToken applicationStoppingToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.SpaServices.AngularCli.AngularCliMiddleware.StartAngularCliServerAsync(String sourcePath, String scriptName, String pkgManagerCommand, Int32 portNumber, ILogger logger, DiagnosticSource diagnosticSource, CancellationToken applicationStoppingToken)
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at System.Threading.Tasks.Task`1.get_Result()
+   at Microsoft.AspNetCore.SpaServices.AngularCli.AngularCliMiddleware.<>c.<Attach>b__2_0(Task`1 task)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__277_0(Object obj)
+   at System.Threading.ExecutionContext.RunFromThreadPoolDispatchLoop(Thread threadPoolThread, ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at System.Threading.Tasks.Task`1.get_Result()
+   at Microsoft.AspNetCore.SpaServices.Extensions.Util.TaskTimeoutExtensions.WithTimeout[T](Task`1 task, TimeSpan timeoutDelay, String message)
+   at Microsoft.AspNetCore.SpaServices.Extensions.Proxy.SpaProxy.PerformProxyRequest(HttpContext context, HttpClient httpClient, Task`1 baseUriTask, CancellationToken applicationStoppingToken, Boolean proxy404s)
+   at Microsoft.AspNetCore.Builder.SpaProxyingExtensions.<>c__DisplayClass2_0.<<UseProxyToSpaDevelopmentServer>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2021-09-29 19:03:19 [Error] - Generating browser application bundles (phase: setup)...
+ 
+2021-09-29 19:05:37 [Error] ΓêÜ Browser application bundle generation complete.
+ 
+2021-09-29 19:05:44 [Error] ΓêÜ Browser application bundle generation complete.
+ 
+2021-09-29 19:06:10 [Error] ΓêÜ Browser application bundle generation complete.
+ 

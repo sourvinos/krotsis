@@ -1,0 +1,118 @@
+button {
+    align-items: center;
+    cursor: default !important;
+    font-family: var(--font-family-master) !important;
+    font-size: var(--font-size-button) !important;
+    justify-content: center;
+    min-width: 0 !important;
+    outline: 0 !important;
+    padding-top: 0.0625rem !important;
+    transition: background-color var(--change-component-theme-on-hover) ease;
+}
+
+button.primary {
+    background-color: var(--color-button-primary) !important;
+    color: var(--color-button-text) !important;
+}
+
+button.primary:hover {
+    color: var(--color);
+    background-color: var(--color-button-primary-hover) !important;
+}
+
+button.secondary {
+    background-color: var(--color-button-secondary) !important;
+    color: var(--color-button-text) !important;
+}
+
+button.secondary:hover {
+    background-color: var(--color-button-secondary-hover) !important;
+}
+
+button.delete {
+    background-color: var(--color-button-delete) !important;
+    color: var(--color-button-text) !important;
+}
+
+button.delete:hover {
+    background-color: var(--color-button-delete-hover) !important;
+}
+
+button.transparent {
+    background-color: rgba(0, 0, 0, 0.001) !important;
+    color: var(--color-text-primary) !important;
+}
+
+button.transparent.inverted {
+    background-color: rgba(0, 0, 0, 0.001) !important;
+    color: var(--color-button-text) !important;
+}
+
+button.transparent:hover {
+    background-color: var(--color-button-primary) !important;
+    color: var(--color-button-text) !important;
+}
+
+button.tab {
+    background-color: var(--color-common-background) !important;
+    padding-bottom: 5px;
+}
+
+button.tab > span.mat-button-wrapper {
+    border-bottom: 1px solid var(--color-common-background);
+}
+
+button.tab:first-child {
+    margin-right: 1rem;
+}
+
+button.tab.active > span.mat-button-wrapper {
+    border-bottom: 1px solid var(--color-selected-tab);
+    padding-bottom: 5px;
+}
+
+button.mat-mini-fab {
+    background-color: transparent !important;
+    color: var(--color-button-text) !important;
+    margin: 0 !important;
+    outline: 0 !important;
+}
+
+button:disabled {
+    cursor: not-allowed !important;
+    pointer-events: all !important;
+}
+
+button:not(:disabled) {
+    cursor: pointer !important;
+}
+
+.mat-mini-fab .mat-button-wrapper {
+    padding-top: 0.3125rem !important;
+}
+
+.mat-icon {
+    color: var(--color-button-text) !important;
+}
+
+.mat-button-toggle-label-content {
+    line-height: 2.5rem !important;
+}
+
+.material-icons-two-tone {
+    color: var(--color-summary-header-icon) !important;
+    font-weight: 600;
+}
+
+.arrow-down {
+    margin-left: 0.5rem;
+    width: 0.7rem;
+}
+
+.arrow-right {
+    margin-left: auto;
+}
+
+.goBack:hover {
+    cursor: pointer;
+}

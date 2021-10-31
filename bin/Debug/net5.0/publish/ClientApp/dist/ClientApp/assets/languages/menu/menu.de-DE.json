@@ -1,0 +1,111 @@
+[
+    {
+        "feature": "menus",
+        "labels": [
+            {
+                "id": "home",
+                "description": "Startseite"
+            },
+            {
+                "id": "passengers",
+                "description": "Schiffspassagiere"
+            },
+            {
+                "id": "embarkation",
+                "description": "Einschiffung"
+            },
+            {
+                "id": "manifest",
+                "description": "Schiffsmanifest"
+            },
+            {
+                "id": "reservations",
+                "description": "Reservierung"
+            },
+            {
+                "id": "dashboard",
+                "description": "Hauptfeld"
+            },
+            {
+                "id": "invoicing",
+                "description": "Fakturierung"
+            },
+            {
+                "id": "tables",
+                "description": "Tabellen"
+            },
+            {
+                "id": "customers",
+                "description": "Kunden"
+            },
+            {
+                "id": "destinations",
+                "description": "Reiseziele"
+            },
+            {
+                "id": "drivers",
+                "description": "Fahrer"
+            },
+            {
+                "id": "genders",
+                "description": "Geschlechter"
+            },
+            {
+                "id": "pickupPoints",
+                "description": "Aufenthalte"
+            },
+            {
+                "id": "ports",
+                "description": "Häfen"
+            },
+            {
+                "id": "routes",
+                "description": "Routen"
+            },
+            {
+                "id": "schedules",
+                "description": "Zeitplan"
+            },
+            {
+                "id": "users",
+                "description": "Benutzer"
+            },
+            {
+                "id": "vessels",
+                "description": "Schiffe"
+            },
+            {
+                "id": "vesselManagement",
+                "description": "Verwaltung"
+            },
+            {
+                "id": "vesselOwners",
+                "description": "Schiffseigner"
+            },
+            {
+                "id": "vesselRegistrars",
+                "description": "Registrare"
+            },
+            {
+                "id": "vesselRoutes",
+                "description": "Routen"
+            },
+            {
+                "id": "vesselCrews",
+                "description": "Besatzungen"
+            },
+            {
+                "id": "logout",
+                "description": "Ausloggen"
+            },
+            {
+                "id": "myAccount",
+                "description": "Mein Konto"
+            },
+            {
+                "id": "editAccount",
+                "description": "Bearbeiten"
+            }
+        ]
+    }
+]

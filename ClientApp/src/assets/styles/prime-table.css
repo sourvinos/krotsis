@@ -1,0 +1,127 @@
+.p-datatable table {
+    border-spacing: 0;
+    flex: 1;
+    transition: all var(--change-theme-delay) ease;
+}
+
+.p-datatable-flex-scrollable .p-datatable-scrollable-body, .p-datatable-flex-scrollable .p-datatable-virtual-scrollable-body {
+    overflow-x: hidden !important;
+}
+
+.p-datatable-flex-scrollable:hover ::-webkit-scrollbar-thumb {
+    background-color: var(--color-scrollbar) !important;
+}
+
+.p-datatable-scrollable-footer, .p-datatable-scrollable-header {
+    background-color: var(--color-common-background) !important;
+    overflow: visible !important;
+}
+
+.p-datatable-flex-scrollable .p-datatable-wrapper {
+    overflow-x: hidden;
+}
+
+.p-datatable .p-datatable-thead > tr > th {
+    background-color: var(--color-table-header) !important;
+    border-right: 1px solid var(--color-table-column-seperator) !important;
+    border-width: 0 1px 0 0 !important;
+    color: var(--color-text-primary) !important;
+    font-family: var(--font-family-table) !important;
+    font-size: var(--font-size-table-header) !important;
+    font-weight: var(--font-weight-table-header) !important;
+    justify-content: center;
+    padding: 5px 7px !important;
+    text-align: center !important;
+    top: 1px;
+    transition: all var(--change-theme-delay) ease;
+}
+
+.p-datatable .p-datatable-tbody > tr {
+    background-color: var(--color-common-background) !important;
+    border: none !important;
+    transition: all var(--change-theme-delay) ease;
+}
+
+.p-datatable .p-datatable-tbody > tr:focus-visible {
+    outline: none !important;
+    background-color: var(--color-table-row-highlight) !important;
+}
+
+.rowGroup > td {
+    color: var(--color-table-row-group) !important;
+    font-weight: bold;
+}
+
+.ui-state-highlight td {
+    background: var(--color-table-row-highlight) !important;
+}
+
+.p-datatable .p-datatable-tbody > tr > td {
+    border: none !important;
+    color: var(--color-text-primary);
+    font-family: var(--font-family-table);
+    font-size: var(--font-size-table-row);
+    overflow: hidden !important;
+    padding: 0.5rem !important;
+    text-overflow: ellipsis !important;
+    transition: all var(--change-theme-delay) ease;
+    white-space: nowrap !important;
+}
+
+.p-datatable .p-datatable-tfoot > tr > td {
+    background: none;
+    border: none;
+}
+
+.p-datatable .p-datatable-tbody > tr.p-highlight > td {
+    background-color: var(--color-table-row-highlight) !important;
+}
+
+.p-datatable .p-sortable-column .p-sortable-column-icon {
+    color: var(--color-table-sort-icon) !important;
+    margin-top: -4px;
+}
+
+.p-datatable .p-sortable-column .p-sortable-column-badge {
+    background-color: var(--color-table-badge-background);
+    color: var(--color-table-badge-color);
+    margin-top: -4px;
+    transition: all var(--change-theme-delay) ease;
+}
+
+.p-sortable-column:focus {
+    box-shadow: none !important;
+    outline: none;
+}
+
+.p-column-filter-row .p-column-filter-menu-button, .p-column-filter-row .p-column-filter-clear-button {
+    display: none;
+}
+
+.p-button.p-button-icon-only.p-button-rounded {
+    color: var(--color-menu-icons);
+    height: auto;
+    padding: 0;
+}
+
+.p-button.p-button-text.p-button-plain:enabled:hover {
+    background: transparent;
+}
+
+.p-button.p-button-text:enabled:focus, .p-button.p-button-outlined:enabled:focus {
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.p-datatable .p-datatable-thead > tr:nth-child(2) > th {
+    padding-bottom: 5px !important;
+}
+
+div:not(.p-column-filter).p-column-filter-row:hover {
+    background-color: var(--color-menu-background-hover);
+}
+
+.rowGroup {
+    color: var(--color-table-row-group) !important;
+    font-weight: bold;
+}

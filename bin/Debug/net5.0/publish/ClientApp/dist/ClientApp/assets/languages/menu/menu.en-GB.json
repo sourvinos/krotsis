@@ -1,0 +1,111 @@
+[
+    {
+        "feature": "menus",
+        "labels": [
+            {
+                "id": "home",
+                "description": "Home"
+            },
+            {
+                "id": "passengers",
+                "description": "Passengers"
+            },
+            {
+                "id": "embarkation",
+                "description": "Embarkation"
+            },
+            {
+                "id": "manifest",
+                "description": "Ship manifest"
+            },
+            {
+                "id": "reservations",
+                "description": "Reservations"
+            },
+            {
+                "id": "dashboard",
+                "description": "Dashboard"
+            },
+            {
+                "id": "invoicing",
+                "description": "Invoicing"
+            },
+            {
+                "id": "tables",
+                "description": "Tables"
+            },
+            {
+                "id": "customers",
+                "description": "Customers"
+            },
+            {
+                "id": "destinations",
+                "description": "Destinations"
+            },
+            {
+                "id": "drivers",
+                "description": "Drivers"
+            },
+            {
+                "id": "genders",
+                "description": "Genders"
+            },
+            {
+                "id": "pickupPoints",
+                "description": "Pickup points"
+            },
+            {
+                "id": "ports",
+                "description": "Ports"
+            },
+            {
+                "id": "routes",
+                "description": "Routes"
+            },
+            {
+                "id": "schedules",
+                "description": "Schedules"
+            },
+            {
+                "id": "users",
+                "description": "Users"
+            },
+            {
+                "id": "vessels",
+                "description": "Vessels"
+            },
+            {
+                "id": "vesselManagement",
+                "description": "Management"
+            },
+            {
+                "id": "vesselOwners",
+                "description": "Owners"
+            },
+            {
+                "id": "vesselRegistrars",
+                "description": "Registrars"
+            },
+            {
+                "id": "vesselRoutes",
+                "description": "Routes"
+            },
+            {
+                "id": "vesselCrews",
+                "description": "Crews"
+            },
+            {
+                "id": "logout",
+                "description": "Logout"
+            },
+            {
+                "id": "myAccount",
+                "description": "My account"
+            },
+            {
+                "id": "editAccount",
+                "description": "Edit"
+            }
+        ]
+    }
+]
