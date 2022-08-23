@@ -1,0 +1,47 @@
+{
+    "name": "corfucruises",
+    "version": "0.0.0",
+    "scripts": {
+        "ng": "ng",
+        "start": "ng serve --ssl --ssl-cert ssl\\localhost.pem --ssl-key ssl\\localhost-key.pem",
+        "build": "ng build",
+        "lint": "eslint ./",
+        "e2e": "cypress open"
+    },
+    "private": true,
+    "dependencies": {
+        "@angular/animations": "14.1.0",
+        "@angular/common": "14.1.0",
+        "@angular/compiler": "14.1.0",
+        "@angular/core": "14.1.0",
+        "@angular/forms": "14.1.0",
+        "@angular/material": "14.1.0",
+        "@angular/material-moment-adapter": "14.1.0",
+        "@angular/platform-browser": "14.1.0",
+        "@angular/platform-browser-dynamic": "14.1.0",
+        "@angular/router": "14.1.0",
+        "@ng-idle/core": "11.1.0",
+        "font-awesome": "4.7.0",
+        "guid-typescript": "1.0.9",
+        "jwt-decode": "3.1.2",
+        "moment": "2.29.4",
+        "pdfmake": "0.2.5",
+        "primeicons": "5.0.0",
+        "primeng": "14.0.0",
+        "rxjs": "7.5.5",
+        "stylelint": "14.6.1",
+        "tslib": "2.3.1",
+        "zone.js": "0.11.5"
+    },
+    "devDependencies": {
+        "@angular-devkit/build-angular": "14.1.0",
+        "@angular/cli": "14.1.0",
+        "@angular/compiler-cli": "14.1.0",
+        "@types/pdfmake": "0.2.1",
+        "@typescript-eslint/eslint-plugin": "5.16.0",
+        "@typescript-eslint/parser": "5.16.0",
+        "eslint": "8.11.0",
+        "stylelint-config-standard": "25.0.0",
+        "typescript": "4.7.4"
+    }
+}

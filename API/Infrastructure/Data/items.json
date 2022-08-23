@@ -1,0 +1,227 @@
+[
+    {
+        "Id": 1,
+        "Description": "ΠΡΟΕΚΤΑΣΗ ΠΛΑΣΤΙΚΗ ΦΟΡΤΗΓΟΥ",
+        "VatPercent": 24,
+        "NetPrice": 12.10,
+        "GrossPrice": 15.00,
+        "IsActive": 1,
+        "UserId": "e7e014fd-5608-4936-866e-ec11fc8c16da"
+    },
+    {
+        "Id": 2,
+        "Description": "ΕΠΙΣΚΕΥΗ ΕΛΑΣΤΙΚΟΥ ΦΟΡΤΗΓΟΥ ΜΕ ΜΑΝΣΟΝ",
+        "VatPercent": 24,
+        "NetPrice": 72.58,
+        "GrossPrice": 90.00,
+        "IsActive": 1,
+        "UserId": "e7e014fd-5608-4936-866e-ec11fc8c16da"
+    },
+    {
+        "Id": 3,
+        "Description": "ΕΠΙΣΚΕΥΗ ΕΛΑΣΤΙΚΟΥ ΤΣΑΠΑΣ-ΓΚΡΕΙΝΤΕΡ",
+        "VatPercent": 24,
+        "NetPrice": 72.58,
+        "GrossPrice": 90.00,
+        "IsActive": 1,
+        "UserId": "e7e014fd-5608-4936-866e-ec11fc8c16da"
+    },
+    {
+        "Id": 4,
+        "Description": "ΕΠΙΣΚΕΥΗ ΕΛΑΣΤΙΚΟΥ ΕΠΙΒΑΤΙΚΟΥ ΜΕ ΜΑΝΣΟΝ",
+        "VatPercent": 24,
+        "NetPrice": 24.19,
+        "GrossPrice": 30.00,
+        "IsActive": 1,
+        "UserId": "e7e014fd-5608-4936-866e-ec11fc8c16da"
+    },
+    {
+        "Id": 5,
+        "Description": "ΑΝΤΙΚΑΤΑΣΤΑΣΗ ΕΛΑΣΤΙΚΟΥ ΦΟΡΤΗΓΟΥ",
+        "VatPercent": 24,
+        "NetPrice": 32.26,
+        "GrossPrice": 40.00,
+        "IsActive": 1,
+        "UserId": "e7e014fd-5608-4936-866e-ec11fc8c16da"
+    },
+    {
+        "Id": 6,
+        "Description": "ΑΝΤ/ΣΗ ΕΛΑΣΤΙΚΟΥ ΤΣΑΠΑΣ",
+        "VatPercent": 24,
+        "NetPrice": 72.58,
+        "GrossPrice": 90.00,
+        "IsActive": 1,
+        "UserId": "e7e014fd-5608-4936-866e-ec11fc8c16da"
+    },
+    {
+        "Id": 7,
+        "Description": "ΖΥΓΟΣΤΑΘΜΙΣΗ ΕΛΑΣΤΙΚΟΥ ΦΟΡΤΗΓΟΥ",
+        "VatPercent": 24,
+        "NetPrice": 28.23,
+        "GrossPrice": 35.00,
+        "IsActive": 1,
+        "UserId": "e7e014fd-5608-4936-866e-ec11fc8c16da"
+    },
+    {
+        "Id": 8,
+        "Description": "ΖΥΓΟΣΤΑΘΜΙΣΗ ΕΛΑΣΤΙΚΟΥ ΕΠΙΒΑΤΙΚΟΥ ΟΧΗΜΑΤΟΣ",
+        "VatPercent": 24,
+        "NetPrice": 12.10,
+        "GrossPrice": 15.00,
+        "IsActive": 1,
+        "UserId": "e7e014fd-5608-4936-866e-ec11fc8c16da"
+    },
+    {
+        "Id": 9,
+        "Description": "ΒΟΥΛΚΑΝΙΣΜΟΣ ΕΛΑΣΤΙΚΟΥ",
+        "VatPercent": 24,
+        "NetPrice": 145.16,
+        "GrossPrice": 180.00,
+        "IsActive": 1,
+        "UserId": "e7e014fd-5608-4936-866e-ec11fc8c16da"
+    },
+    {
+        "Id": 10,
+        "Description": "ΕΞΩΤΕΡΙΚΟ ΣΥΝΕΡΓΕΙΟ ΣΕ ΑΚΤΙΝΑ 10Km ΑΠΟ ΤΗΝ ΕΔΡΑ ΜΑΣ",
+        "VatPercent": 24,
+        "NetPrice": 72.58,
+        "GrossPrice": 90.00,
+        "IsActive": 1,
+        "UserId": "e7e014fd-5608-4936-866e-ec11fc8c16da"
+    },
+    {
+        "Id": 11,
+        "Description": "ΕΞΩΤΕΡΙΚΟ ΣΥΝΕΡΓΕΙΟ ΣΕ ΑΚΤΙΝΑ 20Km ΑΠΟ ΤΗΝ ΕΔΡΑ ΜΑΣ",
+        "VatPercent": 24,
+        "NetPrice": 104.84,
+        "GrossPrice": 130,
+        "IsActive": 1,
+        "UserId": "e7e014fd-5608-4936-866e-ec11fc8c16da"
+    },
+    {
+        "Id": 12,
+        "Description": "ΕΞΩΤΕΡΙΚΟ ΣΥΝΕΡΓΕΙΟ ΣΕ ΑΚΤΙΝΑ 40Km ΑΠΟ ΤΗΝ ΕΔΡΑ ΜΑΣ",
+        "VatPercent": 24,
+        "NetPrice": 120.97,
+        "GrossPrice": 150.00,
+        "IsActive": 1,
+        "UserId": "e7e014fd-5608-4936-866e-ec11fc8c16da"
+    },
+    {
+        "Id": 13,
+        "Description": "ΑΕΡΟΘΑΛΑΜΟΣ 18.4-26",
+        "VatPercent": 24,
+        "NetPrice": 72.98,
+        "GrossPrice": 90.00,
+        "IsActive": 1,
+        "UserId": "e7e014fd-5608-4936-866e-ec11fc8c16da"
+    },
+    {
+        "Id": 14,
+        "Description": "ΑΕΡΟΘΑΛΑΜΟΣ 300-18",
+        "VatPercent": 24,
+        "NetPrice": 12.10,
+        "GrossPrice": 15.00,
+        "IsActive": 1,
+        "UserId": "e7e014fd-5608-4936-866e-ec11fc8c16da"
+    },
+    {
+        "Id": 15,
+        "Description": "ΜΑΝΣΟΝ Νο 5",
+        "VatPercent": 24,
+        "NetPrice": 12.10,
+        "GrossPrice": 15.00,
+        "IsActive": 1,
+        "UserId": "e7e014fd-5608-4936-866e-ec11fc8c16da"
+    },
+    {
+        "Id": 16,
+        "Description": "ΜΑΝΣΟΝ Νο 8",
+        "VatPercent": 24,
+        "NetPrice": 24.19,
+        "GrossPrice": 30.00,
+        "IsActive": 1,
+        "UserId": "e7e014fd-5608-4936-866e-ec11fc8c16da"
+    },
+    {
+        "Id": 17,
+        "Description": "MANΣΟΝ Νο 10",
+        "VatPercent": 24,
+        "NetPrice": 48.39,
+        "GrossPrice": 60.00,
+        "IsActive": 1,
+        "UserId": "e7e014fd-5608-4936-866e-ec11fc8c16da"
+    },
+    {
+        "Id": 18,
+        "Description": "ΑΝΤΙΚΑΤΑΣΤΑΣΗ ΑΕΡΟΘΑΛΑΜΟΥ ΔΙΚΥΚΛΟΥ",
+        "VatPercent": 24,
+        "NetPrice": 12.10,
+        "GrossPrice": 15.00,
+        "IsActive": 1,
+        "UserId": "e7e014fd-5608-4936-866e-ec11fc8c16da"
+    },
+    {
+        "Id": 19,
+        "Description": "ΑΕΡΟΘΑΛΑΜΟΣ 18.850/950-8",
+        "VatPercent": 24,
+        "NetPrice": 12.10,
+        "GrossPrice": 15.00,
+        "IsActive": 1,
+        "UserId": "e7e014fd-5608-4936-866e-ec11fc8c16da"
+    },
+    {
+        "Id": 20,
+        "Description": "ΑΝΤΙΚΑΤΑΣΤΑΣΗ ΑΕΡΟΘΑΛΑΜΟΥ 16.9-28",
+        "VatPercent": 24,
+        "NetPrice": 64.52,
+        "GrossPrice": 80.00,
+        "IsActive": 1,
+        "UserId": "e7e014fd-5608-4936-866e-ec11fc8c16da"
+    },
+    {
+        "Id": 21,
+        "Description": "ΕΠΙΣΚΕΥΗ ΖΑΝΤΑΣ ΦΟΡΤΗΓΟΥ",
+        "VatPercent": 24,
+        "NetPrice": 64.52,
+        "GrossPrice": 80.00,
+        "IsActive": 1,
+        "UserId": "e7e014fd-5608-4936-866e-ec11fc8c16da"
+    },
+    {
+        "Id": 22,
+        "Description": "ΕΠΙΣΚΕΥΗ ΖΑΝΤΑΣ ΤΣΑΠΑΣ",
+        "VatPercent": 24,
+        "NetPrice": 80.65,
+        "GrossPrice": 100.00,
+        "IsActive": 1,
+        "UserId": "e7e014fd-5608-4936-866e-ec11fc8c16da"
+    },
+    {
+        "Id": 23,
+        "Description": "ΕΠΙΣΚΕΥΗ ΖΑΝΤΑΣ ΕΠΙΒΑΤΙΚΟΥ",
+        "VatPercent": 24,
+        "NetPrice": 28.23,
+        "GrossPrice": 35.00,
+        "IsActive": 1,
+        "UserId": "e7e014fd-5608-4936-866e-ec11fc8c16da"
+    },
+    {
+        "Id": 24,
+        "Description": "ΑΕΡΟΘΑΛΑΜΟΣ 16.9-24",
+        "VatPercent": 24,
+        "NetPrice": 72.58,
+        "GrossPrice": 90.00,
+        "IsActive": 1,
+        "UserId": "e7e014fd-5608-4936-866e-ec11fc8c16da"
+    },
+    {
+        "Id": 25,
+        "Description": "ΕΠΙΣΚΕΥΗ ΕΛΑΣΤΙΚΟΥ ΔΙΚΥΚΛΟΥ",
+        "VatPercent": 24,
+        "NetPrice": 12.10,
+        "GrossPrice": 15.00,
+        "IsActive": 1,
+        "UserId": "e7e014fd-5608-4936-866e-ec11fc8c16da"
+    }
+]

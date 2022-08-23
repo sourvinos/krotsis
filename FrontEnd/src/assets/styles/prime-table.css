@@ -1,0 +1,148 @@
+.p-datatable table {
+    border-spacing: 0;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.p-datatable.p-datatable-scrollable > .p-datatable-wrapper > .p-datatable-table > .p-datatable-thead {
+    background-color: transparent;
+}
+
+.p-datatable-tbody {
+    height: 100% !important;
+}
+
+.p-datatable-flex-scrollable .p-datatable-scrollable-body, .p-datatable-flex-scrollable .p-datatable-virtual-scrollable-body {
+    overflow-x: hidden !important;
+}
+
+.cdk-virtual-scroll-content-wrapper {
+    height: 100% !important;
+}
+
+.p-datatable-scrollable-footer, .p-datatable-scrollable-header {
+    overflow: visible !important;
+}
+
+.p-datatable-flex-scrollable .p-datatable-wrapper {
+    background: none;
+    overflow-x: hidden;
+}
+
+.p-datatable .p-datatable-thead > tr > th {
+    background-color: var(--color-b) !important;
+    border-right: 0.0625rem solid var(--color-a) !important;
+    border-width: 0 0.0625rem 0 0 !important;
+    color: var(--color-c) !important;
+    font-family: var(--font-family-ubuntu) !important;
+    font-size: var(--font-size-table-header) !important;
+    font-weight: var(--font-weight-table-header) !important;
+    justify-content: center;
+    padding: 0.3125rem 0.4375rem 0.375rem 0.4375rem !important;
+    text-align: center !important;
+    top: 0.0625rem;
+}
+
+.p-datatable .p-datatable-thead > tr > th:last-child {
+    border-right: 0 !important;
+}
+
+.p-datatable .p-datatable-tbody > tr {
+    background-color: transparent !important;
+    border-bottom: 0.0625rem dotted var(--color-row-seperator) !important;
+}
+
+.p-datatable .p-datatable-tbody > tr.ui-state-highlight {
+    background-color: var(--color-d) !important;
+    outline: none !important;
+}
+
+.p-datatable .p-datatable-tbody > tr:focus {
+    outline: none !important;
+}
+
+.p-datatable .p-datatable-tbody > tr:focus-visible {
+    outline: none !important;
+}
+
+.row-group > td {
+    color: var(--color-c) !important;
+    font-weight: bold;
+}
+
+.p-datatable .p-datatable-tbody > tr > td {
+    border: none !important;
+    color: var(--color-c);
+    font-family: var(--font-family-ubuntu);
+    font-size: var(--font-size-table-row);
+    overflow: hidden !important;
+    padding: 0.3125rem !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+}
+
+.p-datatable .p-datatable-tfoot {
+    background-color: var(--color-b) !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+}
+
+.p-datatable .p-datatable-tfoot > tr > td {
+    background-color: transparent;
+    border-radius: 0 0 0.625rem 0.625rem;
+    border: none;
+    justify-content: flex-end;
+}
+
+.p-datatable .p-sortable-column .p-sortable-column-icon {
+    color: var(--color-c) !important;
+    margin-top: -0.25rem;
+}
+
+.p-datatable .p-sortable-column .p-sortable-column-badge {
+    background-color: var(--color-a);
+    color: var(--color-c);
+    margin-top: -0.25rem;
+}
+
+.p-sortable-column:focus {
+    box-shadow: none !important;
+    outline: none;
+}
+
+.p-column-filter-row .p-column-filter-menu-button, .p-column-filter-row .p-column-filter-clear-button {
+    display: none;
+}
+
+.p-button.p-button-icon-only.p-button-rounded {
+    color: var(--color-c);
+    height: 1.4375rem;
+    padding: 0;
+}
+
+.p-button.p-button-text.p-button-plain:enabled:hover {
+    background-color: transparent !important;
+}
+
+.p-datatable .p-datatable-tbody > tr:not(.group-row):hover {
+    background-color: var(--color-d) !important;
+}
+
+.p-button.p-button-text:enabled:focus, .p-button.p-button-outlined:enabled:focus {
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.p-datatable .p-datatable-thead > tr:nth-child(2) > th {
+    padding-bottom: 0.3125rem !important;
+}
+
+div:not(.p-column-filter).p-column-filter-row:hover {
+    background-color: var(--color-d) !important;
+}
+
+.row-group {
+    color: var(--color-c) !important;
+    font-weight: bold;
+}

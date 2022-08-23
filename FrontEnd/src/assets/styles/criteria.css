@@ -1,0 +1,61 @@
+#criteria, #filters, #overbookings {
+    align-items: center;
+    display: flex;
+    font-family: var(--font-family-handbook);
+    gap: 0.5rem;
+}
+
+#criteria {
+    margin: 0 1rem 0 auto;
+}
+
+#overbookings {
+    margin-left: 1rem;
+}
+
+#criteria > div, #filters > div, #overbookings > div {
+    align-items: center;
+    border-radius: 0.3125rem;
+    border: 0.0625rem solid;
+    display: flex;
+    flex-direction: row;
+    gap: 0.8rem;
+    min-width: 8rem;
+    padding: 0.5rem;
+}
+
+#criteria > div > img {
+    width: 1.5625rem;
+}
+
+.pill .number {
+    padding-right: 0.2rem;
+    transform: scale(1.1, 2.0);
+}
+
+.pill:nth-child(1) {
+    background-color: var(--color-criteria-a);
+    border-color: var(--color-criteria-a-border) !important;
+}
+
+.pill:nth-child(2) {
+    background-color: var(--color-criteria-b);
+    border-color: var(--color-criteria-b-border) !important;
+}
+
+.pill:nth-child(3) {
+    background-color: var(--color-criteria-c);
+    border-color: var(--color-criteria-c-border) !important;
+}
+
+.pill:nth-child(4) {
+    background-color: var(--color-criteria-d);
+    border-color: var(--color-criteria-d-border) !important;
+}
+
+#criteria .label, #criteria .description, #filters .label, #filters .description, #overbookings .label, #overbookings .description {
+    color: var(--color-button-text);
+    font-weight: bold;
+    margin-left: auto;
+}
+

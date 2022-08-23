@@ -1,0 +1,41 @@
+#list {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    width: 100%;
+}
+
+#header {
+    align-items: center;
+    display: flex;
+    margin: 0 2rem 1rem 2rem !important;
+}
+
+.content, #content {
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: auto;
+}
+
+#footer {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
+    padding: var(--gap) 2rem;
+}
+
+#footer .button-group {
+    display: flex;
+    gap: 1rem;
+    margin-left: auto;
+}
+
+.is-active {
+    color: var(--color-list-active-item);
+}
+
+.is-not-active {
+    color: var(--color-list-inactive-item);
+}

@@ -1,0 +1,63 @@
+#form-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    width: 100%;
+}
+
+#header {
+    align-items: center;
+    display: flex;
+    margin: 0 2rem 1rem 2rem !important;
+}
+
+#header #navigation {
+    align-items: center;
+    display: flex;
+}
+
+#header #title {
+    align-items: center;
+    display: flex;
+    margin-left: 1rem;
+}
+
+#content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: center;
+    margin: 0 auto;
+    width: 80%;
+}
+
+#content #form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+#content #instructions {
+    margin-top: auto;
+}
+
+#footer {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    margin-top: auto;
+    padding: var(--gap) 2rem;
+}
+
+#footer .button-group {
+    display: flex;
+    gap: 1rem;
+}
+
+.group-field {
+    display: flex;
+    gap: 1rem;
+}

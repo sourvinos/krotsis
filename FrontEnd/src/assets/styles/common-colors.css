@@ -1,0 +1,72 @@
+* {
+    /*  Hamburger Menu */
+    --color-hamburger-menu: #d94040;
+    /* Background */
+    --color-background: #ffffff;
+    /* Lists */
+    --color-row-seperator: #bebebe;
+    --color-list-active-item: #7bc3b8;
+    --color-list-inactive-item: #fd99ab;
+    --color-scrollbar-thumb: #d94040;
+    /*  Buttons */
+    --color-button-text: #ffffff;
+    --color-button-background-delete: #d94040;
+    --color-button-background-delete-hover: #ff7a7a;
+    --color-button-background-primary: #13678a;
+    --color-button-background-primary-hover: #799f9a;
+    /*  Checkboxes */
+    --color-checkbox-background: #9bccc8;
+    /* Reservation Form Tabs */
+    --color-tab-overview: #5f80a7;
+    --color-tab-passengers: #829ebe;
+    --color-tab-more: #acbed3;
+    /* Snackbars */
+    --color-snackbar-background-success: #698984;
+    --color-snackbar-background-error: #d94040;
+    --color-snackbar-background-warning: #ffc107;
+    --color-snackbar-text: #efefef;
+    /* Loader */
+    --color-loader: #d94040;
+    /* Timeout snackbar */
+    --color-timeout-snackbar: #d94040;
+    /* Active side-menu item */
+    --color-sidemenu-active-item: #ff9800;
+    /* Criteria (Top Right) & Totals (Bottom Left) */
+    --color-criteria-a: #1786cb;
+    --color-criteria-a-border: #1786cb;
+    --color-criteria-b: #709524;
+    --color-criteria-b-border: #709524;
+    --color-criteria-c: #f27016;
+    --color-criteria-c-border: #f27016;
+    --color-criteria-d: #e52b74;
+    --color-criteria-d-border: #e52b74;
+    /* Date picker calendar */
+    --color-border: #ca874c;
+    --color-range-between: rgb(201 135 77 / 60%);
+    /* Custom calendar */
+    --color-background-saturday: #f29c6b;
+    --color-background-sunday: #f26513;
+    --color-background-today: #8dbf8f;
+    --color-background-weekday: #efefef;
+    /* Theme menu */
+    --color-sun: #f6ff00;
+    --color-moon: #607d8b;
+    /* Embarkation */
+    --color-embarkation-complete: #c8e6c9;
+    --color-embarkation-pending: #feedaf;
+    --color-button-do-embarkation: #3d3b57;
+    /* Invoicing */
+    --color-icon-ok: #75d378;
+    --color-icon-error: #fd99ab;
+    --color-icon-warning: #fbc02d;
+    /* Input */
+    --color-input-focus: #65b4ef;
+    --color-input-error: #e57b7b;
+    --color-input-selected-background: #65b3ef4d;
+    /* Links */
+    --color-link: #d94040;
+    /* User count */
+    --color-user-count: #d94040;
+    /* Invoicing customer */
+    --color-customer: #e57b7b;
+}

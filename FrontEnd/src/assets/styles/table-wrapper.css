@@ -1,0 +1,6 @@
+#table-wrapper {
+    background-color: var(--color-a);
+    height: inherit;
+    overflow: hidden;
+    padding: 0 1rem;
+}

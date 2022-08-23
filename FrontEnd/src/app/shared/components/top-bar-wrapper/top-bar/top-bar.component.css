@@ -1,0 +1,6 @@
+#top-bar {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: var(--gap) 2rem;
+}
