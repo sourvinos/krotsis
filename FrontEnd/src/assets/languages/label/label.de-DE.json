@@ -41,7 +41,7 @@
         ]
     },
     {
-        "feature": "customerList",
+        "feature": "itemList",
         "labels": [
             {
                 "id": "header",
@@ -70,7 +70,7 @@
         ]
     },
     {
-        "feature": "customerForm",
+        "feature": "itemForm",
         "labels": [
             {
                 "id": "header",
@@ -493,7 +493,7 @@
                 "description": "Angezeigter Name"
             },
             {
-                "id": "customer",
+                "id": "item",
                 "description": "Linkedin-Kunde"
             },
             {
@@ -550,7 +550,7 @@
                 "description": "Kennwort bestätigen"
             },
             {
-                "id": "customer",
+                "id": "item",
                 "description": "Linkedin-Kunde"
             },
             {
@@ -757,7 +757,7 @@
                 "description": "Reiseziel"
             },
             {
-                "id": "customer",
+                "id": "item",
                 "description": "Kunde"
             },
             {
@@ -1505,7 +1505,7 @@
                 "description": "Datumsbereich"
             },
             {
-                "id": "customer",
+                "id": "item",
                 "description": "Kunde"
             },
             {
@@ -1602,7 +1602,7 @@
                 "description": "Datum"
             },
             {
-                "id": "criteria-customer",
+                "id": "criteria-item",
                 "description": "Kunde"
             },
             {

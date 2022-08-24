@@ -12,20 +12,20 @@ import { ModalActionResultService } from 'src/app/shared/services/modal-action-r
 import { slideFromRight, slideFromLeft } from 'src/app/shared/animations/animations'
 
 @Component({
-    selector: 'customer-list',
-    templateUrl: './customer-list.component.html',
+    selector: 'item-list',
+    templateUrl: './item-list.component.html',
     styleUrls: ['../../../../assets/styles/lists.css'],
     animations: [slideFromLeft, slideFromRight]
 })
 
-export class CustomerListComponent {
+export class ItemListComponent {
 
     //#region variables
 
     private unlisten: Unlisten
     private unsubscribe = new Subject<void>()
-    private url = 'customers'
-    public feature = 'customerList'
+    private url = 'items'
+    public feature = 'itemList'
     public icon = 'home'
     public parentUrl = '/'
     public records = []

@@ -48,7 +48,7 @@
             },
             {
                 "error": 450,
-                "message": "This customer does not exist or is inactive."
+                "message": "This item does not exist or is inactive."
             },
             {
                 "error": 451,

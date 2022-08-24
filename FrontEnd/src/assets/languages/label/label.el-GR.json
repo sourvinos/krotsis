@@ -4,15 +4,15 @@
         "labels": [
             {
                 "id": "title-top",
-                "description": "Καλώς ήρθατε στην"
+                "description": "Καλώς ήρθατε!"
             },
             {
                 "id": "title-middle",
-                "description": "CORFU CRUISES B2B"
+                "description": "ΚΡΟΤΣΗΣ"
             },
             {
                 "id": "title-bottom",
-                "description": "Πόλη Κέρκυρας, Μπενίτσες, Λευκίμμη, Κάβος"
+                "description": "Ελαστικά - Ζάντες"
             },
             {
                 "id": "header",
@@ -41,7 +41,7 @@
         ]
     },
     {
-        "feature": "customerList",
+        "feature": "itemList",
         "labels": [
             {
                 "id": "header",
@@ -70,7 +70,7 @@
         ]
     },
     {
-        "feature": "customerForm",
+        "feature": "itemForm",
         "labels": [
             {
                 "id": "header",
@@ -493,7 +493,7 @@
                 "description": "Εμφανιζόμενο όνομα"
             },
             {
-                "id": "customer",
+                "id": "item",
                 "description": "Συνδεδεμένος πελάτης"
             },
             {
@@ -550,7 +550,7 @@
                 "description": "Επιβεβαίωση κωδικού"
             },
             {
-                "id": "customer",
+                "id": "item",
                 "description": "Συνδεδεμένος πελάτης"
             },
             {
@@ -757,7 +757,7 @@
                 "description": "Προορισμός"
             },
             {
-                "id": "customer",
+                "id": "item",
                 "description": "Πελάτης"
             },
             {
@@ -1505,7 +1505,7 @@
                 "description": "Εύρος ημερομηνίας *"
             },
             {
-                "id": "customer",
+                "id": "item",
                 "description": "Πελάτης"
             },
             {
@@ -1602,7 +1602,7 @@
                 "description": "Ημερομηνία"
             },
             {
-                "id": "criteria-customer",
+                "id": "criteria-item",
                 "description": "Πελάτης"
             },
             {

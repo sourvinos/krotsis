@@ -6,7 +6,6 @@ import { Subject } from 'rxjs'
 // Custom
 import { AccountService } from '../../../shared/services/account.service'
 import { ButtonClickService } from 'src/app/shared/services/button-click.service'
-import { CustomerService } from '../../customers/classes/services/customer.service'
 import { DialogService } from 'src/app/shared/services/dialog.service'
 import { HelperService, indicate } from 'src/app/shared/services/helper.service'
 import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.directive'
@@ -17,6 +16,7 @@ import { MessageHintService } from 'src/app/shared/services/messages-hint.servic
 import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
 import { MessageSnackbarService } from 'src/app/shared/services/messages-snackbar.service'
 import { environment } from 'src/environments/environment'
+import { ItemService } from '../../items/classes/services/item.service'
 
 @Component({
     selector: 'login-form',
@@ -42,14 +42,13 @@ export class LoginFormComponent {
 
     //#endregion
 
-    constructor(private accountService: AccountService, private buttonClickService: ButtonClickService, private customerService: CustomerService, private dialogService: DialogService, private formBuilder: FormBuilder,  private helperService: HelperService, private idle: Idle, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private localStorageService: LocalStorageService, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private router: Router) { }
+    constructor(private accountService: AccountService, private buttonClickService: ButtonClickService, private itemService: ItemService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private idle: Idle, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private localStorageService: LocalStorageService, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private router: Router) { }
 
     //#region lifecycle hooks
 
     ngOnInit(): void {
         this.initForm()
         this.addShortcuts()
-        this.clearStoredVariables()
         this.focusOnField('username')
     }
 
@@ -84,8 +83,6 @@ export class LoginFormComponent {
             complete: () => {
                 this.goHome()
                 this.startIdleTimer()
-                this.populateStorageFromAPI()
-                this.doSideMenuTogglerTasks()
             },
             error: (errorFromInterceptor) => {
                 this.showError(errorFromInterceptor)
@@ -116,27 +113,6 @@ export class LoginFormComponent {
         this.unsubscribe.unsubscribe()
     }
 
-    private clearStoredVariables(): void {
-        this.localStorageService.deleteItems([
-            { 'item': 'date', 'when': 'always' },
-            { 'item': 'displayname', 'when': 'always' },
-            { 'item': 'embarkation-criteria', 'when': 'production' },
-            { 'item': 'expiration', 'when': 'always' },
-            { 'item': 'invocing-criteria', 'when': 'production' },
-            { 'item': 'jwt', 'when': 'always' },
-            { 'item': 'loginStatus', 'when': 'always' },
-            { 'item': 'manifest-criteria', 'when': 'production' },
-            { 'item': 'refreshToken', 'when': 'always' },
-            { 'item': 'returnUrl', 'when': 'always' },
-        ])
-    }
-
-    private doSideMenuTogglerTasks(): void {
-        this.accountService.isConnectedUserAdmin().subscribe(response => {
-            this.interactionService.UpdateSideMenuTogglerState(response)
-        })
-    }
-
     private focusOnField(field: string): void {
         this.helperService.focusOnField(field)
     }
@@ -151,10 +127,6 @@ export class LoginFormComponent {
             password: [environment.login.password, Validators.required],
             isHuman: [environment.login.isHuman, Validators.requiredTrue]
         })
-    }
-
-    private populateStorageFromAPI(): void {
-        this.customerService.getActiveForDropdown().subscribe(response => { this.localStorageService.saveItem('customers', JSON.stringify(response)) })
     }
 
     private showError(error: any): void {

@@ -4,48 +4,48 @@ import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/fo
 import { Subject } from 'rxjs'
 // Custom
 import { ButtonClickService } from 'src/app/shared/services/button-click.service'
-import { CustomerReadDto } from '../classes/dtos/customer-read-dto'
-import { CustomerService } from 'src/app/features/customers/classes/services/customer.service'
-import { CustomerWriteDto } from '../classes/dtos/customer-write-dto'
 import { DialogService } from 'src/app/shared/services/dialog.service'
 import { FormResolved } from 'src/app/shared/classes/form-resolved'
 import { HelperService, indicate } from 'src/app/shared/services/helper.service'
 import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.directive'
+import { ItemReadDto } from '../classes/dtos/item-read-dto'
+import { ItemService } from '../classes/services/item.service'
 import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-shortcuts.service'
 import { MessageHintService } from 'src/app/shared/services/messages-hint.service'
 import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
 import { MessageSnackbarService } from 'src/app/shared/services/messages-snackbar.service'
 import { ModalActionResultService } from 'src/app/shared/services/modal-action-result.service'
 import { slideFromRight, slideFromLeft } from 'src/app/shared/animations/animations'
+import { ItemWriteDto } from '../classes/dtos/item-write-dto'
 
 @Component({
-    selector: 'customer-form',
-    templateUrl: './customer-form.component.html',
+    selector: 'item-form',
+    templateUrl: './item-form.component.html',
     styleUrls: ['../../../../assets/styles/forms.css'],
     animations: [slideFromLeft, slideFromRight]
 })
 
-export class CustomerFormComponent {
+export class ItemFormComponent {
 
     //#region variables
 
-    private customer: CustomerReadDto
+    private item: ItemReadDto
     private unlisten: Unlisten
-    public feature = 'customerForm'
+    public feature = 'itemForm'
     public form: FormGroup
     public icon = 'arrow_back'
     public input: InputTabStopDirective
     public isLoading = new Subject<boolean>()
-    public parentUrl = '/customers'
+    public parentUrl = '/items'
 
     //#endregion
 
-    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private customerService: CustomerService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private modalActionResultService: ModalActionResultService, private router: Router) {
+    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private itemService: ItemService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private modalActionResultService: ModalActionResultService, private router: Router) {
         this.activatedRoute.params.subscribe(x => {
             if (x.id) {
                 this.initForm()
                 this.getRecord()
-                this.populateFields(this.customer)
+                this.populateFields(this.item)
             } else {
                 this.initForm()
             }
@@ -92,7 +92,7 @@ export class CustomerFormComponent {
     public onDelete(): void {
         this.dialogService.open(this.messageSnackbarService.warning(), 'warning', ['abort', 'ok']).subscribe(response => {
             if (response) {
-                this.customerService.delete(this.form.value.id).pipe(indicate(this.isLoading)).subscribe({
+                this.itemService.delete(this.form.value.id).pipe(indicate(this.isLoading)).subscribe({
                     complete: () => {
                         this.helperService.doPostSaveFormTasks(this.messageSnackbarService.success(), 'success', this.parentUrl, this.form)
                     },
@@ -133,8 +133,8 @@ export class CustomerFormComponent {
         })
     }
 
-    private flattenForm(): CustomerWriteDto {
-        const customer = {
+    private flattenForm(): ItemWriteDto {
+        const item = {
             id: this.form.value.id,
             description: this.form.value.description,
             profession: this.form.value.profession,
@@ -144,7 +144,7 @@ export class CustomerFormComponent {
             email: this.form.value.email,
             isActive: this.form.value.isActive
         }
-        return customer
+        return item
     }
 
     private focusOnField(field: string): void {
@@ -153,10 +153,10 @@ export class CustomerFormComponent {
 
     private getRecord(): Promise<any> {
         const promise = new Promise((resolve) => {
-            const formResolved: FormResolved = this.activatedRoute.snapshot.data['customerForm']
+            const formResolved: FormResolved = this.activatedRoute.snapshot.data['itemForm']
             if (formResolved.error == null) {
-                this.customer = formResolved.record
-                resolve(this.customer)
+                this.item = formResolved.record
+                resolve(this.item)
             } else {
                 this.goBack()
                 this.modalActionResultService.open(this.messageSnackbarService.filterResponse(new Error('500')), 'error', ['ok'])
@@ -182,7 +182,7 @@ export class CustomerFormComponent {
         })
     }
 
-    private populateFields(result: CustomerReadDto): void {
+    private populateFields(result: ItemReadDto): void {
         this.form.setValue({
             id: result.id,
             description: result.description,
@@ -199,8 +199,8 @@ export class CustomerFormComponent {
         this.form.reset()
     }
 
-    private saveRecord(customer: CustomerWriteDto): void {
-        this.customerService.save(customer).pipe(indicate(this.isLoading)).subscribe({
+    private saveRecord(item: ItemWriteDto): void {
+        this.itemService.save(item).pipe(indicate(this.isLoading)).subscribe({
             complete: () => {
                 this.helperService.doPostSaveFormTasks(this.messageSnackbarService.success(), 'success', this.parentUrl, this.form)
             },

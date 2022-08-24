@@ -2,18 +2,18 @@ import { Injectable } from '@angular/core'
 import { Observable, of } from 'rxjs'
 import { catchError, map } from 'rxjs/operators'
 // Custom
-import { CustomerService } from '../services/customer.service'
+import { ItemService } from '../services/item.service'
 import { ListResolved } from '../../../../shared/classes/list-resolved'
 
 @Injectable({ providedIn: 'root' })
 
-export class CustomerListResolver {
+export class ItemListResolver {
 
-    constructor(private customerService: CustomerService) { }
+    constructor(private ItemService: ItemService) { }
 
     resolve(): Observable<ListResolved> {
-        return this.customerService.getAll().pipe(
-            map((customerList) => new ListResolved(customerList)),
+        return this.ItemService.getAll().pipe(
+            map((itemList) => new ListResolved(itemList)),
             catchError((err: any) => of(new ListResolved(null, err)))
         )
     }

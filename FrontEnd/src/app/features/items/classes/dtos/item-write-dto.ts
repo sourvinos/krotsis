@@ -1,4 +1,4 @@
-export interface CustomerWriteDto {
+export interface ItemWriteDto {
 
     id: number
     description: string

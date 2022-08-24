@@ -12,7 +12,7 @@ import { AuthGuardService } from '../shared/services/auth-guard.service'
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthGuardService], pathMatch: 'full' },
-    { path: 'customers', loadChildren: () => import('../features/customers/classes/modules/customer.module').then(m => m.CustomerModule) },
+    { path: 'items', loadChildren: () => import('../features/items/classes/modules/item.module').then(m => m.ItemModule) },
     { path: 'forgotPassword', component: ForgotPasswordFormComponent },
     { path: 'login', component: LoginFormComponent },
     { path: 'resetPassword', component: ResetPasswordFormComponent },

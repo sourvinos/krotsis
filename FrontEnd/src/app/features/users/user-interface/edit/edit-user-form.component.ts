@@ -1,12 +1,11 @@
 import { ActivatedRoute, Router } from '@angular/router'
 import { Component } from '@angular/core'
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms'
-import { firstValueFrom, Observable, Subject } from 'rxjs'
+import { firstValueFrom, Subject } from 'rxjs'
 import { map, startWith } from 'rxjs/operators'
 // Custom
 import { AccountService } from 'src/app/shared/services/account.service'
 import { ButtonClickService } from 'src/app/shared/services/button-click.service'
-import { CustomerDropdownVM } from '../../../customers/classes/view-models/customer-dropdown-vm'
 import { DialogService } from 'src/app/shared/services/dialog.service'
 import { EditUserViewModel } from './../../classes/view-models/edit-user-view-model'
 import { EmojiService } from 'src/app/shared/services/emoji.service'
@@ -45,8 +44,6 @@ export class EditUserFormComponent {
     public isLoading = new Subject<boolean>()
 
     public isAutoCompleteDisabled = true
-    public customers: CustomerDropdownVM[] = []
-    public filteredCustomers: Observable<CustomerDropdownVM[]>
 
     private user: EditUserViewModel
     public header = ''
@@ -187,9 +184,7 @@ export class EditUserFormComponent {
         this.parentUrl = '/users'
         this.icon = 'arrow_back'
         this.header = 'header'
-        this.getConnectedUserRole().then(() => {
-            this.populateDropDowns()
-        })
+        this.getConnectedUserRole()
     }
 
     private editUserFromTopMenu() {
@@ -197,9 +192,7 @@ export class EditUserFormComponent {
         this.icon = 'home'
         this.header = 'my-header'
         this.getConnectedUserRole().then(() => new Promise(() => {
-            this.getConnectedUserId().then(() => {
-                this.populateDropDowns()
-            })
+            this.getConnectedUserId()
         }))
     }
 
@@ -216,7 +209,6 @@ export class EditUserFormComponent {
             id: this.form.getRawValue().id,
             userName: this.form.getRawValue().userName,
             displayname: this.form.getRawValue().displayname,
-            customerId: this.form.getRawValue().customer.id,
             email: this.form.getRawValue().email,
             isAdmin: this.form.getRawValue().isAdmin,
             isActive: this.form.getRawValue().isActive
@@ -272,7 +264,6 @@ export class EditUserFormComponent {
             id: '',
             userName: ['', [Validators.required, Validators.maxLength(32), ValidationService.containsIllegalCharacters]],
             displayname: ['', [Validators.required, Validators.maxLength(32), ValidationService.beginsOrEndsWithSpace]],
-            customer: ['', [Validators.required, ValidationService.RequireAutocomplete]],
             email: [{ value: '' }, [Validators.required, Validators.email, Validators.maxLength(128)]],
             isAdmin: [{ value: false }],
             isActive: [{ value: true }]
@@ -285,16 +276,11 @@ export class EditUserFormComponent {
         this[filteredTable] = this.form.get(formField).valueChanges.pipe(startWith(''), map(value => this.filterAutocomplete(table, modelProperty, value)))
     }
 
-    private populateDropDowns(): void {
-        this.populateDropdownFromLocalStorage('customers', 'filteredCustomers', 'customer', 'description', true)
-    }
-
     private populateFields(result: EditUserViewModel): void {
         this.form.setValue({
             id: result.id,
             userName: result.userName,
             displayname: result.displayname,
-            customer: { 'id': result.customer.id, 'description': result.customer.id == 0 ? this.emojiService.getEmoji('wildcard') : result.customer.description },
             email: result.email,
             isAdmin: result.isAdmin,
             isActive: result.isActive
@@ -330,10 +316,6 @@ export class EditUserFormComponent {
 
     get displayname(): AbstractControl {
         return this.form.get('displayname')
-    }
-
-    get customer(): AbstractControl {
-        return this.form.get('customer')
     }
 
     get email(): AbstractControl {

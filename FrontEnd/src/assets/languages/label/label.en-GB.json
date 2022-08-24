@@ -41,7 +41,7 @@
         ]
     },
     {
-        "feature": "customerList",
+        "feature": "itemList",
         "labels": [
             {
                 "id": "header",
@@ -70,7 +70,7 @@
         ]
     },
     {
-        "feature": "customerForm",
+        "feature": "itemForm",
         "labels": [
             {
                 "id": "header",
@@ -493,7 +493,7 @@
                 "description": "Displayed name"
             },
             {
-                "id": "customer",
+                "id": "item",
                 "description": "Linked Customer"
             },
             {
@@ -550,7 +550,7 @@
                 "description": "Confirm password"
             },
             {
-                "id": "customer",
+                "id": "item",
                 "description": "Linked Customer"
             },
             {
@@ -757,7 +757,7 @@
                 "description": "Destination"
             },
             {
-                "id": "customer",
+                "id": "item",
                 "description": "Customer"
             },
             {
@@ -1505,7 +1505,7 @@
                 "description": "Date range"
             },
             {
-                "id": "customer",
+                "id": "item",
                 "description": "Customer"
             },
             {
@@ -1602,7 +1602,7 @@
                 "description": "Date"
             },
             {
-                "id": "criteria-customer",
+                "id": "criteria-item",
                 "description": "Customer"
             },
             {

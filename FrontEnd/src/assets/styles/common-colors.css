@@ -67,6 +67,6 @@
     --color-link: #d94040;
     /* User count */
     --color-user-count: #d94040;
-    /* Invoicing customer */
-    --color-customer: #e57b7b;
+    /* Invoicing item */
+    --color-item: #e57b7b;
 }

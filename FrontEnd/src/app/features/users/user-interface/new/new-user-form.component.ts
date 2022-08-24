@@ -1,12 +1,11 @@
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Component } from '@angular/core'
-import { Observable, Subject } from 'rxjs'
+import { Subject } from 'rxjs'
 import { Router } from '@angular/router'
 import { map, startWith } from 'rxjs/operators'
 // Custom
 import { ButtonClickService } from 'src/app/shared/services/button-click.service'
 import { ConfirmValidParentMatcher, ValidationService } from '../../../../shared/services/validation.service'
-import { CustomerDropdownVM } from '../../../customers/classes/view-models/customer-dropdown-vm'
 import { DialogService } from 'src/app/shared/services/dialog.service'
 import { HelperService, indicate } from 'src/app/shared/services/helper.service'
 import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.directive'
@@ -40,8 +39,6 @@ export class NewUserFormComponent {
     public isLoading = new Subject<boolean>()
 
     public isAutoCompleteDisabled = true
-    public customers: CustomerDropdownVM[] = []
-    public filteredCustomers: Observable<CustomerDropdownVM[]>
 
     public confirmValidParentMatcher = new ConfirmValidParentMatcher()
     public hidePassword = true
@@ -56,7 +53,6 @@ export class NewUserFormComponent {
         this.initForm()
         this.addShortcuts()
         this.focusOnField('userName')
-        this.populateDropdowns()
     }
 
     ngOnDestroy(): void {
@@ -145,7 +141,6 @@ export class NewUserFormComponent {
         const user = {
             userName: this.form.value.userName,
             displayname: this.form.value.displayname,
-            customerId: this.form.value.customer.id == 'all' ? null : this.form.value.customer.id,
             email: this.form.value.email,
             password: this.form.value.passwords.password,
             confirmPassword: this.form.value.passwords.confirmPassword,
@@ -167,7 +162,6 @@ export class NewUserFormComponent {
         this.form = this.formBuilder.group({
             userName: ['', [Validators.required, Validators.maxLength(32), ValidationService.containsIllegalCharacters]],
             displayname: ['', [Validators.required, Validators.maxLength(32)]],
-            customer: ['', ValidationService.RequireAutocomplete],
             email: ['', [Validators.required, Validators.maxLength(128), Validators.email]],
             passwords: this.formBuilder.group({
                 password: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(128), ValidationService.containsSpace]],
@@ -183,10 +177,6 @@ export class NewUserFormComponent {
         if (includeWildcard)
             this[table].unshift({ 'id': 'all', 'description': '[⭐]' })
         this[filteredTable] = this.form.get(formField).valueChanges.pipe(startWith(''), map(value => this.filterAutocomplete(table, modelProperty, value)))
-    }
-
-    private populateDropdowns(): void {
-        this.populateDropdownFromLocalStorage('customers', 'filteredCustomers', 'customer', 'description', true)
     }
 
     private resetForm(): void {
@@ -214,10 +204,6 @@ export class NewUserFormComponent {
 
     get displayname(): AbstractControl {
         return this.form.get('displayname')
-    }
-
-    get customer(): AbstractControl {
-        return this.form.get('customer')
     }
 
     get email(): AbstractControl {

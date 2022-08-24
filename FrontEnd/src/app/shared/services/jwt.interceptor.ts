@@ -97,41 +97,6 @@ export class MonitorInterceptor {
             case 404:
                 return throwError(() => new Error('404')) // not found
             case 409:
-                return throwError(() => new Error('409')) // duplicate record (date, destination, customer, ticket no)
-            case 427:
-                return throwError(() => new Error('427')) // we don't have a departure for the selected date, destination and port
-            case 430:
-                return throwError(() => new Error('430')) // we don't have a trip for the selected date and destination
-            case 431:
-                return throwError(() => new Error('431')) // simple users can't add a reservation in the past
-            case 432:
-                return throwError(() => new Error('432')) // we don't have any trips for this day
-            case 433:
-                return throwError(() => new Error('433')) // no vacancy for port
-            case 450:
-                return throwError(() => new Error('450')) // customer does not exist or is inactive
-            case 451:
-                return throwError(() => new Error('451')) // destination does not exist or is inactive
-            case 452:
-                return throwError(() => new Error('452')) // pickup point does not exist or is inactive
-            case 453:
-                return throwError(() => new Error('453')) // driver does not exist or is inactive
-            case 454:
-                return throwError(() => new Error('454')) // ship does not exist or is inactive
-            case 455:
-                return throwError(() => new Error('455')) // invalid passenger count
-            case 456:
-                return throwError(() => new Error('456')) // nationality does not exist or is inactive
-            case 457:
-                return throwError(() => new Error('457')) // gender does not exist or is inactive
-            case 458:
-                return throwError(() => new Error('458')) // occupant does not exist or is inactive
-            case 459:
-                return throwError(() => new Error('459')) // reservation with transfer has night restrictions for simple user
-            case 490:
-                return throwError(() => new Error('490')) // reservation belongs to another user or simple user can't update reservation
-            case 491:
-                return throwError(() => new Error('491')) // recordInUse
             case 492:
                 return throwError(() => new Error('492')) // unable to create user
             case 493:
