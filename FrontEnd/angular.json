@@ -81,60 +81,6 @@
                             "buildOptimizer": false,
                             "budgets": []
                         },
-                        "production-demo": {
-                            "fileReplacements": [
-                                {
-                                    "replace": "src/environments/environment.ts",
-                                    "with": "src/environments/environment.production.demo.ts"
-                                }
-                            ],
-                            "optimization": true,
-                            "outputHashing": "all",
-                            "sourceMap": false,
-                            "namedChunks": false,
-                            "extractLicenses": true,
-                            "vendorChunk": false,
-                            "buildOptimizer": true,
-                            "budgets": [
-                                {
-                                    "type": "initial",
-                                    "maximumWarning": "8mb",
-                                    "maximumError": "10mb"
-                                },
-                                {
-                                    "type": "anyComponentStyle",
-                                    "maximumWarning": "6kb",
-                                    "maximumError": "10kb"
-                                }
-                            ]
-                        },
-                        "production-live": {
-                            "fileReplacements": [
-                                {
-                                    "replace": "src/environments/environment.ts",
-                                    "with": "src/environments/environment.production.live.ts"
-                                }
-                            ],
-                            "optimization": true,
-                            "outputHashing": "all",
-                            "sourceMap": false,
-                            "namedChunks": false,
-                            "extractLicenses": true,
-                            "vendorChunk": false,
-                            "buildOptimizer": true,
-                            "budgets": [
-                                {
-                                    "type": "initial",
-                                    "maximumWarning": "8mb",
-                                    "maximumError": "10mb"
-                                },
-                                {
-                                    "type": "anyComponentStyle",
-                                    "maximumWarning": "6kb",
-                                    "maximumError": "10kb"
-                                }
-                            ]
-                        },
                         "production-local": {
                             "fileReplacements": [
                                 {
@@ -175,9 +121,6 @@
                         },
                         "production-local": {
                             "browserTarget": "ClientApp:build:production-local"
-                        },
-                        "production": {
-                            "browserTarget": "ClientApp:build:production"
                         }
                     },
                     "defaultConfiguration": "development"
@@ -195,6 +138,6 @@
         }
     },
     "cli": {
-      "analytics": false
+        "analytics": false
     }
 }

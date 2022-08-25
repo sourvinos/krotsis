@@ -41,10 +41,6 @@ export class ItemListComponent {
         this.addShortcuts()
     }
 
-    ngAfterViewInit(): void {
-        this.changeScrollWheelSpeed()
-    }
-
     ngOnDestroy(): void {
         this.cleanup()
         this.unlisten()
@@ -82,10 +78,6 @@ export class ItemListComponent {
             priority: 0,
             inputs: true
         })
-    }
-
-    private changeScrollWheelSpeed(): void {
-        this.helperService.changeScrollWheelSpeed(document.querySelector<HTMLElement>('.cdk-virtual-scroll-viewport'))
     }
 
     private cleanup(): void {

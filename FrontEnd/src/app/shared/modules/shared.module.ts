@@ -15,7 +15,7 @@ import { MaterialModule } from './material.module'
 import { ModalActionResultComponent } from '../components/modal-action-result/modal-action-result.component'
 import { PrimeNgModule } from './primeng.module'
 import { SafeStylePipe } from '../pipes/safeStyle.pipe'
-import { ThemeMenuComponent } from './../components/top-bar-wrapper/theme-menu/theme-menu.component'
+import { ThemeMenuComponent } from '../components/theme-menu/theme-menu.component'
 
 @NgModule({
     declarations: [

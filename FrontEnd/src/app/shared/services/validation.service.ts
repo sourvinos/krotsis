@@ -26,20 +26,6 @@ export class ValidationService {
         return control.value == 0 ? { isGreaterThanZero: false } : null
     }
 
-    static isTime(control: AbstractControl): { [key: string]: any } {
-        if (control.value) {
-            const pattern = /\b([01][0-9]|2[0-3]):([0-5][0-9])\b/g
-            return pattern.test(control.value) ? null : { isTime: false }
-        }
-    }
-
-    static isGuid(control: AbstractControl): { [key: string]: any } {
-        if (control.value) {
-            const pattern = /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/gi
-            return pattern.test(control.value) ? null : { isGuid: true }
-        }
-    }
-
     static RequireAutocomplete(control: AbstractControl): any {
         const selection: any = control.value
         if (typeof selection === 'string') {

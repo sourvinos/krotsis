@@ -13,12 +13,12 @@ import { PrimeNgModule } from '../shared/modules/primeng.module'
 import { SharedModule } from 'src/app/shared/modules/shared.module'
 // Components
 import { AppComponent } from './app.component'
-import { LogoComponent } from '../shared/components/top-bar-wrapper/logo/logo.component'
-import { TopBarComponent } from '../shared/components/top-bar-wrapper/top-bar/top-bar.component'
-import { TopMenuComponent } from '../shared/components/top-bar-wrapper/top-menu/top-menu.component'
+import { LogoComponent } from '../shared/components/logo/logo.component'
+import { TopBarComponent } from '../shared/components/top-bar/top-bar.component'
+import { TopMenuComponent } from '../shared/components/top-menu/top-menu.component'
 import { UserMenuComponent } from '../shared/components/user-menu/user-menu.component'
 // Utils
-import { MonitorInterceptor } from '../shared/services/jwt.interceptor'
+import { InterceptorService } from '../shared/services/interceptor.service'
 
 @NgModule({
     declarations: [
@@ -44,7 +44,7 @@ import { MonitorInterceptor } from '../shared/services/jwt.interceptor'
     providers: [
         {
             provide: HTTP_INTERCEPTORS,
-            useClass: MonitorInterceptor, multi: true
+            useClass: InterceptorService, multi: true
         },
     ],
     bootstrap: [AppComponent]

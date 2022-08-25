@@ -9,7 +9,7 @@
 #header {
     align-items: center;
     display: flex;
-    margin: 0 2rem 1rem 2rem !important;
+    padding: 1rem;
 }
 
 #header #navigation {

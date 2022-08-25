@@ -76,8 +76,6 @@ export class UserMenuComponent {
     }
 
     public logout(): void {
-        this.helperService.hideSideMenuAndRestoreScale()
-        this.interactionService.SideMenuIsClosed()
         this.accountService.logout()
     }
 

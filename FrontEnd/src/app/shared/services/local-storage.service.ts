@@ -7,21 +7,6 @@ export class LocalStorageService {
 
     //#region public methods
 
-    public clearStoredPrimeTableFilters(): void {
-        sessionStorage.clear()
-    }
-
-    public clearSessionStorage(list: any, key: any): void {
-        if (key == 'all') {
-            sessionStorage.removeItem(list)
-        }
-        if (key == 'selected-rows') {
-            const x = JSON.parse(sessionStorage.getItem(list))
-            x.selection = null
-            sessionStorage.setItem(list, JSON.stringify(x))
-        }
-    }
-
     public getItem(item: string): string {
         return localStorage.getItem(item) || ''
     }
