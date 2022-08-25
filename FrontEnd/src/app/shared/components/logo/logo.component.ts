@@ -13,7 +13,7 @@ export class LogoComponent {
 
     //#region variables
 
-    public companyLogoText: any
+    public logoText: any
 
     //#endregion
 
@@ -22,7 +22,7 @@ export class LogoComponent {
     //#region lifecycle hooks
 
     ngOnInit(): void {
-        this.companyLogoText = this.helperService.getApplicationTitle()
+        this.logoText = this.helperService.getApplicationTitle()
     }
 
     //#endregion

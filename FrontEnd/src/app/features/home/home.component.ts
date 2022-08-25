@@ -34,7 +34,7 @@ export class HomeComponent {
     //#region private methods
 
     private getAppName(): void {
-        this.companyLogo = this.helperService.getApplicationTitle().split(' ')
+        this.companyLogo = this.helperService.getApplicationTitle()
     }
 
     private getNgVersion(): any {

@@ -7,13 +7,28 @@
 
 #logo-image {
     color: #83b4ed !important;
-    position: absolute;
     width: var(--font-size-logo-image);
 }
 
 #logo-text {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+}
+
+#logo-text-primary {
     color: var(--color-c) !important;
     font-family: var(--font-family-logo);
     font-size: var(--font-size-logo-text) !important;
     font-weight: var(--font-weight-logo);
+    margin-top: -0.5rem;
+}
+
+#logo-text-secondary {
+    color: var(--color-c) !important;
+    font-family: var(--font-family-handbook);
+    font-size: 0.7rem;
+    margin-top: -1.1rem;
+    transform: scale(1.5, 1);
 }

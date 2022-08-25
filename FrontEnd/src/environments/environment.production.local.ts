@@ -3,7 +3,10 @@
 export const environment = {
     apiUrl: 'https://localhost:1701/api',
     url: 'https://localhost:1701',
-    appName: 'krotsis',
+    appName: {
+        primary: 'krotsis',
+        secondary: 'ΕΛΑΣΤΙΚΑ - ΖΑΝΤΕΣ'
+    },
     clientUrl: 'https://localhost:1701',
     defaultLanguage: 'en-GB',
     defaultTheme: 'light',
