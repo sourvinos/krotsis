@@ -26,7 +26,7 @@ import { InterceptorService } from '../shared/services/interceptor.service'
         LogoComponent,
         TopBarComponent,
         TopMenuComponent,
-        UserMenuComponent
+        UserMenuComponent,
     ],
     imports: [
         AppRoutingModule,

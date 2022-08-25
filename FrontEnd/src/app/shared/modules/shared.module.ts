@@ -24,12 +24,12 @@ import { ThemeMenuComponent } from '../components/theme-menu/theme-menu.componen
         HomeButtonAndTitleComponent,
         InputTabStopDirective,
         LanguageMenuComponent,
-        ThemeMenuComponent,
-        LoginLogoComponent,
         ListNoResultsComponent,
         LoadingSpinnerComponent,
+        LoginLogoComponent,
         ModalActionResultComponent,
-        SafeStylePipe
+        SafeStylePipe,
+        ThemeMenuComponent
     ],
     imports: [
         CommonModule,
@@ -43,15 +43,15 @@ import { ThemeMenuComponent } from '../components/theme-menu/theme-menu.componen
         FormsModule,
         HomeButtonAndTitleComponent,
         InputTabStopDirective,
-        ListNoResultsComponent,
         LanguageMenuComponent,
-        LoginLogoComponent,
-        ThemeMenuComponent,
+        ListNoResultsComponent,
         LoadingSpinnerComponent,
+        LoginLogoComponent,
         MaterialModule,
         PrimeNgModule,
         ReactiveFormsModule,
-        RouterModule
+        RouterModule,
+        ThemeMenuComponent
     ],
     entryComponents: [
         DialogAlertComponent,

@@ -4,7 +4,7 @@ export const environment = {
     apiUrl: 'https://localhost:5001/api',
     url: 'https://localhost:5001',
     appName: {
-        primary: 'krotsis',
+        primary: 'Krotsis',
         secondary: 'ΕΛΑΣΤΙΚΑ - ΖΑΝΤΕΣ'
     },
     clientUrl: 'https://localhost:4200',
