@@ -66,7 +66,7 @@ export class UserMenuComponent {
     }
 
     public getIcon(filename: string): string {
-        return environment.menuIconDirectory + filename + '-' + this.localStorageService.getItem('my-theme') + '.svg'
+        return environment.iconsDirectory + filename + '-' + this.localStorageService.getItem('my-theme') + '.svg'
     }
 
     public hideMenu(): void {

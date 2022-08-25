@@ -17,8 +17,7 @@ export const environment = {
             timeout: 60
         }
     },
-    menuIconDirectory: 'assets/images/menu/',
-    criteriaIconDirectory: 'assets/images/criteria/',
+    iconsDirectory: 'assets/images/icons/',
     isWideScreen: 1920,
     login: {
         username: 'john',
