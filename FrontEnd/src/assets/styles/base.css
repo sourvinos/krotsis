@@ -3,33 +3,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu+Condensed&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp");
 
-@import "autocomplete.css";
 @import "buttons.css";
-@import "calendar.css";
 @import "common-colors.css";
-@import "criteria.css";
 @import "dialogs.css";
 @import "headers.css";
 @import "input-error.css";
 @import "input-focused-not-error.css";
 @import "input-not-focused-not-error.css";
 @import "input.css";
-@import "leaflet.css";
 @import "loader.css";
-@import "menu.css";
 @import "prime-checkbox.css";
-@import "prime-dropdown.css";
 @import "prime-input.css";
-@import "prime-list.css";
 @import "prime-table.css";
-@import "radio.css";
 @import "scrollable.css";
 @import "slider.css";
-@import "snackbar.css";
-@import "sweet-alert.css";
 @import "table-wrapper.css";
-@import "tabs.css";
-@import "tooltip.css";
 @import "variables-narrow.css";
 @import "variables-wide.css";
 @import "variables.css";
@@ -70,10 +58,6 @@ ul {
     padding: 0;
 }
 
-.center {
-    text-align: center;
-}
-
 .hidden {
     display: none !important;
 }
@@ -85,34 +69,8 @@ p.instructions {
     overflow: hidden;
 }
 
-.active {
-    background-color: var(--color-sidemenu-active-item);
-}
-
-.no-border {
-    border-left: 0.0625rem solid transparent !important;
-    border-right: 0.0625rem solid transparent !important;
-}
-
-.subscript {
-    font-size: 0.6875rem;
-    padding-top: 0.25rem;
-}
-
 .clickable:hover {
     cursor: pointer;
-}
-
-.icon-ok {
-    color: var(--color-icon-ok);
-}
-
-.icon-error {
-    color: var(--color-icon-error);
-}
-
-.icon-warning {
-    color: var(--color-icon-warning);
 }
 
 ::-webkit-scrollbar {

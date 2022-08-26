@@ -1,10 +1,10 @@
 // Base
-import { NgModule } from '@angular/core'
+import { Injectable, NgModule } from '@angular/core'
 import { NoPreloading, RouterModule, Routes } from '@angular/router'
 // Components
 import { EmptyPageComponent } from '../shared/components/empty-page/empty-page.component'
 import { ForgotPasswordFormComponent } from '../features/users/user-interface/forgot-password/forgot-password-form.component'
-import { HomeComponent } from '../features/home/home.component'
+import { HomeComponent } from '../shared/components/home/home.component'
 import { LoginFormComponent } from '../features/login/user-interface/login-form.component'
 import { ResetPasswordFormComponent } from '../features/users/user-interface/reset-password/reset-password-form.component'
 // Guards
@@ -19,6 +19,9 @@ const appRoutes: Routes = [
     { path: 'users', loadChildren: () => import('../features/users/classes/modules/user.module').then(m => m.UserModule) },
     { path: '**', component: EmptyPageComponent }
 ]
+
+@Injectable({ providedIn: 'root' })
+
 
 @NgModule({
     declarations: [],

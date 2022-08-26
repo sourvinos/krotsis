@@ -1,3 +1,4 @@
+import { HomeComponent } from './../shared/components/home/home.component'
 // Base
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { BrowserModule } from '@angular/platform-browser'
@@ -19,11 +20,16 @@ import { TopMenuComponent } from '../shared/components/top-menu/top-menu.compone
 import { UserMenuComponent } from '../shared/components/user-menu/user-menu.component'
 // Utils
 import { InterceptorService } from '../shared/services/interceptor.service'
+import { MainMenuComponent } from '../shared/components/home/main-menu.component'
+import { MainFooterComponent } from '../shared/components/home/main-footer.component'
 
 @NgModule({
     declarations: [
         AppComponent,
         LogoComponent,
+        HomeComponent,
+        MainMenuComponent,
+        MainFooterComponent,        
         TopBarComponent,
         TopMenuComponent,
         UserMenuComponent,

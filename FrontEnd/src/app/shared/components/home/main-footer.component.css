@@ -1,0 +1,10 @@
+#footer {
+    color: var(--color-c);
+    font-family: var(--font-family-handbook);
+    font-size: 1.2rem;
+}
+
+a:link, a:visited {
+    color: var(--color-f);
+    text-decoration: none;
+}
