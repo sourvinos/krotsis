@@ -10,27 +10,13 @@
     --font-weight-input-label: 300 !important;
     --font-weight-logo: 400;
     --font-weight-mat-hint: 300;
-    --font-weight-snackbar: 300;
     --font-weight-table-header: 300 !important;
     /* Theme change delays */
     --delay: 0.5s;
     /* Common sizes in all screen resolutions */
     --font-size-button: 100%;
-    --font-size-calendar-day: 1rem;
-    --font-size-datepicker-header-month: 1.8rem;
     --font-size-dialog: 1.5rem;
-    --font-size-loading-message: 2rem;
-    --font-size-logo-loader-first-child: 8rem;
-    --font-size-logo-loader-second-child: 4.5rem;
-    --font-size-map-tooltip: 1.1rem;
-    --font-size-menu-headers: 1.4rem;
-    --font-size-menu-items: 1.1rem;
     --font-size-modal-text: 1.3rem;
     --font-size-paragraph: 0.7rem;
-    --font-size-snackbar: 1.1rem;
-    --font-size-sum-persons: 120%;
-    --font-size-tab-label: 1rem;
     --form-field-margin: 0.625rem;
-    --login-logo-image-size: 7.5rem;
-    --login-logo-text-size: 4rem;
 }

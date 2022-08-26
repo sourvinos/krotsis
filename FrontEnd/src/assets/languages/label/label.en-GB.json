@@ -1,19 +1,20 @@
 [
     {
-        "feature": "loginForm",
+        "feature": "logo",
         "labels": [
             {
-                "id": "title-top",
-                "description": "Welcome!"
-            },
-            {
-                "id": "title-middle",
+                "id": "header",
                 "description": "Krotsis"
             },
             {
-                "id": "title-bottom",
+                "id": "sub-header",
                 "description": "Wheels and Tires"
-            },
+            }
+        ]
+    },
+    {
+        "feature": "loginForm",
+        "labels": [
             {
                 "id": "header",
                 "description": "Login"

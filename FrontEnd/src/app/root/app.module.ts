@@ -14,7 +14,6 @@ import { PrimeNgModule } from '../shared/modules/primeng.module'
 import { SharedModule } from 'src/app/shared/modules/shared.module'
 // Components
 import { AppComponent } from './app.component'
-import { LogoComponent } from '../shared/components/logo/logo.component'
 import { TopBarComponent } from '../shared/components/top-bar/top-bar.component'
 import { TopMenuComponent } from '../shared/components/top-menu/top-menu.component'
 import { UserMenuComponent } from '../shared/components/user-menu/user-menu.component'
@@ -26,7 +25,6 @@ import { MainFooterComponent } from '../shared/components/home/main-footer.compo
 @NgModule({
     declarations: [
         AppComponent,
-        LogoComponent,
         HomeComponent,
         MainMenuComponent,
         MainFooterComponent,        

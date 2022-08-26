@@ -10,7 +10,7 @@ import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.d
 import { LanguageMenuComponent } from '../components/language-menu/language-menu.component'
 import { ListNoResultsComponent } from '../components/list-no-results/list-no-results.component'
 import { LoadingSpinnerComponent } from '../components/loading-spinner/loading-spinner.component'
-import { LoginLogoComponent } from 'src/app/features/login/user-interface/login-logo.component'
+import { LogoComponent } from '../components/logo/logo.component'
 import { MaterialModule } from './material.module'
 import { ModalActionResultComponent } from '../components/modal-action-result/modal-action-result.component'
 import { PrimeNgModule } from './primeng.module'
@@ -26,7 +26,7 @@ import { ThemeMenuComponent } from '../components/theme-menu/theme-menu.componen
         LanguageMenuComponent,
         ListNoResultsComponent,
         LoadingSpinnerComponent,
-        LoginLogoComponent,
+        LogoComponent,
         ModalActionResultComponent,
         SafeStylePipe,
         ThemeMenuComponent
@@ -46,7 +46,7 @@ import { ThemeMenuComponent } from '../components/theme-menu/theme-menu.componen
         LanguageMenuComponent,
         ListNoResultsComponent,
         LoadingSpinnerComponent,
-        LoginLogoComponent,
+        LogoComponent,
         MaterialModule,
         PrimeNgModule,
         ReactiveFormsModule,

@@ -1,19 +1,20 @@
 [
     {
-        "feature": "loginForm",
+        "feature": "logo",
         "labels": [
             {
-                "id": "title-top",
-                "description": "Καλώς ήρθατε!"
-            },
-            {
-                "id": "title-middle",
+                "id": "header",
                 "description": "Krotsis"
             },
             {
-                "id": "title-bottom",
-                "description": "ΕΛΑΣΤΙΚΑ - ΖΑΝΤΕΣ"
-            },
+                "id": "sub-header",
+                "description": "Ελαστικά και Ζάντες"
+            }
+        ]
+    },
+    {
+        "feature": "loginForm",
+        "labels": [
             {
                 "id": "header",
                 "description": "Σύνδεση"
