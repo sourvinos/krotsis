@@ -10,10 +10,12 @@ export class InteractionService {
     private _isAdmin = new Subject<boolean>()
     private _refreshDateAdapter = new Subject<any>()
     private _refreshMenus = new Subject<any>()
+    private _refreshBackgroundImage = new Subject<any>()
 
     public isAdmin = this._isAdmin.asObservable()
     public refreshDateAdapter = this._refreshDateAdapter.asObservable()
     public refreshMenus = this._refreshMenus.asObservable()
+    public refreshBackgroundImage = this._refreshBackgroundImage.asObservable()
 
     //#endregion
 
@@ -25,6 +27,10 @@ export class InteractionService {
 
     public mustRefreshMenus(): void {
         this._refreshMenus.next(null)
+    }
+
+    public mustRefreshBackgroundImage(): void {
+        this._refreshBackgroundImage.next(null)
     }
 
     //#endregion

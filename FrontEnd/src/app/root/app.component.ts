@@ -1,3 +1,4 @@
+import { Subject, takeUntil } from 'rxjs';
 import { ChangeDetectorRef, Component, HostListener } from '@angular/core'
 import { DEFAULT_INTERRUPTSOURCES, Idle } from '@ng-idle/core'
 import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router'
@@ -8,6 +9,7 @@ import { MessageSnackbarService } from '../shared/services/messages-snackbar.ser
 import { ModalActionResultService } from '../shared/services/modal-action-result.service'
 import { environment } from 'src/environments/environment'
 import { slideFromLeft } from '../shared/animations/animations'
+import { LocalStorageService } from '../shared/services/local-storage.service'
 
 @Component({
     selector: 'root',
@@ -20,12 +22,14 @@ export class AppComponent {
 
     //#region variables
 
+    private unsubscribe = new Subject<void>()
     public isLoading = true
 
     //#endregion
 
-    constructor(private accountService: AccountService, private changeDetector: ChangeDetectorRef, private idle: Idle, private interactionService: InteractionService, private messageSnackbarService: MessageSnackbarService, private modalActionResultService: ModalActionResultService, private router: Router) {
+    constructor(private accountService: AccountService, private localStorageService: LocalStorageService, private changeDetector: ChangeDetectorRef, private idle: Idle, private interactionService: InteractionService, private messageSnackbarService: MessageSnackbarService, private modalActionResultService: ModalActionResultService, private router: Router) {
         this.initIdleService()
+        this.subscribeToInteractionService()
         this.router.events.subscribe((routerEvent) => {
             if (routerEvent instanceof NavigationStart) {
                 this.isLoading = true
@@ -40,6 +44,10 @@ export class AppComponent {
 
     @HostListener('window:beforeunload', ['$event']) beforeUnloadHander(): any {
         this.accountService.logout()
+    }
+
+    ngOnInit(): void {
+        this.setBackgroundImage()
     }
 
     //#endregion
@@ -64,6 +72,16 @@ export class AppComponent {
         this.idle.onTimeout.subscribe(() => {
             this.accountService.logout()
             this.modalActionResultService.open(this.messageSnackbarService.userDisconnected(), 'info', ['ok'])
+        })
+    }
+
+    private setBackgroundImage(): void {
+        document.getElementById('wrapper').style.backgroundImage = 'url(../../assets/images/background/background-' + this.localStorageService.getItem('my-theme') + '.svg)'
+    }
+
+    private subscribeToInteractionService(): void {
+        this.interactionService.refreshBackgroundImage.pipe(takeUntil(this.unsubscribe)).subscribe(() => {
+            this.setBackgroundImage()
         })
     }
 
