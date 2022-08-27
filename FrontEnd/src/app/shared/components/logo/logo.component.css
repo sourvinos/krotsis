@@ -23,13 +23,12 @@
     font-family: var(--font-family-logo);
     font-size: var(--font-size-logo-text) !important;
     font-weight: var(--font-weight-logo);
-    margin-top: -0.5rem;
+    line-height: 1;
 }
 
 #sub-header {
     color: var(--color-c) !important;
     font-family: var(--font-family-handbook);
     font-size: 1rem;
-    margin-top: -1.1rem;
-    transform: scale(1.5, 1);
+    margin-top: -0.1875rem;
 }
