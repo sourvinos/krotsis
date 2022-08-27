@@ -25,12 +25,6 @@ export function indicate<T>(indicator: Subject<boolean>): (source: Observable<T>
 
 export class HelperService {
 
-    //#region variables
-
-    private appName = environment.appName
-
-    //#endregion
-
     constructor(private localStorageService: LocalStorageService, private messageCalendarService: MessageCalendarService, private modalActionResultService: ModalActionResultService, private router: Router) { }
 
     //#region public methods
@@ -59,7 +53,7 @@ export class HelperService {
     }
 
     public getApplicationTitle(): any {
-        return this.appName
+        return environment.appName.primary + ' :: ' + environment.appName.secondary
     }
 
     public focusOnField(element: string): void {

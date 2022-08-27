@@ -1,15 +1,15 @@
-import { Subject, takeUntil } from 'rxjs';
 import { ChangeDetectorRef, Component, HostListener } from '@angular/core'
 import { DEFAULT_INTERRUPTSOURCES, Idle } from '@ng-idle/core'
 import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router'
+import { Subject, takeUntil } from 'rxjs'
 // Custom
 import { AccountService } from '../shared/services/account.service'
 import { InteractionService } from '../shared/services/interaction.service'
+import { LocalStorageService } from '../shared/services/local-storage.service'
 import { MessageSnackbarService } from '../shared/services/messages-snackbar.service'
 import { ModalActionResultService } from '../shared/services/modal-action-result.service'
 import { environment } from 'src/environments/environment'
 import { slideFromLeft } from '../shared/animations/animations'
-import { LocalStorageService } from '../shared/services/local-storage.service'
 
 @Component({
     selector: 'root',

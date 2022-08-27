@@ -52,7 +52,7 @@ export class ResetPasswordFormComponent {
     //#region lifecycle hooks
 
     ngOnInit(): void {
-        this.setWindowTitle()
+        this.setTabCaption()
         this.initForm()
         this.addShortcuts()
     }
@@ -133,8 +133,8 @@ export class ResetPasswordFormComponent {
         })
     }
 
-    private setWindowTitle(): void {
-        this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.getLabel('header'))
+    private setTabCaption(): void {
+        this.titleService.setTitle(this.helperService.getApplicationTitle())
     }
 
     private showSnackbar(message: string, type: string): void {

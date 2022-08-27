@@ -2,11 +2,9 @@ import { Component } from '@angular/core'
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms'
 import { Router } from '@angular/router'
 import { Subject } from 'rxjs'
-import { Title } from '@angular/platform-browser'
 // Custom
 import { AccountService } from 'src/app/shared/services/account.service'
 import { ButtonClickService } from 'src/app/shared/services/button-click.service'
-import { DialogService } from 'src/app/shared/services/dialog.service'
 import { HelperService, indicate } from 'src/app/shared/services/helper.service'
 import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.directive'
 import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-shortcuts.service'
@@ -39,12 +37,11 @@ export class ForgotPasswordFormComponent {
 
     //#endregion
 
-    constructor(private accountService: AccountService, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private localStorageService: LocalStorageService, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private router: Router, private titleService: Title) { }
+    constructor(private accountService: AccountService, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private localStorageService: LocalStorageService, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private router: Router) { }
 
     //#region lifecycle hooks
 
     ngOnInit(): void {
-        this.setWindowTitle()
         this.initForm()
         this.populateFields()
         this.addShortcuts()
@@ -106,10 +103,6 @@ export class ForgotPasswordFormComponent {
         this.helperService.focusOnField(field)
     }
 
-    private goBack(): void {
-        this.router.navigate([this.parentUrl])
-    }
-
     private initForm(): void {
         this.form = this.formBuilder.group({
             email: ['', [Validators.required, Validators.email]],
@@ -124,14 +117,6 @@ export class ForgotPasswordFormComponent {
             returnUrl: environment.clientUrl,
             language: this.localStorageService.getLanguage(),
         })
-    }
-
-    private setWindowTitle(): void {
-        this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.getLabel('header'))
-    }
-
-    private showMessage(message: string, type: string): void {
-        this.dialogService.open(message, type, ['ok'])
     }
 
     //#endregion

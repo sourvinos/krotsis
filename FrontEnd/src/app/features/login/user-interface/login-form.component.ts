@@ -49,7 +49,7 @@ export class LoginFormComponent {
         this.initForm()
         this.addShortcuts()
         this.focusOnField()
-        this.setWindowTitle()
+        this.setTabCaption()
     }
 
     ngOnDestroy(): void {
@@ -67,11 +67,6 @@ export class LoginFormComponent {
 
     public getLabel(id: string): string {
         return this.messageLabelService.getDescription(this.feature, id)
-    }
-
-    public getLineA(): string {
-        const lineA = this.helperService.getApplicationTitle[0]
-        return lineA
     }
 
     public onForgotPassword(): void {
@@ -129,7 +124,7 @@ export class LoginFormComponent {
         })
     }
 
-    private setWindowTitle(): void {
+    private setTabCaption(): void {
         this.titleService.setTitle(this.helperService.getApplicationTitle())
     }
 

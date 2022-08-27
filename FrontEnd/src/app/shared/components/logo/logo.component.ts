@@ -15,17 +15,12 @@ export class LogoComponent {
     //#region variables
 
     public feature = 'logo'
-    public logoText: any
 
     //#endregion
 
     constructor(private helperService: HelperService, private logoService: LogoService, private messageLabelService: MessageLabelService) { }
 
     //#region lifecycle hooks
-
-    ngOnInit(): void {
-        this.logoText = this.helperService.getApplicationTitle()
-    }
 
     public getLabel(id: string): string {
         return this.messageLabelService.getDescription(this.feature, id)
