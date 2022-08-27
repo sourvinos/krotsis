@@ -17,7 +17,7 @@ export class HomeButtonAndTitleComponent {
 
     constructor(private messageLabelService: MessageLabelService) { }
 
-    public getIcon(): string {
+    public getNavigationIcon(): string {
         return this.icon
     }
 

@@ -1,16 +1,17 @@
 import { ActivatedRoute, Router } from '@angular/router'
 import { Component } from '@angular/core'
 import { Subject } from 'rxjs'
+import { formatNumber } from '@angular/common'
 // Custom
 import { ButtonClickService } from 'src/app/shared/services/button-click.service'
-import { HelperService } from 'src/app/shared/services/helper.service'
+import { Item } from '../classes/models/item'
 import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-shortcuts.service'
 import { ListResolved } from '../../../shared/classes/list-resolved'
+import { LocalStorageService } from 'src/app/shared/services/local-storage.service'
 import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
 import { MessageSnackbarService } from 'src/app/shared/services/messages-snackbar.service'
 import { ModalActionResultService } from 'src/app/shared/services/modal-action-result.service'
 import { slideFromRight, slideFromLeft } from 'src/app/shared/animations/animations'
-import { Item } from '../classes/models/item'
 
 @Component({
     selector: 'item-list',
@@ -33,13 +34,14 @@ export class ItemListComponent {
 
     //#endregion
 
-    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private modalActionResultService: ModalActionResultService, private router: Router) { }
+    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private keyboardShortcutsService: KeyboardShortcuts, private localStorageService: LocalStorageService, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private modalActionResultService: ModalActionResultService, private router: Router) { }
 
     //#region lifecycle hooks
 
     ngOnInit(): void {
         this.loadRecords()
         this.addShortcuts()
+
     }
 
     ngOnDestroy(): void {
@@ -53,6 +55,10 @@ export class ItemListComponent {
 
     public editRecord(id: number): void {
         this.router.navigate([this.url, id])
+    }
+
+    public formatNumberToLocale(number: number) {
+        return formatNumber(number, this.localStorageService.getItem('language'), '2.2')
     }
 
     public getLabel(id: string): string {

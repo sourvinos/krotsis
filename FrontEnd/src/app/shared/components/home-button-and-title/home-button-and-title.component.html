@@ -1,6 +1,6 @@
 <div id="navigation">
     <button *ngIf="parentUrl != null" data-cy="home-button" mat-mini-fab [routerLink]="[parentUrl]">
-        <span class="material-icons" id="goBack">{{ getIcon() }}</span>
+        <span class="material-icons" id="goBack">{{ getNavigationIcon() }}</span>
     </button>
     <div id="title">
         <h1>{{ getLabel() }}</h1>

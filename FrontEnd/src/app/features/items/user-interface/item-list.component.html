@@ -1,11 +1,12 @@
 <div id="list">
 
     <div id="header">
+        <!-- <img mat-card-sm-image src="../../../../assets/images/icons/items.svg"> -->
         <home-button-and-title [feature]="feature" [icon]="icon" [parentUrl]="parentUrl"></home-button-and-title>
     </div>
 
     <div id="table-wrapper">
-        <p-table #table [autoLayout]="false" [scrollable]="true" [value]="records" [virtualRowHeight]="33" [virtualScroll]="true" dataKey="id" scrollHeight="flex" selectionMode="single" sortMode="multiple" stateKey="item-list" stateStorage="session">
+        <p-table #table [autoLayout]="false" [scrollable]="true" [value]="records" [virtualRowHeight]="33" [virtualScroll]="false" dataKey="id" scrollHeight="flex" selectionMode="single" sortMode="multiple" stateKey="item-list" stateStorage="session">
             <ng-template pTemplate="header">
                 <tr>
                     <th data-cy="column" style="min-width: 10%; max-width: 10%;" pSortableColumn="isActive">{{ getLabel("headerIsActive") }}<p-sortIcon field="isActive"></p-sortIcon></th>
@@ -27,8 +28,8 @@
                         <span *ngIf="!rowData.isActive" class="is-not-active material-icons-outlined">highlight_off</span>
                     </td>
                     <td style="min-width: 70%; max-width: 70%;">{{ rowData.description }}</td>
-                    <td style="min-width: 10%; max-width: 10%; justify-content: flex-end; padding-right: 1rem;">{{ rowData.netPrice }}</td>
-                    <td style="min-width: 10%; max-width: 10%; justify-content: flex-end; padding-right: 1rem;">{{ rowData.grossPrice }}</td>
+                    <td style="min-width: 10%; max-width: 10%; justify-content: flex-end; padding-right: 1rem;">{{ formatNumberToLocale(rowData.netPrice) }}</td>
+                    <td style="min-width: 10%; max-width: 10%; justify-content: flex-end; padding-right: 1rem;">{{ formatNumberToLocale(rowData.grossPrice) }}</td>
                 </tr>
             </ng-template>
         </p-table>
