@@ -10,6 +10,7 @@ import { MessageLabelService } from 'src/app/shared/services/messages-label.serv
 import { MessageSnackbarService } from 'src/app/shared/services/messages-snackbar.service'
 import { ModalActionResultService } from 'src/app/shared/services/modal-action-result.service'
 import { slideFromRight, slideFromLeft } from 'src/app/shared/animations/animations'
+import { Item } from '../classes/models/item'
 
 @Component({
     selector: 'item-list',
@@ -28,7 +29,7 @@ export class ItemListComponent {
     public feature = 'itemList'
     public icon = 'home'
     public parentUrl = '/'
-    public records = []
+    public records: Item[] = []
 
     //#endregion
 

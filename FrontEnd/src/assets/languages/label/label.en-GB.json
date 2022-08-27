@@ -46,23 +46,23 @@
         "labels": [
             {
                 "id": "header",
-                "description": "Customers"
+                "description": "Items and services"
             },
             {
                 "id": "headerIsActive",
                 "description": "Active"
             },
             {
-                "id": "headerName",
-                "description": "Name"
+                "id": "headerDescription",
+                "description": "Description"
             },
             {
-                "id": "headerPhones",
-                "description": "Phones"
+                "id": "headerNetPrice",
+                "description": "Net Price"
             },
             {
-                "id": "headerEmail",
-                "description": "Email"
+                "id": "headerGrossPrice",
+                "description": "Price inc. VAT"
             },
             {
                 "id": "newButton",

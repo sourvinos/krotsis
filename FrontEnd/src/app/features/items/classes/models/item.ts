@@ -2,11 +2,9 @@ export interface Item {
 
     id: number
     description: string
-    profession: string
-    address: string
-    phones: string
-    personInCharge: string
-    email: string
+    varPercent: number
+    netPrice: number
+    grossPrice: number
     isActive: boolean
 
 }

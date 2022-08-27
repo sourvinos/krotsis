@@ -46,27 +46,27 @@
         "labels": [
             {
                 "id": "header",
-                "description": "Πελάτες"
+                "description": "Είδη και υπηρεσίες"
             },
             {
                 "id": "headerIsActive",
-                "description": "Ενεργός"
+                "description": "Ενεργό"
             },
             {
-                "id": "headerName",
-                "description": "Επωνυμία"
+                "id": "headerDescription",
+                "description": "Περιγραφή"
             },
             {
-                "id": "headerPhones",
-                "description": "Τηλέφωνα"
+                "id": "headerNetPrice",
+                "description": "Καθαρή αξία"
             },
             {
-                "id": "headerEmail",
-                "description": "Email"
+                "id": "headerGrossPrice",
+                "description": "Αξία με ΦΠΑ"
             },
             {
                 "id": "newButton",
-                "description": "ΝΕΟΣ"
+                "description": "ΝΕΟ"
             }
         ]
     },
