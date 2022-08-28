@@ -7,19 +7,18 @@
 }
 
 #image {
-    color: #83b4ed !important;
-    width: 7rem;
+    width: 4rem;
 }
 
 #text {
     align-items: center;
     display: flex;
     flex-direction: column;
-    margin: 0.25rem 0 0 1rem;
+    margin: 0.25rem 0 0 0.5rem;
 }
 
 #header {
-    color: var(--color-c) !important;
+    color: var(--color-logo) !important;
     font-family: var(--font-family-logo);
     font-size: var(--font-size-logo-text) !important;
     font-weight: var(--font-weight-logo);
