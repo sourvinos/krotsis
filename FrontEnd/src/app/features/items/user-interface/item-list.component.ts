@@ -11,13 +11,11 @@ import { LocalStorageService } from 'src/app/shared/services/local-storage.servi
 import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
 import { MessageSnackbarService } from 'src/app/shared/services/messages-snackbar.service'
 import { ModalActionResultService } from 'src/app/shared/services/modal-action-result.service'
-import { slideFromRight, slideFromLeft } from 'src/app/shared/animations/animations'
 
 @Component({
     selector: 'item-list',
     templateUrl: './item-list.component.html',
-    styleUrls: ['../../../../assets/styles/lists.css'],
-    animations: [slideFromLeft, slideFromRight]
+    styleUrls: ['../../../../assets/styles/lists.css']
 })
 
 export class ItemListComponent {

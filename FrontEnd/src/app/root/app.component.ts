@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, HostListener } from '@angular/core'
 import { DEFAULT_INTERRUPTSOURCES, Idle } from '@ng-idle/core'
-import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router'
+import { ChildrenOutletContexts, NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router'
 import { Subject, takeUntil } from 'rxjs'
 // Custom
 import { AccountService } from '../shared/services/account.service'
@@ -9,13 +9,13 @@ import { LocalStorageService } from '../shared/services/local-storage.service'
 import { MessageSnackbarService } from '../shared/services/messages-snackbar.service'
 import { ModalActionResultService } from '../shared/services/modal-action-result.service'
 import { environment } from 'src/environments/environment'
-import { slideFromLeft } from '../shared/animations/animations'
+import { routeAnimation } from '../shared/animations/animations'
 
 @Component({
     selector: 'root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css'],
-    animations: [slideFromLeft]
+    animations: [routeAnimation]
 })
 
 export class AppComponent {
@@ -27,7 +27,7 @@ export class AppComponent {
 
     //#endregion
 
-    constructor(private accountService: AccountService, private localStorageService: LocalStorageService, private changeDetector: ChangeDetectorRef, private idle: Idle, private interactionService: InteractionService, private messageSnackbarService: MessageSnackbarService, private modalActionResultService: ModalActionResultService, private router: Router) {
+    constructor(private accountService: AccountService, private localStorageService: LocalStorageService, private changeDetector: ChangeDetectorRef, private contexts: ChildrenOutletContexts, private idle: Idle, private interactionService: InteractionService, private messageSnackbarService: MessageSnackbarService, private modalActionResultService: ModalActionResultService, private router: Router) {
         this.initIdleService()
         this.subscribeToInteractionService()
         this.router.events.subscribe((routerEvent) => {
@@ -52,6 +52,14 @@ export class AppComponent {
 
     //#endregion
 
+    //#region public methods
+
+    getRouteAnimationData() {
+        return this.contexts.getContext('primary')?.route?.snapshot?.data?.['animation']
+    }
+
+    //#endregion
+    
     //#region private methods
 
     private initIdleService(): void {
