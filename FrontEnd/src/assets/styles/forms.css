@@ -9,7 +9,8 @@
 #header {
     align-items: center;
     display: flex;
-    padding: 1rem;
+    margin: 1rem auto 2rem auto !important;
+    width: 90%;
 }
 
 #header #navigation {
@@ -27,9 +28,8 @@
     display: flex;
     flex-direction: column;
     flex: 1;
-    justify-content: center;
     margin: 0 auto;
-    width: 80%;
+    width: 90%;
 }
 
 #content #form {
