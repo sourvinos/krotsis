@@ -71,6 +71,31 @@
         ]
     },
     {
+        "feature": "quoteList",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Νέα προσφορά"
+            },
+            {
+                "id": "headerDescription",
+                "description": "Περιγραφή"
+            },
+            {
+                "id": "headerNetPrice",
+                "description": "Καθαρή αξία"
+            },
+            {
+                "id": "headerGrossPrice",
+                "description": "Αξία με ΦΠΑ"
+            },
+            {
+                "id": "printButton",
+                "description": "ΕΚΤΥΠΩΣΗ"
+            }
+        ]
+    },
+    {
         "feature": "itemForm",
         "labels": [
             {
