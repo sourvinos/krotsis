@@ -3,13 +3,13 @@
     flex-direction: column;
     height: 100%;
     overflow: hidden;
-    width: 100%;
 }
 
 #header {
     align-items: center;
     display: flex;
-    margin: 0 2rem 1rem 2rem !important;
+    margin: 0 auto 1rem auto !important;
+    width: 90%;
 }
 
 .content, #content {

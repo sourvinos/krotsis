@@ -1,6 +1,7 @@
 #table-wrapper {
     background-color: var(--color-a);
     height: inherit;
+    margin: 0 auto;
     overflow: hidden;
-    padding: 0 1rem;
+    width: 90%;
 }

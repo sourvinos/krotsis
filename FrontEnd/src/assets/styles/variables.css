@@ -5,18 +5,19 @@
     --font-family-ubuntu: "Ubuntu Condensed";
     --font-family-montserrat: "Montserrat";
     /* Font weights */
+    --font-weight-button-text: 600 !important;
     --font-weight-dialog-content: 300 !important;
-    --font-weight-header: 300 !important;
+    --font-weight-header: 600 !important;
     --font-weight-input-label: 300 !important;
     --font-weight-logo: 400;
     --font-weight-mat-hint: 300;
     --font-weight-table-header: 300 !important;
-    /* Theme change delays */
-    --delay: 0.5s;
     /* Common sizes in all screen resolutions */
     --font-size-button: 100%;
     --font-size-dialog: 1.5rem;
     --font-size-modal-text: 1.3rem;
     --font-size-paragraph: 0.7rem;
     --form-field-margin: 0.625rem;
+    /* Misc */
+    --delay: 0.5s;
 }

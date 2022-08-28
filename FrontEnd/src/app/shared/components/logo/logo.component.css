@@ -8,7 +8,7 @@
 
 #image {
     color: #83b4ed !important;
-    width: var(--font-size-logo-image);
+    width: 7rem;
 }
 
 #text {
