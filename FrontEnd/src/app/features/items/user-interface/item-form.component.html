@@ -6,38 +6,23 @@
 
     <div id="content">
         <form [formGroup]="form" autocomplete="off" data-cy="form">
-            <div class="group-field">
-                <mat-form-field>
-                    <input [inputTabStop]="input" [placeholder]="getLabel('description')" data-cy="description" data-tabindex="1" formControlName="description" id="description" matInput>
-                    <mat-error *ngIf="description.hasError('required')">{{ getHint("required") }}</mat-error>
-                    <mat-error *ngIf="description.hasError('maxlength')">{{ getHint("maxLength", description.errors.maxlength.requiredLength) }}</mat-error>
-                </mat-form-field>
-                <mat-form-field>
-                    <input [inputTabStop]="input" [placeholder]="getLabel('profession')" data-cy="profession" data-tabindex="2" formControlName="profession" id="profession" matInput>
-                    <mat-error *ngIf="profession.hasError('maxlength')">{{ getHint("maxLength", profession.errors.maxlength.requiredLength) }}</mat-error>
-                </mat-form-field>
-            </div>
-            <div class="group-field">
-                <mat-form-field>
-                    <input [inputTabStop]="input" [placeholder]="getLabel('address')" data-cy="address" data-tabindex="3" formControlName="address" id="address" matInput>
-                    <mat-error *ngIf="address.hasError('maxlength')">{{ getHint("maxLength", address.errors.maxlength.requiredLength) }}</mat-error>
-                </mat-form-field>
-                <mat-form-field>
-                    <input [inputTabStop]="input" [placeholder]="getLabel('phones')" data-cy="phones" data-tabindex="4" formControlName="phones" id="phones" matInput>
-                    <mat-error *ngIf="phones.hasError('maxlength')">{{ getHint("maxLength", phones.errors.maxlength.requiredLength) }}</mat-error>
-                </mat-form-field>
-            </div>
-            <div class="group-field">
-                <mat-form-field>
-                    <input [inputTabStop]="input" [placeholder]="getLabel('personInCharge')" data-cy="personInCharge" data-tabindex="5" formControlName="personInCharge" id="personInCharge" matInput>
-                    <mat-error *ngIf="personInCharge.hasError('maxlength')">{{ getHint("maxLength", personInCharge.errors.maxlength.requiredLength) }}</mat-error>
-                </mat-form-field>
-                <mat-form-field>
-                    <input [inputTabStop]="input" [placeholder]="getLabel('email')" data-cy="email" data-tabindex="6" formControlName="email" id="email" matInput>
-                    <mat-error *ngIf="email.hasError('maxlength')">{{ getHint("maxLength", email.errors.maxlength.requiredLength) }}</mat-error>
-                    <mat-error *ngIf="!email.hasError('maxlength') && email.hasError('email')">{{ getHint("invalid") }}</mat-error>
-                </mat-form-field>
-            </div>
+            <mat-form-field>
+                <input [inputTabStop]="input" [placeholder]="getLabel('description')" data-cy="description" data-tabindex="1" formControlName="description" id="description" matInput>
+                <mat-error *ngIf="description.hasError('required')">{{ getHint("required") }}</mat-error>
+                <mat-error *ngIf="description.hasError('maxlength')">{{ getHint("maxLength", description.errors.maxlength.requiredLength) }}</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input [inputTabStop]="input" [placeholder]="getLabel('vatPercent')" data-cy="vatPercent" data-tabindex="2" formControlName="vatPercent" id="vatPercent" matInput>
+                <mat-error *ngIf="vatPercent.hasError('maxlength')">{{ getHint("maxLength", vatPercent.errors.maxlength.requiredLength) }}</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input [inputTabStop]="input" [placeholder]="getLabel('netPrice')" data-cy="netPrice" data-tabindex="3" formControlName="netPrice" id="netPrice" matInput>
+                <mat-error *ngIf="netPrice.hasError('maxlength')">{{ getHint("maxLength", netPrice.errors.maxlength.requiredLength) }}</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input [inputTabStop]="input" [placeholder]="getLabel('grossPrice')" data-cy="grossPrice" data-tabindex="4" formControlName="grossPrice" id="grossPrice" matInput>
+                <mat-error *ngIf="grossPrice.hasError('maxlength')">{{ getHint("maxLength", grossPrice.errors.maxlength.requiredLength) }}</mat-error>
+            </mat-form-field>
             <mat-slide-toggle data-cy="isActive" formControlName="isActive">{{ getLabel("isActive") }}
             </mat-slide-toggle>
         </form>

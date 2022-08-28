@@ -75,35 +75,27 @@
         "labels": [
             {
                 "id": "header",
-                "description": "Πελάτης"
+                "description": "Είδος"
             },
             {
                 "id": "description",
-                "description": "Επωνυμία"
+                "description": "Περιγραφή"
             },
             {
-                "id": "profession",
-                "description": "Δραστηριότητα"
+                "id": "vatPercent",
+                "description": "Ποσοστό ΦΠΑ"
             },
             {
-                "id": "address",
-                "description": "Διεύθυνση"
+                "id": "netPrice",
+                "description": "Αξία προ ΦΠΑ"
             },
             {
-                "id": "phones",
-                "description": "Τηλέφωνα"
-            },
-            {
-                "id": "personInCharge",
-                "description": "Υπεύθυνος επικοινωνίας"
-            },
-            {
-                "id": "email",
-                "description": "Email"
+                "id": "grossPrice",
+                "description": "Αξία με ΦΠΑ"
             },
             {
                 "id": "isActive",
-                "description": "Ενεργός"
+                "description": "Ενεργό"
             },
             {
                 "id": "deleteButton",

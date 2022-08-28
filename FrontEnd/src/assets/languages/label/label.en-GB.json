@@ -75,31 +75,23 @@
         "labels": [
             {
                 "id": "header",
-                "description": "Customer"
+                "description": "Item"
             },
             {
                 "id": "description",
-                "description": "Name"
+                "description": "Description"
             },
             {
-                "id": "profession",
-                "description": "Profession"
+                "id": "vatPercent",
+                "description": "VAT Percent"
             },
             {
-                "id": "address",
-                "description": "Address"
+                "id": "netPrice",
+                "description": "Price excluding VAT"
             },
             {
-                "id": "phones",
-                "description": "Phones"
-            },
-            {
-                "id": "personInCharge",
-                "description": "Person in charge"
-            },
-            {
-                "id": "email",
-                "description": "Email"
+                "id": "grossPrice",
+                "description": "Price including VAT"
             },
             {
                 "id": "isActive",

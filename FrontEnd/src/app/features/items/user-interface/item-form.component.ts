@@ -135,11 +135,9 @@ export class ItemFormComponent {
         const item = {
             id: this.form.value.id,
             description: this.form.value.description,
-            profession: this.form.value.profession,
-            address: this.form.value.address,
-            phones: this.form.value.phones,
-            personInCharge: this.form.value.personInCharge,
-            email: this.form.value.email,
+            vatPercent: this.form.value.vatPercent,
+            netPrice: this.form.value.netPrice,
+            grossPrice: this.form.value.grossPrice,
             isActive: this.form.value.isActive
         }
         return item
@@ -171,11 +169,9 @@ export class ItemFormComponent {
         this.form = this.formBuilder.group({
             id: 0,
             description: ['', [Validators.required, Validators.maxLength(128)]],
-            profession: ['', [Validators.maxLength(128)]],
-            address: ['', [Validators.maxLength(128)]],
-            phones: ['', [Validators.maxLength(128)]],
-            personInCharge: ['', [Validators.maxLength(128)]],
-            email: ['', [Validators.email, Validators.maxLength(128)]],
+            vatPercent: ['', [Validators.required, Validators.maxLength(3)]],
+            netPrice: ['', [Validators.required, Validators.maxLength(6)]],
+            grossPrice: ['', [Validators.required, Validators.maxLength(6)]],
             isActive: true
         })
     }
@@ -184,11 +180,9 @@ export class ItemFormComponent {
         this.form.setValue({
             id: result.id,
             description: result.description,
-            profession: result.profession,
-            address: result.address,
-            phones: result.phones,
-            personInCharge: result.personInCharge,
-            email: result.email,
+            vatPercent: result.vatPercent,
+            netPrice: result.netPrice,
+            grossPrice: result.grossPrice,
             isActive: result.isActive
         })
     }
@@ -216,24 +210,16 @@ export class ItemFormComponent {
         return this.form.get('description')
     }
 
-    get profession(): AbstractControl {
-        return this.form.get('profession')
+    get vatPercent(): AbstractControl {
+        return this.form.get('vatPercent')
     }
 
-    get address(): AbstractControl {
-        return this.form.get('address')
+    get netPrice(): AbstractControl {
+        return this.form.get('netPrice')
     }
 
-    get phones(): AbstractControl {
-        return this.form.get('phones')
-    }
-
-    get personInCharge(): AbstractControl {
-        return this.form.get('personInCharge')
-    }
-
-    get email(): AbstractControl {
-        return this.form.get('email')
+    get grossPrice(): AbstractControl {
+        return this.form.get('grossPrice')
     }
 
     //#endregion

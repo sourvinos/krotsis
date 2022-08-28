@@ -2,11 +2,9 @@ export interface ItemWriteDto {
 
     id: number
     description: string
-    profession: string
-    address: string
-    phones: string
-    personInCharge: string
-    email: string
+    vatPercent: number
+    netPrice: number
+    grossPrice: number
     isActive: boolean
 
 }
