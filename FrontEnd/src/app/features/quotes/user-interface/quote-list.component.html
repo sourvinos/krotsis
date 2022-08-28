@@ -2,16 +2,25 @@
 
     <div id="header">
         <home-button-and-title [feature]="feature" [icon]="icon" [parentUrl]="parentUrl"></home-button-and-title>
+        <div id="criteria">
+            <div class="pill">
+                <img [src]="getIcon('total')">
+                <div class="number description">{{ grossPrice.toFixed(2) }}</div>
+            </div>
+        </div>
     </div>
 
     <div id="table-wrapper">
-        <p-table #table [autoLayout]="false" [scrollable]="true" [value]="records" [virtualRowHeight]="33" [virtualScroll]="false" dataKey="id" scrollHeight="flex" selectionMode="single" sortMode="multiple" stateKey="item-list" stateStorage="session">
+        <p-table #table [autoLayout]="false" [scrollable]="true" [value]="records" [virtualRowHeight]="33" [virtualScroll]="false" dataKey="id" scrollHeight="flex" selectionMode="single" sortMode="multiple" stateKey="item-list" stateStorage="session" (onRowSelect)="rowSelect($event)" (onRowUnselect)="rowUnselect($event)">
             <ng-template pTemplate="header">
                 <tr>
                     <th style="min-width: 5%; max-width: 5%;"></th>
-                    <th data-cy="column" style="min-width: 75%; max-width: 75%;" pSortableColumn="description">{{ getLabel("headerDescription") }}<p-sortIcon field="description"></p-sortIcon></th>
-                    <th data-cy="column" style="min-width: 10%; max-width: 10%;" pSortableColumn="netPrice">{{ getLabel("headerNetPrice") }}<p-sortIcon field="netPrice"></p-sortIcon></th>
-                    <th data-cy="column" style="min-width: 10%; max-width: 10%;" pSortableColumn="grossPrice">{{ getLabel("headerGrossPrice") }}<p-sortIcon field="grossPrice"></p-sortIcon></th>
+                    <th data-cy="column" style="min-width: 75%; max-width: 75%;" pSortableColumn="description">{{ getLabel("headerDescription") }}<p-sortIcon field="description"></p-sortIcon>
+                    </th>
+                    <th data-cy="column" style="min-width: 10%; max-width: 10%;" pSortableColumn="netPrice">{{ getLabel("headerNetPrice") }}<p-sortIcon field="netPrice"></p-sortIcon>
+                    </th>
+                    <th data-cy="column" style="min-width: 10%; max-width: 10%;" pSortableColumn="grossPrice">{{ getLabel("headerGrossPrice") }}<p-sortIcon field="grossPrice"></p-sortIcon>
+                    </th>
                 </tr>
                 <tr>
                     <th style="min-width: 5%; max-width: 5%;"></th>

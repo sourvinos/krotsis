@@ -11,6 +11,7 @@ import { LocalStorageService } from 'src/app/shared/services/local-storage.servi
 import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
 import { MessageSnackbarService } from 'src/app/shared/services/messages-snackbar.service'
 import { ModalActionResultService } from 'src/app/shared/services/modal-action-result.service'
+import { environment } from 'src/environments/environment'
 
 @Component({
     selector: 'quote-list',
@@ -24,11 +25,12 @@ export class QuoteListComponent {
 
     private unlisten: Unlisten
     private unsubscribe = new Subject<void>()
-    private url = 'items'
     public feature = 'quoteList'
     public icon = 'home'
     public parentUrl = '/'
     public records: Item[] = []
+    public netPrice = 0
+    public grossPrice = 0
 
     //#endregion
 
@@ -57,6 +59,20 @@ export class QuoteListComponent {
 
     public getLabel(id: string): string {
         return this.messageLabelService.getDescription(this.feature, id)
+    }
+
+    public getIcon(filename: string): string {
+        return environment.iconsDirectory + filename + '.svg'
+    }
+    
+    public rowSelect(event: { data: { netPrice: number; grossPrice: number } }): void {
+        this.netPrice += event.data.netPrice
+        this.grossPrice += event.data.grossPrice
+    }
+
+    public rowUnselect(event: { data: { netPrice: number; grossPrice: number } }): void {
+        this.netPrice -= event.data.netPrice
+        this.grossPrice -= event.data.grossPrice
     }
 
     //#endregion

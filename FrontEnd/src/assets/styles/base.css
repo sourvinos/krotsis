@@ -4,8 +4,9 @@
 @import url("https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp");
 
 @import "buttons.css";
-@import "common-colors.css";
 @import "card.css";
+@import "common-colors.css";
+@import "criteria.css";
 @import "dialogs.css";
 @import "headers.css";
 @import "input-error.css";
