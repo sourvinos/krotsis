@@ -1,4 +1,5 @@
 .mat-card {
+    align-items: flex-start;
     background-color: var(--color-a) !important;
     display: flex !important;
     flex-direction: column;
@@ -15,7 +16,7 @@
 
 .mat-card-sm-image {
     height: 100px !important;
-    width: 100px !important;
+    width: auto !important;
 }
 
 .mat-card-title {
