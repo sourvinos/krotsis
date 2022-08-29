@@ -12,6 +12,8 @@ import { MessageLabelService } from 'src/app/shared/services/messages-label.serv
 import { MessageSnackbarService } from 'src/app/shared/services/messages-snackbar.service'
 import { ModalActionResultService } from 'src/app/shared/services/modal-action-result.service'
 import { environment } from 'src/environments/environment'
+import { DialogService } from 'src/app/shared/services/dialog.service'
+import { QuotePDFService } from '../classes/services/quote-pdf.service'
 
 @Component({
     selector: 'quote-list',
@@ -35,7 +37,18 @@ export class QuoteListComponent {
 
     //#endregion
 
-    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private keyboardShortcutsService: KeyboardShortcuts, private localStorageService: LocalStorageService, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private modalActionResultService: ModalActionResultService, private router: Router) { }
+    constructor(
+        private activatedRoute: ActivatedRoute,
+        private buttonClickService: ButtonClickService,
+        private keyboardShortcutsService: KeyboardShortcuts,
+        private localStorageService: LocalStorageService,
+        private messageLabelService: MessageLabelService,
+        private messageSnackbarService: MessageSnackbarService,
+        private modalActionResultService: ModalActionResultService,
+        private router: Router,
+        private dialogService: DialogService,
+        private quotePdfService: QuotePDFService
+    ) { }
 
     //#region lifecycle hooks
 
@@ -54,6 +67,14 @@ export class QuoteListComponent {
 
     //#region public methods
 
+    public doReportTasks(): void {
+        if (this.selectedRecords.length == 0) {
+            this.dialogService.open(this.messageSnackbarService.noRecordsSelected(), 'error', ['ok'])
+        } else {
+            this.createPdf()
+        }
+    }
+
     public formatNumberToLocale(number: number) {
         return formatNumber(number, this.localStorageService.getItem('language'), '2.2')
     }
@@ -68,14 +89,12 @@ export class QuoteListComponent {
 
     public rowSelect(row: any): void {
         this.calculatePriceSum(row, 'add')
-        // this.netPrice += row.data.netPrice
-        // this.grossPrice += row.data.grossPrice
+        this.updateSelectedItemsArray(row.data, 'add')
     }
 
     public rowUnselect(row: any): void {
         this.calculatePriceSum(row, 'subtract')
-        // this.netPrice -= event.data.netPrice
-        // this.grossPrice -= event.data.grossPrice
+        this.updateSelectedItemsArray(row.data, 'subtract')
     }
 
     //#endregion
@@ -112,6 +131,10 @@ export class QuoteListComponent {
         this.unsubscribe.unsubscribe()
     }
 
+    private createPdf(): void {
+        this.quotePdfService.createPDF(this.selectedRecords)
+    }
+
     private goBack(): void {
         this.router.navigate([this.parentUrl])
     }
@@ -128,6 +151,18 @@ export class QuoteListComponent {
             }
         })
         return promise
+    }
+
+    private updateSelectedItemsArray(row: Item, action: string): void {
+        if (action == 'add') {
+            this.selectedRecords.push(row)
+        }
+        if (action == 'subtract') {
+            const index = this.selectedRecords.findIndex(object => {
+                return object.id == row.id
+            })
+            this.selectedRecords.splice(index, 1)
+        }
     }
 
     //#endregion
