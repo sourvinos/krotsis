@@ -92,6 +92,10 @@
             {
                 "id": "printButton",
                 "description": "ΕΚΤΥΠΩΣΗ"
+            },
+            {
+                "id": "plates",
+                "description": "Αρ. κυκλοφορίας"
             }
         ]
     },

@@ -14,11 +14,13 @@ import { MessageSnackbarService } from 'src/app/shared/services/messages-snackba
 import { ModalActionResultService } from 'src/app/shared/services/modal-action-result.service'
 import { QuotePDFService } from '../classes/services/quote-pdf.service'
 import { environment } from 'src/environments/environment'
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { MessageHintService } from 'src/app/shared/services/messages-hint.service'
 
 @Component({
     selector: 'quote-list',
     templateUrl: './quote-list.component.html',
-    styleUrls: ['../../../../assets/styles/lists.css']
+    styleUrls: ['../../../../assets/styles/lists.css', './quote-list.component.css']
 })
 
 export class QuoteListComponent {
@@ -34,14 +36,29 @@ export class QuoteListComponent {
     private selectedRecords: Item[] = []
     public netPrice = 0
     public grossPrice = 0
+    public form: FormGroup
 
     //#endregion
 
-    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private dialogService: DialogService, private keyboardShortcutsService: KeyboardShortcuts, private localStorageService: LocalStorageService, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private modalActionResultService: ModalActionResultService, private quotePdfService: QuotePDFService, private router: Router) { }
-    
+    constructor(
+        private activatedRoute: ActivatedRoute,
+        private buttonClickService: ButtonClickService,
+        private dialogService: DialogService,
+        private formBuilder: FormBuilder,
+        private keyboardShortcutsService: KeyboardShortcuts,
+        private localStorageService: LocalStorageService,
+        private messageHintService: MessageHintService,
+        private messageLabelService: MessageLabelService,
+        private messageSnackbarService: MessageSnackbarService,
+        private modalActionResultService: ModalActionResultService,
+        private quotePdfService: QuotePDFService,
+        private router: Router
+    ) { }
+
     //#region lifecycle hooks
 
     ngOnInit(): void {
+        this.initForm()
         this.loadRecords()
         this.addShortcuts()
 
@@ -66,6 +83,10 @@ export class QuoteListComponent {
 
     public formatNumberToLocale(number: number) {
         return formatNumber(number, this.localStorageService.getItem('language'), '2.2')
+    }
+
+    public getHint(id: string, minmax = 0): string {
+        return this.messageHintService.getDescription(id, minmax)
     }
 
     public getLabel(id: string): string {
@@ -121,11 +142,17 @@ export class QuoteListComponent {
     }
 
     private createPdf(): void {
-        this.quotePdfService.createPDF(this.selectedRecords)
+        this.quotePdfService.createPDF(this.form.value, this.selectedRecords)
     }
 
     private goBack(): void {
         this.router.navigate([this.parentUrl])
+    }
+
+    private initForm(): void {
+        this.form = this.formBuilder.group({
+            plates: ['', [Validators.required]],
+        })
     }
 
     private loadRecords(): Promise<any> {
@@ -156,4 +183,14 @@ export class QuoteListComponent {
 
     //#endregion
 
+    //#region  getters
+
+    get plates(): AbstractControl {
+        return this.form.get('plates')
+    }
+
+    //#endregion
+
 }
+
+

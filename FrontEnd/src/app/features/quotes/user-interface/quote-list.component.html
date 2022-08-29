@@ -11,16 +11,13 @@
     </div>
 
     <div id="table-wrapper">
-        <p-table #table [autoLayout]="false" [scrollable]="true" [value]="records" [virtualRowHeight]="33" [virtualScroll]="false" dataKey="id" scrollHeight="flex" selectionMode="single" sortMode="multiple" stateKey="item-list" stateStorage="session" (onRowSelect)="rowSelect($event)" (onRowUnselect)="rowUnselect($event)">
+        <p-table #table [autoLayout]="false" [scrollable]="true" [value]="records" [virtualScrollItemSize]="33" [virtualScroll]="false" dataKey="id" scrollHeight="flex" selectionMode="single" sortMode="multiple" stateKey="item-list" stateStorage="session" (onRowSelect)="rowSelect($event)" (onRowUnselect)="rowUnselect($event)">
             <ng-template pTemplate="header">
                 <tr>
                     <th style="min-width: 5%; max-width: 5%;"></th>
-                    <th data-cy="column" style="min-width: 75%; max-width: 75%;" pSortableColumn="description">{{ getLabel("headerDescription") }}<p-sortIcon field="description"></p-sortIcon>
-                    </th>
-                    <th data-cy="column" style="min-width: 10%; max-width: 10%;" pSortableColumn="netPrice">{{ getLabel("headerNetPrice") }}<p-sortIcon field="netPrice"></p-sortIcon>
-                    </th>
-                    <th data-cy="column" style="min-width: 10%; max-width: 10%;" pSortableColumn="grossPrice">{{ getLabel("headerGrossPrice") }}<p-sortIcon field="grossPrice"></p-sortIcon>
-                    </th>
+                    <th data-cy="column" style="min-width: 75%; max-width: 75%;" pSortableColumn="description">{{ getLabel("headerDescription") }}<p-sortIcon field="description"></p-sortIcon></th>
+                    <th data-cy="column" style="min-width: 10%; max-width: 10%;" pSortableColumn="netPrice">{{ getLabel("headerNetPrice") }}<p-sortIcon field="netPrice"></p-sortIcon></th>
+                    <th data-cy="column" style="min-width: 10%; max-width: 10%;" pSortableColumn="grossPrice">{{ getLabel("headerGrossPrice") }}<p-sortIcon field="grossPrice"></p-sortIcon></th>
                 </tr>
                 <tr>
                     <th style="min-width: 5%; max-width: 5%;"></th>
@@ -43,8 +40,15 @@
     </div>
 
     <div id="footer">
+        <form [formGroup]="form" autocomplete="off">
+            <mat-form-field>
+                <input [placeholder]="getLabel('plates')" formControlName="plates" id="plates" matInput>
+                <mat-hint>Η πινακίδα κυκλοφορίας του οχήματος</mat-hint>
+                <mat-error *ngIf="plates.hasError('required')">{{ getHint("required") }}</mat-error>
+            </mat-form-field>
+        </form>
         <div class="button-group">
-            <button data-cy="new" mat-flat-button class="primary" id="new" (click)="doReportTasks()">{{ getLabel("printButton") }}</button>
+            <button  mat-flat-button class="primary" id="new" [disabled]="!form.valid" (click)="doReportTasks()">{{ getLabel("printButton") }}</button>
         </div>
     </div>
 

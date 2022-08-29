@@ -71,6 +71,35 @@
         ]
     },
     {
+        "feature": "quoteList",
+        "labels": [
+            {
+                "id": "header",
+                "description": "New Quote"
+            },
+            {
+                "id": "headerDescription",
+                "description": "Description"
+            },
+            {
+                "id": "headerNetPrice",
+                "description": "Net Amount"
+            },
+            {
+                "id": "headerGrossPrice",
+                "description": "Amount including VAT"
+            },
+            {
+                "id": "printButton",
+                "description": "PRINT"
+            },
+            {
+                "id": "plates",
+                "description": "Licence plates"
+            }
+        ]
+    },
+    {
         "feature": "itemForm",
         "labels": [
             {

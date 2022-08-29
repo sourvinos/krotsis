@@ -21,7 +21,7 @@ export class QuotePDFService {
 
     //#region public methods
 
-    public createPDF(records: Item[]): void {
+    public createPDF(form: any, records: Item[]): void {
         this.setFonts()
         const dd = {
             background: this.backgroundImage(),
@@ -35,7 +35,7 @@ export class QuotePDFService {
                 {
                     margin: [0, 0, 0, 20],
                     columns: [
-                        this.ourDataAndHeader(),
+                        this.ourDataAndHeader(form.plates),
                         this.customerData()
                     ]
                 },
@@ -104,7 +104,7 @@ export class QuotePDFService {
         return pageInfo
     }
 
-    private ourDataAndHeader(): any {
+    private ourDataAndHeader(plates: string): any {
         const title = {
             type: 'none',
             margin: [0, 0, 0, 0],
@@ -112,7 +112,7 @@ export class QuotePDFService {
                 { text: 'Krotsis', fontSize: 24, style: 'BowlbyOne' },
                 { text: 'ΕΜΠΟΡΙΟ ΕΛΑΣΤΙΚΩΝ & ΖΑΝΤΩΝ', fontSize: 12, margin: [0, -7, 0, 0], style: 'PFHandbookProBold' },
                 { text: 'ΟΙΚΟΝΟΜΙΚΗ ΠΡΟΣΦΟΡΑ', fontSize: 12, margin: [0, 25.5, 0, 0], style: 'PFHandbookProBold' },
-                { text: 'ΓΙΑ ΤΟ ΟΧΗΜΑ: ΚΗΙ 1234', fontSize: 11 }
+                { text: 'ΓΙΑ ΤΟ ΟΧΗΜΑ: ' + plates, fontSize: 11 }
             ]
         }
         return title
