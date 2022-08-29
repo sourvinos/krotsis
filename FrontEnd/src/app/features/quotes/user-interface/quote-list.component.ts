@@ -29,6 +29,7 @@ export class QuoteListComponent {
     public icon = 'home'
     public parentUrl = '/'
     public records: Item[] = []
+    private selectedRecords: Item[] = []
     public netPrice = 0
     public grossPrice = 0
 
@@ -64,15 +65,17 @@ export class QuoteListComponent {
     public getIcon(filename: string): string {
         return environment.iconsDirectory + filename + '.svg'
     }
-    
-    public rowSelect(event: { data: { netPrice: number; grossPrice: number } }): void {
-        this.netPrice += event.data.netPrice
-        this.grossPrice += event.data.grossPrice
+
+    public rowSelect(row: any): void {
+        this.calculatePriceSum(row, 'add')
+        // this.netPrice += row.data.netPrice
+        // this.grossPrice += row.data.grossPrice
     }
 
-    public rowUnselect(event: { data: { netPrice: number; grossPrice: number } }): void {
-        this.netPrice -= event.data.netPrice
-        this.grossPrice -= event.data.grossPrice
+    public rowUnselect(row: any): void {
+        this.calculatePriceSum(row, 'subtract')
+        // this.netPrice -= event.data.netPrice
+        // this.grossPrice -= event.data.grossPrice
     }
 
     //#endregion
@@ -91,6 +94,17 @@ export class QuoteListComponent {
             priority: 0,
             inputs: true
         })
+    }
+
+    private calculatePriceSum(row: any, action: string): void {
+        if (action == 'add') {
+            this.netPrice += row.data.netPrice
+            this.grossPrice += row.data.grossPrice
+        }
+        if (action == 'subtract') {
+            this.netPrice -= row.data.netPrice
+            this.grossPrice -= row.data.grossPrice
+        }
     }
 
     private cleanup(): void {
