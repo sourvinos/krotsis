@@ -15,6 +15,8 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs
 
 export class QuotePDFService {
 
+    private totalGrossPrice = 0
+
     constructor(private logoService: LogoService) { }
 
     //#region public methods
@@ -46,16 +48,11 @@ export class QuotePDFService {
                     margin: [11, 0, 0, 0],
                     layout: 'lightHorizontalLines'
                 },
-                // {
-                //     canvas: [
-                //         {
-                //             type: 'line',
-                //             x1: 11, y1: 525,
-                //             x2: 515, y2: 525,
-                //             lineWidth: 1
-                //         }
-                //     ]
-                // }
+                {
+                    columns: [
+                        this.priceTotals()
+                    ]
+                }
             ],
             styles: {
                 BowlbyOne: { font: 'BowlbyOne' },
@@ -148,11 +145,26 @@ export class QuotePDFService {
         for (const record of records) {
             rows.push([
                 { text: record.description, fontSize: 10 },
-                { text: record.netPrice, alignment: 'right', fontSize: 10 },
-                { text: record.grossPrice, alignment: 'right', fontSize: 10 }
+                { text: record.netPrice.toFixed(2), alignment: 'right', fontSize: 10 },
+                { text: record.grossPrice.toFixed(2), alignment: 'right', fontSize: 10 }
             ])
+            this.totalGrossPrice += record.grossPrice
         }
         return rows
+    }
+
+    private priceTotals(): any {
+        const totals = {
+            type: 'none',
+            margin: [0, 14, 0, 0],
+            ul:
+                [
+                    {
+                        text: this.totalGrossPrice.toFixed(2), fontSize: 11, alignment: 'right'
+                    }
+                ],
+        }
+        return totals
     }
 
     private footer(): any {
@@ -160,7 +172,7 @@ export class QuotePDFService {
             type: 'none',
             margin: [41, -62, 0, 0],
             ul: [
-                { text: 'ΚΡΟΤΣΗΣ ΕΠΕ', fontSize: 10, style: 'PFHandbookProBold' },
+                { text: 'ΚΡΟΤΣΗΣ ΕΠΕ', fontSize: 11, style: 'PFHandbookProBold' },
                 { text: 'ΕΜΠΟΡΙΟ ΕΛΑΣΤΙΚΩΝ & ΖΑΝΤΩΝ', fontSize: 10 },
                 { text: 'ΑΦΜ: 099863549', fontSize: 10 },
                 { text: 'ΔΟΥ: ΚΕΡΚΥΡΑΣ', fontSize: 10 },
