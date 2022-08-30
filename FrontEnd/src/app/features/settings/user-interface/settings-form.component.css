@@ -1,0 +1,22 @@
+.mat-card {
+    height: 100%;
+    width: 100%;
+    padding: 2rem 2rem 3.5rem 2rem;
+}
+
+.mat-card:hover {
+    cursor: auto;
+    background-color: transparent !important;
+}
+
+.mat-card-title {
+    margin: 0 !important;
+}
+
+.mat-card-subtitle {
+    margin: 0 0 1rem 0 !important;
+}
+
+.group-field {
+    width: 100%;
+}

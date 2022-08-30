@@ -1,4 +1,5 @@
 ﻿using API.Features.Items;
+using API.Features.Settings;
 using API.Infrastructure.Auth;
 using EntityFramework.Exceptions.MySQL;
 using Microsoft.AspNetCore.Identity;
@@ -15,6 +16,7 @@ namespace API.Infrastructure.Classes {
         #region DbSets
 
         public DbSet<Item> Items { get; set; }
+        public DbSet<Settings> Settings { get; set; }
         public DbSet<Token> Tokens { get; set; }
 
         #endregion

@@ -2,12 +2,13 @@
 
     <div id="header">
         <home-button-and-title [feature]="feature" [icon]="icon" [parentUrl]="parentUrl"></home-button-and-title>
-        <div id="criteria">
-            <div class="pill">
-                <img [src]="getIcon('total')">
-                <div class="number description">{{ grossPrice.toFixed(2) }}</div>
-            </div>
-        </div>
+        <form [formGroup]="form" autocomplete="off">
+            <mat-form-field>
+                <input [placeholder]="getLabel('plates')" formControlName="plates" id="plates" matInput>
+                <mat-hint>Η πινακίδα κυκλοφορίας του οχήματος</mat-hint>
+                <mat-error *ngIf="plates.hasError('required')">{{ getHint("required") }}</mat-error>
+            </mat-form-field>
+        </form>
     </div>
 
     <div id="table-wrapper">
@@ -28,9 +29,7 @@
             </ng-template>
             <ng-template pTemplate="body" let-rowData>
                 <tr data-cy="row">
-                    <td style="width: 5%; max-width: 5%; justify-content: center;">
-                        <p-tableCheckbox [value]="rowData"></p-tableCheckbox>
-                    </td>
+                    <td style="width: 5%; max-width: 5%; justify-content: center;"><p-tableCheckbox [value]="rowData"></p-tableCheckbox></td>
                     <td style="min-width: 75%; max-width: 75%;">{{ rowData.description }}</td>
                     <td style="min-width: 10%; max-width: 10%; justify-content: flex-end; padding-right: 1rem;">{{ formatNumberToLocale(rowData.netPrice) }}</td>
                     <td style="min-width: 10%; max-width: 10%; justify-content: flex-end; padding-right: 1rem;">{{ formatNumberToLocale(rowData.grossPrice) }}</td>
@@ -40,13 +39,12 @@
     </div>
 
     <div id="footer">
-        <form [formGroup]="form" autocomplete="off">
-            <mat-form-field>
-                <input [placeholder]="getLabel('plates')" formControlName="plates" id="plates" matInput>
-                <mat-hint>Η πινακίδα κυκλοφορίας του οχήματος</mat-hint>
-                <mat-error *ngIf="plates.hasError('required')">{{ getHint("required") }}</mat-error>
-            </mat-form-field>
-        </form>
+        <div id="criteria">
+            <div class="pill">
+                <img [src]="getIcon('total')">
+                <div class="number description">{{ grossPrice.toFixed(2) }}</div>
+            </div>
+        </div>
         <div class="button-group">
             <button  mat-flat-button class="primary" id="new" [disabled]="!form.valid" (click)="doReportTasks()">{{ getLabel("printButton") }}</button>
         </div>

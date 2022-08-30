@@ -456,5 +456,50 @@
                 "description": "Κόκκινο"
             }
         ]
+    },
+    {
+        "feature": "settingsForm",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Παράμετροι"
+            },
+            {
+                "id": "lineA",
+                "description": "Γραμμή 1"
+            },
+            {
+                "id": "lineB",
+                "description": "Γραμμή 2"
+            },
+            {
+                "id": "lineC",
+                "description": "Γραμμή 3"
+            },
+            {
+                "id": "lineD",
+                "description": "Γραμμή 4"
+            },
+            {
+                "id": "lineE",
+                "description": "Γραμμή 5"
+            },
+            {
+                "id": "lineF",
+                "description": "Γραμμή 6"
+            },
+            {
+                "id": "lineG",
+                "description": "Γραμμή 7"
+            },
+            {
+                "id": "lineH",
+                "description": "Γραμμή 8"
+            },
+            {
+                "id": "saveButton",
+                "description": "ΑΠΟΘΗΚΕΥΣΗ"
+            }
+        ]
     }
 ]

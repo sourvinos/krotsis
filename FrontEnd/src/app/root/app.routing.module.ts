@@ -14,6 +14,7 @@ const appRoutes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthGuardService], pathMatch: 'full' },
     { path: 'items', loadChildren: () => import('../features/items/classes/modules/item.module').then(m => m.ItemModule) },
     { path: 'quotes', loadChildren: () => import('../features/quotes/classes/modules/quote.module').then(m => m.QuoteModule) },
+    { path: 'settings', loadChildren: () => import('../features/settings/classes/modules/settings.module').then(m => m.SettingsModule) },
     { path: 'forgotPassword', component: ForgotPasswordFormComponent },
     { path: 'login', component: LoginFormComponent },
     { path: 'resetPassword', component: ResetPasswordFormComponent },

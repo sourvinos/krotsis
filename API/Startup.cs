@@ -14,8 +14,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-// dotnet watch run --environment LocalDevelopment | LocalProduction
-// dotnet publish /p:Configuration=Release /p:EnvironmentName=ProductionDemo | ProductionLive
+// dotnet watch run --environment LocalDevelopment
+// dotnet publish /p:Configuration=Release /p:EnvironmentName=LocalProduction
 
 namespace API {
 
@@ -39,13 +39,6 @@ namespace API {
         public void ConfigureProductionLiveServices(IServiceCollection services) {
             services.AddDbContextFactory<AppDbContext>(options => options.UseMySql(Configuration.GetConnectionString("ProductionLive"), new MySqlServerVersion(new Version(8, 0, 19)), builder =>
                 builder.EnableStringComparisonTranslations()));
-            ConfigureServices(services);
-        }
-
-        public void ConfigureProductionDemoServices(IServiceCollection services) {
-            services.AddDbContextFactory<AppDbContext>(options => options.UseMySql(Configuration.GetConnectionString("ProductionDemo"), new MySqlServerVersion(new Version(8, 0, 19)), builder => {
-                builder.EnableStringComparisonTranslations();
-            }));
             ConfigureServices(services);
         }
 
@@ -82,15 +75,7 @@ namespace API {
             });
         }
 
-        public void ConfigureProductionLive(IApplicationBuilder app) {
-            app.UseHsts();
-            Configure(app);
-            app.UseEndpoints(endpoints => {
-                endpoints.MapControllers();
-            });
-        }
-
-        public void ConfigureProductionDemo(IApplicationBuilder app) {
+        public void ConfigureLocalProduction(IApplicationBuilder app) {
             app.UseHsts();
             Configure(app);
             app.UseEndpoints(endpoints => {
