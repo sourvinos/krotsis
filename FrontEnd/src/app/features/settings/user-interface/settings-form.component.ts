@@ -122,6 +122,14 @@ export class SettingsFormComponent {
             lineF: this.form.value.lineF,
             lineG: this.form.value.lineG,
             lineH: this.form.value.lineH,
+            customerA: this.form.value.customerA,
+            customerB: this.form.value.customerB,
+            customerC: this.form.value.customerC,
+            customerD: this.form.value.customerD,
+            customerE: this.form.value.customerE,
+            customerF: this.form.value.customerF,
+            customerG: this.form.value.customerG,
+            customerH: this.form.value.customerH,
         }
         return settings
     }
@@ -136,6 +144,7 @@ export class SettingsFormComponent {
             if (formResolved.error == null) {
                 this.settings = formResolved.record
                 resolve(this.settings)
+                console.log(this.settings)
             } else {
                 this.goBack()
                 this.modalActionResultService.open(this.messageSnackbarService.filterResponse(new Error('500')), 'error', ['ok'])
@@ -158,7 +167,15 @@ export class SettingsFormComponent {
             lineE: ['', [Validators.maxLength(128)]],
             lineF: ['', [Validators.maxLength(128)]],
             lineG: ['', [Validators.maxLength(128)]],
-            lineH: ['', [Validators.maxLength(128)]]
+            lineH: ['', [Validators.maxLength(128)]],
+            customerA: ['', [Validators.required, Validators.maxLength(128)]],
+            customerB: ['', [Validators.maxLength(128)]],
+            customerC: ['', [Validators.maxLength(128)]],
+            customerD: ['', [Validators.maxLength(128)]],
+            customerE: ['', [Validators.maxLength(128)]],
+            customerF: ['', [Validators.maxLength(128)]],
+            customerG: ['', [Validators.maxLength(128)]],
+            customerH: ['', [Validators.maxLength(128)]],
         })
     }
 
@@ -172,7 +189,15 @@ export class SettingsFormComponent {
             lineE: result.lineE,
             lineF: result.lineF,
             lineG: result.lineG,
-            lineH: result.lineH
+            lineH: result.lineH,
+            customerA: result.customerA,
+            customerB: result.customerB,
+            customerC: result.customerC,
+            customerD: result.customerD,
+            customerE: result.customerE,
+            customerF: result.customerF,
+            customerG: result.customerG,
+            customerH: result.customerH
         })
     }
 
@@ -225,6 +250,31 @@ export class SettingsFormComponent {
 
     get lineH(): AbstractControl {
         return this.form.get('lineH')
+    }
+
+    get customerA(): AbstractControl {
+        return this.form.get('customerA')
+    }
+    get customerB(): AbstractControl {
+        return this.form.get('customerB')
+    }
+    get customerC(): AbstractControl {
+        return this.form.get('customerC')
+    }
+    get customerD(): AbstractControl {
+        return this.form.get('customerD')
+    }
+    get customerE(): AbstractControl {
+        return this.form.get('customerE')
+    }
+    get customerF(): AbstractControl {
+        return this.form.get('customerF')
+    }
+    get customerG(): AbstractControl {
+        return this.form.get('customerG')
+    }
+    get customerH(): AbstractControl {
+        return this.form.get('customerH')
     }
 
     //#endregion

@@ -9,5 +9,13 @@ export interface Settings {
     lineF: string
     lineG: string
     lineH: string
-
+    customerA: string
+    customerB: string
+    customerC: string
+    customerD: string
+    customerE: string
+    customerF: string
+    customerG: string
+    customerH: string
+    
 }

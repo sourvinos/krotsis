@@ -51,6 +51,51 @@
                     </mat-form-field>
                 </div>
             </mat-card>
+            <mat-card>
+                <mat-card-title>Τα στοιχεία του πελάτη</mat-card-title>
+                <mat-card-subtitle>Συμπληρώστε τα στοιχεία του πελάτη ο οποίος θα λάβει την προσφορά</mat-card-subtitle>
+                <div class="group-field">
+                    <mat-form-field>
+                        <input [inputTabStop]="input" [placeholder]="getLabel('customerA')" data-cy="description" data-tabindex="9" formControlName="customerA" id="customerA" matInput>
+                        <mat-error *ngIf="customerA.hasError('required')">{{ getHint("required") }}</mat-error>
+                        <mat-error *ngIf="customerA.hasError('maxlength')">{{ getHint("maxLength", customerA.errors.maxlength.requiredLength) }}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input [inputTabStop]="input" [placeholder]="getLabel('customerB')" data-cy="description" data-tabindex="10" formControlName="customerB" id="customerB" matInput>
+                        <mat-error *ngIf="customerB.hasError('maxlength')">{{ getHint("maxLength", customerB.errors.maxlength.requiredLength) }}</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="group-field">
+                    <mat-form-field>
+                        <input [inputTabStop]="input" [placeholder]="getLabel('customerC')" data-cy="description" data-tabindex="11" formControlName="customerC" id="customerC" matInput>
+                        <mat-error *ngIf="customerC.hasError('maxlength')">{{ getHint("maxLength", customerC.errors.maxlength.requiredLength) }}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input [inputTabStop]="input" [placeholder]="getLabel('customerD')" data-cy="description" data-tabindex="12" formControlName="customerD" id="customerD" matInput>
+                        <mat-error *ngIf="customerD.hasError('maxlength')">{{ getHint("maxLength", customerD.errors.maxlength.requiredLength) }}</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="group-field">
+                    <mat-form-field>
+                        <input [inputTabStop]="input" [placeholder]="getLabel('customerE')" data-cy="description" data-tabindex="13" formControlName="customerE" id="customerE" matInput>
+                        <mat-error *ngIf="customerE.hasError('maxlength')">{{ getHint("maxLength", customerE.errors.maxlength.requiredLength) }}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input [inputTabStop]="input" [placeholder]="getLabel('customerF')" data-cy="description" data-tabindex="14" formControlName="customerF" id="customerF" matInput>
+                        <mat-error *ngIf="customerF.hasError('maxlength')">{{ getHint("maxLength", customerF.errors.maxlength.requiredLength) }}</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="group-field">
+                    <mat-form-field>
+                        <input [inputTabStop]="input" [placeholder]="getLabel('customerG')" data-cy="description" data-tabindex="15" formControlName="customerG" id="customerG" matInput>
+                        <mat-error *ngIf="customerG.hasError('maxlength')">{{ getHint("maxLength", customerG.errors.maxlength.requiredLength) }}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input [inputTabStop]="input" [placeholder]="getLabel('customerH')" data-cy="description" data-tabindex="16" formControlName="customerH" id="customerH" matInput>
+                        <mat-error *ngIf="customerH.hasError('maxlength')">{{ getHint("maxLength", customerH.errors.maxlength.requiredLength) }}</mat-error>
+                    </mat-form-field>
+                </div>
+            </mat-card>
         </form>
         <p class="instructions" [class.hidden]=true>{{ form.value | json }} {{ form.valid }}</p>
     </div>

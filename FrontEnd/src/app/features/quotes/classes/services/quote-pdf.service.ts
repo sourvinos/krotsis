@@ -18,7 +18,7 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs
 export class QuotePDFService {
 
     private plates = ''
-    private ourDetails: Settings
+    private settings: Settings
     private totalGrossPrice = 0
 
     constructor(private logoService: LogoService, private settingsService: SettingsService) {
@@ -127,15 +127,17 @@ export class QuotePDFService {
     private customerData(): any {
         const title = {
             type: 'none',
-            margin: [0, 14, 0, 0],
+            margin: [0, 8, 0, 0],
             ul: [
                 { text: 'ΠΑΡΑΛΗΠΤΗΣ', fontSize: 11, style: 'PFHandbookProBold' },
-                { text: 'ΔΗΜΟΣ ΚΕΝΤΡΙΚΗΣ ΚΕΡΚΥΡΑΣ ΚΑΙ ΔΙΑΠΟΝΤΙΩΝ ΝΗΣΩΝ', fontSize: 11 },
-                { text: 'ΔΙΕΥΘΥΝΣΗ ΚΑΘΑΡΙΟΤΗΤΑΣ ΚΑΙ ΑΝΑΚΥΚΛΩΣΗΣ', fontSize: 11 },
-                { text: 'ΤΜΗΜΑ ΔΙΑΧΕΙΡΙΣΗΣ ΚΑΙ ΣΥΝΤΗΡΗΣΗΣ ΟΧΗΜΑΤΩΝ', fontSize: 11 },
-                { text: 'ΓΡΑΦΕΙΟ ΚΙΝΗΣΗΣ', fontSize: 11 },
-                { text: 'ΠΛΗΡΟΦΟΡΙΕΣ: ZAXOY E. - ΡΑΨΟΜΑΝΙΚΗΣ Ν.', fontSize: 11 },
-                { text: 'ΤΗΛΕΦΩΝΑ: 26613 62749', fontSize: 11 }
+                { text: this.settings.customerA, fontSize: 11 },
+                { text: this.settings.customerB, fontSize: 11 },
+                { text: this.settings.customerC, fontSize: 11 },
+                { text: this.settings.customerD, fontSize: 11 },
+                { text: this.settings.customerE, fontSize: 11 },
+                { text: this.settings.customerF, fontSize: 11 },
+                { text: this.settings.customerG, fontSize: 11 },
+                { text: this.settings.customerH, fontSize: 11 }
             ]
         }
         return title
@@ -178,14 +180,14 @@ export class QuotePDFService {
             type: 'none',
             margin: [41, -62, 0, 0],
             ul: [
-                { text: this.ourDetails.lineA, fontSize: 11, style: 'PFHandbookProBold' },
-                { text: this.ourDetails.lineB, fontSize: 10 },
-                { text: this.ourDetails.lineC, fontSize: 10 },
-                { text: this.ourDetails.lineD, fontSize: 10 },
-                { text: this.ourDetails.lineE, fontSize: 10 },
-                { text: this.ourDetails.lineF, fontSize: 10 },
-                { text: this.ourDetails.lineG, fontSize: 10 },
-                { text: this.ourDetails.lineH, fontSize: 10 },
+                { text: this.settings.lineA, fontSize: 11, style: 'PFHandbookProBold' },
+                { text: this.settings.lineB, fontSize: 10 },
+                { text: this.settings.lineC, fontSize: 10 },
+                { text: this.settings.lineD, fontSize: 10 },
+                { text: this.settings.lineE, fontSize: 10 },
+                { text: this.settings.lineF, fontSize: 10 },
+                { text: this.settings.lineG, fontSize: 10 },
+                { text: this.settings.lineH, fontSize: 10 }
             ]
         }
         return footer
@@ -193,10 +195,10 @@ export class QuotePDFService {
 
     private setOurDetails(settingsService: SettingsService): void {
         settingsService.getSingle(1).subscribe(result => {
-            this.ourDetails = result
+            this.settings = result
         })
     }
 
-    //#endregion
+     //#endregion
 
 }
