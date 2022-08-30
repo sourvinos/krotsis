@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core'
 // Custom
 import { Item } from '../models/item'
 import { LogoService } from 'src/app/shared/services/logo.service'
+import { Settings } from 'src/app/features/settings/classes/models/settings'
+import { SettingsService } from 'src/app/features/settings/classes/services/settings.service'
 // Fonts
 import pdfFonts from 'pdfmake/build/vfs_fonts'
 import pdfMake from 'pdfmake/build/pdfmake'
@@ -15,9 +17,13 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs
 
 export class QuotePDFService {
 
+    private plates = ''
+    private ourDetails: Settings
     private totalGrossPrice = 0
 
-    constructor(private logoService: LogoService) { }
+    constructor(private logoService: LogoService, private settingsService: SettingsService) {
+        this.setOurDetails(this.settingsService)
+    }
 
     //#region public methods
 
@@ -172,17 +178,23 @@ export class QuotePDFService {
             type: 'none',
             margin: [41, -62, 0, 0],
             ul: [
-                { text: 'ΚΡΟΤΣΗΣ ΕΠΕ', fontSize: 11, style: 'PFHandbookProBold' },
-                { text: 'ΕΜΠΟΡΙΟ ΕΛΑΣΤΙΚΩΝ & ΖΑΝΤΩΝ', fontSize: 10 },
-                { text: 'ΑΦΜ: 099863549', fontSize: 10 },
-                { text: 'ΔΟΥ: ΚΕΡΚΥΡΑΣ', fontSize: 10 },
-                { text: 'ΕΘΝΙΚΗ ΟΔΟΣ ΚΕΡΚΥΡΑΣ - ΛΕΥΚΙΜΜΗΣ 17Α', fontSize: 10 },
-                { text: 'ΠΑΓΚΡΑΤΕΪΚΑ', fontSize: 10 },
-                { text: 'krotsis.elastika@hotmail.com', fontSize: 10 },
-                { text: '26610 22533', fontSize: 10 },
+                { text: this.ourDetails.lineA, fontSize: 11, style: 'PFHandbookProBold' },
+                { text: this.ourDetails.lineB, fontSize: 10 },
+                { text: this.ourDetails.lineC, fontSize: 10 },
+                { text: this.ourDetails.lineD, fontSize: 10 },
+                { text: this.ourDetails.lineE, fontSize: 10 },
+                { text: this.ourDetails.lineF, fontSize: 10 },
+                { text: this.ourDetails.lineG, fontSize: 10 },
+                { text: this.ourDetails.lineH, fontSize: 10 },
             ]
         }
         return footer
+    }
+
+    private setOurDetails(settingsService: SettingsService): void {
+        settingsService.getSingle(1).subscribe(result => {
+            this.ourDetails = result
+        })
     }
 
     //#endregion
