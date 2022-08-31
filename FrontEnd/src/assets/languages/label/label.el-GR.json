@@ -83,7 +83,7 @@
             },
             {
                 "id": "headerNetPrice",
-                "description": "Καθαρή αξία"
+                "description": "Αξία προ ΦΠΑ"
             },
             {
                 "id": "headerGrossPrice",
@@ -193,10 +193,6 @@
                 "description": "Εμφανιζόμενο όνομα"
             },
             {
-                "id": "item",
-                "description": "Συνδεδεμένος πελάτης"
-            },
-            {
                 "id": "email",
                 "description": "Email"
             },
@@ -248,10 +244,6 @@
             {
                 "id": "confirmPassword",
                 "description": "Επιβεβαίωση κωδικού"
-            },
-            {
-                "id": "item",
-                "description": "Συνδεδεμένος πελάτης"
             },
             {
                 "id": "isAdmin",
@@ -335,125 +327,6 @@
             {
                 "id": "saveButton",
                 "description": "ΑΠΟΘΗΚΕΥΣΗ"
-            }
-        ]
-    },
-    {
-        "feature": "dialog",
-        "labels": [
-            {
-                "id": "header",
-                "description": "Επιβεβαίωση"
-            },
-            {
-                "id": "okButton",
-                "description": "OK"
-            },
-            {
-                "id": "noButton",
-                "description": "ΑΚΥΡΟ"
-            }
-        ]
-    },
-    {
-        "feature": "index",
-        "labels": [
-            {
-                "id": "ports",
-                "description": "Λιμάνια"
-            },
-            {
-                "id": "portId",
-                "description": "Id"
-            },
-            {
-                "id": "portDescription",
-                "description": "Περιγραφή"
-            },
-            {
-                "id": "destinations",
-                "description": "Προορισμοί"
-            },
-            {
-                "id": "destinationId",
-                "description": "Id"
-            },
-            {
-                "id": "destinationDescription",
-                "description": "Περιγραφή"
-            },
-            {
-                "id": "customers",
-                "description": "Πελάτες"
-            },
-            {
-                "id": "customerId",
-                "description": "Id"
-            },
-            {
-                "id": "customerDescription",
-                "description": "Επωνυμία"
-            },
-            {
-                "id": "pickupPoints",
-                "description": "Σημεία παραλαβής"
-            },
-            {
-                "id": "pickupPointId",
-                "description": "Id"
-            },
-            {
-                "id": "pickupPointDescription",
-                "description": "Περιγραφή"
-            },
-            {
-                "id": "exactPoint",
-                "description": "Ακριβές σημείο"
-            },
-            {
-                "id": "time",
-                "description": "Ώρα"
-            },
-            {
-                "id": "selectButton",
-                "description": "Επιλογή"
-            },
-            {
-                "id": "nationalityDescription",
-                "description": "Εθνικότητα"
-            },
-            {
-                "id": "genderDescription",
-                "description": "Φύλο"
-            }
-        ]
-    },
-    {
-        "feature": "theme",
-        "labels": [
-            {
-                "id": "blue",
-                "description": "Μπλέ"
-            },
-            {
-                "id": "gray",
-                "description": "Γκρί"
-            },
-            {
-                "id": "green",
-                "description": "Πράσινο"
-            },
-            {
-                "id": "olive",
-                "description": "Λαδί"
-            },
-            {
-                "id": "orange",
-                "description": "Πορτοκαλί"
-            },
-            {
-                "id": "red",
-                "description": "Κόκκινο"
             }
         ]
     },

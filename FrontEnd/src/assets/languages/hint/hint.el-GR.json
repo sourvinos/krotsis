@@ -25,14 +25,6 @@
             "description": "Τα κενά απαγορεύονται"
         },
         {
-            "id": "otherErrors",
-            "description": "Το πεδίο έχει λάθη"
-        },
-        {
-            "id": "invalidPeriod",
-            "description": "Το διάστημα δεν είναι σωστό"
-        },
-        {
             "id": "containsIllegalCharacters",
             "description": "Επιτρέπονται μόνο αλφαριθμητικοί χαρακτήρες ή υπογραμμίσεις (κάτω παύλα)."
         },

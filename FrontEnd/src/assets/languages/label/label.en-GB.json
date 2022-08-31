@@ -58,11 +58,11 @@
             },
             {
                 "id": "headerNetPrice",
-                "description": "Net Price"
+                "description": "Price excluding VAT"
             },
             {
                 "id": "headerGrossPrice",
-                "description": "Price inc. VAT"
+                "description": "Price including VAT"
             },
             {
                 "id": "newButton",
@@ -83,11 +83,11 @@
             },
             {
                 "id": "headerNetPrice",
-                "description": "Net Amount"
+                "description": "Price excluding VAT"
             },
             {
                 "id": "headerGrossPrice",
-                "description": "Amount including VAT"
+                "description": "Price including VAT"
             },
             {
                 "id": "printButton",
@@ -193,10 +193,6 @@
                 "description": "Displayed name"
             },
             {
-                "id": "item",
-                "description": "Linked Customer"
-            },
-            {
                 "id": "email",
                 "description": "Email"
             },
@@ -248,10 +244,6 @@
             {
                 "id": "confirmPassword",
                 "description": "Confirm password"
-            },
-            {
-                "id": "item",
-                "description": "Linked Customer"
             },
             {
                 "id": "isAdmin",
@@ -339,121 +331,47 @@
         ]
     },
     {
-        "feature": "dialog",
+        "feature": "settingsForm",
         "labels": [
             {
                 "id": "header",
-                "description": "Important:"
+                "description": "Settings"
             },
             {
-                "id": "okButton",
-                "description": "OK"
+                "id": "lineA",
+                "description": "Line 1"
             },
             {
-                "id": "noButton",
-                "description": "CANCEL"
-            }
-        ]
-    },
-    {
-        "feature": "index",
-        "labels": [
-            {
-                "id": "ports",
-                "description": "Ports"
+                "id": "lineB",
+                "description": "Line 2"
             },
             {
-                "id": "portId",
-                "description": "Id"
+                "id": "lineC",
+                "description": "Line 3"
             },
             {
-                "id": "portDescription",
-                "description": "Description"
+                "id": "lineD",
+                "description": "Line 4"
             },
             {
-                "id": "destinations",
-                "description": "Destinations"
+                "id": "lineE",
+                "description": "Line 5"
             },
             {
-                "id": "destinationId",
-                "description": "Id"
+                "id": "lineF",
+                "description": "Line 6"
             },
             {
-                "id": "destinationDescription",
-                "description": "Description"
+                "id": "lineG",
+                "description": "Line 7"
             },
             {
-                "id": "customers",
-                "description": "Customers"
+                "id": "lineH",
+                "description": "Line 8"
             },
             {
-                "id": "customerId",
-                "description": "Id"
-            },
-            {
-                "id": "customerDescription",
-                "description": "Name"
-            },
-            {
-                "id": "pickupPoints",
-                "description": "Pickup points"
-            },
-            {
-                "id": "pickupPointId",
-                "description": "Id"
-            },
-            {
-                "id": "pickupPointDescription",
-                "description": "Description"
-            },
-            {
-                "id": "exactPoint",
-                "description": "Exact point"
-            },
-            {
-                "id": "time",
-                "description": "Time"
-            },
-            {
-                "id": "selectButton",
-                "description": "Select"
-            },
-            {
-                "id": "nationalityDescription",
-                "description": "Nationality"
-            },
-            {
-                "id": "genderDescription",
-                "description": "Gender"
-            }
-        ]
-    },
-    {
-        "feature": "theme",
-        "labels": [
-            {
-                "id": "blue",
-                "description": "Blue"
-            },
-            {
-                "id": "gray",
-                "description": "Gray"
-            },
-            {
-                "id": "green",
-                "description": "Green"
-            },
-            {
-                "id": "olive",
-                "description": "Olive"
-            },
-            {
-                "id": "orange",
-                "description": "Orange"
-            },
-            {
-                "id": "red",
-                "description": "Red"
+                "id": "saveButton",
+                "description": "SAVE"
             }
         ]
     }

@@ -25,14 +25,6 @@
             "description": "Spaces are not allowed"
         },
         {
-            "id": "otherErrors",
-            "description": "This field has errors"
-        },
-        {
-            "id": "invalidPeriod",
-            "description": "The period is not valid"
-        },
-        {
             "id": "containsIllegalCharacters",
             "description": "Only alphanumeric characters or underscores are allowed."
         },
