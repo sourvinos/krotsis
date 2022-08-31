@@ -8,8 +8,8 @@ export const environment = {
         secondary: 'ΕΛΑΣΤΙΚΑ - ΖΑΝΤΕΣ'
     },
     clientUrl: 'https://localhost:4200',
-    defaultLanguage: 'en-GB',
-    defaultTheme: 'light',
+    defaultLanguage: 'el-GR',
+    defaultTheme: 'dark',
     idleSettings: {
         admins: {
             idle: 840,

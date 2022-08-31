@@ -6,7 +6,7 @@ namespace API.Infrastructure.Extensions {
 
         public static void AddCors(IServiceCollection services) {
             services.AddCors(x => x.AddDefaultPolicy(builder => builder
-                .WithOrigins("https://localhost:4200", "https://www.krotsis.com", "https://localhost:1701", "http://timezones-001-site1.ftempurl.com")
+                .WithOrigins("https://localhost:4200", "https://localhost:443")
                 .AllowAnyHeader()
                 .AllowCredentials()
                 .AllowAnyMethod()));

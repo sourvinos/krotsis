@@ -36,8 +36,8 @@ namespace API {
             ConfigureServices(services);
         }
 
-        public void ConfigureProductionLiveServices(IServiceCollection services) {
-            services.AddDbContextFactory<AppDbContext>(options => options.UseMySql(Configuration.GetConnectionString("ProductionLive"), new MySqlServerVersion(new Version(8, 0, 19)), builder =>
+        public void ConfigureLocalProductionServices(IServiceCollection services) {
+            services.AddDbContextFactory<AppDbContext>(options => options.UseMySql(Configuration.GetConnectionString("LocalProduction"), new MySqlServerVersion(new Version(8, 0, 19)), builder =>
                 builder.EnableStringComparisonTranslations()));
             ConfigureServices(services);
         }
