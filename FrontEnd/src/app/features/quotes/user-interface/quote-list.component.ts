@@ -3,19 +3,18 @@ import { Component } from '@angular/core'
 import { Subject } from 'rxjs'
 import { formatNumber } from '@angular/common'
 // Custom
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { ButtonClickService } from 'src/app/shared/services/button-click.service'
-import { DialogService } from 'src/app/shared/services/dialog.service'
 import { Item } from '../classes/models/item'
 import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-shortcuts.service'
 import { ListResolved } from '../../../shared/classes/list-resolved'
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service'
+import { MessageHintService } from 'src/app/shared/services/messages-hint.service'
 import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
 import { MessageSnackbarService } from 'src/app/shared/services/messages-snackbar.service'
 import { ModalActionResultService } from 'src/app/shared/services/modal-action-result.service'
 import { QuotePDFService } from '../classes/services/quote-pdf.service'
 import { environment } from 'src/environments/environment'
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
-import { MessageHintService } from 'src/app/shared/services/messages-hint.service'
 
 @Component({
     selector: 'quote-list',
@@ -40,20 +39,7 @@ export class QuoteListComponent {
 
     //#endregion
 
-    constructor(
-        private activatedRoute: ActivatedRoute,
-        private buttonClickService: ButtonClickService,
-        private dialogService: DialogService,
-        private formBuilder: FormBuilder,
-        private keyboardShortcutsService: KeyboardShortcuts,
-        private localStorageService: LocalStorageService,
-        private messageHintService: MessageHintService,
-        private messageLabelService: MessageLabelService,
-        private messageSnackbarService: MessageSnackbarService,
-        private modalActionResultService: ModalActionResultService,
-        private quotePdfService: QuotePDFService,
-        private router: Router
-    ) { }
+    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private keyboardShortcutsService: KeyboardShortcuts, private localStorageService: LocalStorageService, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private modalActionResultService: ModalActionResultService, private quotePdfService: QuotePDFService, private router: Router) { }
 
     //#region lifecycle hooks
 
@@ -75,7 +61,7 @@ export class QuoteListComponent {
 
     public doReportTasks(): void {
         if (this.selectedRecords.length == 0) {
-            this.dialogService.open(this.messageSnackbarService.noRecordsSelected(), 'error', ['ok'])
+            this.modalActionResultService.open(this.messageSnackbarService.noRecordsSelected(), 'error', ['ok'])
         } else {
             this.createPdf()
         }

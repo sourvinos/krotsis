@@ -7,14 +7,13 @@ import { Title } from '@angular/platform-browser'
 // Custom
 import { AccountService } from '../../../shared/services/account.service'
 import { ButtonClickService } from 'src/app/shared/services/button-click.service'
-import { DialogService } from 'src/app/shared/services/dialog.service'
 import { HelperService, indicate } from 'src/app/shared/services/helper.service'
 import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.directive'
-import { InteractionService } from 'src/app/shared/services/interaction.service'
 import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-shortcuts.service'
 import { MessageHintService } from 'src/app/shared/services/messages-hint.service'
 import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
 import { MessageSnackbarService } from 'src/app/shared/services/messages-snackbar.service'
+import { ModalActionResultService } from 'src/app/shared/services/modal-action-result.service'
 import { environment } from 'src/environments/environment'
 
 @Component({
@@ -41,8 +40,7 @@ export class LoginFormComponent {
 
     //#endregion
 
-    constructor(private accountService: AccountService, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private idle: Idle, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private router: Router, private titleService: Title,) { }
-
+    constructor(private accountService: AccountService, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private helperService: HelperService, private idle: Idle, private keyboardShortcutsService: KeyboardShortcuts, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private modalActionResultService: ModalActionResultService, private router: Router, private titleService: Title) { }
     //#region lifecycle hooks
 
     ngOnInit(): void {
@@ -131,10 +129,10 @@ export class LoginFormComponent {
     private showError(error: any): void {
         switch (error.status) {
             case 0:
-                this.dialogService.open(this.messageSnackbarService.noContactWithServer(), 'error', ['ok'])
+                this.modalActionResultService.open(this.messageSnackbarService.noContactWithServer(), 'error', ['ok'])
                 break
             case 401:
-                this.dialogService.open(this.messageSnackbarService.authenticationFailed(), 'error', ['ok'])
+                this.modalActionResultService.open(this.messageSnackbarService.authenticationFailed(), 'error', ['ok'])
                 break
         }
     }

@@ -6,9 +6,7 @@ import { map, startWith } from 'rxjs/operators'
 // Custom
 import { AccountService } from 'src/app/shared/services/account.service'
 import { ButtonClickService } from 'src/app/shared/services/button-click.service'
-import { DialogService } from 'src/app/shared/services/dialog.service'
 import { EditUserViewModel } from './../../classes/view-models/edit-user-view-model'
-import { EmojiService } from 'src/app/shared/services/emoji.service'
 import { FormResolved } from 'src/app/shared/classes/form-resolved'
 import { HelperService, indicate } from 'src/app/shared/services/helper.service'
 import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.directive'
@@ -49,7 +47,7 @@ export class EditUserFormComponent {
 
     //#endregion
 
-    constructor(private accountService: AccountService, private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private dialogService: DialogService, private emojiService: EmojiService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private localStorageService: LocalStorageService, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private modalActionResultService: ModalActionResultService, private router: Router, private userService: UserService) {
+    constructor(private accountService: AccountService, private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private localStorageService: LocalStorageService, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private modalActionResultService: ModalActionResultService, private router: Router, private userService: UserService) {
         this.initForm()
         this.getRecord().then(() => {
             this.populateFields(this.user)
@@ -71,7 +69,7 @@ export class EditUserFormComponent {
 
     canDeactivate(): boolean {
         if (this.form.dirty) {
-            this.dialogService.open(this.messageSnackbarService.askConfirmationToAbortEditing(), 'warning', ['abort', 'ok']).subscribe(response => {
+            this.modalActionResultService.open(this.messageSnackbarService.askConfirmationToAbortEditing(), 'warning', ['abort', 'ok']).subscribe(response => {
                 if (response) {
                     this.resetForm()
                     this.goBack()
@@ -102,10 +100,10 @@ export class EditUserFormComponent {
     public changePassword(): void {
         this.accountService.getConnectedUserId().subscribe(response => {
             if (response.userId != this.form.value.id) {
-                this.dialogService.open(this.messageSnackbarService.passwordCanBeChangedOnlyByAccountOwner(), 'error', ['ok'])
+                this.modalActionResultService.open(this.messageSnackbarService.passwordCanBeChangedOnlyByAccountOwner(), 'error', ['ok'])
             } else {
                 if (this.form.dirty) {
-                    this.dialogService.open(this.messageSnackbarService.formIsDirty(), 'warning', ['abort', 'ok']).subscribe(response => {
+                    this.modalActionResultService.open(this.messageSnackbarService.formIsDirty(), 'warning', ['abort', 'ok']).subscribe(response => {
                         if (response) {
                             this.onSave(false).then(() => {
                                 this.resetForm()
@@ -129,7 +127,7 @@ export class EditUserFormComponent {
     }
 
     public onDelete(): void {
-        this.dialogService.open(this.messageSnackbarService.warning(), 'warning', ['abort', 'ok']).subscribe(response => {
+        this.modalActionResultService.open(this.messageSnackbarService.warning(), 'warning', ['abort', 'ok']).subscribe(response => {
             if (response) {
                 this.userService.delete(this.form.value.id).pipe(indicate(this.isLoading)).subscribe({
                     complete: () => {
