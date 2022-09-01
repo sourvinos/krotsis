@@ -5,10 +5,8 @@ import { firstValueFrom, Observable, Subject } from 'rxjs'
 import { takeUntil } from 'rxjs/operators'
 // Custom
 import { AccountService } from 'src/app/shared/services/account.service'
-import { HelperService } from 'src/app/shared/services/helper.service'
 import { InteractionService } from 'src/app/shared/services/interaction.service'
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service'
-import { MessageCalendarService } from 'src/app/shared/services/messages-calendar.service'
 import { MessageHintService } from 'src/app/shared/services/messages-hint.service'
 import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
 import { MessageMenuService } from 'src/app/shared/services/messages-menu.service'
@@ -31,7 +29,7 @@ export class TopMenuComponent {
 
     //#endregion
 
-    constructor(private accountService: AccountService, private helperService: HelperService, private interactionService: InteractionService, private localStorageService: LocalStorageService, private messageCalendarService: MessageCalendarService, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private messageMenuService: MessageMenuService, private messageSnackbarService: MessageSnackbarService, private router: Router) { }
+    constructor(private accountService: AccountService, private interactionService: InteractionService, private localStorageService: LocalStorageService, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private messageMenuService: MessageMenuService, private messageSnackbarService: MessageSnackbarService, private router: Router) { }
 
     //#region lifecycle hooks
 
@@ -49,18 +47,6 @@ export class TopMenuComponent {
 
     private createMenu(): void {
         this.menu = [
-            {
-                label: this.getLabel('dashboard'),
-                icon: 'fas fa-server',
-                routerLink: ['reservations'],
-                visible: this.isUserLoggedIn()
-            },
-            {
-                label: this.getLabel('schedule'),
-                icon: 'fas fa-calendar',
-                routerLink: ['calendar-schedule'],
-                visible: this.isUserLoggedIn()
-            },
             {
                 label: this.getUserDisplayname(),
                 icon: 'fas fa-user-alt', visible: this.isUserLoggedIn(),
@@ -157,7 +143,6 @@ export class TopMenuComponent {
     }
 
     private loadMessages(): void {
-        this.messageCalendarService.getMessages()
         this.messageHintService.getMessages()
         this.messageLabelService.getMessages()
         this.messageMenuService.getMessages()
