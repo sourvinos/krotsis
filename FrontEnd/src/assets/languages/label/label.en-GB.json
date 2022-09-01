@@ -374,5 +374,18 @@
                 "description": "SAVE"
             }
         ]
+    },
+    {
+        "feature": "modal-action",
+        "labels": [
+            {
+                "id": "abort",
+                "description": "CANCEL"
+            },
+            {
+                "id": "ok",
+                "description": "OK"
+            }
+        ]
     }
 ]

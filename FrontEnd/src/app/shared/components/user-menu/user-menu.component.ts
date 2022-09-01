@@ -8,7 +8,7 @@ import { InteractionService } from 'src/app/shared/services/interaction.service'
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service'
 import { MessageMenuService } from '../../services/messages-menu.service'
 import { MessageSnackbarService } from '../../services/messages-snackbar.service'
-import { ModalActionResultService } from '../../services/modal-action-result.service'
+import { ModalActionService } from '../../services/modal-action.service'
 import { environment } from 'src/environments/environment'
 
 @Component({
@@ -27,7 +27,7 @@ export class UserMenuComponent {
 
     //#endregion
 
-    constructor(private accountService: AccountService, private helperService: HelperService, private interactionService: InteractionService, private localStorageService: LocalStorageService, private messageMenuService: MessageMenuService, private messageSnackbarService: MessageSnackbarService, private modalActionResultService: ModalActionResultService, private router: Router) { }
+    constructor(private accountService: AccountService, private helperService: HelperService, private interactionService: InteractionService, private localStorageService: LocalStorageService, private messageMenuService: MessageMenuService, private messageSnackbarService: MessageSnackbarService, private modalActionResultService: ModalActionService, private router: Router) { }
 
     //#region listeners
 

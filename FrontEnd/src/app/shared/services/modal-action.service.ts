@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core'
 import { MatDialog } from '@angular/material/dialog'
 import { Observable } from 'rxjs'
 // Custom
-import { ModalActionResultComponent } from '../components/modal-action-result/modal-action-result.component'
+import { ModalActionComponent } from '../components/modal-action/modal-action.component'
 
 @Injectable({ providedIn: 'root' })
 
-export class ModalActionResultService {
+export class ModalActionService {
 
     //#region variables
 
@@ -20,7 +20,7 @@ export class ModalActionResultService {
     //#region public methods
 
     public open(message: string, iconStyle: string, actions: string[]): Observable<boolean> {
-        this.response = this.dialog.open(ModalActionResultComponent, {
+        this.response = this.dialog.open(ModalActionComponent, {
             height: '30rem',
             width: '30rem',
             data: {

@@ -12,7 +12,7 @@ import { ListNoResultsComponent } from '../components/list-no-results/list-no-re
 import { LoadingSpinnerComponent } from '../components/loading-spinner/loading-spinner.component'
 import { LogoComponent } from '../components/logo/logo.component'
 import { MaterialModule } from './material.module'
-import { ModalActionResultComponent } from '../components/modal-action-result/modal-action-result.component'
+import { ModalActionComponent } from '../components/modal-action/modal-action.component'
 import { PrimeNgModule } from './primeng.module'
 import { SafeStylePipe } from '../pipes/safeStyle.pipe'
 import { ThemeMenuComponent } from '../components/theme-menu/theme-menu.component'
@@ -27,7 +27,7 @@ import { ThemeMenuComponent } from '../components/theme-menu/theme-menu.componen
         ListNoResultsComponent,
         LoadingSpinnerComponent,
         LogoComponent,
-        ModalActionResultComponent,
+        ModalActionComponent,
         SafeStylePipe,
         ThemeMenuComponent
     ],
@@ -55,7 +55,7 @@ import { ThemeMenuComponent } from '../components/theme-menu/theme-menu.componen
     ],
     entryComponents: [
         DialogAlertComponent,
-        ModalActionResultComponent
+        ModalActionComponent
     ]
 })
 

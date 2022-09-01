@@ -5,22 +5,22 @@ import { MessageLabelService } from '../../services/messages-label.service'
 
 @Component({
     selector: 'modal-action-result',
-    templateUrl: './modal-action-result.component.html',
-    styleUrls: ['./modal-action-result.component.css']
+    templateUrl: './modal-action.component.html',
+    styleUrls: ['./modal-action.component.css']
 })
 
-export class ModalActionResultComponent {
+export class ModalActionComponent {
 
     //#region variables
 
-    private feature = 'modal-action-result'
+    private feature = 'modal-action'
     public content: string
     public iconStyle: any
     public titleColor = ''
 
     //#endregion
 
-    constructor(@Inject(MAT_DIALOG_DATA) public data: any, private dialogRef: MatDialogRef<ModalActionResultComponent>, private messageLabelService: MessageLabelService) {
+    constructor(@Inject(MAT_DIALOG_DATA) public data: any, private dialogRef: MatDialogRef<ModalActionComponent>, private messageLabelService: MessageLabelService) {
         this.iconStyle = data.iconStyle
     }
 

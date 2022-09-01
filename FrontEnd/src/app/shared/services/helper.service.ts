@@ -4,7 +4,7 @@ import { defer, finalize, Observable, Subject } from 'rxjs'
 // Custom
 import { LocalStorageService } from './local-storage.service'
 import { MessageCalendarService } from 'src/app/shared/services/messages-calendar.service'
-import { ModalActionResultService } from './modal-action-result.service'
+import { ModalActionService } from './modal-action.service'
 import { environment } from 'src/environments/environment'
 
 export function prepare<T>(callback: () => void): (source: Observable<T>) => Observable<T> {
@@ -25,7 +25,7 @@ export function indicate<T>(indicator: Subject<boolean>): (source: Observable<T>
 
 export class HelperService {
 
-    constructor(private localStorageService: LocalStorageService, private messageCalendarService: MessageCalendarService, private modalActionResultService: ModalActionResultService, private router: Router) { }
+    constructor(private localStorageService: LocalStorageService, private messageCalendarService: MessageCalendarService, private modalActionResultService: ModalActionService, private router: Router) { }
 
     //#region public methods
 

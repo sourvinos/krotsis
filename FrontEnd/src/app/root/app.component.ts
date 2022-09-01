@@ -7,7 +7,7 @@ import { AccountService } from '../shared/services/account.service'
 import { InteractionService } from '../shared/services/interaction.service'
 import { LocalStorageService } from '../shared/services/local-storage.service'
 import { MessageSnackbarService } from '../shared/services/messages-snackbar.service'
-import { ModalActionResultService } from '../shared/services/modal-action-result.service'
+import { ModalActionService } from '../shared/services/modal-action.service'
 import { environment } from 'src/environments/environment'
 import { routeAnimation } from '../shared/animations/animations'
 
@@ -27,7 +27,7 @@ export class AppComponent {
 
     //#endregion
 
-    constructor(private accountService: AccountService, private localStorageService: LocalStorageService, private changeDetector: ChangeDetectorRef, private contexts: ChildrenOutletContexts, private idle: Idle, private interactionService: InteractionService, private messageSnackbarService: MessageSnackbarService, private modalActionResultService: ModalActionResultService, private router: Router) {
+    constructor(private accountService: AccountService, private localStorageService: LocalStorageService, private changeDetector: ChangeDetectorRef, private contexts: ChildrenOutletContexts, private idle: Idle, private interactionService: InteractionService, private messageSnackbarService: MessageSnackbarService, private modalActionResultService: ModalActionService, private router: Router) {
         this.initIdleService()
         this.subscribeToInteractionService()
         this.router.events.subscribe((routerEvent) => {

@@ -374,5 +374,18 @@
                 "description": "ΑΠΟΘΗΚΕΥΣΗ"
             }
         ]
+    },
+    {
+        "feature": "modal-action",
+        "labels": [
+            {
+                "id": "abort",
+                "description": "ΑΚΥΡΟ"
+            },
+            {
+                "id": "ok",
+                "description": "OK"
+            }
+        ]
     }
 ]

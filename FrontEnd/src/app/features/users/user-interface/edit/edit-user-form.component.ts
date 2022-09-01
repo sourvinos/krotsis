@@ -15,7 +15,7 @@ import { LocalStorageService } from 'src/app/shared/services/local-storage.servi
 import { MessageHintService } from 'src/app/shared/services/messages-hint.service'
 import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
 import { MessageSnackbarService } from 'src/app/shared/services/messages-snackbar.service'
-import { ModalActionResultService } from 'src/app/shared/services/modal-action-result.service'
+import { ModalActionService } from 'src/app/shared/services/modal-action.service'
 import { UpdateUserDto } from '../../classes/dtos/update-user-dto'
 import { UserService } from '../../classes/services/user.service'
 import { ValidationService } from '../../../../shared/services/validation.service'
@@ -47,7 +47,7 @@ export class EditUserFormComponent {
 
     //#endregion
 
-    constructor(private accountService: AccountService, private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private localStorageService: LocalStorageService, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private modalActionResultService: ModalActionResultService, private router: Router, private userService: UserService) {
+    constructor(private accountService: AccountService, private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private localStorageService: LocalStorageService, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private modalActionResultService: ModalActionService, private router: Router, private userService: UserService) {
         this.initForm()
         this.getRecord().then(() => {
             this.populateFields(this.user)
@@ -65,20 +65,6 @@ export class EditUserFormComponent {
     ngOnDestroy(): void {
         this.cleanup()
         this.unlisten()
-    }
-
-    canDeactivate(): boolean {
-        if (this.form.dirty) {
-            this.modalActionResultService.open(this.messageSnackbarService.askConfirmationToAbortEditing(), 'warning', ['abort', 'ok']).subscribe(response => {
-                if (response) {
-                    this.resetForm()
-                    this.goBack()
-                    return true
-                }
-            })
-        } else {
-            return true
-        }
     }
 
     //#endregion
