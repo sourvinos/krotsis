@@ -32,7 +32,7 @@ const appRoutes: Routes = [
         RouterModule.forRoot(appRoutes, {
             onSameUrlNavigation: 'reload',
             preloadingStrategy: NoPreloading,
-            useHash: true,
+            useHash: false,
         })
     ],
     exports: [
