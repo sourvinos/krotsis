@@ -117,7 +117,7 @@ export class EditUserFormComponent {
             if (response) {
                 this.userService.delete(this.form.value.id).pipe(indicate(this.isLoading)).subscribe({
                     complete: () => {
-                        this.helperService.doPostSaveFormTasks(this.messageSnackbarService.success(), 'success', this.parentUrl, this.form)
+                        this.helperService.doPostSaveFormTasks(this.messageSnackbarService.success(), 'success', this.parentUrl, this.form, true, true)
                     },
                     error: (errorFromInterceptor) => {
                         this.modalActionResultService.open(this.messageSnackbarService.filterResponse(errorFromInterceptor), 'error', ['ok'])
@@ -276,10 +276,10 @@ export class EditUserFormComponent {
     private saveRecord(user: UpdateUserDto, showResult: boolean): void {
         this.userService.update(user.id, user).pipe(indicate(this.isLoading)).subscribe({
             complete: () => {
-                showResult ? this.helperService.doPostSaveFormTasks(this.messageSnackbarService.success(), 'success', this.parentUrl, this.form) : null
+                showResult ? this.helperService.doPostSaveFormTasks(this.messageSnackbarService.success(), 'success', this.parentUrl, this.form, true, true) : null
             },
             error: (errorFromInterceptor) => {
-                this.helperService.doPostSaveFormTasks(this.messageSnackbarService.filterResponse(errorFromInterceptor), 'error', this.parentUrl, this.form, false)
+                this.helperService.doPostSaveFormTasks(this.messageSnackbarService.filterResponse(errorFromInterceptor), 'error', this.parentUrl, this.form, false, false)
             }
         })
     }

@@ -193,10 +193,10 @@ export class SettingsFormComponent {
     private saveRecord(settings: Settings): void {
         this.settingsService.save(settings).pipe(indicate(this.isLoading)).subscribe({
             complete: () => {
-                this.helperService.doPostSaveFormTasks(this.messageSnackbarService.success(), 'success', this.parentUrl, this.form)
+                this.helperService.doPostSaveFormTasks(this.messageSnackbarService.success(), 'success', this.parentUrl, this.form, true, true)
             },
             error: (errorFromInterceptor) => {
-                this.helperService.doPostSaveFormTasks(this.messageSnackbarService.filterResponse(errorFromInterceptor), 'error', this.parentUrl, this.form, false)
+                this.helperService.doPostSaveFormTasks(this.messageSnackbarService.filterResponse(errorFromInterceptor), 'error', this.parentUrl, this.form, false, false)
             }
         })
     }

@@ -64,6 +64,19 @@ export class ItemFormComponent {
 
     //#region public methods
 
+    public doCalculations(focusField: string): void {
+        const vatPercent = this.form.value.vatPercent / 100
+        if (focusField == 'netPrice') {
+            const vatAmount = this.form.value.netPrice * vatPercent
+            const grossPrice = parseFloat(this.form.value.netPrice) + vatAmount
+            this.form.patchValue({ grossPrice: grossPrice.toFixed(2) })
+        }
+        if (focusField == 'grossPrice') {
+            const netPrice = this.form.value.grossPrice / (1 + (vatPercent))
+            this.form.patchValue({ netPrice: netPrice.toFixed(2) })
+        }
+    }
+
     public getHint(id: string, minmax = 0): string {
         return this.messageHintService.getDescription(id, minmax)
     }
@@ -77,7 +90,7 @@ export class ItemFormComponent {
             if (response) {
                 this.itemService.delete(this.form.value.id).pipe(indicate(this.isLoading)).subscribe({
                     complete: () => {
-                        this.helperService.doPostSaveFormTasks(this.messageSnackbarService.success(), 'success', this.parentUrl, this.form)
+                        this.helperService.doPostSaveFormTasks(this.messageSnackbarService.success(), 'success', this.parentUrl, this.form, true, true)
                     },
                     error: (errorFromInterceptor) => {
                         this.modalActionResultService.open(this.messageSnackbarService.filterResponse(errorFromInterceptor), 'error', ['ok'])
@@ -154,9 +167,9 @@ export class ItemFormComponent {
         this.form = this.formBuilder.group({
             id: 0,
             description: ['', [Validators.required, Validators.maxLength(128)]],
-            vatPercent: ['', [Validators.required, Validators.maxLength(3)]],
-            netPrice: ['', [Validators.required, Validators.maxLength(6)]],
-            grossPrice: ['', [Validators.required, Validators.maxLength(6)]],
+            vatPercent: [0, [Validators.required, Validators.maxLength(3)]],
+            netPrice: [0, [Validators.required, Validators.maxLength(10)]],
+            grossPrice: [0, [Validators.required, Validators.maxLength(10)]],
             isActive: true
         })
     }
@@ -166,8 +179,8 @@ export class ItemFormComponent {
             id: result.id,
             description: result.description,
             vatPercent: result.vatPercent,
-            netPrice: result.netPrice,
-            grossPrice: result.grossPrice,
+            netPrice: result.netPrice.toFixed(2),
+            grossPrice: result.grossPrice.toFixed(2),
             isActive: result.isActive
         })
     }
@@ -179,10 +192,10 @@ export class ItemFormComponent {
     private saveRecord(item: ItemWriteDto): void {
         this.itemService.save(item).pipe(indicate(this.isLoading)).subscribe({
             complete: () => {
-                this.helperService.doPostSaveFormTasks(this.messageSnackbarService.success(), 'success', this.parentUrl, this.form)
+                this.helperService.doPostSaveFormTasks(this.messageSnackbarService.success(), 'success', this.parentUrl, this.form, true, true)
             },
             error: (errorFromInterceptor) => {
-                this.helperService.doPostSaveFormTasks(this.messageSnackbarService.filterResponse(errorFromInterceptor), 'error', this.parentUrl, this.form, false)
+                this.helperService.doPostSaveFormTasks(this.messageSnackbarService.filterResponse(errorFromInterceptor), 'error', this.parentUrl, this.form, false, false)
             }
         })
     }

@@ -16,6 +16,9 @@ using Microsoft.Extensions.DependencyInjection;
 
 // dotnet watch run --environment LocalDevelopment
 // dotnet publish /p:Configuration=Release /p:EnvironmentName=LocalProduction
+// dotnet tool install --global dotnet-ef
+// dotnet ef migrations add InitialCreate
+// dotnet ef database update
 
 namespace API {
 

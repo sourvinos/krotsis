@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router'
 import { DialogAlertComponent } from '../components/dialog-alert/dialog-alert.component'
 import { DisableToogleDirective } from '../directives/mat-slide-toggle.directive'
 import { HomeButtonAndTitleComponent } from '../components/home-button-and-title/home-button-and-title.component'
+import { InputDecimalDirective } from '../directives/input-decimal.directive'
 import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.directive'
 import { LanguageMenuComponent } from '../components/language-menu/language-menu.component'
 import { ListNoResultsComponent } from '../components/list-no-results/list-no-results.component'
@@ -22,6 +23,7 @@ import { ThemeMenuComponent } from '../components/theme-menu/theme-menu.componen
         DialogAlertComponent,
         DisableToogleDirective,
         HomeButtonAndTitleComponent,
+        InputDecimalDirective,
         InputTabStopDirective,
         LanguageMenuComponent,
         ListNoResultsComponent,
@@ -42,6 +44,7 @@ import { ThemeMenuComponent } from '../components/theme-menu/theme-menu.componen
         DisableToogleDirective,
         FormsModule,
         HomeButtonAndTitleComponent,
+        InputDecimalDirective,
         InputTabStopDirective,
         LanguageMenuComponent,
         ListNoResultsComponent,

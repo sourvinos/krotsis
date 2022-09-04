@@ -70,7 +70,7 @@ export class ForgotPasswordFormComponent {
                 this.helperService.doPostSaveFormTasks(this.messageSnackbarService.emailSent(), 'success', this.parentUrl, this.form, true, true)
             },
             error: () => {
-                this.helperService.doPostSaveFormTasks(this.messageSnackbarService.emailNotSent(), 'error', this.parentUrl, this.form)
+                this.helperService.doPostSaveFormTasks(this.messageSnackbarService.emailNotSent(), 'error', this.parentUrl, this.form, false, false)
             }
         })
     }

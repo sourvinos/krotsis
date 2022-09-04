@@ -16,11 +16,11 @@
                 <mat-error *ngIf="vatPercent.hasError('maxlength')">{{ getHint("maxLength", vatPercent.errors.maxlength.requiredLength) }}</mat-error>
             </mat-form-field>
             <mat-form-field>
-                <input [inputTabStop]="input" [placeholder]="getLabel('netPrice')" data-cy="netPrice" data-tabindex="3" formControlName="netPrice" id="netPrice" matInput>
+                <input (blur)="doCalculations('netPrice')" (keyup)="doCalculations('netPrice')" [inputTabStop]="input" [placeholder]="getLabel('netPrice')" data-cy="netPrice" data-tabindex="3" formControlName="netPrice" id="netPrice" inputDecimal matInput type="number">
                 <mat-error *ngIf="netPrice.hasError('maxlength')">{{ getHint("maxLength", netPrice.errors.maxlength.requiredLength) }}</mat-error>
             </mat-form-field>
             <mat-form-field>
-                <input [inputTabStop]="input" [placeholder]="getLabel('grossPrice')" data-cy="grossPrice" data-tabindex="4" formControlName="grossPrice" id="grossPrice" matInput>
+                <input (blur)="doCalculations('grossPrice')" (keyup)="doCalculations('grossPrice')" [inputTabStop]="input" [placeholder]="getLabel('grossPrice')" data-cy="grossPrice" data-tabindex="4" formControlName="grossPrice" id="grossPrice" inputDecimal matInput type="number">
                 <mat-error *ngIf="grossPrice.hasError('maxlength')">{{ getHint("maxLength", grossPrice.errors.maxlength.requiredLength) }}</mat-error>
             </mat-form-field>
             <mat-slide-toggle data-cy="isActive" formControlName="isActive">{{ getLabel("isActive") }}

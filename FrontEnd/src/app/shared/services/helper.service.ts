@@ -28,7 +28,7 @@ export class HelperService {
 
     //#region public methods
 
-    public doPostSaveFormTasks(message: string, iconType: string, returnUrl: string, form: any, formReset = true, goBack = true): Promise<any> {
+    public doPostSaveFormTasks(message: string, iconType: string, returnUrl: string, form: any, formReset: boolean, goBack: boolean): Promise<any> {
         const promise = new Promise((resolve) => {
             this.modalActionResultService.open(message, iconType, ['ok']).subscribe(() => {
                 formReset ? form.reset() : null
