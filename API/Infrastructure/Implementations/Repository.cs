@@ -18,9 +18,8 @@ namespace API.Infrastructure.Implementations {
         protected readonly AppDbContext context;
         private readonly ILogger<Repository<T>> logger;
 
-        public Repository(AppDbContext context, ILogger<Repository<T>> logger) {
+        public Repository(AppDbContext context) {
             this.context = context;
-            this.logger = logger;
         }
 
         public async Task<IEnumerable<T>> Get(Expression<Func<T, bool>> expression) {
