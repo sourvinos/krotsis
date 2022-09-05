@@ -1,4 +1,3 @@
-using API.Infrastructure.Classes;
 using AutoMapper;
 
 namespace API.Features.Items {
@@ -8,7 +7,6 @@ namespace API.Features.Items {
         public ItemMappingProfile() {
             CreateMap<Item, ItemListDto>();
             CreateMap<Item, ItemReadDto>();
-            CreateMap<Item, SimpleResource>();
             CreateMap<ItemWriteDto, Item>();
         }
 

@@ -13,7 +13,6 @@ namespace API.Infrastructure.Extensions {
             services.AddScoped<Token>();
             services.AddTransient<IItemRepository, ItemRepository>();
             services.AddTransient<ISettingsRepository, SettingsRepository>();
-            services.AddTransient<IDateTimeProvider, DateTimeProvider>();
         }
 
     }
