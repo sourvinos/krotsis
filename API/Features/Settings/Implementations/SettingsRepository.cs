@@ -1,12 +1,12 @@
 using API.Infrastructure.Classes;
 using API.Infrastructure.Implementations;
+using Microsoft.Extensions.Logging;
 
 namespace API.Features.Settings {
 
     public class SettingsRepository : Repository<Settings>, ISettingsRepository {
 
-        public SettingsRepository(AppDbContext appDbContext) : base(appDbContext) {
-        }
+        public SettingsRepository(AppDbContext appDbContext, ILogger<SettingsRepository> logger) : base(appDbContext, logger) { }
 
     }
 

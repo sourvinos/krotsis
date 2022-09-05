@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
@@ -8,15 +9,18 @@ using API.Infrastructure.Interfaces;
 using API.Infrastructure.Responses;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
+using Microsoft.Extensions.Logging;
 
 namespace API.Infrastructure.Implementations {
 
     public class Repository<T> : IRepository<T> where T : class {
 
         protected readonly AppDbContext context;
+        private readonly ILogger<Repository<T>> logger;
 
-        public Repository(AppDbContext context) {
+        public Repository(AppDbContext context, ILogger<Repository<T>> logger) {
             this.context = context;
+            this.logger = logger;
         }
 
         public async Task<IEnumerable<T>> Get(Expression<Func<T, bool>> expression) {
@@ -37,10 +41,14 @@ namespace API.Infrastructure.Implementations {
         }
 
         public void Create(T entity) {
+            var stopwatch = new Stopwatch();
+            stopwatch.Start();
             using var transaction = context.Database.BeginTransaction();
             context.Add(entity);
             Save();
             DisposeOrCommit(transaction);
+            stopwatch.Stop();
+            logger.LogInformation("Create completed in {}", stopwatch.ElapsedMilliseconds);
         }
 
         public void Update(T entity) {
