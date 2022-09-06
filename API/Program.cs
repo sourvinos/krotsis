@@ -1,6 +1,9 @@
+using API.Features.Items;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Serilog;
+using Serilog.Events;
+using Serilog.Filters;
 
 namespace API {
 
@@ -8,17 +11,18 @@ namespace API {
 
         public static void Main(string[] args) {
             Log.Logger = new LoggerConfiguration()
-                .WriteTo
-                    .File("Logs/log.txt",
-                        restrictedToMinimumLevel: Serilog.Events.LogEventLevel.Information,
-                        rollingInterval: RollingInterval.Day)
-                .WriteTo
-                    .File("Logs/errorlog.txt",
-                        restrictedToMinimumLevel: Serilog.Events.LogEventLevel.Warning,
-                        rollingInterval: RollingInterval.Day)
-                .WriteTo
-                    .Console()
-                    .CreateLogger();
+                .MinimumLevel.Information()
+                .WriteTo.Logger(x => x.MinimumLevel.Verbose()
+                    .WriteTo.Logger(x => x
+                        .WriteTo.Logger(x => x
+                            .Filter.ByIncludingOnly(Matching.FromSource<ItemsController>())
+                            .MinimumLevel.Verbose()
+                            .WriteTo.File("Logs/log.txt",
+                                restrictedToMinimumLevel: LogEventLevel.Information,
+                                rollingInterval: RollingInterval.Day))
+                    ))
+                .WriteTo.Console()
+                .CreateLogger();
             CreateHostBuilder(args).Build().Run();
         }
 

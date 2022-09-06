@@ -1,11 +1,9 @@
 ﻿using API.Features.Items;
 using API.Features.Settings;
 using API.Infrastructure.Auth;
-using EntityFramework.Exceptions.MySQL;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 
 namespace API.Infrastructure.Classes {
 
@@ -24,11 +22,6 @@ namespace API.Infrastructure.Classes {
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             base.OnModelCreating(modelBuilder);
             ApplyConfigurations(modelBuilder);
-        }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
-            optionsBuilder.UseLoggerFactory(LoggerFactory.Create(builder => builder.AddConsole()));
-            optionsBuilder.UseExceptionProcessor();
         }
 
         private static void ApplyConfigurations(ModelBuilder modelBuilder) {

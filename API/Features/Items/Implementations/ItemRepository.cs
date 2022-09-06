@@ -20,8 +20,6 @@ namespace API.Features.Items {
         }
 
         public async Task<IEnumerable<ItemListDto>> Get() {
-            logger.LogInformation("Looking good...");
-            logger.LogError("An error here...");
             List<Item> records = await context.Items
                 .OrderBy(x => x.Description)
                 .AsNoTracking()
