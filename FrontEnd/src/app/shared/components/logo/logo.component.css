@@ -14,7 +14,7 @@
     align-items: center;
     display: flex;
     flex-direction: column;
-    margin: 0.25rem 0 0 0.5rem;
+    margin: 0 0 0 0.5rem;
 }
 
 #header {
@@ -29,5 +29,4 @@
     color: var(--color-c) !important;
     font-family: var(--font-family-handbook);
     font-size: 1rem;
-    margin-top: -0.1875rem;
 }
