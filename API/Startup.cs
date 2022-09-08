@@ -17,7 +17,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 
 // dotnet watch run --environment LocalDevelopment
-// dotnet publish /p:Configuration=Release /p:EnvironmentName=LocalProduction
+// dotnet publish /p:Configuration=Release /p:EnvironmentName=LocalProduction -o "C:\Krotsis"
 // dotnet tool install --global dotnet-ef
 // dotnet ef migrations add InitialCreate
 // dotnet ef database update

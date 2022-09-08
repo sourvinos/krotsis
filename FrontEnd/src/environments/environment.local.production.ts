@@ -1,4 +1,4 @@
-// ng build --output-path="release" --configuration=local-production
+// ng build --output-path="c:\krotsis\wwwroot" --configuration=local-production
 
 export const environment = {
     apiUrl: 'https://app.krotsis.com/api',
