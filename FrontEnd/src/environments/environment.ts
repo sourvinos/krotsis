@@ -23,9 +23,9 @@ export const environment = {
     iconsDirectory: 'assets/images/icons/',
     isWideScreen: 1920,
     login: {
-        username: 'john',
-        email: 'johnsourvinos@hotmail.com',
-        password: 'ec11fc8c16db',
+        username: '',
+        email: '',
+        password: '',
         isHuman: true
     },
     production: false
