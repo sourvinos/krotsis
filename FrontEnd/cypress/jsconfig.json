@@ -3,5 +3,8 @@
         "types": [
             "cypress"
         ]
+    },
+    "angularCompilerOptions": {
+        "strictTemplates": true
     }
 }

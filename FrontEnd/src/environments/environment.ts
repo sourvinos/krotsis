@@ -26,7 +26,7 @@ export const environment = {
         username: '',
         email: '',
         password: '',
-        isHuman: true
+        noRobot: false
     },
     production: false
 }

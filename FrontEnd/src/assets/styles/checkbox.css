@@ -10,8 +10,7 @@
     cursor: pointer;
 }
 
-.styled-input-single label:before,
-.styled-input-single label:after {
+.styled-input-single label:before, .styled-input-single label:after {
     border-radius: 50%;
     content: "";
     position: absolute;

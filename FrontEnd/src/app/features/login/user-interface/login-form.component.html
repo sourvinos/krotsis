@@ -24,13 +24,12 @@
                 </button>
                 <mat-error *ngIf="password.hasError('required')">{{ getHint("required") }}</mat-error>
             </mat-form-field>
-            <div class="styled-input-container styled-input--square">
+            <div class="styled-input-square">
                 <div class="styled-input-single">
-                    <input type="checkbox" name="fieldset-6" id="noRobot" formControlName="isHuman">
-                    <label for="noRobot">{{ getLabel("noRobotCheckbox") }}</label>
+                    <input data-cy="no-robot" formControlName="noRobot" id="no-robot" type="checkbox">
+                    <label data-cy="no-robot-label" for="no-robot">{{ getLabel("noRobotCheckbox") }}</label>
                 </div>
             </div>
-            <!-- <mat-slide-toggle data-cy="isHuman" formControlName="isHuman">{{ getLabel("noRobotCheckbox") }}</mat-slide-toggle> -->
         </form>
         <p class="instructions" [class.hidden]=true>{{ form.value | json }} {{ form.valid }}</p>
     </div>

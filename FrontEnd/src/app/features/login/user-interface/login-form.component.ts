@@ -118,7 +118,7 @@ export class LoginFormComponent {
         this.form = this.formBuilder.group({
             username: [environment.login.username, Validators.required],
             password: [environment.login.password, Validators.required],
-            isHuman: [environment.login.isHuman, Validators.requiredTrue]
+            noRobot: [environment.login.noRobot, Validators.requiredTrue]
         })
     }
 

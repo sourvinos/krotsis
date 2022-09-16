@@ -7,8 +7,6 @@
         "esModuleInterop": true,
         "experimentalDecorators": true,
         "importHelpers": true,
-        "resolveJsonModule": true,
-        "strict": false,
         "lib": [
             "es2018",
             "dom"
@@ -16,12 +14,17 @@
         "module": "esnext",
         "moduleResolution": "node",
         "outDir": "./dist/out-tsc",
+        "resolveJsonModule": true,
         "sourceMap": true,
+        "strict": false,
         "target": "es2015",
-        "types": [],
         "typeRoots": [
             "node_modules/@types"
         ],
+        "types": [
+            "cypress",
+            "cypress-localstorage-commands"
+        ]
     },
     "angularCompilerOptions": {
         "fullTemplateTypeCheck": true,
