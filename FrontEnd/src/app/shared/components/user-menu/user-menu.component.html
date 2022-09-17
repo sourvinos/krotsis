@@ -1,5 +1,5 @@
 <div *ngIf="loginStatus | async">
-    <div id="user-menu">
+    <div data-cy='user-menu' id="user-menu">
         <ul>
             <li>
                 <button>
@@ -9,7 +9,7 @@
                 </button>
                 <ul class="sub-menu" (click)="hideMenu()">
                     <button class="hoverable" (click)="editRecord()"><img width="20px" [src]="getIcon('edit-account')"><span>{{ getLabel('my-account') }}</span></button>
-                    <button class="hoverable" (click)="logout()"><img width="20px" [src]="getIcon('logout')"><span>{{ getLabel('logout') }}</span></button>
+                    <button data-cy="logout" class="hoverable" (click)="logout()"><img width="20px" [src]="getIcon('logout')"><span>{{ getLabel('logout') }}</span></button>
                 </ul>
             </li>
         </ul>

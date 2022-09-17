@@ -1,26 +1,29 @@
 describe('Items List', () => {
 
     before(() => {
+        cy.initLocalStorage()
         cy.login()
         cy.saveLocalStorage()
-        sessionStorage.clear()
+        cy.clearSession()
     })
 
     beforeEach(() => {
         cy.restoreLocalStorage()
     })
 
-    it('Show items, filter them and go back', () => {
-        cy.getByData('item-list').click()
+    it('Should show items, filter them, exit and logout', () => {
+        cy.getByDataAndClick('item-list')
         cy.getByData('row').eq(24)
-        cy.getByData('filter-active').click()
+        cy.getByDataAndClick('filter-active')
         cy.getByData('row').eq(23)
-        cy.getByData('filter-active').click()
+        cy.getByDataAndClick('filter-active')
         cy.getByData('row').eq(0)
-        cy.getByData('filter-active').click()
+        cy.getByDataAndClick('filter-active')
         cy.getByData('row').eq(24)
-        cy.getByData('home-button').click()
+        cy.getByDataAndClick('home-button')
         cy.location('pathname').should('eq', '/')
+        cy.getByDataAndHover('user-menu')
+        cy.getByDataAndClickNotVisible('logout')
     })
 
     afterEach(() => {
