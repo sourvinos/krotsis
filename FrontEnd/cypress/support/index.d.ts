@@ -10,6 +10,7 @@ declare namespace Cypress {
         getByDataAndClick(selector)
         getByDataAndHover(selector)
         getByDataAndClickNotVisible(selector)
+        typeRandomChars()
     }
 
 }

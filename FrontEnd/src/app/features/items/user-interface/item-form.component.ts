@@ -15,6 +15,7 @@ import { MessageHintService } from 'src/app/shared/services/messages-hint.servic
 import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
 import { MessageSnackbarService } from 'src/app/shared/services/messages-snackbar.service'
 import { ModalActionService } from 'src/app/shared/services/modal-action.service'
+import { ValidationService } from 'src/app/shared/services/validation.service'
 
 @Component({
     selector: 'item-form',
@@ -167,8 +168,8 @@ export class ItemFormComponent {
         this.form = this.formBuilder.group({
             id: 0,
             description: ['', [Validators.required, Validators.maxLength(128)]],
-            vatPercent: [0, [Validators.required, Validators.maxLength(3)]],
-            netPrice: [0, [Validators.required, Validators.maxLength(10)]],
+            vatPercent: [0, [Validators.required, Validators.maxLength(3), ValidationService.isGreaterThanZero]],
+            netPrice: [0, [Validators.required, Validators.maxLength(6)]],
             grossPrice: [0, [Validators.required, Validators.maxLength(10)]],
             isActive: true
         })

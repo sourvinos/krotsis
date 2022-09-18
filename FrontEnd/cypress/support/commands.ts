@@ -41,3 +41,11 @@ Cypress.Commands.add('visitUrl', (url) => {
 Cypress.Commands.add('clearSession', () => {
     sessionStorage.clear()
 })
+
+export function createRandomLetters(length: number) {
+    let field = ''
+    for (let index = 1; index <= length; index++) {
+        field += String.fromCharCode(Math.round(Math.random() * (90 - 65) + 65))
+    }
+    return field
+}
