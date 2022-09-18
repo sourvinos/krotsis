@@ -31,7 +31,7 @@ Cypress.Commands.add('getByDataAndClickNotVisible', (selector) => {
 })
 
 Cypress.Commands.add('getByDataAndType', (selector, text) => {
-    return recurse(() => cy.getByData(selector).clear().type(text, { delay: 50 }), ($input) => $input.val() === text)
+    return recurse(() => cy.getByData(selector).clear().type(text, { delay: 30 }), ($input: any) => $input.val() == text)
 })
 
 Cypress.Commands.add('visitUrl', (url) => {
