@@ -1,6 +1,6 @@
 context('Login', () => {
 
-    describe('Login', () => {
+    describe('Login Form', () => {
 
         it('Should login the user', () => {
 

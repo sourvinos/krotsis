@@ -1,6 +1,6 @@
 <div id="dialog">
 
-    <div id="dialog-header">
+    <div [ngClass]=getIconStyle() id="dialog-header">
         <svg *ngIf="iconStyle =='info'" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
             <circle class="path circle" fill="none" stroke="#13678A" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1" />
             <polyline class="path check" fill="none" stroke="#7EC6E3" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" points="66,30 66,80" />

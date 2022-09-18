@@ -1,3 +1,4 @@
+import { recurse } from 'cypress-recurse'
 import 'cypress-localstorage-commands'
 
 Cypress.Commands.add('initLocalStorage', () => {
@@ -30,7 +31,7 @@ Cypress.Commands.add('getByDataAndClickNotVisible', (selector) => {
 })
 
 Cypress.Commands.add('getByDataAndType', (selector, text) => {
-    return cy.get(`[data-cy=${selector}]`).type(text, { delay: 50 })
+    return recurse(() => cy.getByData(selector).clear().type(text, { delay: 50 }), ($input) => $input.val() === text)
 })
 
 Cypress.Commands.add('visitUrl', (url) => {

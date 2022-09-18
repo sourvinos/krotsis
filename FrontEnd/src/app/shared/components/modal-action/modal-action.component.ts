@@ -34,6 +34,11 @@ export class ModalActionComponent {
 
     //#region public methods
 
+
+    public getIconStyle(): string {
+        return this.iconStyle
+    }
+
     public getLabel(id: string): string {
         return this.messageLabelService.getDescription(this.feature, id)
     }
