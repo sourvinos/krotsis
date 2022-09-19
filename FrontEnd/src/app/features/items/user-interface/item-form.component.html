@@ -23,8 +23,12 @@
                 <input (blur)="doCalculations('grossPrice')" (keyup)="doCalculations('grossPrice')" [inputTabStop]="input" [placeholder]="getLabel('grossPrice')" data-cy="grossPrice" data-tabindex="4" formControlName="grossPrice" id="grossPrice" inputDecimal matInput type="number">
                 <mat-error *ngIf="grossPrice.hasError('maxlength')">{{ getHint("maxLength", grossPrice.errors.maxlength.requiredLength) }}</mat-error>
             </mat-form-field>
-            <mat-slide-toggle data-cy="isActive" formControlName="isActive">{{ getLabel("isActive") }}
-            </mat-slide-toggle>
+            <div class="styled-input-square">
+                <div class="styled-input-single">
+                    <input data-cy="is-active" formControlName="isActive" id="is-active" type="checkbox">
+                    <label data-cy="is-active-label" for="is-active">{{ getLabel("isActive") }}</label>
+                </div>
+            </div>
         </form>
         <p class="instructions" [class.hidden]=true>{{ form.value | json }} {{ form.valid }}</p>
     </div>
