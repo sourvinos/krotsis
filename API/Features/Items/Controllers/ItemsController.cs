@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using API.Infrastructure.Extensions;
 using API.Infrastructure.Helpers;
-using API.Infrastructure.Interfaces;
 using API.Infrastructure.Responses;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;

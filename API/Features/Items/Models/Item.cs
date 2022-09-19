@@ -1,4 +1,5 @@
-﻿using API.Infrastructure.Identity;
+﻿using System;
+using API.Infrastructure.Identity;
 
 namespace API.Features.Items {
 
@@ -12,6 +13,7 @@ namespace API.Features.Items {
         public decimal NetPrice { get; set; }
         public decimal GrossPrice { get; set; }
         public bool IsActive { get; set; }
+        public string TimeStamp { get; set; }
         // FKs
         public string UserId { get; set; }
         // Navigation
