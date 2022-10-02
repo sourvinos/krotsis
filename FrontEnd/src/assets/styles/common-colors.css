@@ -33,5 +33,7 @@
     /* Input */
     --color-input-focus: #65b4ef;
     --color-input-error: #e57b7b;
+    --color-input-editable-table:#053549;
+    --color-input-editable-table-border:#e85757;
     --color-input-selected-background: #65b3ef4d;
 }

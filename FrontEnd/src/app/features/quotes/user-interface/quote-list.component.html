@@ -32,7 +32,19 @@
                     <td style="width: 5%; max-width: 5%; justify-content: center;"><p-tableCheckbox [value]="rowData"></p-tableCheckbox></td>
                     <td style="min-width: 75%; max-width: 75%;">{{ rowData.description }}</td>
                     <td style="min-width: 10%; max-width: 10%; justify-content: flex-end; padding-right: 1rem;">{{ formatNumberToLocale(rowData.netPrice) }}</td>
-                    <td style="min-width: 10%; max-width: 10%; justify-content: flex-end; padding-right: 1rem;">{{ formatNumberToLocale(rowData.grossPrice) }}</td>
+
+                    <td pEditableColumn style="min-width: 10%; max-width: 10%; justify-content: flex-end; padding-right: 1rem;">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input pInputText type="number" [(ngModel)]="rowData.grossPrice">
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ formatNumberToLocale(rowData.grossPrice) }}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+
+                    <!-- <td style="min-width: 10%; max-width: 10%; justify-content: flex-end; padding-right: 1rem;">{{ formatNumberToLocale(rowData.grossPrice) }}</td> -->
                 </tr>
             </ng-template>
         </p-table>
@@ -46,7 +58,7 @@
             </div>
         </div>
         <div class="button-group">
-            <button  mat-flat-button class="primary" id="new" [disabled]="!form.valid" (click)="doReportTasks()">{{ getLabel("printButton") }}</button>
+            <button mat-flat-button class="primary" id="new" [disabled]="!form.valid" (click)="doReportTasks()">{{ getLabel("printButton") }}</button>
         </div>
     </div>
 

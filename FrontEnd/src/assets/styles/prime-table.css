@@ -5,7 +5,7 @@
     flex: 1;
 }
 
-.p-datatable.p-datatable-scrollable > .p-datatable-wrapper > .p-datatable-table > .p-datatable-thead {
+.p-datatable.p-datatable-scrollable>.p-datatable-wrapper>.p-datatable-table>.p-datatable-thead {
     background-color: transparent;
 }
 
@@ -30,7 +30,7 @@
     overflow-x: hidden;
 }
 
-.p-datatable .p-datatable-thead > tr > th {
+.p-datatable .p-datatable-thead>tr>th {
     background-color: var(--color-b) !important;
     border-right: 0.0625rem solid var(--color-a) !important;
     border-width: 0 0.0625rem 0 0 !important;
@@ -44,34 +44,34 @@
     top: 0.0625rem;
 }
 
-.p-datatable .p-datatable-thead > tr > th:last-child {
+.p-datatable .p-datatable-thead>tr>th:last-child {
     border-right: 0 !important;
 }
 
-.p-datatable .p-datatable-tbody > tr {
+.p-datatable .p-datatable-tbody>tr {
     background-color: transparent !important;
     border-bottom: 0.0625rem dotted var(--color-row-seperator) !important;
 }
 
-.p-datatable .p-datatable-tbody > tr.ui-state-highlight {
+.p-datatable .p-datatable-tbody>tr.ui-state-highlight {
     background-color: var(--color-d) !important;
     outline: none !important;
 }
 
-.p-datatable .p-datatable-tbody > tr:focus {
+.p-datatable .p-datatable-tbody>tr:focus {
     outline: none !important;
 }
 
-.p-datatable .p-datatable-tbody > tr:focus-visible {
+.p-datatable .p-datatable-tbody>tr:focus-visible {
     outline: none !important;
 }
 
-.row-group > td {
+.row-group>td {
     color: var(--color-c) !important;
     font-weight: bold;
 }
 
-.p-datatable .p-datatable-tbody > tr > td {
+.p-datatable .p-datatable-tbody>tr>td {
     border: none !important;
     color: var(--color-c);
     font-family: var(--font-family-ubuntu);
@@ -88,7 +88,7 @@
     justify-content: flex-end !important;
 }
 
-.p-datatable .p-datatable-tfoot > tr > td {
+.p-datatable .p-datatable-tfoot>tr>td {
     background-color: transparent;
     border-radius: 0 0 0.625rem 0.625rem;
     border: none;
@@ -125,7 +125,7 @@
     background-color: transparent !important;
 }
 
-.p-datatable .p-datatable-tbody > tr:not(.group-row):hover {
+.p-datatable .p-datatable-tbody>tr:not(.group-row):hover {
     background-color: var(--color-d) !important;
 }
 
@@ -134,7 +134,7 @@
     box-shadow: none;
 }
 
-.p-datatable .p-datatable-thead > tr:nth-child(2) > th {
+.p-datatable .p-datatable-thead>tr:nth-child(2)>th {
     padding-bottom: 0.3125rem !important;
 }
 
@@ -149,4 +149,14 @@ div:not(.p-column-filter).p-column-filter-row:hover {
 
 .p-checkbox {
     margin: 2px !important;
+}
+
+.p-element input {
+    background-clip: border-box !important;
+    border-color: var(--color-input-editable-table-border);
+    color: var(--color-input-editable-table);
+    font-family: var(--font-family-ubuntu);
+    font-size: 1.2rem !important;
+    text-align: right;
+    width: 5rem;
 }
