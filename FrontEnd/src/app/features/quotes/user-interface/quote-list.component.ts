@@ -1,5 +1,5 @@
 import { ActivatedRoute, Router } from '@angular/router'
-import { Component } from '@angular/core'
+import { Component, ElementRef, QueryList, ViewChild } from '@angular/core'
 import { Subject } from 'rxjs'
 import { formatNumber } from '@angular/common'
 // Custom
@@ -35,7 +35,11 @@ export class QuoteListComponent {
     private selectedRecords: Item[] = []
     public netPrice = 0
     public grossPrice = 0
+    private itemNetPrice = 0
+    private itemGrossPrice = 0
     public form: FormGroup
+    private selectedRecordIndex: number
+    private recordUnderEdit: Item
 
     //#endregion
 
@@ -177,6 +181,41 @@ export class QuoteListComponent {
 
     //#endregion
 
+    public viewhtmlData($event) {
+        console.log('Clicking', $event.description)
+    }
+
+    public doThingsOnClick($event: any, item: Item, index: number) {
+        this.selectedRecordIndex = index
+        this.recordUnderEdit = item
+        // this.clonedProducts[item.id] = { ...item }
+        // console.log('Cloned', this.clonedProducts)
+        console.log('Record under edit', item)
+        console.log('Record under edit index', index)
+        // this.records[0].netPrice = 123.45
+    }
+
+    // public doThingsOnClick($event: any) {
+    //     // console.log('Editing', $event)
+    //     this.itemNetPrice = $event.netPrice
+    //     this.itemGrossPrice = $event.grossPrice
+
+    //     console.log('Storing', this.itemNetPrice, this.itemGrossPrice)
+    // }
+
+    public unfocusing() {
+        console.log('Unfocus')
+    }
+
+    public calculateNetPrice($event: any) {
+        // this.calculateNetPrice($event.target.value)
+        const gross = parseFloat($event.target.value)
+        this.records[this.selectedRecordIndex].netPrice = parseFloat((gross / 1.24).toFixed(2))
+    }
+
+    // private calculateNetPrice(grossValue: string) {
+    //     const gross = parseFloat(grossValue)
+    //     this.records[this.selectedRecordIndex].netPrice = parseFloat((gross / 1.24).toFixed(2))
+    // }
+
 }
-
-
