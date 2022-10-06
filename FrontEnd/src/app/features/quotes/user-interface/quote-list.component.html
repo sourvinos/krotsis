@@ -29,23 +29,24 @@
             </ng-template>
             <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
                 <tr data-cy="row">
-                    <td style="width: 5%; max-width: 5%; justify-content: center;"><p-tableCheckbox [value]="rowData"></p-tableCheckbox></td>
-                    <td style="min-width: 75%; max-width: 75%;" (click)="viewhtmlData(rowData)">{{ rowData.description }}</td>
-                    <td pEditableColumn (click)="doThingsOnClick($event,rowData,rowIndex)" style="min-width: 10%; max-width: 10%; justify-content: flex-end; padding-right: 1rem;">
+                    <td style="width: 5%; max-width: 5%; justify-content: center;">
+                        <p-tableCheckbox [value]="rowData"></p-tableCheckbox>
+                    </td>
+                    <td style="min-width: 75%; max-width: 75%;">{{ rowData.description }}</td>
+                    <td pEditableColumn (click)="storeSelectedRowIndex(rowIndex)" style="min-width: 10%; max-width: 10%; justify-content: flex-end; padding-right: 1rem;">
                         <p-cellEditor>
                             <ng-template pTemplate="input">
-                                <input (blur)="unfocusing()" pInputText type="number" [(ngModel)]="rowData.netPrice">
+                                <input (keyup)="calculateGrossPrice($event)" [(ngModel)]="rowData.netPrice" pInputText type="number">
                             </ng-template>
                             <ng-template pTemplate="output">
                                 {{ formatNumberToLocale(rowData.netPrice) }}
                             </ng-template>
                         </p-cellEditor>
                     </td>
-
-                    <td pEditableColumn (click)="doThingsOnClick($event, rowData, rowIndex)" style="min-width: 10%; max-width: 10%; justify-content: flex-end; padding-right: 1rem;">
+                    <td pEditableColumn (click)="storeSelectedRowIndex(rowIndex)" style="min-width: 10%; max-width: 10%; justify-content: flex-end; padding-right: 1rem;">
                         <p-cellEditor>
                             <ng-template pTemplate="input">
-                                <input (blur)="unfocusing()" (keyup)="calculateNetPrice($event)" pInputText type="number" [(ngModel)]="rowData.grossPrice">
+                                <input (keyup)="calculateNetPrice($event)" pInputText [(ngModel)]="rowData.grossPrice" type="number">
                             </ng-template>
                             <ng-template pTemplate="output">
                                 {{ formatNumberToLocale(rowData.grossPrice) }}
