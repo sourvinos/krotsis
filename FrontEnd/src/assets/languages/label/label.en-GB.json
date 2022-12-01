@@ -82,12 +82,16 @@
                 "description": "Description"
             },
             {
-                "id": "headerNetPrice",
-                "description": "Price excluding VAT"
+                "id": "headerQty",
+                "description": "Qty"
             },
             {
                 "id": "headerGrossPrice",
-                "description": "Price including VAT"
+                "description": "Unit price including VAT"
+            },
+            {
+                "id": "headerTotalGrossPrice",
+                "description": "Total"
             },
             {
                 "id": "printButton",

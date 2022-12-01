@@ -4,8 +4,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { BrowserModule } from '@angular/platform-browser'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
-import { NgIdleModule } from '@ng-idle/core'
 import { ScrollingModule } from '@angular/cdk/scrolling'
+import { registerLocaleData } from '@angular/common'
 // Modules
 import { AppRoutingModule } from './app.routing.module'
 import { LoginModule } from '../features/login/classes/modules/login.module'
@@ -21,8 +21,7 @@ import { UserMenuComponent } from '../shared/components/user-menu/user-menu.comp
 import { InterceptorService } from '../shared/services/interceptor.service'
 import { MainFooterComponent } from '../shared/components/home/main-footer.component'
 import { MainMenuComponent } from '../shared/components/home/main-menu.component'
-import { registerLocaleData } from '@angular/common'
-
+// Languages
 import localeEl from '@angular/common/locales/el'
 import localeEn from '@angular/common/locales/en-GB'
 
@@ -46,7 +45,6 @@ registerLocaleData(localeEn)
         FormsModule,
         HttpClientModule,
         LoginModule,
-        NgIdleModule.forRoot(),
         PrimeNgModule,
         ReactiveFormsModule,
         ScrollingModule,

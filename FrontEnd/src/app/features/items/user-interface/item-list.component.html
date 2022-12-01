@@ -27,8 +27,8 @@
                         <span *ngIf="!rowData.isActive" class="is-not-active material-icons-outlined">highlight_off</span>
                     </td>
                     <td style="min-width: 70%; max-width: 70%;">{{ rowData.description }}</td>
-                    <td style="min-width: 10%; max-width: 10%; justify-content: flex-end; padding-right: 1rem;">{{ formatNumberToLocale(rowData.netPrice) }}</td>
-                    <td style="min-width: 10%; max-width: 10%; justify-content: flex-end; padding-right: 1rem;">{{ formatNumberToLocale(rowData.grossPrice) }}</td>
+                    <td style="min-width: 10%; max-width: 10%; text-align: end; padding-right: 1rem;">{{ formatNumberToLocale(rowData.netPrice) }}</td>
+                    <td style="min-width: 10%; max-width: 10%; text-align: end; padding-right: 1rem;">{{ formatNumberToLocale(rowData.grossPrice) }}</td>
                 </tr>
             </ng-template>
         </p-table>

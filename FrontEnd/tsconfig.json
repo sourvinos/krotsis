@@ -21,10 +21,7 @@
         "typeRoots": [
             "node_modules/@types"
         ],
-        "types": [
-            "cypress",
-            "cypress-localstorage-commands"
-        ]
+        "types": []
     },
     "angularCompilerOptions": {
         "fullTemplateTypeCheck": true,

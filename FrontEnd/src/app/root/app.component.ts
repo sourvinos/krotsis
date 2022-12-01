@@ -1,14 +1,10 @@
-import { ChangeDetectorRef, Component, HostListener } from '@angular/core'
-import { DEFAULT_INTERRUPTSOURCES, Idle } from '@ng-idle/core'
+import { Component, HostListener } from '@angular/core'
 import { ChildrenOutletContexts, NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router'
 import { Subject, takeUntil } from 'rxjs'
 // Custom
 import { AccountService } from '../shared/services/account.service'
 import { InteractionService } from '../shared/services/interaction.service'
 import { LocalStorageService } from '../shared/services/local-storage.service'
-import { MessageSnackbarService } from '../shared/services/messages-snackbar.service'
-import { ModalActionService } from '../shared/services/modal-action.service'
-import { environment } from 'src/environments/environment'
 import { routeAnimation } from '../shared/animations/animations'
 
 @Component({
@@ -27,8 +23,7 @@ export class AppComponent {
 
     //#endregion
 
-    constructor(private accountService: AccountService, private localStorageService: LocalStorageService, private changeDetector: ChangeDetectorRef, private contexts: ChildrenOutletContexts, private idle: Idle, private interactionService: InteractionService, private messageSnackbarService: MessageSnackbarService, private modalActionResultService: ModalActionService, private router: Router) {
-        this.initIdleService()
+    constructor(private accountService: AccountService, private localStorageService: LocalStorageService, private contexts: ChildrenOutletContexts, private interactionService: InteractionService, private router: Router) {
         this.subscribeToInteractionService()
         this.router.events.subscribe((routerEvent) => {
             if (routerEvent instanceof NavigationStart) {
@@ -59,29 +54,8 @@ export class AppComponent {
     }
 
     //#endregion
-    
-    //#region private methods
 
-    private initIdleService(): void {
-        this.interactionService.isAdmin.subscribe((response) => {
-            if (response) {
-                this.idle.setIdle(environment.idleSettings.admins.idle)
-                this.idle.setTimeout(environment.idleSettings.admins.timeout)
-            } else {
-                this.idle.setIdle(environment.idleSettings.simpleUsers.idle)
-                this.idle.setTimeout(environment.idleSettings.simpleUsers.timeout)
-            }
-        })
-        this.idle.setInterrupts(DEFAULT_INTERRUPTSOURCES)
-        this.idle.watch()
-        this.idle.onIdleEnd.subscribe(() => {
-            this.changeDetector.detectChanges()
-        })
-        this.idle.onTimeout.subscribe(() => {
-            this.accountService.logout()
-            this.modalActionResultService.open(this.messageSnackbarService.userDisconnected(), 'info', ['ok'])
-        })
-    }
+    //#region private methods
 
     private setBackgroundImage(): void {
         document.getElementById('wrapper').style.backgroundImage = 'url(../../assets/images/background/background-' + this.localStorageService.getItem('my-theme') + '.svg)'

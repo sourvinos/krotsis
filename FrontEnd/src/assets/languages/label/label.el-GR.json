@@ -82,12 +82,16 @@
                 "description": "Περιγραφή"
             },
             {
-                "id": "headerNetPrice",
-                "description": "Αξία προ ΦΠΑ"
+                "id": "headerQty",
+                "description": "Ποσότητα"
             },
             {
                 "id": "headerGrossPrice",
-                "description": "Αξία με ΦΠΑ"
+                "description": "Τιμή μονάδας με ΦΠΑ"
+            },
+            {
+                "id": "headerTotalGrossPrice",
+                "description": "Σύνολο"
             },
             {
                 "id": "printButton",

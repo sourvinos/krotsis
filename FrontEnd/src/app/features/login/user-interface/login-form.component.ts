@@ -1,9 +1,7 @@
 import { Component } from '@angular/core'
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms'
-import { Idle } from '@ng-idle/core'
 import { Router } from '@angular/router'
 import { Subject } from 'rxjs'
-import { Title } from '@angular/platform-browser'
 // Custom
 import { AccountService } from '../../../shared/services/account.service'
 import { ButtonClickService } from 'src/app/shared/services/button-click.service'
@@ -40,14 +38,13 @@ export class LoginFormComponent {
 
     //#endregion
 
-    constructor(private accountService: AccountService, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private helperService: HelperService, private idle: Idle, private keyboardShortcutsService: KeyboardShortcuts, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private modalActionResultService: ModalActionService, private router: Router, private titleService: Title) { }
+    constructor(private accountService: AccountService, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private modalActionResultService: ModalActionService, private router: Router) { }
     //#region lifecycle hooks
 
     ngOnInit(): void {
         this.initForm()
         this.addShortcuts()
         this.focusOnField()
-        this.setTabCaption()
     }
 
     ngOnDestroy(): void {
@@ -75,7 +72,6 @@ export class LoginFormComponent {
         this.accountService.login(this.form.value.username, this.form.value.password).pipe(indicate(this.isLoading)).subscribe({
             complete: () => {
                 this.goHome()
-                this.startIdleTimer()
             },
             error: (errorFromInterceptor) => {
                 this.showError(errorFromInterceptor)
@@ -122,10 +118,6 @@ export class LoginFormComponent {
         })
     }
 
-    private setTabCaption(): void {
-        this.titleService.setTitle(this.helperService.getApplicationTitle())
-    }
-
     private showError(error: any): void {
         switch (error.status) {
             case 0:
@@ -135,11 +127,6 @@ export class LoginFormComponent {
                 this.modalActionResultService.open(this.messageSnackbarService.authenticationFailed(), 'error', ['ok'])
                 break
         }
-    }
-
-    private startIdleTimer(): void {
-        this.idle.watch()
-        this.idleState = 'NOT_IDLE'
     }
 
     //#endregion

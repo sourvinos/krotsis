@@ -1,12 +1,10 @@
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router'
 import { Component } from '@angular/core'
 import { Subject } from 'rxjs'
 import { formatNumber } from '@angular/common'
 // Custom
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
-import { ButtonClickService } from 'src/app/shared/services/button-click.service'
 import { Item } from '../classes/models/item'
-import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-shortcuts.service'
 import { ListResolved } from '../../../shared/classes/list-resolved'
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service'
 import { MessageHintService } from 'src/app/shared/services/messages-hint.service'
@@ -26,7 +24,6 @@ export class QuoteListComponent {
 
     //#region variables
 
-    private unlisten: Unlisten
     private unsubscribe = new Subject<void>()
     public feature = 'quoteList'
     public icon = 'home'
@@ -34,40 +31,41 @@ export class QuoteListComponent {
     public records: Item[] = []
     private selectedRecords: Item[] = []
     public netPrice = 0
-    public grossPrice = 0
+    public totalAmount = 0
     public form: FormGroup
     private selectedRecordIndex: number
 
     //#endregion
 
-    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private keyboardShortcutsService: KeyboardShortcuts, private localStorageService: LocalStorageService, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private modalActionResultService: ModalActionService, private quotePdfService: QuotePDFService, private router: Router) { }
+    constructor(private activatedRoute: ActivatedRoute, private formBuilder: FormBuilder, private localStorageService: LocalStorageService, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private modalActionResultService: ModalActionService, private quotePdfService: QuotePDFService, private router: Router) { }
 
     //#region lifecycle hooks
 
     ngOnInit(): void {
         this.initForm()
         this.loadRecords()
-        this.addShortcuts()
-
+        this.doInitialCalculations()
     }
 
     ngOnDestroy(): void {
         this.cleanup()
-        this.unlisten()
     }
 
     //#endregion
 
     //#region public methods
 
-    public calculateGrossPrice($event: any) {
-        const net = parseFloat($event.target.value)
-        this.records[this.selectedRecordIndex].grossPrice = parseFloat((net + (net * 0.24)).toFixed(2))
-    }
-
-    public calculateNetPrice($event: any) {
-        const gross = parseFloat($event.target.value)
-        this.records[this.selectedRecordIndex].netPrice = parseFloat((gross / 1.24).toFixed(2))
+    public calculateTotalGrossPrice(field: string, $event: any) {
+        if (field == 'qty') {
+            const qty = isNaN($event.target.value) ? 0 : parseInt($event.target.value)
+            this.records[this.selectedRecordIndex].totalGrossPrice = qty * this.records[this.selectedRecordIndex].grossPrice
+            this.calculatePriceSum()
+        }
+        if (field == 'grossPrice') {
+            const grossPrice = isNaN($event.target.value) ? 0 : parseFloat($event.target.value)
+            this.records[this.selectedRecordIndex].totalGrossPrice = this.records[this.selectedRecordIndex].qty * grossPrice
+            this.calculatePriceSum()
+        }
     }
 
     public doReportTasks(): void {
@@ -78,8 +76,8 @@ export class QuoteListComponent {
         }
     }
 
-    public formatNumberToLocale(number: number) {
-        return formatNumber(number, this.localStorageService.getItem('language'), '2.2')
+    public formatNumberToLocale(number: number, decimals = true) {
+        return formatNumber(number, this.localStorageService.getItem('language'), decimals ? '1.2' : '1.0')
     }
 
     public getHint(id: string, minmax = 0): string {
@@ -94,14 +92,22 @@ export class QuoteListComponent {
         return environment.iconsDirectory + filename + '.svg'
     }
 
+    public hasAmount(amount: string): string {
+        return parseFloat(amount) > 0 ? 'inuse' : ''
+    }
+
     public rowSelect(row: any): void {
-        this.calculatePriceSum(row, 'add')
+        this.calculatePriceSum()
         this.updateSelectedItemsArray(row.data, 'add')
     }
 
     public rowUnselect(row: any): void {
-        this.calculatePriceSum(row, 'subtract')
+        this.calculatePriceSum()
         this.updateSelectedItemsArray(row.data, 'subtract')
+    }
+
+    public selectField(event: any): void {
+        event.target.select()
     }
 
     public storeSelectedRowIndex(rowIndex: number) {
@@ -112,29 +118,12 @@ export class QuoteListComponent {
 
     //#region private methods
 
-    private addShortcuts(): void {
-        this.unlisten = this.keyboardShortcutsService.listen({
-            'Escape': () => {
-                this.goBack()
-            },
-            'Alt.N': (event: KeyboardEvent) => {
-                this.buttonClickService.clickOnButton(event, 'new')
-            }
-        }, {
-            priority: 0,
-            inputs: true
+    private calculatePriceSum(): void {
+        console.log(this.records)
+        this.totalAmount = 0
+        this.records.forEach(record => {
+            this.totalAmount += record.totalGrossPrice
         })
-    }
-
-    private calculatePriceSum(row: any, action: string): void {
-        if (action == 'add') {
-            this.netPrice += row.data.netPrice
-            this.grossPrice += row.data.grossPrice
-        }
-        if (action == 'subtract') {
-            this.netPrice -= row.data.netPrice
-            this.grossPrice -= row.data.grossPrice
-        }
     }
 
     private cleanup(): void {
@@ -144,6 +133,13 @@ export class QuoteListComponent {
 
     private createPdf(): void {
         this.quotePdfService.createPDF(this.form.value, this.selectedRecords)
+    }
+
+    private doInitialCalculations(): void {
+        this.records.forEach(record => {
+            record.qty = 0
+            record.totalGrossPrice = 0
+        })
     }
 
     private goBack(): void {

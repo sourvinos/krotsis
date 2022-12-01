@@ -12,7 +12,6 @@ import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/mat
 import { MatIconModule } from '@angular/material/icon'
 import { MatInputModule } from '@angular/material/input'
 import { MatMenuModule } from '@angular/material/menu'
-import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter'
 import { MatRadioModule } from '@angular/material/radio'
 import { MatSelectModule } from '@angular/material/select'
 import { MatSlideToggleModule } from '@angular/material/slide-toggle'
@@ -32,7 +31,6 @@ import { MatTabsModule } from '@angular/material/tabs'
         MatIconModule,
         MatInputModule,
         MatMenuModule,
-        MatMomentDateModule,
         MatRadioModule,
         MatSelectModule,
         MatSlideToggleModule,
@@ -42,8 +40,7 @@ import { MatTabsModule } from '@angular/material/tabs'
     providers: [
         { provide: MAT_DATE_LOCALE, useValue: '' },
         { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { floatLabel: 'always' } },
-        { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 1500 } },
-        { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } }
+        { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 1500 } }
     ]
 })
 

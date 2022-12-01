@@ -129,7 +129,6 @@ export class SettingsFormComponent {
             if (formResolved.error == null) {
                 this.settings = formResolved.record
                 resolve(this.settings)
-                console.log(this.settings)
             } else {
                 this.goBack()
                 this.modalActionResultService.open(this.messageSnackbarService.filterResponse(new Error('500')), 'error', ['ok'])
