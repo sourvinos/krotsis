@@ -17,9 +17,8 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs
 
 export class QuotePDFService {
 
-    private plates = ''
     private settings: Settings
-    private totalGrossPrice = 0
+    private totalQuotePrice = 0
 
     constructor(private logoService: LogoService, private settingsService: SettingsService) {
         this.setOurDetails(this.settingsService)
@@ -28,6 +27,7 @@ export class QuotePDFService {
     //#region public methods
 
     public createPDF(form: any, records: Item[]): void {
+        console.log('printing', records)
         this.setFonts()
         const dd = {
             background: this.backgroundImage(),
@@ -48,7 +48,7 @@ export class QuotePDFService {
                 {
                     table: {
                         headerRows: 1,
-                        widths: ['*', 50, 50],
+                        widths: ['*', 20, 50, 50],
                         body: this.detailLines(records),
                     },
                     margin: [11, 0, 0, 0],
@@ -147,16 +147,18 @@ export class QuotePDFService {
         const rows = []
         rows.push([
             { text: 'ΠΕΡΙΓΡΑΦΗ', fontSize: 11, margin: [0, 0, 0, 0] },
-            { text: 'ΚΑΘΑΡΗ ΑΞΙΑ', fontSize: 11 },
-            { text: 'ΑΞΙΑ ΜΕ ΦΠΑ', fontSize: 11 },
+            { text: 'ΠΟΣΟΤΗΤΑ', fontSize: 11, margin: [0, 0, 0, 0], alignment: 'right' },
+            { text: 'ΤΙΜΗ ΜΟΝΑΔΟΣ ΜΕ ΦΠΑ', fontSize: 11, alignment: 'right' },
+            { text: 'ΣΥΝΟΛΟ ΜΕ ΦΠΑ', fontSize: 11, alignment: 'right' },
         ])
         for (const record of records) {
             rows.push([
                 { text: record.description, fontSize: 10 },
-                { text: record.netPrice.toFixed(2), alignment: 'right', fontSize: 10 },
-                { text: record.grossPrice.toFixed(2), alignment: 'right', fontSize: 10 }
+                { text: record.qty, fontSize: 10, alignment: 'center' },
+                { text: record.grossPrice.toFixed(2), alignment: 'right', fontSize: 10 },
+                { text: record.totalGrossPrice.toFixed(2), alignment: 'right', fontSize: 10 }
             ])
-            this.totalGrossPrice += record.grossPrice
+            this.totalQuotePrice += record.totalGrossPrice
         }
         return rows
     }
@@ -168,7 +170,7 @@ export class QuotePDFService {
             ul:
                 [
                     {
-                        text: this.totalGrossPrice.toFixed(2), fontSize: 11, alignment: 'right'
+                        text: this.totalQuotePrice.toFixed(2), fontSize: 11, alignment: 'right'
                     }
                 ],
         }
@@ -199,6 +201,6 @@ export class QuotePDFService {
         })
     }
 
-     //#endregion
+    //#endregion
 
 }

@@ -169,6 +169,7 @@ export class QuoteListComponent {
     private updateSelectedItemsArray(row: Item, action: string): void {
         if (action == 'add') {
             this.selectedRecords.push(row)
+            console.log(this.selectedRecords)
         }
         if (action == 'subtract') {
             const index = this.selectedRecords.findIndex(object => {
