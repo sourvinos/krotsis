@@ -3,7 +3,6 @@ using API.Infrastructure.Auth;
 using API.Infrastructure.Classes;
 using API.Infrastructure.Email;
 using API.Infrastructure.Extensions;
-using API.Infrastructure.Implementations;
 using API.Infrastructure.Responses;
 using AutoMapper;
 using FluentValidation.AspNetCore;
@@ -14,11 +13,11 @@ using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Serilog;
 
 // dotnet watch run --environment LocalDevelopment
 // dotnet publish /p:Configuration=Release /p:EnvironmentName=LocalProduction -o "C:\Krotsis"
 // dotnet tool install --global dotnet-ef
+// before running migrations: remove specific ConfigureServices and Configure
 // dotnet ef migrations add InitialCreate
 // dotnet ef database update
 

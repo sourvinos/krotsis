@@ -39,7 +39,6 @@ export class ItemListComponent {
     ngOnInit(): void {
         this.loadRecords()
         this.addShortcuts()
-
     }
 
     ngOnDestroy(): void {

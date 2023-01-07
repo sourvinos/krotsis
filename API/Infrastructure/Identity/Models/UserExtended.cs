@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using API.Features.Items;
+using API.Features.Suppliers;
 using API.Infrastructure.Auth;
 using Microsoft.AspNetCore.Identity;
 
@@ -13,6 +14,7 @@ namespace API.Infrastructure.Identity {
         public bool IsActive { get; set; }
         // Navigation
         public List<Item> Items { get; set; }
+        public List<Supplier> Suppliers { get; set; }
         public List<Token> Tokens { get; set; }
 
     }
