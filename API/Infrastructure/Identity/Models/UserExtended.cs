@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using API.Features.Expenses;
 using API.Features.Items;
 using API.Features.Suppliers;
 using API.Infrastructure.Auth;
@@ -15,6 +16,7 @@ namespace API.Infrastructure.Identity {
         // Navigation
         public List<Item> Items { get; set; }
         public List<Supplier> Suppliers { get; set; }
+        public List<Transaction> Transactions { get; set; }
         public List<Token> Tokens { get; set; }
 
     }

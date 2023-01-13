@@ -1,4 +1,5 @@
-﻿using API.Features.Items;
+﻿using API.Features.Expenses;
+using API.Features.Items;
 using API.Features.Settings;
 using API.Features.Suppliers;
 using API.Infrastructure.Auth;
@@ -16,6 +17,7 @@ namespace API.Infrastructure.Classes {
 
         public DbSet<Item> Items { get; set; }
         public DbSet<Supplier> Suppliers { get; set; }
+        public DbSet<Transaction> Transactions { get; set; }
         public DbSet<Settings> Settings { get; set; }
         public DbSet<Token> Tokens { get; set; }
 
