@@ -13,6 +13,7 @@ import { AuthGuardService } from '../shared/services/auth-guard.service'
 const appRoutes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthGuardService], pathMatch: 'full' },
     { path: 'items', loadChildren: () => import('../features/items/classes/modules/item.module').then(m => m.ItemModule) },
+    { path: 'suppliers', loadChildren: () => import('../features/suppliers/classes/modules/supplier.module').then(m => m.SupplierModule) },
     { path: 'quotes', loadChildren: () => import('../features/quotes/classes/modules/quote.module').then(m => m.QuoteModule) },
     { path: 'settings', loadChildren: () => import('../features/settings/classes/modules/settings.module').then(m => m.SettingsModule) },
     { path: 'forgotPassword', component: ForgotPasswordFormComponent },

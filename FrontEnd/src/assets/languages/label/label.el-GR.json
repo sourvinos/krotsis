@@ -141,6 +141,60 @@
         ]
     },
     {
+        "feature": "supplierForm",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Προμηθευτής"
+            },
+            {
+                "id": "description",
+                "description": "Περιγραφή"
+            },
+            {
+                "id": "taxNo",
+                "description": "ΑΦM"
+            },
+            {
+                "id": "isActive",
+                "description": "Ενεργός"
+            },
+            {
+                "id": "deleteButton",
+                "description": "ΔΙΑΓΡΑΦΗ"
+            },
+            {
+                "id": "saveButton",
+                "description": "ΑΠΟΘΗΚΕΥΣΗ"
+            }
+        ]
+    },
+    {
+        "feature": "supplierList",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Αρχείο προμηθευτών"
+            },
+            {
+                "id": "headerIsActive",
+                "description": "Ενεργός"
+            },
+            {
+                "id": "headerDescription",
+                "description": "Περιγραφή"
+            },
+            {
+                "id": "headerTaxNo",
+                "description": "Α.Φ.Μ."
+            },
+            {
+                "id": "newButton",
+                "description": "ΝΕΟΣ"
+            }
+        ]
+    },
+    {
         "feature": "userList",
         "labels": [
             {
