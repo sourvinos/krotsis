@@ -4,9 +4,9 @@ namespace API.Features.Transactions {
 
         public int Id { get; set; }
         public string Date { get; set; }
-        public int SupplierDescription { get; set; }
+        public string SupplierDescription { get; set; }
         public string InvoiceNo { get; set; }
-        public decimal GrossAmount { get; set; }
+        public string GrossAmount { get; set; }
 
     }
 

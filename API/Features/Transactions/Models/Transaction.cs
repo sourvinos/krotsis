@@ -1,4 +1,5 @@
 ﻿using System;
+using API.Features.Suppliers;
 using API.Infrastructure.Identity;
 
 namespace API.Features.Expenses {
@@ -8,7 +9,7 @@ namespace API.Features.Expenses {
         // PK
         public int Id { get; set; }
         // Fields
-        public DateOnly Date { get; set; }
+        public DateTime Date { get; set; }
         public int SupplierId { get; set; }
         public string InvoiceNo { get; set; }
         public decimal GrossAmount { get; set; }
@@ -17,6 +18,7 @@ namespace API.Features.Expenses {
         // FKs
         public string UserId { get; set; }
         // Navigation
+        public Supplier Supplier { get; set; }
         public UserExtended User { get; set; }
 
     }

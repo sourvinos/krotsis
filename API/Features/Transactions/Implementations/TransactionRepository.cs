@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using API.Features.Expenses;
 using API.Infrastructure.Classes;
 using API.Infrastructure.Implementations;
+using API.Infrastructure.Responses;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -22,10 +23,22 @@ namespace API.Features.Transactions {
 
         public async Task<IEnumerable<TransactionListDto>> Get() {
             List<Transaction> records = await context.Transactions
+                .Include(x => x.Supplier)
                 .OrderBy(x => x.Date)
                 .AsNoTracking()
                 .ToListAsync();
             return mapper.Map<IEnumerable<Transaction>, IEnumerable<TransactionListDto>>(records);
+        }
+
+        public new async Task<Transaction> GetById(int id) {
+            Transaction record = await context.Transactions
+                .Include(x => x.Supplier)
+                .SingleOrDefaultAsync(m => m.Id == id);
+            if (record != null) {
+                return record;
+            } else {
+                throw new CustomException { HttpResponseCode = 404 };
+            }
         }
 
         public async Task<Transaction> GetByIdToDelete(int id) {
