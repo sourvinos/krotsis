@@ -15,7 +15,9 @@ namespace API.Features.Transactions {
             // Fields
             entity.Property(x => x.Date).IsRequired(true);
             entity.Property(x => x.InvoiceNo).HasMaxLength(32).IsRequired(true);
+            entity.Property(x => x.GrossAmount).HasPrecision(7, 2);
             entity.Property(x => x.Remarks).HasMaxLength(128);
+            entity.Property(x => x.TimeStamp).HasMaxLength(19);
             // FK Constraints
             entity.HasOne(x => x.User).WithMany(x => x.Transactions).HasForeignKey(x => x.UserId).OnDelete(DeleteBehavior.Restrict);
         }

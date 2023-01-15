@@ -2,6 +2,7 @@
 using API.Features.Items;
 using API.Features.Settings;
 using API.Features.Suppliers;
+using API.Features.Transactions;
 using API.Infrastructure.Auth;
 using EntityFramework.Exceptions.MySQL;
 using Microsoft.AspNetCore.Identity;
@@ -34,6 +35,7 @@ namespace API.Infrastructure.Classes {
         private static void ApplyConfigurations(ModelBuilder modelBuilder) {
             modelBuilder.ApplyConfiguration(new ItemsConfig());
             modelBuilder.ApplyConfiguration(new SuppliersConfig());
+            modelBuilder.ApplyConfiguration(new TransactionsConfig());
         }
 
     }

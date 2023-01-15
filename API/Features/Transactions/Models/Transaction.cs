@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using API.Features.Suppliers;
 using API.Infrastructure.Identity;
 
@@ -19,6 +20,7 @@ namespace API.Features.Expenses {
         public string UserId { get; set; }
         // Navigation
         public Supplier Supplier { get; set; }
+        public List<LineItem> LineItems { get; set; }
         public UserExtended User { get; set; }
 
     }
