@@ -27,7 +27,6 @@ export class QuotePDFService {
     //#region public methods
 
     public createPDF(form: any, records: Item[]): void {
-        console.log('printing', records)
         this.setFonts()
         const dd = {
             background: this.backgroundImage(),
@@ -144,6 +143,7 @@ export class QuotePDFService {
     }
 
     private detailLines(records: Item[]): any[] {
+        this.totalQuotePrice = 0
         const rows = []
         rows.push([
             { text: 'ΠΕΡΙΓΡΑΦΗ', fontSize: 11, margin: [0, 0, 0, 0] },
@@ -164,6 +164,7 @@ export class QuotePDFService {
     }
 
     private priceTotals(): any {
+        this.totalQuotePrice
         const totals = {
             type: 'none',
             margin: [0, 14, 0, 0],

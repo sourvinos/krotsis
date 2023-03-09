@@ -119,7 +119,6 @@ export class QuoteListComponent {
     //#region private methods
 
     private calculatePriceSum(): void {
-        console.log(this.records)
         this.totalAmount = 0
         this.records.forEach(record => {
             this.totalAmount += record.totalGrossPrice
@@ -169,7 +168,6 @@ export class QuoteListComponent {
     private updateSelectedItemsArray(row: Item, action: string): void {
         if (action == 'add') {
             this.selectedRecords.push(row)
-            console.log(this.selectedRecords)
         }
         if (action == 'subtract') {
             const index = this.selectedRecords.findIndex(object => {
