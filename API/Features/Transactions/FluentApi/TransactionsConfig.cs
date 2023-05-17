@@ -10,6 +10,7 @@ namespace API.Features.Transactions {
             // PK
             entity.Property(x => x.Id).ValueGeneratedOnAdd();
             // FKs
+            entity.Property(x => x.CodeId).IsRequired(true);
             entity.Property(x => x.SupplierId).IsRequired(true);
             entity.Property(x => x.UserId).HasMaxLength(36).IsRequired(true);
             // Fields

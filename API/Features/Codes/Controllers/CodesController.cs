@@ -9,21 +9,21 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace API.Features.Suppliers {
+namespace API.Features.Codes {
 
     [Route("api/[controller]")]
-    public class SuppliersController : ControllerBase {
+    public class CodesController : ControllerBase {
 
         #region variables
 
-        private readonly ISupplierRepository repo;
+        private readonly ICodeRepository repo;
         private readonly IHttpContextAccessor httpContext;
         private readonly IMapper mapper;
-        private readonly ILogger<SuppliersController> logger;
+        private readonly ILogger<CodesController> logger;
 
         #endregion
 
-        public SuppliersController(ISupplierRepository repo, IHttpContextAccessor httpContext, IMapper mapper, ILogger<SuppliersController> logger) {
+        public CodesController(ICodeRepository repo, IHttpContextAccessor httpContext, IMapper mapper, ILogger<CodesController> logger) {
             this.httpContext = httpContext;
             this.mapper = mapper;
             this.repo = repo;
@@ -32,32 +32,27 @@ namespace API.Features.Suppliers {
 
         [HttpGet]
         [Authorize(Roles = "admin")]
-        public async Task<IEnumerable<SupplierListDto>> Get() {
+        public async Task<IEnumerable<CodeListDto>> Get() {
             return await repo.Get();
         }
 
         [HttpGet("[action]")]
-        [AllowAnonymous]
-        public async Task<IEnumerable<SupplierListDto>> GetActive() {
+        [Authorize(Roles = "admin")]
+        public async Task<IEnumerable<CodeListDto>> GetActive() {
             return await repo.GetActive();
         }
 
         [HttpGet("{id}")]
-        public async Task<SupplierReadDto> GetSupplier(int id) {
-            return mapper.Map<Supplier, SupplierReadDto>(await repo.GetById(id));
-        }
-
-        [AllowAnonymous]
-        [HttpGet("ledger/{id}")]
-        public IEnumerable<SupplierLedgerVM> GetLedger(int id) {
-            return repo.BuildBalance(repo.GetLedger(id));
+        [Authorize(Roles = "admin")]
+        public async Task<CodeReadDto> GetCode(int id) {
+            return mapper.Map<Code, CodeReadDto>(await repo.GetById(id));
         }
 
         [HttpPost]
         [Authorize(Roles = "admin")]
         [ServiceFilter(typeof(ModelValidationAttribute))]
-        public async Task<Response> PostSupplierAsync([FromBody] SupplierWriteDto record) {
-            repo.Create(mapper.Map<SupplierWriteDto, Supplier>(await AttachUserIdToRecord(record)));
+        public async Task<Response> PostCodeAsync([FromBody] CodeWriteDto record) {
+            repo.Create(mapper.Map<CodeWriteDto, Code>(await AttachUserIdToRecord(record)));
             logger.LogInformation("Record created {@record}", record);
             return ApiResponses.OK();
         }
@@ -65,19 +60,19 @@ namespace API.Features.Suppliers {
         [HttpPut("{id}")]
         [Authorize(Roles = "admin")]
         [ServiceFilter(typeof(ModelValidationAttribute))]
-        public async Task<Response> PutSupplierAsync([FromBody] SupplierWriteDto record) {
-            repo.Update(mapper.Map<SupplierWriteDto, Supplier>(await AttachUserIdToRecord(record)));
+        public async Task<Response> PutCodeAsync([FromBody] CodeWriteDto record) {
+            repo.Update(mapper.Map<CodeWriteDto, Code>(await AttachUserIdToRecord(record)));
             return ApiResponses.OK();
         }
 
         [HttpDelete("{id}")]
         [Authorize(Roles = "admin")]
-        public async Task<Response> DeleteSupplier([FromRoute] int id) {
+        public async Task<Response> DeleteCode([FromRoute] int id) {
             repo.Delete(await repo.GetByIdToDelete(id));
             return ApiResponses.OK();
         }
 
-        private async Task<SupplierWriteDto> AttachUserIdToRecord(SupplierWriteDto record) {
+        private async Task<CodeWriteDto> AttachUserIdToRecord(CodeWriteDto record) {
             var user = await Identity.GetConnectedUserId(httpContext);
             record.UserId = user.UserId;
             return record;

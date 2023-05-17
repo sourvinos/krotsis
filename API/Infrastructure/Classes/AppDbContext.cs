@@ -1,4 +1,5 @@
-﻿using API.Features.Expenses;
+﻿using API.Features.Codes;
+using API.Features.Expenses;
 using API.Features.Items;
 using API.Features.Settings;
 using API.Features.Suppliers;
@@ -16,6 +17,7 @@ namespace API.Infrastructure.Classes {
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
+        public DbSet<Code> Codes { get; set; }
         public DbSet<Item> Items { get; set; }
         public DbSet<Supplier> Suppliers { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
@@ -33,6 +35,7 @@ namespace API.Infrastructure.Classes {
         }
 
         private static void ApplyConfigurations(ModelBuilder modelBuilder) {
+            modelBuilder.ApplyConfiguration(new CodesConfig());
             modelBuilder.ApplyConfiguration(new ItemsConfig());
             modelBuilder.ApplyConfiguration(new SuppliersConfig());
             modelBuilder.ApplyConfiguration(new TransactionsConfig());
