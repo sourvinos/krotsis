@@ -5,18 +5,14 @@ using API.Infrastructure.Classes;
 using API.Infrastructure.Implementations;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 
 namespace API.Features.Items {
 
     public class ItemRepository : Repository<Item>, IItemRepository {
 
         private readonly IMapper mapper;
-        protected readonly ILogger<ItemRepository> logger;
-
-        public ItemRepository(AppDbContext appDbContext, IMapper mapper, ILogger<ItemRepository> logger) : base(appDbContext) {
+        public ItemRepository(AppDbContext appDbContext, IMapper mapper) : base(appDbContext) {
             this.mapper = mapper;
-            this.logger = logger;
         }
 
         public async Task<IEnumerable<ItemListDto>> Get() {

@@ -7,7 +7,6 @@ using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
 namespace API.Features.Codes {
 
@@ -19,15 +18,13 @@ namespace API.Features.Codes {
         private readonly ICodeRepository repo;
         private readonly IHttpContextAccessor httpContext;
         private readonly IMapper mapper;
-        private readonly ILogger<CodesController> logger;
 
         #endregion
 
-        public CodesController(ICodeRepository repo, IHttpContextAccessor httpContext, IMapper mapper, ILogger<CodesController> logger) {
+        public CodesController(ICodeRepository repo, IHttpContextAccessor httpContext, IMapper mapper) {
             this.httpContext = httpContext;
             this.mapper = mapper;
             this.repo = repo;
-            this.logger = logger;
         }
 
         [HttpGet]
@@ -53,7 +50,6 @@ namespace API.Features.Codes {
         [ServiceFilter(typeof(ModelValidationAttribute))]
         public async Task<Response> PostCodeAsync([FromBody] CodeWriteDto record) {
             repo.Create(mapper.Map<CodeWriteDto, Code>(await AttachUserIdToRecord(record)));
-            logger.LogInformation("Record created {@record}", record);
             return ApiResponses.OK();
         }
 

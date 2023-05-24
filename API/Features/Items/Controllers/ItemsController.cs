@@ -7,7 +7,6 @@ using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
 namespace API.Features.Items {
 
@@ -19,15 +18,13 @@ namespace API.Features.Items {
         private readonly IItemRepository repo;
         private readonly IHttpContextAccessor httpContext;
         private readonly IMapper mapper;
-        private readonly ILogger<ItemsController> logger;
 
         #endregion
 
-        public ItemsController(IItemRepository repo, IHttpContextAccessor httpContext, IMapper mapper, ILogger<ItemsController> logger) {
+        public ItemsController(IItemRepository repo, IHttpContextAccessor httpContext, IMapper mapper) {
             this.httpContext = httpContext;
             this.mapper = mapper;
             this.repo = repo;
-            this.logger = logger;
         }
 
         [HttpGet]
@@ -53,7 +50,6 @@ namespace API.Features.Items {
         [ServiceFilter(typeof(ModelValidationAttribute))]
         public async Task<Response> PostItemAsync([FromBody] ItemWriteDto record) {
             repo.Create(mapper.Map<ItemWriteDto, Item>(await AttachUserIdToRecord(record)));
-            logger.LogInformation("Record created {@record}", record);
             return ApiResponses.OK();
         }
 

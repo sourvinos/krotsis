@@ -7,18 +7,15 @@ using API.Infrastructure.Implementations;
 using API.Infrastructure.Responses;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 
 namespace API.Features.Transactions {
 
     public class TransactionRepository : Repository<Transaction>, ITransactionRepository {
 
         private readonly IMapper mapper;
-        protected readonly ILogger<TransactionRepository> logger;
 
-        public TransactionRepository(AppDbContext appDbContext, IMapper mapper, ILogger<TransactionRepository> logger) : base(appDbContext) {
+        public TransactionRepository(AppDbContext appDbContext, IMapper mapper) : base(appDbContext) {
             this.mapper = mapper;
-            this.logger = logger;
         }
 
         public async Task<IEnumerable<TransactionListDto>> Get() {

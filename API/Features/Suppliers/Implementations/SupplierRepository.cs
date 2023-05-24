@@ -5,18 +5,15 @@ using API.Infrastructure.Classes;
 using API.Infrastructure.Implementations;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 
 namespace API.Features.Suppliers {
 
     public class SupplierRepository : Repository<Supplier>, ISupplierRepository {
 
         private readonly IMapper mapper;
-        protected readonly ILogger<SupplierRepository> logger;
 
-        public SupplierRepository(AppDbContext appDbContext, IMapper mapper, ILogger<SupplierRepository> logger) : base(appDbContext) {
+        public SupplierRepository(AppDbContext appDbContext, IMapper mapper) : base(appDbContext) {
             this.mapper = mapper;
-            this.logger = logger;
         }
 
         public async Task<IEnumerable<SupplierListDto>> Get() {

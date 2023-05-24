@@ -8,7 +8,6 @@ using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
 namespace API.Features.Transactions {
 
@@ -18,17 +17,15 @@ namespace API.Features.Transactions {
         #region variables
 
         private readonly IHttpContextAccessor httpContext;
-        private readonly ILogger<TransactionsController> logger;
         private readonly IMapper mapper;
         private readonly ITransactionRepository repo;
 
         #endregion
 
-        public TransactionsController(IHttpContextAccessor httpContext, ILogger<TransactionsController> logger, IMapper mapper, ITransactionRepository repo) {
+        public TransactionsController(IHttpContextAccessor httpContext, IMapper mapper, ITransactionRepository repo) {
             this.httpContext = httpContext;
             this.mapper = mapper;
             this.repo = repo;
-            this.logger = logger;
         }
 
         [HttpGet]
@@ -48,7 +45,6 @@ namespace API.Features.Transactions {
         [ServiceFilter(typeof(ModelValidationAttribute))]
         public async Task<Response> PostTransactionAsync([FromBody] TransactionWriteDto record) {
             repo.Create(mapper.Map<TransactionWriteDto, Transaction>(await AttachUserIdToRecord(record)));
-            logger.LogInformation("Record created {@record}", record);
             return ApiResponses.OK();
         }
 

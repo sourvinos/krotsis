@@ -7,7 +7,6 @@ using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
 namespace API.Features.Suppliers {
 
@@ -19,15 +18,13 @@ namespace API.Features.Suppliers {
         private readonly ISupplierRepository repo;
         private readonly IHttpContextAccessor httpContext;
         private readonly IMapper mapper;
-        private readonly ILogger<SuppliersController> logger;
 
         #endregion
 
-        public SuppliersController(ISupplierRepository repo, IHttpContextAccessor httpContext, IMapper mapper, ILogger<SuppliersController> logger) {
+        public SuppliersController(ISupplierRepository repo, IHttpContextAccessor httpContext, IMapper mapper) {
             this.httpContext = httpContext;
             this.mapper = mapper;
             this.repo = repo;
-            this.logger = logger;
         }
 
         [HttpGet]
@@ -58,7 +55,6 @@ namespace API.Features.Suppliers {
         [ServiceFilter(typeof(ModelValidationAttribute))]
         public async Task<Response> PostSupplierAsync([FromBody] SupplierWriteDto record) {
             repo.Create(mapper.Map<SupplierWriteDto, Supplier>(await AttachUserIdToRecord(record)));
-            logger.LogInformation("Record created {@record}", record);
             return ApiResponses.OK();
         }
 

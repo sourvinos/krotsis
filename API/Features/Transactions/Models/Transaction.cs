@@ -12,8 +12,8 @@ namespace API.Features.Expenses {
         public int Id { get; set; }
         // Fields
         public DateTime Date { get; set; }
-        public int CodeId { get; set; }
         public int SupplierId { get; set; }
+        public int CodeId { get; set; }
         public string InvoiceNo { get; set; }
         public decimal GrossAmount { get; set; }
         public string Remarks { get; set; }
