@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using API.Infrastructure.Classes;
+using API.Infrastructure.Helpers;
 using API.Infrastructure.Implementations;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
@@ -37,36 +39,53 @@ namespace API.Features.Suppliers {
             return await context.Suppliers.SingleOrDefaultAsync(m => m.Id == id);
         }
 
-        /// <summary>
-        /// Gets the transactions for the supplier and according to the codeId field in the codes table
-        /// puts the gross amount field in either the debit or the credit
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        public IEnumerable<SupplierLedgerVM> GetLedger(int id) {
-            return context.Transactions
+        public async Task<IEnumerable<SupplierLedgerDetailLineVM>> GetLedgerAsync(int id) {
+            return await context.Transactions
                 .Include(x => x.Supplier)
                 .Where(x => x.SupplierId == id)
-                .Select(x => new SupplierLedgerVM {
-                    Date = x.Date.ToString(),
+                .OrderBy(x => x.Date)
+                .Select(x => new SupplierLedgerDetailLineVM {
+                    Date = DateHelpers.DateToISOString(x.Date),
+                    SupplierId = x.SupplierId,
                     CodeId = x.CodeId,
                     Debit = x.Code.DebitCreditId == 1 ? x.GrossAmount : 0,
                     Credit = x.Code.DebitCreditId == 2 ? x.GrossAmount : 0
-                }).ToList();
+                }).ToListAsync();
         }
 
-        /// <summary>
-        /// Builds the accumulated balance based on the previous step
-        /// </summary>
-        /// <param name="records"></param>
-        /// <returns></returns>
-        public IEnumerable<SupplierLedgerVM> BuildBalance(IEnumerable<SupplierLedgerVM> records) {
+        public IEnumerable<SupplierLedgerDetailLineVM> BuildBalance(IEnumerable<SupplierLedgerDetailLineVM> records) {
             decimal balance = 0;
             foreach (var record in records) {
                 balance = balance + record.Debit - record.Credit;
                 record.Balance = balance;
             }
             return records;
+        }
+
+        public SupplierLedgerVM BuildLedger(IEnumerable<SupplierLedgerDetailLineVM> records, string fromDate) {
+            decimal debit = 0;
+            decimal credit = 0;
+            decimal balance = 0;
+            foreach (var record in records) {
+                if (Convert.ToDateTime(record.Date) < Convert.ToDateTime(fromDate)) {
+                    debit += record.Debit;
+                    credit += record.Credit;
+                    balance = balance + record.Debit - record.Credit;
+                }
+            }
+            var previousPeriod = new SupplierLedgerVM {
+                Previous = new PreviousPeriod {
+                    Debit = debit,
+                    Credit = credit,
+                    Balance = balance
+                }
+            };
+            foreach (var record in records) {
+                if (Convert.ToDateTime(record.Date) >= Convert.ToDateTime(fromDate)) {
+                    previousPeriod.Requested.Add(record);
+                }
+            }
+            return previousPeriod;
         }
 
     }

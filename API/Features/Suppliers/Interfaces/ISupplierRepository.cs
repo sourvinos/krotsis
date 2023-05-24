@@ -9,8 +9,9 @@ namespace API.Features.Suppliers {
         Task<IEnumerable<SupplierListDto>> Get();
         Task<IEnumerable<SupplierListDto>> GetActive();
         Task<Supplier> GetByIdToDelete(int id);
-        IEnumerable<SupplierLedgerVM> GetLedger(int id);
-        IEnumerable<SupplierLedgerVM> BuildBalance(IEnumerable<SupplierLedgerVM> records);
+        Task<IEnumerable<SupplierLedgerDetailLineVM>> GetLedgerAsync(int id);
+        IEnumerable<SupplierLedgerDetailLineVM> BuildBalance(IEnumerable<SupplierLedgerDetailLineVM> records);
+        SupplierLedgerVM BuildLedger(IEnumerable<SupplierLedgerDetailLineVM> records, string fromDate);
 
     }
 

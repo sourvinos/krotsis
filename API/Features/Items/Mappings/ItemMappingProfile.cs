@@ -10,7 +10,7 @@ namespace API.Features.Items {
             CreateMap<Item, ItemListDto>();
             CreateMap<Item, ItemReadDto>();
             CreateMap<ItemWriteDto, Item>()
-                .ForMember(x => x.TimeStamp, x => x.MapFrom(x => DateTimeHelpers.ServerDateTimeToISOString(DateTime.Now)));
+                .ForMember(x => x.TimeStamp, x => x.MapFrom(x => DateHelpers.DateTimeToISOString(DateTime.Now)));
         }
 
     }

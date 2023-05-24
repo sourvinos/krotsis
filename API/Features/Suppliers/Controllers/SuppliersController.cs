@@ -44,10 +44,10 @@ namespace API.Features.Suppliers {
             return mapper.Map<Supplier, SupplierReadDto>(await repo.GetById(id));
         }
 
-        [AllowAnonymous]
-        [HttpGet("ledger/{id}")]
-        public IEnumerable<SupplierLedgerVM> GetLedger(int id) {
-            return repo.BuildBalance(repo.GetLedger(id));
+        [Authorize(Roles = "admin")]
+        [HttpGet("ledger/{id}/fromDate/{date}")]
+        public async Task<SupplierLedgerVM> GetLedgerAsync(int id, string date) {
+            return repo.BuildLedger(repo.BuildBalance(await repo.GetLedgerAsync(id)), date);
         }
 
         [HttpPost]

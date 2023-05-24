@@ -10,7 +10,7 @@ namespace API.Features.Codes {
             CreateMap<Code, CodeListDto>();
             CreateMap<Code, CodeReadDto>();
             CreateMap<CodeWriteDto, Code>()
-                .ForMember(x => x.TimeStamp, x => x.MapFrom(x => DateTimeHelpers.ServerDateTimeToISOString(DateTime.Now)));
+                .ForMember(x => x.TimeStamp, x => x.MapFrom(x => DateHelpers.DateTimeToISOString(DateTime.Now)));
         }
 
     }
