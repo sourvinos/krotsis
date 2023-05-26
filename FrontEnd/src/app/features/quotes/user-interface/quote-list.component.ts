@@ -1,7 +1,8 @@
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router'
-import { Component } from '@angular/core'
+import { Component, ViewChild } from '@angular/core'
 import { Subject } from 'rxjs'
+import { Table } from 'primeng/table'
 import { formatNumber } from '@angular/common'
 // Custom
 import { Item } from '../classes/models/item'
@@ -24,16 +25,19 @@ export class QuoteListComponent {
 
     //#region variables
 
+    @ViewChild('table') table: Table | undefined
+
+    private selectedRecordIndex: number
+    public  selectedRecords: Item[] = []
     private unsubscribe = new Subject<void>()
     public feature = 'quoteList'
+    public form: FormGroup
     public icon = 'home'
+    public netPrice = 0
     public parentUrl = '/'
     public records: Item[] = []
-    private selectedRecords: Item[] = []
-    public netPrice = 0
+    public selected = []
     public totalAmount = 0
-    public form: FormGroup
-    private selectedRecordIndex: number
 
     //#endregion
 
@@ -43,6 +47,7 @@ export class QuoteListComponent {
 
     ngOnInit(): void {
         this.initForm()
+        this.initQuote()
         this.loadRecords()
         this.doInitialCalculations()
     }
@@ -96,6 +101,17 @@ export class QuoteListComponent {
         return parseFloat(amount) > 0 ? 'inuse' : ''
     }
 
+    public initQuote(): void {
+        this.selected = []
+        this.selectedRecords = []
+        this.totalAmount = 0
+        this.form.reset()
+        this.records.forEach(record => {
+            record.qty = 0
+            record.totalGrossPrice = 0
+        })
+    }
+
     public rowSelect(row: any): void {
         this.calculatePriceSum()
         this.updateSelectedItemsArray(row.data, 'add')
@@ -103,7 +119,7 @@ export class QuoteListComponent {
 
     public rowUnselect(row: any): void {
         this.calculatePriceSum()
-        this.updateSelectedItemsArray(row.data, 'subtract')
+        this.updateSelectedItemsArray(row.data, 'remove')
     }
 
     public selectField(event: any): void {
@@ -169,7 +185,7 @@ export class QuoteListComponent {
         if (action == 'add') {
             this.selectedRecords.push(row)
         }
-        if (action == 'subtract') {
+        if (action == 'remove') {
             const index = this.selectedRecords.findIndex(object => {
                 return object.id == row.id
             })
