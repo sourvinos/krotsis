@@ -10,6 +10,9 @@ import { LocalStorageService } from './local-storage.service'
 import { ResetPasswordViewModel } from 'src/app/features/users/classes/view-models/reset-password-view-model'
 import { environment } from 'src/environments/environment'
 import { ChangePasswordViewModel } from 'src/app/features/users/classes/view-models/change-password-view-model'
+import { ItemService } from 'src/app/features/items/classes/services/item.service'
+import { DexieService } from './dexie.service'
+import { Item } from 'src/app/features/items/classes/models/item'
 
 @Injectable({ providedIn: 'root' })
 
@@ -29,7 +32,7 @@ export class AccountService extends HttpDataService {
 
     //#endregion
 
-    constructor(httpClient: HttpClient, private interactionService: InteractionService, private localStorageService: LocalStorageService, private ngZone: NgZone, private router: Router) {
+    constructor(httpClient: HttpClient, private dexieServive: DexieService, private interactionService: InteractionService, private itemService: ItemService, private localStorageService: LocalStorageService, private ngZone: NgZone, private router: Router) {
         super(httpClient, environment.apiUrl)
     }
 
@@ -82,6 +85,7 @@ export class AccountService extends HttpDataService {
             this.setLocalStorage(response)
             this.setUserData()
             this.refreshMenus()
+            this.populateDexieFromAPI()
         }))
     }
 
@@ -132,6 +136,14 @@ export class AccountService extends HttpDataService {
     private navigateToLogin(): void {
         this.ngZone.run(() => {
             this.router.navigate(['/login'])
+        })
+    }
+
+    private populateDexieFromAPI(): void {
+        this.itemService.getAll().subscribe(items => {
+            items.forEach(item => {
+                this.dexieServive.table('items').add({ 'id': item.id, 'description': item.description })
+            })
         })
     }
 
