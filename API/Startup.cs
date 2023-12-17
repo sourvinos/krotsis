@@ -46,6 +46,12 @@ namespace API {
             ConfigureServices(services);
         }
 
+        public void ConfigureLiveProductionServices(IServiceCollection services) {
+            services.AddDbContextFactory<AppDbContext>(options => options.UseMySql(Configuration.GetConnectionString("LiveProduction"), new MySqlServerVersion(new Version(8, 0, 19)), builder =>
+                builder.EnableStringComparisonTranslations()));
+            ConfigureServices(services);
+        }
+
         public void ConfigureServices(IServiceCollection services) {
             Cors.AddCors(services);
             Identity.AddIdentity(services);
@@ -81,6 +87,14 @@ namespace API {
         }
 
         public void ConfigureLocalProduction(IApplicationBuilder app) {
+            app.UseHsts();
+            Configure(app);
+            app.UseEndpoints(endpoints => {
+                endpoints.MapControllers();
+            });
+        }
+
+        public void ConfigureLiveProduction(IApplicationBuilder app) {
             app.UseHsts();
             Configure(app);
             app.UseEndpoints(endpoints => {

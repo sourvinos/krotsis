@@ -1,13 +1,13 @@
-// ng build --output-path="c:\krotsis\wwwroot" --configuration=local-production
+// ng build --output-path="release" --configuration=live-production
 
 export const environment = {
-    apiUrl: 'https://app.krotsis.com/api',
-    url: 'https://app.krotsis.com',
+    apiUrl: 'http://krotsis-001-site1.etempurl.com/api',
+    url: 'http://krotsis-001-site1.etempurl.com',
     appName: {
         primary: 'ΚΡΟΤΣΗΣ',
         secondary: 'ΕΛΑΣΤΙΚΑ - ΖΑΝΤΕΣ'
     },
-    clientUrl: 'https://app.krotsis.com',
+    clientUrl: 'http://krotsis-001-site1.etempurl.com',
     defaultLanguage: 'el-GR',
     defaultTheme: 'dark',
     idleSettings: {
@@ -23,10 +23,10 @@ export const environment = {
     iconsDirectory: 'assets/images/icons/',
     isWideScreen: 1920,
     login: {
-        username: 'john',
+        username: '',
         email: '',
-        password: '1234567890',
-        noRobot: true
+        password: '',
+        noRobot: false
     },
     production: true
 }
