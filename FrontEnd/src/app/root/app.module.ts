@@ -1,41 +1,35 @@
 // Base
 import { NgModule } from '@angular/core'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { BrowserModule } from '@angular/platform-browser'
+import { BrowserModule, Title } from '@angular/platform-browser'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
-import { ScrollingModule } from '@angular/cdk/scrolling'
-import { registerLocaleData } from '@angular/common'
 // Modules
+import { AppComponent } from './app.component'
 import { AppRoutingModule } from './app.routing.module'
 import { LoginModule } from '../features/login/classes/modules/login.module'
 import { PrimeNgModule } from '../shared/modules/primeng.module'
 import { SharedModule } from 'src/app/shared/modules/shared.module'
 // Components
-import { AppComponent } from './app.component'
-import { HomeComponent } from './../shared/components/home/home.component'
-import { TopBarComponent } from '../shared/components/top-bar/top-bar.component'
-import { TopMenuComponent } from '../shared/components/top-menu/top-menu.component'
+import { CardsMenuComponent } from '../shared/components/home/cards-menu.component'
+import { HomeComponent } from '../shared/components/home/home.component'
+import { LogoutComponent } from '../shared/components/logout/logout.component'
+import { ParametersMenuComponent } from '../shared/components/parameters-menu/parameters-menu.component'
+import { TablesMenuComponent } from '../shared/components/tables-menu/tables-menu.component'
+import { TasksMenuComponent } from '../shared/components/tasks-menu/tasks-menu.component'
 import { UserMenuComponent } from '../shared/components/user-menu/user-menu.component'
-// Utils
+// Services
 import { InterceptorService } from '../shared/services/interceptor.service'
-import { MainFooterComponent } from '../shared/components/home/main-footer.component'
-import { MainMenuComponent } from '../shared/components/home/main-menu.component'
-// Languages
-import localeEl from '@angular/common/locales/el'
-import localeEn from '@angular/common/locales/en-GB'
-
-registerLocaleData(localeEl)
-registerLocaleData(localeEn)
 
 @NgModule({
     declarations: [
         AppComponent,
         HomeComponent,
-        MainFooterComponent,
-        MainMenuComponent,
-        TopBarComponent,
-        TopMenuComponent,
+        CardsMenuComponent,
+        LogoutComponent,
+        ParametersMenuComponent,
+        TablesMenuComponent,
+        TasksMenuComponent,
         UserMenuComponent
     ],
     imports: [
@@ -47,14 +41,10 @@ registerLocaleData(localeEn)
         LoginModule,
         PrimeNgModule,
         ReactiveFormsModule,
-        ScrollingModule,
         SharedModule
     ],
     providers: [
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: InterceptorService, multi: true
-        },
+        Title, { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }
     ],
     bootstrap: [AppComponent]
 })

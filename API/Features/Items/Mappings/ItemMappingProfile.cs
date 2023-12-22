@@ -1,5 +1,3 @@
-using System;
-using API.Infrastructure.Helpers;
 using AutoMapper;
 
 namespace API.Features.Items {
@@ -7,10 +5,9 @@ namespace API.Features.Items {
     public class ItemMappingProfile : Profile {
 
         public ItemMappingProfile() {
-            CreateMap<Item, ItemListDto>();
+            CreateMap<Item, ItemListVM>();
             CreateMap<Item, ItemReadDto>();
-            CreateMap<ItemWriteDto, Item>()
-                .ForMember(x => x.TimeStamp, x => x.MapFrom(x => DateHelpers.DateTimeToISOString(DateTime.Now)));
+            CreateMap<ItemWriteDto, Item>();
         }
 
     }

@@ -1,10 +1,9 @@
 export interface UserNewDto {
 
-    userName: string
+    username: string
     displayname: string
     email: string
-    password: string
-    confirmPassword: string
+    isFirstFieldFocused: boolean
     isAdmin: boolean
     isActive: boolean
 

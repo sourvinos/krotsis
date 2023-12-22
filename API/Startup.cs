@@ -1,23 +1,19 @@
 using System;
 using API.Infrastructure.Auth;
 using API.Infrastructure.Classes;
-using API.Infrastructure.Email;
 using API.Infrastructure.Extensions;
-using API.Infrastructure.Responses;
-using AutoMapper;
+using API.Infrastructure.Helpers;
+using API.Infrastructure.Middleware;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-// dotnet watch run --environment LocalDevelopment
-// dotnet publish /p:Configuration=Release /p:EnvironmentName=LocalProduction -o "C:\Krotsis"
-// dotnet tool install --global dotnet-ef
-// before running migrations: remove specific ConfigureServices and Configure
+// dotnet watch run --environment LocalDevelopment | LocalTesting | ProductionLive | ProductionDemo
+// dotnet publish /p:Configuration=Release /p:EnvironmentName=ProductionDemo | ProductionLive
 // dotnet ef migrations add InitialCreate
 // dotnet ef database update
 
@@ -34,21 +30,31 @@ namespace API {
         }
 
         public void ConfigureLocalDevelopmentServices(IServiceCollection services) {
-            services.AddDbContextFactory<AppDbContext>(options => options.UseMySql(Configuration.GetConnectionString("LocalDevelopment"), new MySqlServerVersion(new Version(8, 0, 19)), builder => {
+            services.AddDbContextFactory<AppDbContext>(options =>
+                options.UseMySql(Configuration.GetConnectionString("LocalDevelopment"), new MySqlServerVersion(new Version(8, 0, 19)), builder => {
+                    builder.EnableStringComparisonTranslations();
+                }));
+            ConfigureServices(services);
+        }
+
+        public void ConfigureLocalTestingServices(IServiceCollection services) {
+            services.AddDbContextFactory<AppDbContext>(options => {
+                options.UseMySql(Configuration.GetConnectionString("LocalTesting"), new MySqlServerVersion(new Version(8, 0, 19)), builder => builder.EnableStringComparisonTranslations());
+                options.EnableSensitiveDataLogging();
+            });
+            ConfigureServices(services);
+        }
+
+        public void ConfigureProductionLiveServices(IServiceCollection services) {
+            services.AddDbContextFactory<AppDbContext>(options => options.UseMySql(Configuration.GetConnectionString("ProductionLive"), new MySqlServerVersion(new Version(8, 0, 19)), builder =>
+                builder.EnableStringComparisonTranslations()));
+            ConfigureServices(services);
+        }
+
+        public void ConfigureProductionDemoServices(IServiceCollection services) {
+            services.AddDbContextFactory<AppDbContext>(options => options.UseMySql(Configuration.GetConnectionString("ProductionDemo"), new MySqlServerVersion(new Version(8, 0, 19)), builder => {
                 builder.EnableStringComparisonTranslations();
             }));
-            ConfigureServices(services);
-        }
-
-        public void ConfigureLocalProductionServices(IServiceCollection services) {
-            services.AddDbContextFactory<AppDbContext>(options => options.UseMySql(Configuration.GetConnectionString("LocalProduction"), new MySqlServerVersion(new Version(8, 0, 19)), builder =>
-                builder.EnableStringComparisonTranslations()));
-            ConfigureServices(services);
-        }
-
-        public void ConfigureLiveProductionServices(IServiceCollection services) {
-            services.AddDbContextFactory<AppDbContext>(options => options.UseMySql(Configuration.GetConnectionString("LiveProduction"), new MySqlServerVersion(new Version(8, 0, 19)), builder =>
-                builder.EnableStringComparisonTranslations()));
             ConfigureServices(services);
         }
 
@@ -57,24 +63,25 @@ namespace API {
             Identity.AddIdentity(services);
             Authentication.AddAuthentication(Configuration, services);
             Interfaces.AddInterfaces(services);
-            services.AddMvc().UseBenchmark();
             services.AddTransient<ResponseMiddleware>();
-            services.Configure<RazorViewEngineOptions>(options => options.ViewLocationExpanders.Add(new ViewLocationExpander()));
             services.AddAntiforgery(options => { options.Cookie.Name = "_af"; options.Cookie.HttpOnly = true; options.Cookie.SecurePolicy = CookieSecurePolicy.Always; options.HeaderName = "X-XSRF-TOKEN"; });
             services.AddAutoMapper(typeof(Startup));
             services.AddDbContext<AppDbContext>();
             services.AddScoped<ModelValidationAttribute>();
+            services.AddSignalR();
             services.AddControllersWithViews()
                     .AddNewtonsoftJson(options => {
                         options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
                         options.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
-                    })
-                    .AddFluentValidation();
+                    });
+            services.AddFluentValidationAutoValidation().AddFluentValidationClientsideAdapters();
             services.AddEmailSenders();
             ModelValidations.AddModelValidation(services);
             services.Configure<CookiePolicyOptions>(options => { options.CheckConsentNeeded = _ => true; options.MinimumSameSitePolicy = SameSiteMode.None; });
+            services.Configure<EnvironmentSettings>(options => Configuration.GetSection("EnvironmentSettings").Bind(options));
             services.Configure<EmailSettings>(options => Configuration.GetSection("EmailSettings").Bind(options));
             services.Configure<TokenSettings>(options => Configuration.GetSection("TokenSettings").Bind(options));
+            services.Configure<TestingEnvironment>(options => Configuration.GetSection("TestingEnvironment").Bind(options));
             services.Configure<DirectoryLocations>(options => Configuration.GetSection("DirectoryLocations").Bind(options));
         }
 
@@ -86,7 +93,13 @@ namespace API {
             });
         }
 
-        public void ConfigureLocalProduction(IApplicationBuilder app) {
+        public void ConfigureLocalTesting(IApplicationBuilder app) {
+            app.UseDeveloperExceptionPage();
+            Configure(app);
+            app.UseEndpoints(endpoints => endpoints.MapControllers());
+        }
+
+        public void ConfigureProductionLive(IApplicationBuilder app) {
             app.UseHsts();
             Configure(app);
             app.UseEndpoints(endpoints => {
@@ -94,7 +107,7 @@ namespace API {
             });
         }
 
-        public void ConfigureLiveProduction(IApplicationBuilder app) {
+        public void ConfigureProductionDemo(IApplicationBuilder app) {
             app.UseHsts();
             Configure(app);
             app.UseEndpoints(endpoints => {

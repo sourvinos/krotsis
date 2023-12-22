@@ -1,15 +1,11 @@
-import { Component, HostListener } from '@angular/core'
-import { firstValueFrom, Observable, Subject, takeUntil } from 'rxjs'
+import { Component } from '@angular/core'
 import { Router } from '@angular/router'
 // Custom
-import { AccountService } from 'src/app/shared/services/account.service'
-import { HelperService } from 'src/app/shared/services/helper.service'
+import { CryptoService } from 'src/app/shared/services/crypto.service'
 import { InteractionService } from 'src/app/shared/services/interaction.service'
-import { LocalStorageService } from 'src/app/shared/services/local-storage.service'
-import { MessageMenuService } from '../../services/messages-menu.service'
-import { MessageSnackbarService } from '../../services/messages-snackbar.service'
-import { ModalActionService } from '../../services/modal-action.service'
-import { environment } from 'src/environments/environment'
+import { Menu } from 'src/app/shared/classes/menu'
+import { SessionStorageService } from 'src/app/shared/services/session-storage.service'
+import { TooltipService } from 'src/app/shared/services/tooltip.service'
 
 @Component({
     selector: 'user-menu',
@@ -21,107 +17,54 @@ export class UserMenuComponent {
 
     //#region variables
 
-    private unsubscribe = new Subject<void>()
-    public loginStatus: Observable<boolean>
-    public menuItems: [] = []
+    public tooltipItems: Menu[]
 
     //#endregion
 
-    constructor(private accountService: AccountService, private helperService: HelperService, private interactionService: InteractionService, private localStorageService: LocalStorageService, private messageMenuService: MessageMenuService, private messageSnackbarService: MessageSnackbarService, private modalActionResultService: ModalActionService, private router: Router) { }
-
-    //#region listeners
-
-    @HostListener('mouseenter') onMouseEnter(): void {
-        document.querySelectorAll('.sub-menu').forEach((item) => {
-            item.classList.remove('hidden')
-        })
-    }
+    constructor(private cryptoService: CryptoService, private interactionService: InteractionService, private router: Router, private sessionStorageService: SessionStorageService, private tooltipService: TooltipService) { }
 
     //#region lifecycle hooks
 
     ngOnInit(): void {
-        this.messageMenuService.getMessages().then((response) => {
-            this.createMenu(response)
-            this.subscribeToInteractionService()
-        })
-    }
-
-    ngDoCheck(): void {
-        this.updateVariables()
+        this.buildTooltips()
     }
 
     //#endregion
 
     //#region public methods
 
-    public editAccount(): void {
-        this.accountService.getConnectedUserId().subscribe(response => {
-            this.localStorageService.saveItem('returnUrl', '/')
-            this.router.navigate(['/users/' + response.userId])
-        })
+    public getDisplayName(): any {
+        return this.cryptoService.decrypt(this.sessionStorageService.getItem('displayName'))
     }
 
     public getLabel(id: string): string {
-        return this.messageMenuService.getDescription(this.menuItems, id)
+        return this.tooltipService.getDescription(this.tooltipItems, id)
     }
 
-    public getIcon(filename: string): string {
-        return environment.iconsDirectory + filename + '-' + this.localStorageService.getItem('my-theme') + '.svg'
+    public isLoggedIn(): boolean {
+        return this.sessionStorageService.getItem('userId') ? true : false
     }
 
-    public hideMenu(): void {
-        document.querySelectorAll('.sub-menu').forEach((item) => {
-            item.classList.add('hidden')
-        })
-    }
-
-    public logout(): void {
-        this.accountService.logout()
-    }
-
-    public editRecord(): void {
-        this.getConnectedUserId().then((response) => {
-            this.localStorageService.saveItem('returnUrl', '/')
-            this.router.navigate(['/users/' + response])
-        })
+    public onEditConnectedUser(): void {
+        this.sessionStorageService.saveItem('returnUrl', '/')
+        this.router.navigate(['/users/' + this.cryptoService.decrypt(this.sessionStorageService.getItem('userId'))])
     }
 
     //#endregion
 
     //#region private methods
 
-    private createMenu(response: any): void {
-        this.menuItems = response
-    }
-
-
-    private getConnectedUserId(): Promise<any> {
-        const promise = new Promise((resolve) => {
-            firstValueFrom(this.accountService.getConnectedUserId()).then((response) => {
-                resolve(response.userId)
-            })
-        })
-        return promise
-    }
-    public getUserDisplayname(): string {
-        let userDisplayName = ''
-        this.accountService.getUserDisplayname.subscribe(result => {
-            userDisplayName = result
-        })
-        return userDisplayName
-    }
-
-    private subscribeToInteractionService(): void {
-        this.interactionService.refreshMenus.pipe(takeUntil(this.unsubscribe)).subscribe(() => {
-            this.messageMenuService.getMessages().then((response) => {
-                this.menuItems = response
-                this.createMenu(response)
-            })
+    private buildTooltips(): void {
+        this.tooltipService.getMessages().then((response) => {
+            this.createTooltips(response)
         })
     }
 
-    private updateVariables(): void {
-        this.loginStatus = this.accountService.isLoggedIn
+    private createTooltips(items: Menu[]): void {
+        this.tooltipItems = []
+        items.forEach(item => {
+            this.tooltipItems.push(item)
+        })
     }
 
     //#endregion

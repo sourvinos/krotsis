@@ -1,110 +1,180 @@
 import { ActivatedRoute, Router } from '@angular/router'
-import { Component } from '@angular/core'
-import { Subject } from 'rxjs'
-import { formatNumber } from '@angular/common'
+import { Component, ViewChild } from '@angular/core'
+import { Table } from 'primeng/table'
 // Custom
-import { ButtonClickService } from 'src/app/shared/services/button-click.service'
-import { Item } from '../classes/models/item'
-import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-shortcuts.service'
+import { ItemListVM } from '../classes/view-models/item-list-vm'
+import { DialogService } from 'src/app/shared/services/modal-dialog.service'
+import { EmojiService } from 'src/app/shared/services/emoji.service'
+import { HelperService } from 'src/app/shared/services/helper.service'
+import { InteractionService } from 'src/app/shared/services/interaction.service'
 import { ListResolved } from '../../../shared/classes/list-resolved'
-import { LocalStorageService } from 'src/app/shared/services/local-storage.service'
-import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
-import { MessageSnackbarService } from 'src/app/shared/services/messages-snackbar.service'
-import { ModalActionService } from 'src/app/shared/services/modal-action.service'
+import { MessageDialogService } from 'src/app/shared/services/message-dialog.service'
+import { MessageLabelService } from 'src/app/shared/services/message-label.service'
+import { SessionStorageService } from 'src/app/shared/services/session-storage.service'
 
 @Component({
     selector: 'item-list',
     templateUrl: './item-list.component.html',
-    styleUrls: ['../../../../assets/styles/lists.css']
+    styleUrls: ['../../../../assets/styles/custom/lists.css']
 })
 
 export class ItemListComponent {
 
-    //#region variables
+    //#region common #9
 
-    private unlisten: Unlisten
-    private unsubscribe = new Subject<void>()
+    @ViewChild('table') table: Table
+
     private url = 'items'
+    private virtualElement: any
     public feature = 'itemList'
+    public featureIcon = 'items'
     public icon = 'home'
-    public parentUrl = '/'
-    public records: Item[] = []
+    public parentUrl = '/home'
+    public records: ItemListVM[] = []
+    public recordsFilteredCount: number
 
     //#endregion
 
-    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private keyboardShortcutsService: KeyboardShortcuts, private localStorageService: LocalStorageService, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private modalActionResultService: ModalActionService, private router: Router) { }
+    constructor(private activatedRoute: ActivatedRoute, private dialogService: DialogService, private emojiService: EmojiService, private helperService: HelperService, private interactionService: InteractionService, private messageDialogService: MessageDialogService, private messageLabelService: MessageLabelService, private router: Router, private sessionStorageService: SessionStorageService) { }
 
     //#region lifecycle hooks
 
     ngOnInit(): void {
-        this.loadRecords()
-        this.addShortcuts()
+        this.loadRecords().then(() => {
+            this.filterTableFromStoredFilters()
+            this.subscribeToInteractionService()
+            this.setTabTitle()
+            this.setSidebarsHeight()
+        })
     }
 
-    ngOnDestroy(): void {
-        this.cleanup()
-        this.unlisten()
+    ngAfterViewInit(): void {
+        setTimeout(() => {
+            this.getVirtualElement()
+            this.scrollToSavedPosition()
+            this.hightlightSavedRow()
+            this.enableDisableFilters()
+        }, 500)
     }
 
     //#endregion
 
-    //#region public methods
+    //#region public common methods #7
 
     public editRecord(id: number): void {
-        this.router.navigate([this.url, id])
+        this.storeScrollTop()
+        this.storeSelectedId(id)
+        this.navigateToRecord(id)
     }
 
-    public formatNumberToLocale(number: number) {
-        return formatNumber(number, this.localStorageService.getItem('language'), '2.2')
+    public filterRecords(event: any): void {
+        this.sessionStorageService.saveItem(this.feature + '-' + 'filters', JSON.stringify(this.table.filters))
+        this.recordsFilteredCount = event.filteredValue.length
+    }
+
+    public getEmoji(anything: any): string {
+        return typeof anything == 'string'
+            ? this.emojiService.getEmoji(anything)
+            : anything ? this.emojiService.getEmoji('green-box') : this.emojiService.getEmoji('red-box')
     }
 
     public getLabel(id: string): string {
         return this.messageLabelService.getDescription(this.feature, id)
     }
 
+    public highlightRow(id: any): void {
+        this.helperService.highlightRow(id)
+    }
+
     public newRecord(): void {
         this.router.navigate([this.url + '/new'])
     }
 
-    //#endregion
-
-    //#region private methods
-
-    private addShortcuts(): void {
-        this.unlisten = this.keyboardShortcutsService.listen({
-            'Escape': () => {
-                this.goBack()
-            },
-            'Alt.N': (event: KeyboardEvent) => {
-                this.buttonClickService.clickOnButton(event, 'new')
-            }
-        }, {
-            priority: 0,
-            inputs: true
-        })
+    public resetTableFilters(): void {
+        this.helperService.clearTableTextFilters(this.table, ['description', 'email', 'phones'])
     }
 
-    private cleanup(): void {
-        this.unsubscribe.next()
-        this.unsubscribe.unsubscribe()
+    //#endregion
+
+    //#region private common methods #13
+
+    private enableDisableFilters(): void {
+        this.records.length == 0 ? this.helperService.disableTableFilters() : this.helperService.enableTableFilters()
+    }
+
+    private filterColumn(element: { value: any }, field: string, matchMode: string): void {
+        if (element != undefined && (element.value != null || element.value != undefined)) {
+            this.table.filter(element.value, field, matchMode)
+        }
+    }
+
+    private filterTableFromStoredFilters(): void {
+        const filters = this.sessionStorageService.getFilters(this.feature + '-' + 'filters')
+        if (filters != undefined) {
+            setTimeout(() => {
+                this.filterColumn(filters.isActive, 'isActive', 'contains')
+                this.filterColumn(filters.description, 'description', 'contains')
+                this.filterColumn(filters.netPrice, 'netPrice', 'contains')
+                this.filterColumn(filters.grossPrice, 'grossPrice', 'contains')
+            }, 500)
+        }
+    }
+
+    private getVirtualElement(): void {
+        this.virtualElement = document.getElementsByClassName('p-scroller-inline')[0]
     }
 
     private goBack(): void {
         this.router.navigate([this.parentUrl])
     }
 
+    private hightlightSavedRow(): void {
+        this.helperService.highlightSavedRow(this.feature)
+    }
+
     private loadRecords(): Promise<any> {
-        const promise = new Promise((resolve) => {
+        return new Promise((resolve) => {
             const listResolved: ListResolved = this.activatedRoute.snapshot.data[this.feature]
             if (listResolved.error == null) {
                 this.records = listResolved.list
+                this.recordsFilteredCount = this.records.length
                 resolve(this.records)
             } else {
-                this.goBack()
-                this.modalActionResultService.open(this.messageSnackbarService.filterResponse(new Error('500')), 'error', ['ok'])
+                this.dialogService.open(this.messageDialogService.filterResponse(listResolved.error), 'error', ['ok']).subscribe(() => {
+                    this.goBack()
+                })
             }
         })
-        return promise
+    }
+
+    private navigateToRecord(id: any): void {
+        this.router.navigate([this.url, id])
+    }
+
+    private scrollToSavedPosition(): void {
+        this.helperService.scrollToSavedPosition(this.virtualElement, this.feature)
+    }
+
+    private setSidebarsHeight(): void {
+        this.helperService.setSidebarsTopMargin('0')
+    }
+
+    private setTabTitle(): void {
+        this.helperService.setTabTitle(this.feature)
+    }
+
+    private storeSelectedId(id: number): void {
+        this.sessionStorageService.saveItem(this.feature + '-id', id.toString())
+    }
+
+    private storeScrollTop(): void {
+        this.sessionStorageService.saveItem(this.feature + '-scrollTop', this.virtualElement.scrollTop)
+    }
+
+    private subscribeToInteractionService(): void {
+        this.interactionService.refreshTabTitle.subscribe(() => {
+            this.setTabTitle()
+        })
     }
 
     //#endregion

@@ -1,10 +1,11 @@
-import { Component, HostListener } from '@angular/core'
-import { ChildrenOutletContexts, NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router'
-import { Subject, takeUntil } from 'rxjs'
+import { ChangeDetectorRef, Component, HostListener } from '@angular/core'
+import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router'
 // Custom
 import { AccountService } from '../shared/services/account.service'
-import { InteractionService } from '../shared/services/interaction.service'
-import { LocalStorageService } from '../shared/services/local-storage.service'
+import { CryptoService } from '../shared/services/crypto.service'
+import { LoadingSpinnerService } from '../shared/services/loading-spinner.service'
+import { SessionStorageService } from '../shared/services/session-storage.service'
+import { environment } from 'src/environments/environment'
 import { routeAnimation } from '../shared/animations/animations'
 
 @Component({
@@ -18,13 +19,11 @@ export class AppComponent {
 
     //#region variables
 
-    private unsubscribe = new Subject<void>()
     public isLoading = true
 
     //#endregion
 
-    constructor(private accountService: AccountService, private localStorageService: LocalStorageService, private contexts: ChildrenOutletContexts, private interactionService: InteractionService, private router: Router) {
-        this.subscribeToInteractionService()
+    constructor(private accountService: AccountService, private changeDetector: ChangeDetectorRef, private cryptoService: CryptoService, private loadingSpinnerService: LoadingSpinnerService, private router: Router, private sessionStorageService: SessionStorageService) {
         this.router.events.subscribe((routerEvent) => {
             if (routerEvent instanceof NavigationStart) {
                 this.isLoading = true
@@ -41,30 +40,45 @@ export class AppComponent {
         this.accountService.logout()
     }
 
-    ngOnInit(): void {
-        this.setBackgroundImage()
-    }
-
     //#endregion
 
-    //#region public methods
+    //#region lifecycle hooks
 
-    getRouteAnimationData() {
-        return this.contexts.getContext('primary')?.route?.snapshot?.data?.['animation']
+    ngOnInit(): void {
+        this.initLoadingSpinner()
+        this.setUserSelect()
+        this.setBackgroundImage()
+        this.openBroadcastChannel()
+        this.isUserConnected()
     }
 
     //#endregion
 
     //#region private methods
 
-    private setBackgroundImage(): void {
-        document.getElementById('wrapper').style.backgroundImage = 'url(../../assets/images/background/background-' + this.localStorageService.getItem('my-theme') + '.svg)'
+    private initLoadingSpinner(): void {
+        this.loadingSpinnerService.getSpinnerObserver().subscribe((status) => {
+            this.isLoading = status == 'start'
+            this.changeDetector.detectChanges()
+        })
     }
 
-    private subscribeToInteractionService(): void {
-        this.interactionService.refreshBackgroundImage.pipe(takeUntil(this.unsubscribe)).subscribe(() => {
-            this.setBackgroundImage()
-        })
+    private isUserConnected(): void {
+        if (this.cryptoService.decrypt(this.sessionStorageService.getItem('userId')) != '' && window.location.href.includes('resetPassword') == false) {
+            this.accountService.logout()
+        }
+    }
+
+    private openBroadcastChannel(): void {
+        new BroadcastChannel('test').postMessage('open')
+    }
+
+    private setBackgroundImage(): void {
+        document.getElementById('wrapper').style.backgroundImage = 'url(../../assets/images/themes/background.svg'
+    }
+
+    private setUserSelect(): void {
+        document.getElementById('main').style.userSelect = environment.cssUserSelect
     }
 
     //#endregion

@@ -1,10 +1,8 @@
-#wrapper {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+#content {
+    background-color: transparent !important;
     justify-content: flex-end;
-    margin-top: auto;
-    padding-bottom: var(--gap);
-    width: 100%;
+}
+
+#fake-footer {
+    padding: 2rem 0 2rem 0;
 }

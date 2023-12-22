@@ -1,47 +1,61 @@
 <div id="form-wrapper">
 
-    <div id="header">
-        <home-button-and-title [feature]="feature" [icon]="icon" [parentUrl]="parentUrl"></home-button-and-title>
-    </div>
-
     <div id="content">
-        <form [formGroup]="form" autocomplete="off" data-cy="form">
+
+        <div id="header">
+            <home-button-and-title [feature]="feature" [featureIcon]="featureIcon" [icon]="icon" [parentUrl]="parentUrl"></home-button-and-title>
+        </div>
+
+        <form [formGroup]="form" id="form">
+            <!-- Description -->
             <mat-form-field>
-                <input [inputTabStop]="input" [placeholder]="getLabel('description')" data-cy="description" data-tabindex="1" formControlName="description" id="description" matInput>
+                <mat-label>{{ getLabel('description') }}</mat-label>
+                <input [inputTabStop]="input" dataTabIndex="1" formControlName="description" matInput>
                 <mat-error *ngIf="description.hasError('required')">{{ getHint("required") }}</mat-error>
                 <mat-error *ngIf="description.hasError('maxlength')">{{ getHint("maxLength", description.errors.maxlength.requiredLength) }}</mat-error>
             </mat-form-field>
+            <!-- VAT Percent -->
             <mat-form-field>
-                <input [inputTabStop]="input" [placeholder]="getLabel('vatPercent')" data-cy="vatPercent" data-tabindex="2" formControlName="vatPercent" id="vatPercent" matInput>
+                <mat-label>{{ getLabel('vatPercent') }}</mat-label>
+                <input (keyup)="calculateNetAndGrossPriceBasedOnVatPercent(2)" [inputTabStop]="input" dataTabIndex="2" formControlName="vatPercent" matInput>
                 <mat-error *ngIf="vatPercent.hasError('maxlength')">{{ getHint("maxLength", vatPercent.errors.maxlength.requiredLength) }}</mat-error>
             </mat-form-field>
+            <!-- Net Price -->
             <mat-form-field>
-                <input (blur)="doCalculations('netPrice')" (keyup)="doCalculations('netPrice')" [inputTabStop]="input" [placeholder]="getLabel('netPrice')" data-cy="netPrice" data-tabindex="3" formControlName="netPrice" id="netPrice" inputDecimal matInput type="number">
+                <mat-label>{{ getLabel('netValue') }}</mat-label>
+                <input (keyup)="calculateGrossPriceBasedOnNetPrice(3)" [inputTabStop]="input" dataTabIndex="3" formControlName="netPrice" inputDecimal matInput type="number">
                 <mat-error *ngIf="netPrice.hasError('maxlength')">{{ getHint("maxLength", netPrice.errors.maxlength.requiredLength) }}</mat-error>
             </mat-form-field>
+            <!-- Gross Price -->
             <mat-form-field>
-                <input (blur)="doCalculations('grossPrice')" (keyup)="doCalculations('grossPrice')" [inputTabStop]="input" [placeholder]="getLabel('grossPrice')" data-cy="grossPrice" data-tabindex="4" formControlName="grossPrice" id="grossPrice" inputDecimal matInput type="number">
+                <mat-label>{{ getLabel('grossValue') }}</mat-label>
+                <input (keyup)="calculateNetPriceBasedOnGrossPrice(4)" [inputTabStop]="input" dataTabIndex="4" formControlName="grossPrice" inputDecimal matInput type="number">
                 <mat-error *ngIf="grossPrice.hasError('maxlength')">{{ getHint("maxLength", grossPrice.errors.maxlength.requiredLength) }}</mat-error>
             </mat-form-field>
-            <div class="styled-input-square">
-                <div class="styled-input-single">
-                    <input data-cy="is-active" formControlName="isActive" id="is-active" type="checkbox">
-                    <label data-cy="is-active-label" for="is-active">{{ getLabel("isActive") }}</label>
-                </div>
+            <div class="stacked-checkboxes">
+                <!-- Active -->
+                <mat-checkbox formControlName="isActive">
+                    <span>{{ getLabel("isActive") }}</span>
+                </mat-checkbox>
+            </div>
+            <div class="align-bottom">
+                <!-- Metadata -->
+                <metadata-panel [feature]="feature" [postAt]="form.value.postAt" [postUser]="form.value.postUser" [putAt]="form.value.putAt" [putUser]="form.value.putUser"></metadata-panel>
             </div>
         </form>
-        <p class="instructions" [class.hidden]=true>{{ form.value | json }} {{ form.valid }}</p>
+
+        {{ form.value | json }}
+
     </div>
 
     <div id="footer">
-        <div class="button-group">
-            <button (click)="onDelete()" *ngIf="form.value.id !== 0" class="delete" data-cy="delete" id="delete" mat-flat-button>{{ getLabel("deleteButton") }}</button>
-            <button (click)="onSave()" [disabled]="!form.valid" class="primary" data-cy="save" id="save" mat-flat-button>{{ getLabel("saveButton") }}</button>
+        <div id="align-right">
+            <button (click)="onDelete()" *ngIf="form.value.id !== 0" class="delete" mat-flat-button>{{ getLabel("deleteButton") | uppercase }}</button>
+            <button (click)="onSave()" [disabled]="!form.valid" class="primary" mat-flat-button>
+                <mat-icon *ngIf="!form.valid" class="material-icons-outlined">lock</mat-icon>
+                <span>{{ getLabel("saveButton") | uppercase }}</span>
+            </button>
         </div>
-    </div>
-
-    <div *ngIf="isLoading | async">
-        <loading-spinner></loading-spinner>
     </div>
 
 </div>

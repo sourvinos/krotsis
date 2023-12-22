@@ -3,29 +3,19 @@
 export const environment = {
     apiUrl: 'https://localhost:5001/api',
     url: 'https://localhost:5001',
-    appName: {
-        primary: 'ΚΡΟΤΣΗΣ',
-        secondary: 'ΕΛΑΣΤΙΚΑ - ΖΑΝΤΕΣ'
-    },
+    appName: 'Krotsis',
     clientUrl: 'https://localhost:4200',
     defaultLanguage: 'el-GR',
-    defaultTheme: 'dark',
-    idleSettings: {
-        admins: {
-            idle: 840,
-            timeout: 60
-        },
-        simpleUsers: {
-            idle: 60,
-            timeout: 60
-        }
-    },
-    iconsDirectory: 'assets/images/icons/',
-    isWideScreen: 1920,
+    dialogShieldsDirectory: 'assets/images/dialog-shields',
+    featuresIconDirectory: 'assets/images/features/',
+    nationalitiesIconDirectory: 'assets/images/nationalities/',
+    portStopOrdersDirectory: 'assets/images/port-stop-orders/',
+    cssUserSelect: 'none',
+    minWidth: 1280,
     login: {
         username: 'john',
-        email: '',
-        password: '1234567890',
+        email: 'johnsourvinos@hotmail.com',
+        password: 'Ec11fc8c16db#',
         noRobot: true
     },
     production: false

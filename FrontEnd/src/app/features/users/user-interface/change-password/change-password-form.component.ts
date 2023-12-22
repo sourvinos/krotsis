@@ -1,66 +1,65 @@
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
-import { ActivatedRoute, Router } from '@angular/router'
+import { ActivatedRoute } from '@angular/router'
 import { Component } from '@angular/core'
-import { Subject } from 'rxjs'
 // Custom
 import { AccountService } from 'src/app/shared/services/account.service'
-import { ButtonClickService } from 'src/app/shared/services/button-click.service'
 import { ChangePasswordViewModel } from '../../classes/view-models/change-password-view-model'
 import { ConfirmValidParentMatcher, ValidationService } from 'src/app/shared/services/validation.service'
+import { DialogService } from 'src/app/shared/services/modal-dialog.service'
+import { EmojiService } from 'src/app/shared/services/emoji.service'
 import { HelperService } from 'src/app/shared/services/helper.service'
 import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.directive'
-import { KeyboardShortcuts, Unlisten } from '../../../../shared/services/keyboard-shortcuts.service'
-import { MessageHintService } from 'src/app/shared/services/messages-hint.service'
-import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
-import { MessageSnackbarService } from 'src/app/shared/services/messages-snackbar.service'
+import { MessageDialogService } from 'src/app/shared/services/message-dialog.service'
+import { MessageInputHintService } from 'src/app/shared/services/message-input-hint.service'
+import { MessageLabelService } from 'src/app/shared/services/message-label.service'
 
 @Component({
     selector: 'change-password-form',
     templateUrl: './change-password-form.component.html',
-    styleUrls: ['../../../../../assets/styles/forms.css', './change-password-form.component.css']
+    styleUrls: ['../../../../../assets/styles/custom/forms.css', './change-password-form.component.css']
 })
 
 export class ChangePasswordFormComponent {
 
-    //#region variables
+    //#region common #6
 
-    private unlisten: Unlisten
-    private unsubscribe = new Subject<void>()
     public feature = 'changePasswordForm'
+    public featureIcon = 'password'
     public form: FormGroup
     public icon = 'arrow_back'
     public input: InputTabStopDirective
     public parentUrl = '/users'
 
+    //#endregion
+
+    //#region specific #3
+
+    private userId: string
     public confirmValidParentMatcher = new ConfirmValidParentMatcher()
     public hidePassword = true
-    private userId: string
 
     //#endregion
 
-    constructor(private accountService: AccountService, private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private router: Router) {
-        this.activatedRoute.params.subscribe(response => {
-            this.parentUrl = this.parentUrl + '/' + response.id
-            this.userId = response.id
-        })
-    }
+    constructor(private accountService: AccountService, private activatedRoute: ActivatedRoute, private dialogService: DialogService, private emojiService: EmojiService, private formBuilder: FormBuilder, private helperService: HelperService, private messageDialogService: MessageDialogService, private messageHintService: MessageInputHintService, private messageLabelService: MessageLabelService) { }
 
     //#region lifecycle hooks
 
     ngOnInit(): void {
         this.initForm()
-        this.addShortcuts()
-        this.focusOnField('currentPassword')
+        this.doPostInitTasks()
     }
 
-    ngOnDestroy(): void {
-        this.cleanup()
-        this.unlisten()
+    ngAfterViewInit(): void {
+        this.focusOnField()
     }
 
     //#endregion
 
     //#region public methods
+
+    public getEmoji(emoji: string): string {
+        return this.emojiService.getEmoji(emoji)
+    }
 
     public getHint(id: string, minmax = 0): string {
         return this.messageHintService.getDescription(id, minmax)
@@ -78,45 +77,26 @@ export class ChangePasswordFormComponent {
 
     //#region private methods
 
-    private addShortcuts(): void {
-        this.unlisten = this.keyboardShortcutsService.listen({
-            'Escape': (event: KeyboardEvent) => {
-                if (document.getElementsByClassName('cdk-overlay-pane').length === 0) {
-                    this.buttonClickService.clickOnButton(event, 'goBack')
-                }
-            },
-            'Alt.S': (event: KeyboardEvent) => {
-                if (document.getElementsByClassName('cdk-overlay-pane').length === 0) {
-                    this.buttonClickService.clickOnButton(event, 'save')
-                }
-            }
-        }, {
-            priority: 0,
-            inputs: true
+    private doPostInitTasks(): void {
+        this.activatedRoute.params.subscribe(x => {
+            this.form.patchValue({
+                'userId': x.id
+            })
+            this.parentUrl = this.parentUrl + '/' + x.id
         })
     }
 
-    private cleanup(): void {
-        this.unsubscribe.next()
-        this.unsubscribe.unsubscribe()
-    }
-
     private flattenForm(): ChangePasswordViewModel {
-        const vm = {
+        return {
             userId: this.form.value.userId,
             currentPassword: this.form.value.currentPassword,
             password: this.form.value.passwords.password,
             confirmPassword: this.form.value.passwords.confirmPassword
         }
-        return vm
     }
 
-    private focusOnField(field: string): void {
-        this.helperService.focusOnField(field)
-    }
-
-    private goBack(): void {
-        this.router.navigate([this.parentUrl])
+    private focusOnField(): void {
+        this.helperService.focusOnField()
     }
 
     private initForm(): void {
@@ -124,26 +104,30 @@ export class ChangePasswordFormComponent {
             userId: this.userId,
             currentPassword: ['', [Validators.required]],
             passwords: this.formBuilder.group({
-                password: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(128), ValidationService.containsSpace]],
+                password: ['', [
+                    Validators.required,
+                    Validators.minLength(10),
+                    Validators.maxLength(128),
+                    ValidationService.containsSpace,
+                    ValidationService.doesNotContainUpperCase,
+                    ValidationService.doesNotContainLowerCase,
+                    ValidationService.doesNotContainSymbol,
+                    ValidationService.doesNotContainDigits
+                ]],
                 confirmPassword: ['', [Validators.required]]
             }, { validator: ValidationService.childrenEqual })
         })
-
-    }
-
-    private resetForm(): void {
-        this.form.reset()
     }
 
     private saveRecord(vm: ChangePasswordViewModel): void {
         this.accountService.changePassword(vm).subscribe({
             complete: () => {
-                this.helperService.doPostSaveFormTasks(this.messageSnackbarService.success(), 'success', '', this.form, true, true).then(() => {
+                this.helperService.doPostSaveFormTasks(this.messageDialogService.success(), 'ok', '', true).then(() => {
                     this.accountService.logout()
                 })
             },
             error: (errorFromInterceptor) => {
-                this.helperService.doPostSaveFormTasks(this.messageSnackbarService.filterResponse(errorFromInterceptor), 'error', this.parentUrl, this.form, false, false)
+                this.dialogService.open(this.messageDialogService.filterResponse(errorFromInterceptor), 'error', ['ok'])
             }
         })
     }
@@ -169,7 +153,7 @@ export class ChangePasswordFormComponent {
     }
 
     get matchingPasswords(): boolean {
-        return this.form.get('passwords.password').value === this.form.get('passwords.confirmPassword').value
+        return this.form.get('passwords.password').value == this.form.get('passwords.confirmPassword').value
     }
 
     //#endregion

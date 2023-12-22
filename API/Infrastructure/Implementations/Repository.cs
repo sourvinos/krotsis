@@ -1,80 +1,94 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Threading.Tasks;
+using API.Features.Users;
 using API.Infrastructure.Classes;
+using API.Infrastructure.Extensions;
+using API.Infrastructure.Helpers;
 using API.Infrastructure.Interfaces;
 using API.Infrastructure.Responses;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore.Storage;
+using Microsoft.Extensions.Options;
 
 namespace API.Infrastructure.Implementations {
 
     public class Repository<T> : IRepository<T> where T : class {
 
+        private readonly IHttpContextAccessor httpContextAccessor;
+        private readonly TestingEnvironment testingSettings;
         protected readonly AppDbContext context;
+        private readonly UserManager<UserExtended> userManager;
 
-        public Repository(AppDbContext context) {
+        public Repository(AppDbContext context, IHttpContextAccessor httpContextAccessor, IOptions<TestingEnvironment> testingSettings, UserManager<UserExtended> userManager) {
             this.context = context;
+            this.httpContextAccessor = httpContextAccessor;
+            this.testingSettings = testingSettings.Value;
+            this.userManager = userManager;
         }
 
-        public async Task<IEnumerable<T>> Get(Expression<Func<T, bool>> expression) {
-            return await context.Set<T>().Where(expression).ToListAsync();
-        }
-
-        public async Task<IEnumerable<T>> GetActive(Expression<Func<T, bool>> expression) {
-            return await context.Set<T>().Where(expression).ToListAsync();
-        }
-
-        public async Task<T> GetById(int id) {
-            var entity = await context.Set<T>().FindAsync(id);
-            if (entity != null) {
-                return entity;
-            } else {
-                throw new CustomException { HttpResponseCode = 404 };
-            }
-        }
-
-        public void Create(T entity) {
+        public T Create(T entity) {
             using var transaction = context.Database.BeginTransaction();
             context.Add(entity);
-            Save();
+            context.SaveChanges();
+            DisposeOrCommit(transaction);
+            return entity;
+        }
+
+        public void CreateList(List<T> entities) {
+            using var transaction = context.Database.BeginTransaction();
+            context.AddRange(entities);
+            context.SaveChanges();
             DisposeOrCommit(transaction);
         }
 
         public void Update(T entity) {
             using var transaction = context.Database.BeginTransaction();
-            context.Entry(entity).State = EntityState.Modified;
-            Save();
+            context.Set<T>().Update(entity);
+            context.SaveChanges();
             DisposeOrCommit(transaction);
         }
 
         public void Delete(T entity) {
-            if (entity != null) {
-                using var transaction = context.Database.BeginTransaction();
-                try {
-                    RemoveEntity(entity);
-                    Save();
-                    DisposeOrCommit(transaction);
-                } catch (Exception) {
-                    throw new CustomException { HttpResponseCode = 491 };
-                }
-            } else {
-                throw new CustomException { HttpResponseCode = 404 };
+            using var transaction = context.Database.BeginTransaction();
+            try {
+                context.Remove(entity);
+                context.SaveChanges();
+                DisposeOrCommit(transaction);
+            }
+            catch (Exception) {
+                throw new CustomException {
+                    ResponseCode = 491
+                };
             }
         }
 
-        private void Save() {
-            context.SaveChanges();
+        public void DeleteRange(IEnumerable<T> entities) {
+            context.RemoveRange(entities);
         }
 
-        private void RemoveEntity(T entity) {
-            context.Remove(entity);
+        private void DisposeOrCommit(IDbContextTransaction transaction) {
+            if (testingSettings.IsTesting) {
+                transaction.Dispose();
+            } else {
+                transaction.Commit();
+            }
         }
 
-        private static void DisposeOrCommit(IDbContextTransaction transaction) {
-            transaction.Commit();
+        public IMetadata AttachMetadataToPostDto(IMetadata entity) {
+            entity.PostAt = DateHelpers.DateTimeToISOString(DateHelpers.GetLocalDateTime());
+            entity.PostUser = Identity.GetConnectedUserDetails(userManager, Identity.GetConnectedUserId(httpContextAccessor)).UserName;
+            entity.PutAt = entity.PostAt;
+            entity.PutUser = entity.PostUser;
+            return entity;
+        }
+
+        public IMetadata AttachMetadataToPutDto(IMetadata existingEntity, IMetadata updatedEntity) {
+            updatedEntity.PostAt = existingEntity.PostAt;
+            updatedEntity.PostUser = existingEntity.PostUser;
+            updatedEntity.PutAt = DateHelpers.DateTimeToISOString(DateHelpers.GetLocalDateTime());
+            updatedEntity.PutUser = Identity.GetConnectedUserDetails(userManager, Identity.GetConnectedUserId(httpContextAccessor)).UserName;
+            return updatedEntity;
         }
 
     }

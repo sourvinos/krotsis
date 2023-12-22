@@ -18,12 +18,29 @@
     ],
     "ignorePatterns": [
         "/cypress/**/*.*",
-        "/dist/**/*.*"
+        "/dist/**/*.*",
+        "/src/assets/fonts/*.*"
     ],
     "rules": {
+        "@typescript-eslint/explicit-function-return-type": "warn",
         "@typescript-eslint/explicit-module-boundary-types": "off",
+        "@typescript-eslint/no-empty-interface": [
+            "error",
+            {
+                "allowSingleExtends": true
+            }
+        ],
         "@typescript-eslint/no-explicit-any": "off",
-        "cypress/no-unnecessary-waiting": "off",
+        "no-useless-escape": "off",
+        "@typescript-eslint/no-unused-vars": "warn",
+        "no-unused-vars": "off",
+        "prefer-const": [
+            "warn",
+            {
+                "destructuring": "any",
+                "ignoreReadBeforeAssign": false
+            }
+        ],
         "quotes": [
             "warn",
             "single"

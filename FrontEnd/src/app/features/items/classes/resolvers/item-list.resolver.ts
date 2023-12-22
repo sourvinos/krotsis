@@ -13,7 +13,7 @@ export class ItemListResolver {
 
     resolve(): Observable<ListResolved> {
         return this.itemService.getAll().pipe(
-            map((itemList) => new ListResolved(itemList)),
+            map((ItemList) => new ListResolved(ItemList)),
             catchError((err: any) => of(new ListResolved(null, err)))
         )
     }

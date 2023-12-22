@@ -5,7 +5,6 @@ using API.Infrastructure.Helpers;
 using API.Infrastructure.Responses;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Features.Items {
@@ -15,63 +14,106 @@ namespace API.Features.Items {
 
         #region variables
 
-        private readonly IItemRepository repo;
-        private readonly IHttpContextAccessor httpContext;
+        private readonly IItemRepository itemRepo;
+        private readonly IItemValidation itemValidation;
         private readonly IMapper mapper;
 
         #endregion
 
-        public ItemsController(IItemRepository repo, IHttpContextAccessor httpContext, IMapper mapper) {
-            this.httpContext = httpContext;
+        public ItemsController(IItemRepository itemRepo, IItemValidation itemValidation, IMapper mapper) {
+            this.itemRepo = itemRepo;
+            this.itemValidation = itemValidation;
             this.mapper = mapper;
-            this.repo = repo;
         }
 
         [HttpGet]
         [Authorize(Roles = "admin")]
-        public async Task<IEnumerable<ItemListDto>> Get() {
-            return await repo.Get();
-        }
-
-        [HttpGet("[action]")]
-        [Authorize(Roles = "admin")]
-        public async Task<IEnumerable<ItemListDto>> GetActive() {
-            return await repo.GetActive();
+        public async Task<IEnumerable<ItemListVM>> Get() {
+            return await itemRepo.Get();
         }
 
         [HttpGet("{id}")]
         [Authorize(Roles = "admin")]
-        public async Task<ItemReadDto> GetItem(int id) {
-            return mapper.Map<Item, ItemReadDto>(await repo.GetById(id));
+        public async Task<ResponseWithBody> GetById(int id) {
+            var x = await itemRepo.GetById(id);
+            if (x != null) {
+                return new ResponseWithBody {
+                    Code = 200,
+                    Icon = Icons.Info.ToString(),
+                    Message = ApiMessages.OK(),
+                    Body = mapper.Map<Item, ItemReadDto>(x)
+                };
+            } else {
+                throw new CustomException() {
+                    ResponseCode = 404
+                };
+            }
         }
 
         [HttpPost]
         [Authorize(Roles = "admin")]
         [ServiceFilter(typeof(ModelValidationAttribute))]
-        public async Task<Response> PostItemAsync([FromBody] ItemWriteDto record) {
-            repo.Create(mapper.Map<ItemWriteDto, Item>(await AttachUserIdToRecord(record)));
-            return ApiResponses.OK();
+        public Response Post([FromBody] ItemWriteDto item) {
+            var x = itemValidation.IsValid(null, item);
+            if (x == 200) {
+                var z = itemRepo.Create(mapper.Map<ItemWriteDto, Item>((ItemWriteDto)itemRepo.AttachMetadataToPostDto(item)));
+                return new Response {
+                    Code = 200,
+                    Icon = Icons.Success.ToString(),
+                    Id = z.Id.ToString(),
+                    Message = ApiMessages.OK()
+                };
+            } else {
+                throw new CustomException() {
+                    ResponseCode = x
+                };
+            }
         }
 
-        [HttpPut("{id}")]
+        [HttpPut]
         [Authorize(Roles = "admin")]
         [ServiceFilter(typeof(ModelValidationAttribute))]
-        public async Task<Response> PutItemAsync([FromBody] ItemWriteDto record) {
-            repo.Update(mapper.Map<ItemWriteDto, Item>(await AttachUserIdToRecord(record)));
-            return ApiResponses.OK();
+        public async Task<Response> Put([FromBody] ItemWriteDto item) {
+            var x = await itemRepo.GetById(item.Id);
+            if (x != null) {
+                var z = itemValidation.IsValid(x, item);
+                if (z == 200) {
+                    itemRepo.Update(mapper.Map<ItemWriteDto, Item>((ItemWriteDto)itemRepo.AttachMetadataToPutDto(x, item)));
+                    return new Response {
+                        Code = 200,
+                        Icon = Icons.Success.ToString(),
+                        Id = x.Id.ToString(),
+                        Message = ApiMessages.OK()
+                    };
+                } else {
+                    throw new CustomException() {
+                        ResponseCode = z
+                    };
+                }
+            } else {
+                throw new CustomException() {
+                    ResponseCode = 404
+                };
+            }
         }
 
         [HttpDelete("{id}")]
         [Authorize(Roles = "admin")]
-        public async Task<Response> DeleteItem([FromRoute] int id) {
-            repo.Delete(await repo.GetByIdToDelete(id));
-            return ApiResponses.OK();
-        }
-
-        private async Task<ItemWriteDto> AttachUserIdToRecord(ItemWriteDto record) {
-            var user = await Identity.GetConnectedUserId(httpContext);
-            record.UserId = user.UserId;
-            return record;
+        public async Task<Response> Delete([FromRoute] int id) {
+            var x = await itemRepo.GetById(id);
+            if (x != null) {
+                itemRepo.Delete(x);
+                return new Response {
+                    Code = 200,
+                    Icon = Icons.Success.ToString(),
+                    Id = x.Id.ToString(),
+                    Message = ApiMessages.OK()
+                };
+            } else {
+                throw new CustomException() {
+                    ResponseCode = 404
+                };
+            }
         }
 
     }

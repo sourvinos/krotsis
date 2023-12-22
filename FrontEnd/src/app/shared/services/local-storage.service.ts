@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core'
+// Custom
 import { environment } from 'src/environments/environment'
 
 @Injectable({ providedIn: 'root' })
 
 export class LocalStorageService {
-
-    //#region public methods
 
     public getItem(item: string): string {
         return localStorage.getItem(item) || ''
@@ -31,7 +30,5 @@ export class LocalStorageService {
             }
         })
     }
-
-    //#endregion
 
 }

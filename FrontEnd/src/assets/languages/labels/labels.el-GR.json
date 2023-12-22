@@ -1,0 +1,366 @@
+[
+    {
+        "feature": "loginForm",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Είσοδος"
+            },
+            {
+                "id": "username",
+                "description": "Χρήστης"
+            },
+            {
+                "id": "password",
+                "description": "Κωδικός"
+            },
+            {
+                "id": "noRobotCheckbox",
+                "description": "Δεν είμαι ρομπότ"
+            },
+            {
+                "id": "forgotPasswordButton",
+                "description": "Ξέχασα τον κωδικό μου"
+            },
+            {
+                "id": "loginButton",
+                "description": "Εισοδος"
+            }
+        ]
+    },
+    {
+        "feature": "itemList",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Είδη"
+            },
+            {
+                "id": "headerIsActive",
+                "description": "Ενεργό"
+            },
+            {
+                "id": "headerDescription",
+                "description": "Περιγραφή"
+            },
+            {
+                "id": "headerNetValue",
+                "description": "Αξία προ ΦΠΑ"
+            },
+            {
+                "id": "headerGrossValue",
+                "description": "Αξία με ΦΠΑ"
+            },
+            {
+                "id": "newRecord",
+                "description": "Νεα εγγραφη"
+            }
+        ]
+    },
+    {
+        "feature": "itemForm",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Είδος"
+            },
+            {
+                "id": "description",
+                "description": "Περιγραφή"
+            },
+            {
+                "id": "vatPercent",
+                "description": "Ποσοστό ΦΠΑ"
+            },
+            {
+                "id": "netValue",
+                "description": "Αξία προ ΦΠΑ"
+            },
+            {
+                "id": "grossValue",
+                "description": "Αξία με ΦΠΑ"
+            },
+            {
+                "id": "isActive",
+                "description": "Ενεργό"
+            },
+            {
+                "id": "post",
+                "description": "Αρχική καταχώριση"
+            },
+            {
+                "id": "put",
+                "description": "Τελευταία ενημέρωση"
+            },
+            {
+                "id": "deleteButton",
+                "description": "Διαγραφη"
+            },
+            {
+                "id": "saveButton",
+                "description": "Αποθηκευση"
+            }
+        ]
+    },
+    {
+        "feature": "userList",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Χρήστες"
+            },
+            {
+                "id": "headerIsActive",
+                "description": "Ενεργός"
+            },
+            {
+                "id": "headerIsAdmin",
+                "description": "Δχστής"
+            },
+            {
+                "id": "headerUsername",
+                "description": "Όνομα χρήστη"
+            },
+            {
+                "id": "headerDisplayname",
+                "description": "Εμφανιζόμενο όνομα"
+            },
+            {
+                "id": "headerEmail",
+                "description": "Email"
+            },
+            {
+                "id": "newRecord",
+                "description": "Νεα εγγραφη"
+            }
+        ]
+    },
+    {
+        "feature": "editUserForm",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Χρήστης"
+            },
+            {
+                "id": "username",
+                "description": "Όνομα"
+            },
+            {
+                "id": "displayname",
+                "description": "Εμφανιζόμενο όνομα"
+            },
+            {
+                "id": "item",
+                "description": "Συνδεδεμένος πελάτης"
+            },
+            {
+                "id": "email",
+                "description": "Email"
+            },
+            {
+                "id": "isFirstFieldFocused",
+                "description": "Αυτόματη εστίαση στο πρώτο πεδίο της φόρμας"
+            },
+            {
+                "id": "isAdmin",
+                "description": "Δχστής"
+            },
+            {
+                "id": "isActive",
+                "description": "Ενεργός"
+            },
+            {
+                "id": "post",
+                "description": "Αρχική καταχώριση"
+            },
+            {
+                "id": "put",
+                "description": "Τελευταία ενημέρωση"
+            },
+            {
+                "id": "changePasswordButton",
+                "description": "Αλλαγή κωδικου"
+            },
+            {
+                "id": "emailUserDetails",
+                "description": "Αποστολή στοιχείων στο email"
+            },
+            {
+                "id": "saveButton",
+                "description": "Αποθηκευση"
+            }
+        ]
+    },
+    {
+        "feature": "newUserForm",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Χρήστης"
+            },
+            {
+                "id": "username",
+                "description": "Όνομα"
+            },
+            {
+                "id": "displayname",
+                "description": "Εμφανιζόμενο όνομα"
+            },
+            {
+                "id": "email",
+                "description": "Email"
+            },
+            {
+                "id": "password",
+                "description": "Κωδικός"
+            },
+            {
+                "id": "confirmPassword",
+                "description": "Επιβεβαίωση κωδικού"
+            },
+            {
+                "id": "item",
+                "description": "Συνδεδεμένος πελάτης"
+            },
+            {
+                "id": "isFirstFieldFocused",
+                "description": "Αυτόματη εστίαση στο πρώτο πεδίο της φόρμας"
+            },
+            {
+                "id": "isAdmin",
+                "description": "Δχστής"
+            },
+            {
+                "id": "isActive",
+                "description": "Ενεργός"
+            },
+            {
+                "id": "saveButton",
+                "description": "Αποθηκευση"
+            }
+        ]
+    },
+    {
+        "feature": "changePasswordForm",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Αλλαγή κωδικού"
+            },
+            {
+                "id": "currentPassword",
+                "description": "Τρέχων κωδικός"
+            },
+            {
+                "id": "newPassword",
+                "description": "Νέος κωδικός"
+            },
+            {
+                "id": "confirmPassword",
+                "description": "Επιβεβαίωση νέου κωδικού"
+            },
+            {
+                "id": "saveButton",
+                "description": "Αποθηκευση"
+            }
+        ]
+    },
+    {
+        "feature": "forgotPasswordForm",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Ξέχασα τον κωδικό μου"
+            },
+            {
+                "id": "email",
+                "description": "Email"
+            },
+            {
+                "id": "submitButton",
+                "description": "Συνεχεια"
+            }
+        ]
+    },
+    {
+        "feature": "resetPasswordForm",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Δημιουργία νέου κωδικού"
+            },
+            {
+                "id": "password",
+                "description": "Νέος κωδικός"
+            },
+            {
+                "id": "confirmPassword",
+                "description": "Επιβεβαίωση νέου κωδικού"
+            },
+            {
+                "id": "saveButton",
+                "description": "Αποθηκευση"
+            }
+        ]
+    },
+    {
+        "feature": "dialog",
+        "labels": [
+            {
+                "id": "okButton",
+                "description": "OK"
+            },
+            {
+                "id": "cancelButton",
+                "description": "Ακυρο"
+            }
+        ]
+    },
+    {
+        "feature": "parameters",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Ρυθμίσεις"
+            },
+            {
+                "id": "phones",
+                "description": "Τηλέφωνα"
+            },
+            {
+                "id": "email",
+                "description": "Email"
+            },
+            {
+                "id": "emailΤooltip",
+                "description": "Αυτό είναι το email που θα εκτυπώνεται στο υποσέλιδο των emails που στέλνουμε."
+            },
+            {
+                "id": "post",
+                "description": "Αρχική καταχώριση"
+            },
+            {
+                "id": "put",
+                "description": "Τελευταία ενημέρωση"
+            },
+            {
+                "id": "saveButton",
+                "description": "Αποθηκευση"
+            }
+        ]
+    },
+    {
+        "feature": "cardsMenu",
+        "labels": [
+            {
+                "id": "itemsTitle",
+                "description": "Είδη"
+            },
+            {
+                "id": "itemsSubTitle",
+                "description": "Διαχειριστείτε τα είδη"
+            }
+        ]
+    }
+]

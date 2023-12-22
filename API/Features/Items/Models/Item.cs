@@ -1,9 +1,7 @@
-﻿using System;
-using API.Infrastructure.Identity;
-
+﻿using API.Infrastructure.Interfaces;
 namespace API.Features.Items {
 
-    public class Item {
+    public class Item : IBaseEntity, IMetadata {
 
         // PK
         public int Id { get; set; }
@@ -13,11 +11,11 @@ namespace API.Features.Items {
         public decimal NetPrice { get; set; }
         public decimal GrossPrice { get; set; }
         public bool IsActive { get; set; }
-        public string TimeStamp { get; set; }
-        // FKs
-        public string UserId { get; set; }
-        // Navigation
-        public UserExtended User { get; set; }
+        // Metadata
+        public string PostAt { get; set; }
+        public string PostUser { get; set; }
+        public string PutAt { get; set; }
+        public string PutUser { get; set; }
 
     }
 

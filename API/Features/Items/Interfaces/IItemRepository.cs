@@ -6,9 +6,8 @@ namespace API.Features.Items {
 
     public interface IItemRepository : IRepository<Item> {
 
-        Task<IEnumerable<ItemListDto>> Get();
-        Task<IEnumerable<ItemListDto>> GetActive();
-        Task<Item> GetByIdToDelete(int id);
+        Task<IEnumerable<ItemListVM>> Get();
+        Task<Item> GetById(int id);
 
     }
 

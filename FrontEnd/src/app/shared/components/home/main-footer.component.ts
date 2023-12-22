@@ -1,4 +1,8 @@
 import { Component, VERSION } from '@angular/core'
+import { HttpClient } from '@angular/common/http'
+// Custom
+import { HttpDataService } from '../../services/http-data.service'
+import { environment } from 'src/environments/environment'
 
 @Component({
     selector: 'main-footer',
@@ -6,28 +10,20 @@ import { Component, VERSION } from '@angular/core'
     styleUrls: ['./main-footer.component.css']
 })
 
-export class MainFooterComponent {
+export class MainFooterComponent extends HttpDataService {
 
-    //#region variables
+    public dotnetVersion: string
+    public ngVersion: string
 
-    public ngVersion: any
-
-    //#endregion
-
-    //#region lifecyle hooks
+    constructor(httpClient: HttpClient) {
+        super(httpClient, environment.apiUrl)
+    }
 
     ngOnInit(): void {
-        this.getNgVersion()
-    }
-
-    //#endregion
-
-    //#region private methods
-
-    private getNgVersion(): any {
+        this.http.get(environment.apiUrl + '/dotNetVersion', { responseType: 'text' }).subscribe((response) => {
+            this.dotnetVersion = response
+        })
         this.ngVersion = VERSION.full
     }
-
-    //#endregion
 
 }

@@ -1,0 +1,14 @@
+[
+    {
+        "id": "tables-items",
+        "description": "Είδη"
+    },
+    {
+        "id": "tables-users",
+        "description": "Χρήστες"
+    },
+    {
+        "id": "parameters-parameters",
+        "description": "Ρυθμίσεις"
+    }
+]

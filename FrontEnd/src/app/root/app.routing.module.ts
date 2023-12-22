@@ -1,43 +1,44 @@
 // Base
-import { Injectable, NgModule } from '@angular/core'
-import { NoPreloading, RouterModule, Routes } from '@angular/router'
+import { NgModule } from '@angular/core'
+import { NoPreloading, RouteReuseStrategy, RouterModule, Routes } from '@angular/router'
 // Components
 import { EmptyPageComponent } from '../shared/components/empty-page/empty-page.component'
 import { ForgotPasswordFormComponent } from '../features/users/user-interface/forgot-password/forgot-password-form.component'
 import { HomeComponent } from '../shared/components/home/home.component'
 import { LoginFormComponent } from '../features/login/user-interface/login-form.component'
 import { ResetPasswordFormComponent } from '../features/users/user-interface/reset-password/reset-password-form.component'
-// Guards
+// Utils
 import { AuthGuardService } from '../shared/services/auth-guard.service'
+import { CustomRouteReuseStrategyService } from '../shared/services/route-reuse-strategy.service'
 
 const appRoutes: Routes = [
-    { path: '', component: HomeComponent, canActivate: [AuthGuardService], pathMatch: 'full' },
-    { path: 'items', loadChildren: () => import('../features/items/classes/modules/item.module').then(m => m.ItemModule) },
-    { path: 'suppliers', loadChildren: () => import('../features/suppliers/classes/modules/supplier.module').then(m => m.SupplierModule) },
-    { path: 'quotes', loadChildren: () => import('../features/quotes/classes/modules/quote.module').then(m => m.QuoteModule) },
-    { path: 'settings', loadChildren: () => import('../features/settings/classes/modules/settings.module').then(m => m.SettingsModule) },
-    { path: 'forgotPassword', component: ForgotPasswordFormComponent },
+    // Login
+    { path: '', component: LoginFormComponent, pathMatch: 'full' },
+    // Auth
     { path: 'login', component: LoginFormComponent },
+    { path: 'forgotPassword', component: ForgotPasswordFormComponent },
     { path: 'resetPassword', component: ResetPasswordFormComponent },
+    // Home
+    { path: 'home', component: HomeComponent, canActivate: [AuthGuardService] },
+    // Tables menu
+    { path: 'items', loadChildren: () => import('../features/items/classes/modules/item.module').then(m => m.ItemModule) },
     { path: 'users', loadChildren: () => import('../features/users/classes/modules/user.module').then(m => m.UserModule) },
+    // Parameters
+    { path: 'parameters', loadChildren: () => import('../features/parameters/classes/modules/parameters.module').then(m => m.ParametersModule) },
+    // Empty
     { path: '**', component: EmptyPageComponent }
 ]
 
-@Injectable({ providedIn: 'root' })
-
-
 @NgModule({
     declarations: [],
-    entryComponents: [],
-    imports: [
-        RouterModule.forRoot(appRoutes, {
-            onSameUrlNavigation: 'reload',
-            preloadingStrategy: NoPreloading,
-            useHash: false,
-        })
-    ],
     exports: [
         RouterModule
+    ],
+    imports: [
+        RouterModule.forRoot(appRoutes, { onSameUrlNavigation: 'reload', preloadingStrategy: NoPreloading, useHash: true })
+    ],
+    providers: [
+        { provide: RouteReuseStrategy, useClass: CustomRouteReuseStrategyService }
     ]
 })
 

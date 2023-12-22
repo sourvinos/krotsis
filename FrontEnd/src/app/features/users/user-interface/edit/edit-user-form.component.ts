@@ -1,108 +1,69 @@
 import { ActivatedRoute, Router } from '@angular/router'
 import { Component } from '@angular/core'
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms'
-import { firstValueFrom, Subject } from 'rxjs'
-import { map, startWith } from 'rxjs/operators'
+import { MatAutocompleteTrigger } from '@angular/material/autocomplete'
 // Custom
-import { AccountService } from 'src/app/shared/services/account.service'
-import { ButtonClickService } from 'src/app/shared/services/button-click.service'
-import { EditUserViewModel } from './../../classes/view-models/edit-user-view-model'
+import { CryptoService } from 'src/app/shared/services/crypto.service'
+import { DialogService } from 'src/app/shared/services/modal-dialog.service'
 import { FormResolved } from 'src/app/shared/classes/form-resolved'
-import { HelperService, indicate } from 'src/app/shared/services/helper.service'
+import { HelperService } from 'src/app/shared/services/helper.service'
 import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.directive'
-import { KeyboardShortcuts, Unlisten } from '../../../../shared/services/keyboard-shortcuts.service'
-import { LocalStorageService } from 'src/app/shared/services/local-storage.service'
-import { MessageHintService } from 'src/app/shared/services/messages-hint.service'
-import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
-import { MessageSnackbarService } from 'src/app/shared/services/messages-snackbar.service'
-import { ModalActionService } from 'src/app/shared/services/modal-action.service'
+import { MessageDialogService } from 'src/app/shared/services/message-dialog.service'
+import { MessageInputHintService } from 'src/app/shared/services/message-input-hint.service'
+import { MessageLabelService } from 'src/app/shared/services/message-label.service'
+import { SessionStorageService } from 'src/app/shared/services/session-storage.service'
 import { UpdateUserDto } from '../../classes/dtos/update-user-dto'
+import { UserReadDto } from '../../classes/dtos/user-read-dto'
 import { UserService } from '../../classes/services/user.service'
 import { ValidationService } from '../../../../shared/services/validation.service'
 
 @Component({
     selector: 'edit-user-form',
     templateUrl: './edit-user-form.component.html',
-    styleUrls: ['../../../../../assets/styles/forms.css']
+    styleUrls: ['../../../../../assets/styles/custom/forms.css', './edit-user-form.component.css']
 })
 
 export class EditUserFormComponent {
 
-    //#region variables
+    //#region common #7
 
-    private unlisten: Unlisten
-    private unsubscribe = new Subject<void>()
+    private record: UserReadDto
     public feature = 'editUserForm'
+    public featureIcon = 'users'
     public form: FormGroup
     public icon = ''
     public input: InputTabStopDirective
     public parentUrl = ''
-    public isLoading = new Subject<boolean>()
-
-    public isAutoCompleteDisabled = true
-
-    private user: EditUserViewModel
-    public header = ''
-    public isAdmin: boolean
 
     //#endregion
 
-    constructor(private accountService: AccountService, private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private localStorageService: LocalStorageService, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private modalActionResultService: ModalActionService, private router: Router, private userService: UserService) {
-        this.initForm()
-        this.getRecord().then(() => {
-            this.populateFields(this.user)
-            this.updateReturnUrl()
-        })
-    }
+    //#region specific #2
+
+    private mirrorRecord: UserReadDto
+    private mustGoBackAfterSave = true
+
+    //#endregion
+
+    constructor(private activatedRoute: ActivatedRoute, private cryptoService: CryptoService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private messageDialogService: MessageDialogService, private messageHintService: MessageInputHintService, private messageLabelService: MessageLabelService, private router: Router, private sessionStorageService: SessionStorageService, private userService: UserService) { }
 
     //#region lifecycle hooks
 
     ngOnInit(): void {
-        this.addShortcuts()
-        this.focusOnField('userName')
+        this.initForm()
+        this.getRecord()
+        this.populateFields()
+        this.updateReturnUrl()
+        this.cloneRecord()
+        this.setSidebarsHeight()
     }
 
-    ngOnDestroy(): void {
-        this.cleanup()
-        this.unlisten()
+    ngAfterViewInit(): void {
+        this.focusOnField()
     }
 
     //#endregion
 
     //#region public methods
-
-    public autocompleteFields(subject: { description: any }): any {
-        return subject ? subject.description : undefined
-    }
-
-    public checkForEmptyAutoComplete(event: { target: { value: any } }) {
-        if (event.target.value == '') this.isAutoCompleteDisabled = true
-    }
-
-    public enableOrDisableAutoComplete(event: any) {
-        this.isAutoCompleteDisabled = this.helperService.enableOrDisableAutoComplete(event)
-    }
-
-    public changePassword(): void {
-        this.accountService.getConnectedUserId().subscribe(response => {
-            if (response.userId != this.form.value.id) {
-                this.modalActionResultService.open(this.messageSnackbarService.passwordCanBeChangedOnlyByAccountOwner(), 'error', ['ok'])
-            } else {
-                if (this.form.dirty) {
-                    this.modalActionResultService.open(this.messageSnackbarService.formIsDirty(), 'warning', ['abort', 'ok']).subscribe(response => {
-                        if (response) {
-                            this.onSave(false).then(() => {
-                                this.resetForm()
-                                this.router.navigate(['/users/' + this.user.id + '/changePassword'])
-                            })
-                        }
-                    })
-                } else {
-                    this.router.navigate(['/users/' + this.user.id + '/changePassword'])
-                }
-            }
-        })
-    }
 
     public getHint(id: string, minmax = 0): string {
         return this.messageHintService.getDescription(id, minmax)
@@ -112,70 +73,63 @@ export class EditUserFormComponent {
         return this.messageLabelService.getDescription(this.feature, id)
     }
 
-    public onDelete(): void {
-        this.modalActionResultService.open(this.messageSnackbarService.warning(), 'warning', ['abort', 'ok']).subscribe(response => {
-            if (response) {
-                this.userService.delete(this.form.value.id).pipe(indicate(this.isLoading)).subscribe({
-                    complete: () => {
-                        this.helperService.doPostSaveFormTasks(this.messageSnackbarService.success(), 'success', this.parentUrl, this.form, true, true)
-                    },
-                    error: (errorFromInterceptor) => {
-                        this.modalActionResultService.open(this.messageSnackbarService.filterResponse(errorFromInterceptor), 'error', ['ok'])
-                    }
-                })
-            }
-        })
+    public isAdmin(): boolean {
+        return this.cryptoService.decrypt(this.sessionStorageService.getItem('isAdmin')) == 'true' ? true : false
     }
 
-    public onSave(showResult: boolean): Promise<any> {
-        const promise = new Promise((resolve) => {
-            this.saveRecord(this.flattenForm(), showResult)
-            resolve(null)
-        })
-        return promise
+    public onChangePassword(): void {
+        if (this.cryptoService.decrypt(this.sessionStorageService.getItem('userId')) != this.record.id.toString()) {
+            this.dialogService.open(this.messageDialogService.passwordCanBeChangedOnlyByAccountOwner(), 'error', ['ok'])
+        } else {
+            if (this.helperService.deepEqual(this.form.value, this.mirrorRecord)) {
+                this.router.navigate(['/users/' + this.record.id.toString() + '/changePassword'])
+            } else {
+                this.mustGoBackAfterSave = false
+                this.dialogService.open(this.messageDialogService.formIsDirty(), 'error', ['ok'])
+            }
+        }
+    }
+
+    public onSave(): void {
+        this.saveRecord(this.flattenForm())
+    }
+
+    public onEmailUserDetais(): void {
+        if (this.helperService.deepEqual(this.form.value, this.mirrorRecord)) {
+            this.userService.emailUserDetails(this.form.value).subscribe({
+                complete: () => {
+                    this.helperService.doPostSaveFormTasks(this.messageDialogService.success(), 'ok', this.parentUrl, true)
+                },
+                error: (errorFromInterceptor) => {
+                    this.dialogService.open(this.messageDialogService.filterResponse(errorFromInterceptor), 'error', ['ok'])
+                }
+            })
+        } else {
+            this.mustGoBackAfterSave = false
+            this.dialogService.open(this.messageDialogService.formIsDirty(), 'error', ['ok'])
+        }
+    }
+
+    public openOrCloseAutoComplete(trigger: MatAutocompleteTrigger, element: any): void {
+        this.helperService.openOrCloseAutocomplete(this.form, element, trigger)
     }
 
     //#endregion
 
     //#region private methods
 
-    private addShortcuts(): void {
-        this.unlisten = this.keyboardShortcutsService.listen({
-            'Escape': (event: KeyboardEvent) => {
-                if (document.getElementsByClassName('cdk-overlay-pane').length === 0) {
-                    this.buttonClickService.clickOnButton(event, 'goBack')
-                }
-            },
-            'Alt.S': (event: KeyboardEvent) => {
-                if (document.getElementsByClassName('cdk-overlay-pane').length === 0) {
-                    this.buttonClickService.clickOnButton(event, 'save')
-                }
-            }
-        }, {
-            priority: 0,
-            inputs: true
-        })
-    }
-
-    private cleanup(): void {
-        this.unsubscribe.next()
-        this.unsubscribe.unsubscribe()
-    }
-
-    private editUserFromList() {
+    private editUserFromList(): void {
         this.parentUrl = '/users'
         this.icon = 'arrow_back'
-        this.header = 'header'
-        this.getConnectedUserRole()
     }
 
-    private editUserFromTopMenu() {
-        this.parentUrl = '/'
+    private editUserFromTopMenu(): void {
+        this.parentUrl = '/home'
         this.icon = 'home'
-        this.header = 'my-header'
-        this.getConnectedUserRole().then(() => new Promise(() => {
-            this.getConnectedUserId()
-        }))
+    }
+
+    private cloneRecord(): void {
+        this.mirrorRecord = this.form.value
     }
 
     private filterAutocomplete(array: string, field: string, value: any): any[] {
@@ -187,54 +141,34 @@ export class EditUserFormComponent {
     }
 
     private flattenForm(): UpdateUserDto {
-        const user = {
-            id: this.form.getRawValue().id,
-            userName: this.form.getRawValue().userName,
-            displayname: this.form.getRawValue().displayname,
-            email: this.form.getRawValue().email,
-            isAdmin: this.form.getRawValue().isAdmin,
-            isActive: this.form.getRawValue().isActive
+        return {
+            id: this.form.value.id,
+            username: this.form.value.username,
+            displayname: this.form.value.displayname,
+            email: this.form.value.email,
+            isFirstFieldFocused: this.form.value.isFirstFieldFocused,
+            isAdmin: this.form.value.isAdmin,
+            isActive: this.form.value.isActive
         }
-        return user
     }
 
-    private focusOnField(field: string): void {
-        this.helperService.focusOnField(field)
+    private focusOnField(): void {
+        this.helperService.focusOnField()
     }
 
     private getRecord(): Promise<any> {
-        const promise = new Promise((resolve) => {
-            const formResolved: FormResolved = this.activatedRoute.snapshot.data['userForm']
+        return new Promise((resolve) => {
+            const formResolved: FormResolved = this.activatedRoute.snapshot.data['userEditForm']
             if (formResolved.error === null) {
-                this.user = formResolved.record
-                resolve(this.user)
+                this.record = formResolved.record.body
+                resolve(this.record)
             } else {
-                this.goBack()
-                this.modalActionResultService.open(this.messageSnackbarService.filterResponse(new Error('500')), 'error', ['ok'])
+                this.dialogService.open(this.messageDialogService.filterResponse(formResolved.error), 'error', ['ok']).subscribe(() => {
+                    this.resetForm()
+                    this.goBack()
+                })
             }
         })
-        return promise
-    }
-
-    private getConnectedUserId(): Promise<any> {
-        const promise = new Promise((resolve) => {
-            firstValueFrom(this.accountService.getConnectedUserId()).then(
-                (response) => {
-                    resolve(response.userId)
-                })
-        })
-        return promise
-    }
-
-    private getConnectedUserRole(): Promise<any> {
-        const promise = new Promise((resolve) => {
-            firstValueFrom(this.accountService.isConnectedUserAdmin()).then(
-                (response) => {
-                    this.isAdmin = response
-                    resolve(this.isAdmin)
-                })
-        })
-        return promise
     }
 
     private goBack(): void {
@@ -244,28 +178,32 @@ export class EditUserFormComponent {
     private initForm(): void {
         this.form = this.formBuilder.group({
             id: '',
-            userName: ['', [Validators.required, Validators.maxLength(32), ValidationService.containsIllegalCharacters]],
-            displayname: ['', [Validators.required, Validators.maxLength(32), ValidationService.beginsOrEndsWithSpace]],
-            email: [{ value: '' }, [Validators.required, Validators.email, Validators.maxLength(128)]],
-            isAdmin: [{ value: false }],
-            isActive: [{ value: true }]
+            username: ['', [ValidationService.containsIllegalCharacters, Validators.maxLength(32), Validators.required]],
+            displayname: ['', [ValidationService.beginsOrEndsWithSpace, Validators.maxLength(32), Validators.required]],
+            email: ['', [Validators.email, Validators.maxLength(128), Validators.required]],
+            isFirstFieldFocused: false,
+            isAdmin: false,
+            isActive: true,
+            postAt: [''],
+            postUser: [''],
+            putAt: [''],
+            putUser: ['']
         })
     }
 
-    private populateDropdownFromLocalStorage(table: string, filteredTable: string, formField: string, modelProperty: string, includeWildCard: boolean) {
-        this[table] = JSON.parse(this.localStorageService.getItem(table))
-        includeWildCard ? this[table].unshift({ 'id': 'all', 'description': '[⭐]' }) : null
-        this[filteredTable] = this.form.get(formField).valueChanges.pipe(startWith(''), map(value => this.filterAutocomplete(table, modelProperty, value)))
-    }
-
-    private populateFields(result: EditUserViewModel): void {
+    private populateFields(): void {
         this.form.setValue({
-            id: result.id,
-            userName: result.userName,
-            displayname: result.displayname,
-            email: result.email,
-            isAdmin: result.isAdmin,
-            isActive: result.isActive
+            id: this.record.id,
+            username: this.record.username,
+            displayname: this.record.displayname,
+            email: this.record.email,
+            isAdmin: this.record.isAdmin,
+            isFirstFieldFocused: this.record.isFirstFieldFocused,
+            isActive: this.record.isActive,
+            postAt: this.record.postAt,
+            postUser: this.record.postUser,
+            putAt: this.record.putAt,
+            putUser: this.record.putUser
         })
     }
 
@@ -273,27 +211,33 @@ export class EditUserFormComponent {
         this.form.reset()
     }
 
-    private saveRecord(user: UpdateUserDto, showResult: boolean): void {
-        this.userService.update(user.id, user).pipe(indicate(this.isLoading)).subscribe({
+    private saveRecord(user: UpdateUserDto): void {
+        this.userService.save(user).subscribe({
             complete: () => {
-                showResult ? this.helperService.doPostSaveFormTasks(this.messageSnackbarService.success(), 'success', this.parentUrl, this.form, true, true) : null
+                this.sessionStorageService.saveItem('isFirstFieldFocused', user.isFirstFieldFocused.toString())
+                this.mirrorRecord = this.form.value
+                this.helperService.doPostSaveFormTasks(this.messageDialogService.success(), 'ok', this.parentUrl, this.mustGoBackAfterSave)
             },
             error: (errorFromInterceptor) => {
-                this.helperService.doPostSaveFormTasks(this.messageSnackbarService.filterResponse(errorFromInterceptor), 'error', this.parentUrl, this.form, false, false)
+                this.dialogService.open(this.messageDialogService.filterResponse(errorFromInterceptor), 'error', ['ok'])
             }
         })
     }
 
+    private setSidebarsHeight(): void {
+        this.helperService.setSidebarsTopMargin('0')
+    }
+
     private updateReturnUrl(): void {
-        this.localStorageService.getItem('returnUrl') == '/' ? this.editUserFromTopMenu() : this.editUserFromList()
+        this.sessionStorageService.getItem('returnUrl') == '/' ? this.editUserFromTopMenu() : this.editUserFromList()
     }
 
     //#endregion
 
     //#region getters
 
-    get userName(): AbstractControl {
-        return this.form.get('userName')
+    get username(): AbstractControl {
+        return this.form.get('username')
     }
 
     get displayname(): AbstractControl {
@@ -302,6 +246,22 @@ export class EditUserFormComponent {
 
     get email(): AbstractControl {
         return this.form.get('email')
+    }
+
+    get postAt(): AbstractControl {
+        return this.form.get('postAt')
+    }
+
+    get postUser(): AbstractControl {
+        return this.form.get('postUser')
+    }
+
+    get putAt(): AbstractControl {
+        return this.form.get('putAt')
+    }
+
+    get putUser(): AbstractControl {
+        return this.form.get('putUser')
     }
 
     //#endregion

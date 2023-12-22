@@ -17,7 +17,15 @@ export class UserService extends HttpDataService {
     //#region public methods
 
     public updatePassword(formData: ChangePasswordViewModel): Observable<any> {
-        return this.http.post<any>(environment.apiUrl + '/users/changePassword/', formData)
+        return this.http.post<any>(this.url + '/changePassword/', formData)
+    }
+
+    public saveUser(formData: any): Observable<any> {
+        return this.http.post<any>(this.url, formData)
+    }
+
+    public emailUserDetails(formData: any): Observable<any> {
+        return this.http.post<any>(this.url + '/emailUserDetails', formData)
     }
 
     //#endregion

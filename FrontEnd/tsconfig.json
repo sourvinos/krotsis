@@ -6,22 +6,27 @@
         "downlevelIteration": true,
         "esModuleInterop": true,
         "experimentalDecorators": true,
+        "forceConsistentCasingInFileNames": true,
         "importHelpers": true,
         "lib": [
-            "es2018",
+            "ES2022",
             "dom"
         ],
-        "module": "esnext",
+        "module": "ES2022",
         "moduleResolution": "node",
+        "noFallthroughCasesInSwitch": true,
+        "noImplicitOverride": true,
+        "noPropertyAccessFromIndexSignature": false,
         "outDir": "./dist/out-tsc",
         "resolveJsonModule": true,
         "sourceMap": true,
         "strict": false,
-        "target": "es2015",
+        "target": "ES2022",
         "typeRoots": [
             "node_modules/@types"
         ],
-        "types": []
+        "types": [],
+        "useDefineForClassFields": false
     },
     "angularCompilerOptions": {
         "fullTemplateTypeCheck": true,

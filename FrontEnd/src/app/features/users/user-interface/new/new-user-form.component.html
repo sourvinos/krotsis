@@ -1,62 +1,60 @@
 <div id="form-wrapper">
 
-    <div id="header">
-        <home-button-and-title [feature]="feature" [icon]="icon" [parentUrl]="parentUrl"></home-button-and-title>
-    </div>
-
     <div id="content">
-        <form id="form" [formGroup]="form" autocomplete="off">
-            <div class="group-field">
-                <mat-form-field>
-                    <input [inputTabStop]="input" [placeholder]="getLabel('userName')" data-cy="userName" data-tabindex="1" formControlName="userName" id="userName" matInput>
-                    <mat-error *ngIf="userName.hasError('required')">{{ getHint("required") }}</mat-error>
-                    <mat-error *ngIf="userName.hasError('maxlength')">{{ getHint("maxLength", userName.errors.maxlength.requiredLength) }}</mat-error>
-                    <mat-error *ngIf="!userName.hasError('maxlength') && userName.hasError('containsSpace')">{{ getHint("spacesNotAllowed") }}</mat-error>
-                </mat-form-field>
-                <mat-form-field>
-                    <input [inputTabStop]="input" [placeholder]="getLabel('displayname')" data-cy="displayname" data-tabindex="2" formControlName="displayname" id="displayname" matInput>
-                    <mat-error *ngIf="displayname.hasError('required')">{{ getHint("required") }}</mat-error>
-                    <mat-error *ngIf="displayname.hasError('maxlength')">{{ getHint("maxLength", displayname.errors.maxlength.requiredLength) }}</mat-error>
-                </mat-form-field>
-            </div>
+
+        <div id="header">
+            <home-button-and-title [feature]="feature" [featureIcon]="featureIcon" [icon]="icon" [parentUrl]="parentUrl"></home-button-and-title>
+        </div>
+
+        <form [formGroup]="form" id="form">
+            <!-- Username -->
             <mat-form-field>
-                <input [inputTabStop]="input" [placeholder]="getLabel('email')" data-cy="email" data-tabindex="4" formControlName="email" id="email" matInput type="email">
+                <mat-label>{{ getLabel('username') }}</mat-label>
+                <input [inputTabStop]="input" class="invisible" dataTabIndex="1" formControlName="username" matInput>
+                <mat-error *ngIf="username.hasError('required')">{{ getHint("required") }}</mat-error>
+                <mat-error *ngIf="username.hasError('containsSpace')">{{ getHint("spacesNotAllowed") }}</mat-error>
+            </mat-form-field>
+            <!-- Display name -->
+            <mat-form-field>
+                <mat-label>{{ getLabel('displayname') }}</mat-label>
+                <input [inputTabStop]="input" dataTabIndex="2" formControlName="displayname" matInput>
+                <mat-error *ngIf="displayname.hasError('required')">{{ getHint("required") }}</mat-error>
+                <mat-error *ngIf="displayname.hasError('maxlength')">{{ getHint("maxLength", displayname.errors.maxlength.requiredLength) }}</mat-error>
+            </mat-form-field>
+            <!-- Email -->
+            <mat-form-field>
+                <mat-label>{{ getLabel('email') }}</mat-label>
+                <input [inputTabStop]="input" class="invisible" dataTabIndex="4" formControlName="email" matInput>
                 <mat-error *ngIf="email.hasError('required')">{{ getHint("required") }}</mat-error>
                 <mat-error *ngIf="email.hasError('maxlength')">{{ getHint("maxLength", email.errors.maxlength.requiredLength) }}</mat-error>
                 <mat-error *ngIf="!email.hasError('required') && !email.hasError('maxlength') && email.hasError('email')">{{ getHint("invalid") }}</mat-error>
             </mat-form-field>
-            <div formGroupName="passwords" id="passwords">
-                <div class="group-field">
-                    <mat-form-field>
-                        <input [inputTabStop]="input" [placeholder]="getLabel('password')" [type]="hidePassword ? 'password' : 'text'" data-cy="password" data-tabindex="5" formControlName="password" id="password" matInput>
-                        <button (click)="hidePassword = !hidePassword" mat-icon-button matSuffix type="button">
-                            <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
-                        </button>
-                        <mat-error *ngIf="password.hasError('required')">{{ getHint("required") }}</mat-error>
-                        <mat-error *ngIf="password.hasError('containsSpace')">{{ getHint("spacesNotAllowed") }}</mat-error>
-                        <mat-error *ngIf="password.hasError('minlength') && !password.hasError('containsSpace')">{{ getHint("minLength", password.errors.minlength.requiredLength) }}</mat-error>
-                        <mat-error *ngIf="password.hasError('maxlength') && !password.hasError('containsSpace')">{{ getHint("maxLength", password.errors.maxlength.requiredLength) }}</mat-error>
-                    </mat-form-field>
-                    <mat-form-field>
-                        <input [errorStateMatcher]="confirmValidParentMatcher" [inputTabStop]="input" [placeholder]="getLabel('confirmPassword')" [type]="hidePassword ? 'password' : 'text'" data-cy="confirmPassword" data-tabindex="6" formControlName="confirmPassword" id="confirmPassword" matInput>
-                        <button (click)="hidePassword = !hidePassword" mat-icon-button matSuffix type="button">
-                            <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
-                        </button>
-                        <mat-error *ngIf="confirmPassword.hasError('required')">{{ getHint("required") }}</mat-error>
-                        <mat-error *ngIf="!confirmPassword.hasError('required') && !matchingPasswords">{{ getHint("passwordsNoMatch") }}</mat-error>
-                        <mat-error *ngIf="!confirmPassword.hasError('required') && matchingPasswords">{{ getHint("invalid") }}</mat-error>
-                    </mat-form-field>
-                </div>
+            <!-- Focus on first field -->
+            <div class="checkboxes">
+                <mat-checkbox formControlName="isFirstFieldFocused">
+                    <span>{{ getLabel("isFirstFieldFocused") }}</span>
+                </mat-checkbox>
             </div>
-            <mat-slide-toggle data-cy="isAdmin" formControlName="isAdmin">{{ getLabel("isAdmin") }}</mat-slide-toggle>
-            <mat-slide-toggle data-cy="isActive" formControlName="isActive">{{ getLabel("isActive") }}</mat-slide-toggle>
+            <div class="align-bottom checkboxes">
+                <!-- Admin -->
+                <mat-checkbox formControlName="isAdmin">
+                    <span>{{ getLabel("isAdmin") }}</span>
+                </mat-checkbox>
+                <!-- Active -->
+                <mat-checkbox formControlName="isActive">
+                    <span>{{ getLabel("isActive") }}</span>
+                </mat-checkbox>
+            </div>
         </form>
-        <p class="instructions" [class.hidden]=true>{{ form.value | json }} {{ form.valid }}</p>
+
     </div>
 
     <div id="footer">
-        <div class="button-group">
-            <button (click)="onSave()" [disabled]="!form.valid" class="primary" data-cy="save" id="save" mat-flat-button>{{ getLabel("saveButton") }}</button>
+        <div id="align-right">
+            <button (click)="onSave()" [disabled]="!form.valid" class="primary" mat-flat-button>
+                <mat-icon *ngIf="!form.valid" class="material-icons-outlined">lock</mat-icon>
+                <span>{{ getLabel("saveButton") | uppercase }}</span>
+            </button>
         </div>
     </div>
 

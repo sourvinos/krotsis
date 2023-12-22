@@ -4,18 +4,15 @@ import { Injectable } from '@angular/core'
 
 export class EmojiService {
 
-    public getEmoji(emoji: string) {
+    public getEmoji(emoji: string): string {
         switch (emoji) {
-            case 'error': return '❌ '
-            case 'clock': return '⏱'
-            case 'no-results': return '⛱️'
+            case 'wildcard': return '⭐'
+            case 'remarks': return '🔔'
             case 'null': return '🚫'
-            case 'ok': return '✔️'
-            case 'warning': return '⚠️'
-            case 'wildcard': return '[ ⭐ ]'
-            case 'remarks': return '✉️'
-            case 'sum': return '∑'
-            case 'no-passengers': return '😕'
+            case 'error': return '❌'
+            case 'green-box': return '🟩'
+            case 'yellow-box': return '🟨'
+            case 'red-box': return '🟥'
         }
 
     }

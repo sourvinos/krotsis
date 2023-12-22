@@ -1,0 +1,8 @@
+<div id="cards-menu">
+    <mat-card routerLink="/items">
+        <img (load)="loadImage()" [ngClass]="imageIsLoading()" [src]="getIcon('items')" style="height: 6.25rem; margin-left: 1rem; width: 6.25rem">
+        <mat-card-title>{{ getLabel("itemsTitle") }}</mat-card-title>
+        <mat-divider inset></mat-divider>
+        <mat-card-subtitle>{{ getLabel("itemsSubTitle") }}</mat-card-subtitle>
+    </mat-card>
+</div>

@@ -5,34 +5,35 @@ import { Subject } from 'rxjs'
 
 export class InteractionService {
 
-    //#region variables
-
-    private _isAdmin = new Subject<boolean>()
     private _refreshDateAdapter = new Subject<any>()
     private _refreshMenus = new Subject<any>()
-    private _refreshBackgroundImage = new Subject<any>()
+    private _refreshTooltips = new Subject<any>()
+    private _refreshTabTitle = new Subject<any>()
+    private _saveReservation = new Subject<any>()
 
-    public isAdmin = this._isAdmin.asObservable()
     public refreshDateAdapter = this._refreshDateAdapter.asObservable()
     public refreshMenus = this._refreshMenus.asObservable()
-    public refreshBackgroundImage = this._refreshBackgroundImage.asObservable()
+    public refreshTooltips = this._refreshTooltips.asObservable()
+    public refreshTabTitle = this._refreshTabTitle.asObservable()
+    public saveReservation = this._saveReservation.asObservable()
 
-    //#endregion
-
-    //#region public methods
-
-    public mustRefreshDateAdapters(): void {
-        this._refreshDateAdapter.next(null)
+    public updateDateAdapters(): void {
+        setTimeout(() => { this._refreshDateAdapter.next(null) }, 1000)
     }
 
-    public mustRefreshMenus(): void {
-        this._refreshMenus.next(null)
+    public updateMenus(): void {
+        setTimeout(() => { this._refreshMenus.next(null) }, 0)
     }
 
-    public mustRefreshBackgroundImage(): void {
-        this._refreshBackgroundImage.next(null)
+    public updateTooltips(): void {
+        setTimeout(() => { this._refreshTooltips.next(null) }, 0)
     }
 
-    //#endregion
+    public updateReservation(): void {
+        this._saveReservation.next(null)
+    }
 
+    public updateTabTitle(): void {
+        setTimeout(() => { this._refreshTabTitle.next(null) }, 500)
+    }
 }
