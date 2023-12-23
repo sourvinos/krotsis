@@ -45,25 +45,37 @@ export class ItemFormComponent {
         this.populateFields()
     }
 
-    ngAfterViewInit(): void {
-        this.focusOnField()
-    }
-
     //#endregion
 
     //#region public methods
 
-    public calculateNetPriceBasedOnGrossPrice(tabIndex: number): void {
-        this.patchNumericFieldsWithZeroIfNullOrEmpty(tabIndex)
+    public calculateNetPriceBasedOnGrossPrice(fieldName: string, digits: number): void {
+        this.patchNumericFieldsWithZeroIfNullOrEmpty(fieldName, digits)
         const netPrice = this.form.value.grossPrice / (1 + (this.form.value.vatPercent / 100))
-        this.form.patchValue({ netPrice: netPrice.toFixed(2) })
+        const grossPrice = parseFloat(this.form.value.grossPrice)
+        this.form.patchValue(
+            {
+                netPrice: netPrice.toFixed(2),
+                grossPrice: grossPrice.toFixed(2)
+            })
     }
 
-    public calculateGrossPriceBasedOnNetPrice(tabIndex: number): void {
-        this.patchNumericFieldsWithZeroIfNullOrEmpty(tabIndex)
-        const vatAmount = this.form.value.netPrice * (this.form.value.vatPercent / 100)
-        const grossPrice = parseFloat(this.form.value.netPrice) + vatAmount
-        this.form.patchValue({ grossPrice: grossPrice.toFixed(2) })
+    public calculateGrossPriceBasedOnNetPrice(fieldName: string, digits: number): void {
+        this.patchNumericFieldsWithZeroIfNullOrEmpty(fieldName, digits)
+        const netPrice = parseFloat(this.form.value.netPrice)
+        const vatPercent = this.form.value.vatPercent
+        const vatAmount = netPrice * (vatPercent / 100)
+        const grossPrice = netPrice + vatAmount
+        this.form.patchValue(
+            {
+                netPrice: netPrice.toFixed(2),
+                grossPrice: grossPrice.toFixed(2)
+            })
+    }
+
+    public calculateNetAndGrossPriceBasedOnVatPercent(fieldName: string, digits: number): void {
+        this.patchNumericFieldsWithZeroIfNullOrEmpty(fieldName, digits)
+        this.calculateGrossPriceBasedOnNetPrice(fieldName, digits)
     }
 
     public getHint(id: string, minmax = 0): string {
@@ -109,10 +121,6 @@ export class ItemFormComponent {
         }
     }
 
-    private focusOnField(): void {
-        this.helperService.focusOnField()
-    }
-
     private getRecord(): Promise<any> {
         if (this.recordId != undefined) {
             return new Promise((resolve) => {
@@ -149,21 +157,9 @@ export class ItemFormComponent {
         })
     }
 
-    private patchNumericFieldsWithZeroIfNullOrEmpty(tabIndex: number): void {
-        if (this.form.value.vatPercent == null || this.form.value.vatPercent == '') {
-            this.form.value.vatPercent = 0
-            this.form.patchValue({ vatPercent: this.form.value.vatPercent.toFixed(0) })
-            this.helperService.selectField(tabIndex)
-        }
-        if (this.form.value.netPrice == null) {
-            this.form.value.netPrice = 0
-            this.form.patchValue({ netPrice: this.form.value.netPrice.toFixed(2) })
-            this.helperService.selectField(tabIndex)
-        }
-        if (this.form.value.grossPrice == null) {
-            this.form.value.grossPrice = 0
-            this.form.patchValue({ grossPrice: this.form.value.grossPrice.toFixed(2) })
-            this.helperService.selectField(tabIndex)
+    private patchNumericFieldsWithZeroIfNullOrEmpty(fieldName: string, digits: number): void {
+        if (this.form.controls[fieldName].value == null || this.form.controls[fieldName].value == '') {
+            this.form.patchValue({ [fieldName]: parseInt('0').toFixed(digits) })
         }
     }
 

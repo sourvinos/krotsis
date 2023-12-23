@@ -1,6 +1,6 @@
 import { Component } from '@angular/core'
 // Custom
-import { HelperService } from 'src/app/shared/services/helper.service'
+import { environment } from 'src/environments/environment'
 
 @Component({
     selector: 'logo',
@@ -12,16 +12,22 @@ export class LogoComponent {
 
     //#region variables
 
-    public companyLogoText: any
+    public imgIsLoaded = false
 
     //#endregion
 
-    constructor(private helperService: HelperService) { }
+    //#region public methods
 
-    //#region lifecycle hooks
+    public getLogo(): any {
+        return environment.logoDirectory + '/krotsis.svg'
+    }
 
-    ngOnInit(): void {
-        this.companyLogoText = this.helperService.getApplicationTitle()
+    public imageIsLoading(): any {
+        return this.imgIsLoaded ? '' : 'skeleton'
+    }
+
+    public loadImage(): void {
+        this.imgIsLoaded = true
     }
 
     //#endregion

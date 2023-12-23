@@ -77,12 +77,14 @@ export class HelperService {
                 input.focus()
                 input.select()
             }
-        }, 500)
+        }, 100)
     }
 
     public selectField(index: number): void {
-        const input = Array.prototype.slice.apply(document.querySelectorAll('input[dataTabIndex]'))[index]
-        input.select()
+        setTimeout(() => {
+            const input = Array.prototype.slice.apply(document.querySelectorAll('input[dataTabIndex]'))[index]
+            input.select()
+        }, 1000)
     }
 
     public enableTableFilters(): void {
