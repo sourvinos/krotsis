@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { BrowserModule, Title } from '@angular/platform-browser'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
+import { registerLocaleData } from '@angular/common'
 // Modules
 import { AppComponent } from './app.component'
 import { AppRoutingModule } from './app.routing.module'
@@ -20,6 +21,10 @@ import { TasksMenuComponent } from '../shared/components/tasks-menu/tasks-menu.c
 import { UserMenuComponent } from '../shared/components/user-menu/user-menu.component'
 // Services
 import { InterceptorService } from '../shared/services/interceptor.service'
+// Language
+import localeEl from '@angular/common/locales/el'
+
+registerLocaleData(localeEl)
 
 @NgModule({
     declarations: [

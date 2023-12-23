@@ -95,8 +95,7 @@
     top: 0 !important;
 }
 
-.p-datatable .p-datatable-tbody > tr > td > span.flag {
-    display: flex;
+.p-datatable .p-datatable-tbody > tr > td > span.number {
     padding: 0 0.5rem 0 0.5rem !important;
 }
 
@@ -107,12 +106,6 @@
 
 .p-datatable .p-datatable-tbody > tr > td.align-vertical {
     align-items: center;
-}
-
-.p-datatable .p-datatable-tbody > tr > td > span > img.flag-with-border {
-    border: 0.0625rem solid var(--color-flag-border);
-    margin: 0.125rem 0 0.125rem 0;
-    transition: border var(--theme-delay);
 }
 
 .p-datatable .p-datatable-tbody > tr:not(:first-child) > td {

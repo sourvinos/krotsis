@@ -1,13 +1,15 @@
+// Base
 import { ActivatedRoute, Router } from '@angular/router'
 import { Component, ViewChild } from '@angular/core'
 import { Table } from 'primeng/table'
+import { formatNumber } from '@angular/common'
 // Custom
-import { ItemListVM } from '../classes/view-models/item-list-vm'
 import { DialogService } from 'src/app/shared/services/modal-dialog.service'
 import { EmojiService } from 'src/app/shared/services/emoji.service'
 import { HelperService } from 'src/app/shared/services/helper.service'
-import { InteractionService } from 'src/app/shared/services/interaction.service'
+import { ItemListVM } from '../classes/view-models/item-list-vm'
 import { ListResolved } from '../../../shared/classes/list-resolved'
+import { LocalStorageService } from 'src/app/shared/services/local-storage.service'
 import { MessageDialogService } from 'src/app/shared/services/message-dialog.service'
 import { MessageLabelService } from 'src/app/shared/services/message-label.service'
 import { SessionStorageService } from 'src/app/shared/services/session-storage.service'
@@ -20,7 +22,7 @@ import { SessionStorageService } from 'src/app/shared/services/session-storage.s
 
 export class ItemListComponent {
 
-    //#region common #9
+    //#region common
 
     @ViewChild('table') table: Table
 
@@ -35,14 +37,13 @@ export class ItemListComponent {
 
     //#endregion
 
-    constructor(private activatedRoute: ActivatedRoute, private dialogService: DialogService, private emojiService: EmojiService, private helperService: HelperService, private interactionService: InteractionService, private messageDialogService: MessageDialogService, private messageLabelService: MessageLabelService, private router: Router, private sessionStorageService: SessionStorageService) { }
+    constructor(private activatedRoute: ActivatedRoute, private dialogService: DialogService, private emojiService: EmojiService, private helperService: HelperService, private messageDialogService: MessageDialogService, private messageLabelService: MessageLabelService, private router: Router, private localStorageService: LocalStorageService, private sessionStorageService: SessionStorageService) { }
 
     //#region lifecycle hooks
 
     ngOnInit(): void {
         this.loadRecords().then(() => {
             this.filterTableFromStoredFilters()
-            this.subscribeToInteractionService()
             this.setTabTitle()
             this.setSidebarsHeight()
         })
@@ -59,7 +60,7 @@ export class ItemListComponent {
 
     //#endregion
 
-    //#region public common methods #7
+    //#region public methods
 
     public editRecord(id: number): void {
         this.storeScrollTop()
@@ -70,6 +71,10 @@ export class ItemListComponent {
     public filterRecords(event: any): void {
         this.sessionStorageService.saveItem(this.feature + '-' + 'filters', JSON.stringify(this.table.filters))
         this.recordsFilteredCount = event.filteredValue.length
+    }
+
+    public formatNumberToLocale(number: number): string {
+        return formatNumber(number, this.localStorageService.getItem('language'), '2.2')
     }
 
     public getEmoji(anything: any): string {
@@ -96,7 +101,7 @@ export class ItemListComponent {
 
     //#endregion
 
-    //#region private common methods #13
+    //#region private  methods
 
     private enableDisableFilters(): void {
         this.records.length == 0 ? this.helperService.disableTableFilters() : this.helperService.enableTableFilters()
@@ -169,12 +174,6 @@ export class ItemListComponent {
 
     private storeScrollTop(): void {
         this.sessionStorageService.saveItem(this.feature + '-scrollTop', this.virtualElement.scrollTop)
-    }
-
-    private subscribeToInteractionService(): void {
-        this.interactionService.refreshTabTitle.subscribe(() => {
-            this.setTabTitle()
-        })
     }
 
     //#endregion

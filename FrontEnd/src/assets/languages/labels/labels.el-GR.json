@@ -33,7 +33,7 @@
         "labels": [
             {
                 "id": "header",
-                "description": "Είδη"
+                "description": "Είδη & υπηρεσίες"
             },
             {
                 "id": "headerIsActive",
@@ -62,7 +62,7 @@
         "labels": [
             {
                 "id": "header",
-                "description": "Είδος"
+                "description": "Είδος ή υπηρεσία"
             },
             {
                 "id": "description",
