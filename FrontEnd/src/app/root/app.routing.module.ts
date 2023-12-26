@@ -23,6 +23,8 @@ const appRoutes: Routes = [
     // Tables menu
     { path: 'items', loadChildren: () => import('../features/items/classes/modules/item.module').then(m => m.ItemModule) },
     { path: 'users', loadChildren: () => import('../features/users/classes/modules/user.module').then(m => m.UserModule) },
+    // Quotes
+    { path: 'quotes', loadChildren: () => import('../features/quotes/classes/modules/quote.module').then(m => m.QuoteModule) },
     // Parameters
     { path: 'parameters', loadChildren: () => import('../features/parameters/classes/modules/parameters.module').then(m => m.ParametersModule) },
     // Empty

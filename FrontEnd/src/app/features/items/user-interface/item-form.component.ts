@@ -43,6 +43,7 @@ export class ItemFormComponent {
         this.setRecordId()
         this.getRecord()
         this.populateFields()
+        this.focusOnField()
     }
 
     //#endregion
@@ -119,6 +120,10 @@ export class ItemFormComponent {
             isActive: this.form.value.isActive,
             putAt: this.form.value.putAt
         }
+    }
+
+    private focusOnField(): void {
+        this.helperService.focusOnField()
     }
 
     private getRecord(): Promise<any> {

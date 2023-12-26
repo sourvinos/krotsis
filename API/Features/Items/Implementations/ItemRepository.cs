@@ -28,6 +28,15 @@ namespace API.Features.Items {
             return mapper.Map<IEnumerable<Item>, IEnumerable<ItemListVM>>(items);
         }
 
+        public async Task<IEnumerable<ItemListVM>> GetActive() {
+            var items = await context.Items
+                .AsNoTracking()
+                .Where(x => x.IsActive)
+                .OrderBy(x => x.Description)
+                .ToListAsync();
+            return mapper.Map<IEnumerable<Item>, IEnumerable<ItemListVM>>(items);
+        }
+
         public async Task<Item> GetById(int id) {
             return await context.Items
                 .AsNoTracking()

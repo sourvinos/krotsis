@@ -32,6 +32,12 @@ namespace API.Features.Items {
             return await itemRepo.Get();
         }
 
+        [HttpGet("[action]")]
+        [Authorize(Roles = "admin")]
+        public async Task<IEnumerable<ItemListVM>> GetActive() {
+            return await itemRepo.GetActive();
+        }
+
         [HttpGet("{id}")]
         [Authorize(Roles = "admin")]
         public async Task<ResponseWithBody> GetById(int id) {
