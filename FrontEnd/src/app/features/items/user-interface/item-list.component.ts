@@ -4,7 +4,7 @@ import { Component, ViewChild } from '@angular/core'
 import { Table } from 'primeng/table'
 import { formatNumber } from '@angular/common'
 // Custom
-import { DialogService } from 'src/app/shared/services/modal-dialog.service'
+import { ModalDialogService } from 'src/app/shared/services/modal-dialog.service'
 import { EmojiService } from 'src/app/shared/services/emoji.service'
 import { HelperService } from 'src/app/shared/services/helper.service'
 import { ItemListVM } from '../classes/view-models/item-list-vm'
@@ -37,7 +37,7 @@ export class ItemListComponent {
 
     //#endregion
 
-    constructor(private activatedRoute: ActivatedRoute, private dialogService: DialogService, private emojiService: EmojiService, private helperService: HelperService, private messageDialogService: MessageDialogService, private messageLabelService: MessageLabelService, private router: Router, private localStorageService: LocalStorageService, private sessionStorageService: SessionStorageService) { }
+    constructor(private activatedRoute: ActivatedRoute, private dialogService: ModalDialogService, private emojiService: EmojiService, private helperService: HelperService, private messageDialogService: MessageDialogService, private messageLabelService: MessageLabelService, private router: Router, private localStorageService: LocalStorageService, private sessionStorageService: SessionStorageService) { }
 
     //#region lifecycle hooks
 

@@ -1,8 +1,8 @@
 #wrapper {
     background-color: var(--color-background);
-    background-position: left;
+    background-position: top;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     display: flex;
     flex-direction: column;
     height: 100%;

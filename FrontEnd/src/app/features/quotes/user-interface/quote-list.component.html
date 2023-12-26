@@ -3,85 +3,85 @@
     <div id="content">
 
         <div id="header">
-            <home-button-and-title [feature]="feature" [icon]="icon" [parentUrl]="parentUrl"></home-button-and-title>
+            <home-button-and-title [featureIcon]="featureIcon" [feature]="feature" [icon]="icon" [parentUrl]="parentUrl"></home-button-and-title>
             <form [formGroup]="form" autocomplete="off">
                 <mat-form-field>
-                    <input [placeholder]="getLabel('plates')" formControlName="plates" id="plates" matInput>
-                    <mat-hint>Η πινακίδα κυκλοφορίας του οχήματος</mat-hint>
+                    <mat-label>{{ getLabel('plates') }}</mat-label>
+                    <input formControlName="plates" matInput>
+                    <mat-hint>{{ getLabel("platesHint") }}</mat-hint>
                     <mat-error *ngIf="plates.hasError('required')">{{ getHint("required") }}</mat-error>
                 </mat-form-field>
             </form>
         </div>
 
         <div id="table-wrapper">
-            <p-table #table (onRowSelect)="rowSelect($event)" (onRowUnselect)="rowUnselect($event)" [(selection)]="selected" [scrollable]="true" [value]="records" [virtualScrollItemSize]="33" [virtualScroll]="true" scrollHeight="flex" selectionMode="multiple" sortMode="multiple" stateKey="item-list" stateStorage="session">
+            <p-table (onRowSelect)="rowSelect($event)" (onRowUnselect)="rowUnselect($event)" [(selection)]="selected" [scrollable]="true" [value]="records" [virtualScrollItemSize]="32" [virtualScroll]="true" scrollHeight="flex" selectionMode="multiple" sortMode="multiple">
                 <ng-template pTemplate="header">
                     <tr>
-                        <th style="width: 5%;"></th>
-                        <th style="width: 65%;">{{ getLabel("headerDescription") }}</th>
-                        <th style="width: 10%;">{{ getLabel("headerQty") }}</th>
-                        <th style="width: 10%;">{{ getLabel("headerGrossPrice") }}</th>
-                        <th style="width: 10%;">{{ getLabel("headerTotalGrossPrice") }}</th>
+                        <th class="width-2"></th>
+                        <th class="width-18">{{ getLabel("headerDescription") }}</th>
+                        <th class="width-2">{{ getLabel("headerQty") }}</th>
+                        <th class="width-2">{{ getLabel("headerGrossPrice") }}</th>
+                        <th class="width-2">{{ getLabel("headerTotalGrossPrice") }}</th>
                     </tr>
                     <tr>
-                        <th><p-tableHeaderCheckbox></p-tableHeaderCheckbox></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
+                        <th class="width-2"><span class="center" style="padding: 0.1875rem 0 0 0.3125rem !important"><p-tableHeaderCheckbox></p-tableHeaderCheckbox></span></th>
+                        <th class="width-18"></th>
+                        <th class="width-2"></th>
+                        <th class="width-2"></th>
+                        <th class="width-2"></th>
                     </tr>
                 </ng-template>
-                <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
-                    <tr>
-                        <!-- Checkbox -->
-                        <td style="width: 5%; text-align: center;">
-                            <p-tableCheckbox [value]="rowData"></p-tableCheckbox>
+                <ng-template let-record pTemplate="body" let-rowIndex="rowIndex">
+                    <tr (click)="highlightRow(record.id)" [attr.id]=record.id class="without-footer" style="height: 32px;">
+                        <td class="width-2"><span class="center"><p-tableCheckbox [value]="record"></p-tableCheckbox></span></td>
+                        <td class="width-18" [ngClass]="hasAmount( record.totalGrossPrice)"><span>{{ record.description }}</span></td>
+                        <td class="width-2" [ngClass]="hasAmount( record.totalGrossPrice)" pEditableColumn (click)="storeSelectedRowIndex(rowIndex)">
+                            <span class="number" style="justify-content: end;">
+                                <p-cellEditor>
+                                    <ng-template pTemplate="input">
+                                        <input (focus)="selectField($event)" (keyup)="calculateTotalGrossPrice('qty', $event)" [(ngModel)]="record.qty" pInputText type="number">
+                                    </ng-template>
+                                    <ng-template pTemplate="output">
+                                        {{ formatNumberToLocale(record.qty, false) }}
+                                    </ng-template>
+                                </p-cellEditor>
+                            </span>
                         </td>
-                        <!-- Description -->
-                        <td [ngClass]="hasAmount(rowData.totalGrossPrice)" style="width: 65%;">{{ rowData.description }}</td>
-                        <!-- Qty -->
-                        <td [ngClass]="hasAmount(rowData.totalGrossPrice)" pEditableColumn (click)="storeSelectedRowIndex(rowIndex)" style="width: 10%; text-align: end; padding-right: 1rem;">
-                            <p-cellEditor>
-                                <ng-template pTemplate="input">
-                                    <input (focus)="selectField($event)" (keyup)="calculateTotalGrossPrice('qty', $event)" [(ngModel)]="rowData.qty" pInputText type="number">
-                                </ng-template>
-                                <ng-template pTemplate="output">
-                                    {{ formatNumberToLocale(rowData.qty, false) }}
-                                </ng-template>
-                            </p-cellEditor>
+                        <td class="width-2" [ngClass]="hasAmount( record.totalGrossPrice)" pEditableColumn (click)="storeSelectedRowIndex(rowIndex)">
+                            <span class="number" style="justify-content: end;">
+                                <p-cellEditor>
+                                    <ng-template pTemplate="input">
+                                        <input (focus)="selectField($event)" (keyup)="calculateTotalGrossPrice('grossPrice', $event)" pInputText [(ngModel)]="record.grossPrice" type="number">
+                                    </ng-template>
+                                    <ng-template pTemplate="output">
+                                        {{ formatNumberToLocale(record.grossPrice) }}
+                                    </ng-template>
+                                </p-cellEditor>
+                            </span>
                         </td>
-                        <!-- Gross price -->
-                        <td [ngClass]="hasAmount(rowData.totalGrossPrice)" pEditableColumn (click)="storeSelectedRowIndex(rowIndex)" style="width: 10%; text-align: end; padding-right: 1rem;">
-                            <p-cellEditor>
-                                <ng-template pTemplate="input">
-                                    <input (focus)="selectField($event)" (keyup)="calculateTotalGrossPrice('grossPrice', $event)" pInputText [(ngModel)]="rowData.grossPrice" type="number">
-                                </ng-template>
-                                <ng-template pTemplate="output">
-                                    {{ formatNumberToLocale(rowData.grossPrice) }}
-                                </ng-template>
-                            </p-cellEditor>
+                        <td class="width-2" [ngClass]="hasAmount( record.totalGrossPrice)">
+                            <span class="number" style="justify-content: end;">
+                                {{ formatNumberToLocale(record.totalGrossPrice) }}
+                            </span>
                         </td>
-                        <!-- Total gross price -->
-                        <td [ngClass]="hasAmount(rowData.totalGrossPrice)" style="width: 10%; text-align: right;">{{ formatNumberToLocale(rowData.totalGrossPrice) }}</td>
                     </tr>
                 </ng-template>
             </p-table>
-
         </div>
 
     </div>
 
-
     <div id="footer">
-        <div id="criteria">
+        <div class="filter-pill">
             <div class="pill">
-                <!-- <img [src]="getIcon('total')"> -->
-                <div class="number description">{{ totalAmount.toFixed(2) }}</div>
+                <mat-icon class="material-icons-outlined">functions</mat-icon>
+                <div class="right description">{{ totalAmount.toFixed(2) }}</div>
             </div>
         </div>
-        <div class="button-group">
-            <button mat-flat-button class="secondary" (click)="initQuote()">{{ getLabel("resetButton") }}</button>
-            <button mat-flat-button class="primary" [disabled]="!form.valid" (click)="doReportTasks()">{{ getLabel("printButton") }}</button>
+        <div id="align-right">
+            <button (click)="initQuote()" class="secondary" mat-flat-button>{{ getLabel("resetButton") | uppercase }}</button>
+            <button [disabled]="!form.valid" (click)="doReportTasks()" class="primary" mat-flat-button>{{ getLabel("printButton") | uppercase }}</button>
         </div>
     </div>
 

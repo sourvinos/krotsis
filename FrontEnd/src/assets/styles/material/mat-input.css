@@ -150,7 +150,7 @@
     font-family: var(--font-family-asty);
     font-weight: 300;
     justify-content: flex-start;
-    margin: 0.1rem 0 0 1rem;
+    margin: 0.1rem 0 0 0.5rem;
     transform: translateY(0.0625rem);
     transition: color var(--theme-delay) !important;
     width: 100%;
@@ -172,7 +172,7 @@
     color: var(--color-input-error) !important;
     font-family: var(--font-family-asty) !important;
     font-weight: 300;
-    padding: 0 0.5rem !important;
+    margin: 0.1rem 0 0 0.5rem;
     transition: background-color var(--theme-delay);
 }
 

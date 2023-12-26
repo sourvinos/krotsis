@@ -201,6 +201,21 @@
 
 /* #endregion */
 
+/* #region editable cell */
+
+.p-element > input {
+    background-clip: border-box !important;
+    border-color: var(--color-input-editable-table-border);
+    border-radius: 0;
+    color: var(--color-input-editable-table);
+    font-family: var(--font-family-roboto);
+    font-size: 1.1rem !important;
+    text-align: right;
+    width: 5rem;
+}
+
+/* #endregion */
+
 /* #region footer */
 
 .p-datatable .p-datatable-tfoot > tr > td {

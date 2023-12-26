@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/fo
 import { MatAutocompleteTrigger } from '@angular/material/autocomplete'
 // Custom
 import { CryptoService } from 'src/app/shared/services/crypto.service'
-import { DialogService } from 'src/app/shared/services/modal-dialog.service'
+import { ModalDialogService } from 'src/app/shared/services/modal-dialog.service'
 import { FormResolved } from 'src/app/shared/classes/form-resolved'
 import { HelperService } from 'src/app/shared/services/helper.service'
 import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.directive'
@@ -44,7 +44,7 @@ export class EditUserFormComponent {
 
     //#endregion
 
-    constructor(private activatedRoute: ActivatedRoute, private cryptoService: CryptoService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private messageDialogService: MessageDialogService, private messageHintService: MessageInputHintService, private messageLabelService: MessageLabelService, private router: Router, private sessionStorageService: SessionStorageService, private userService: UserService) { }
+    constructor(private activatedRoute: ActivatedRoute, private cryptoService: CryptoService, private dialogService: ModalDialogService, private formBuilder: FormBuilder, private helperService: HelperService, private messageDialogService: MessageDialogService, private messageHintService: MessageInputHintService, private messageLabelService: MessageLabelService, private router: Router, private sessionStorageService: SessionStorageService, private userService: UserService) { }
 
     //#region lifecycle hooks
 

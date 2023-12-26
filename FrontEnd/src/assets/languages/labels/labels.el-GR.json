@@ -103,6 +103,47 @@
         ]
     },
     {
+        "feature": "quoteList",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Νέα προσφορά"
+            },
+            {
+                "id": "plates",
+                "description": "Αρ. κυκλοφορίας"
+            },
+            {
+                "id": "platesHint",
+                "description": "Δώστε τον αρ. κυκλοφορίας"
+            },
+            {
+                "id": "headerDescription",
+                "description": "Περιγραφή"
+            },
+            {
+                "id": "headerQty",
+                "description": "Ποσότητα"
+            },
+            {
+                "id": "headerGrossPrice",
+                "description": "Τιμή μονάδος με ΦΠΑ"
+            },
+            {
+                "id": "headerTotalGrossPrice",
+                "description": "Σύνολο"
+            },
+            {
+                "id": "resetButton",
+                "description": "Επαναφορα"
+            },
+            {
+                "id": "printButton",
+                "description": "Εκτυπωση"
+            }
+        ]
+    },
+    {
         "feature": "userList",
         "labels": [
             {
@@ -359,7 +400,15 @@
             },
             {
                 "id": "itemsSubTitle",
-                "description": "Διαχειριστείτε τα είδη"
+                "description": "Διαχειριστείτε τα είδη και τις υπηρεσίες σας"
+            },
+            {
+                "id": "quotesTitle",
+                "description": "Προσφορές"
+            },
+            {
+                "id": "quotesSubTitle",
+                "description": "Φτιάξτε και εκτυπώστε μία νέα προσφορά"
             }
         ]
     }

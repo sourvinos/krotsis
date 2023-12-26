@@ -2,7 +2,7 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 import { ActivatedRoute, Router } from '@angular/router'
 import { Component } from '@angular/core'
 // Custom
-import { DialogService } from 'src/app/shared/services/modal-dialog.service'
+import { ModalDialogService } from 'src/app/shared/services/modal-dialog.service'
 import { FormResolved } from 'src/app/shared/classes/form-resolved'
 import { HelperService } from 'src/app/shared/services/helper.service'
 import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.directive'
@@ -34,7 +34,7 @@ export class ParametersComponent {
 
     //#endregion
 
-    constructor(private activatedRoute: ActivatedRoute, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private messageDialogService: MessageDialogService, private messageHintService: MessageInputHintService, private messageLabelService: MessageLabelService, private parametersService: ParametersService, private router: Router) { }
+    constructor(private activatedRoute: ActivatedRoute, private dialogService: ModalDialogService, private formBuilder: FormBuilder, private helperService: HelperService, private messageDialogService: MessageDialogService, private messageHintService: MessageInputHintService, private messageLabelService: MessageLabelService, private parametersService: ParametersService, private router: Router) { }
 
     //#region lifecycle hooks
 

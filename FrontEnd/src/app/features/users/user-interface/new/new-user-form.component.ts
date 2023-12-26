@@ -2,7 +2,7 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 import { Component } from '@angular/core'
 // Custom
 import { ValidationService } from '../../../../shared/services/validation.service'
-import { DialogService } from 'src/app/shared/services/modal-dialog.service'
+import { ModalDialogService } from 'src/app/shared/services/modal-dialog.service'
 import { HelperService } from 'src/app/shared/services/helper.service'
 import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.directive'
 import { MessageDialogService } from 'src/app/shared/services/message-dialog.service'
@@ -30,7 +30,7 @@ export class NewUserFormComponent {
 
     //#endregion
 
-    constructor(private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private messageDialogService: MessageDialogService, private messageHintService: MessageInputHintService, private messageLabelService: MessageLabelService, private userService: UserService) { }
+    constructor(private dialogService: ModalDialogService, private formBuilder: FormBuilder, private helperService: HelperService, private messageDialogService: MessageDialogService, private messageHintService: MessageInputHintService, private messageLabelService: MessageLabelService, private userService: UserService) { }
 
     //#region lifecycle hooks
 

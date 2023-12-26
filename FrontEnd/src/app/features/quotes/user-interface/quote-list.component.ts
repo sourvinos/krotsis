@@ -1,17 +1,16 @@
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router'
-import { Component, ViewChild } from '@angular/core'
-import { Subject } from 'rxjs'
-import { Table } from 'primeng/table'
+import { Component } from '@angular/core'
 import { formatNumber } from '@angular/common'
 // Custom
+import { ModalDialogService } from 'src/app/shared/services/modal-dialog.service'
+import { HelperService } from 'src/app/shared/services/helper.service'
 import { Item } from '../classes/models/item'
 import { ListResolved } from '../../../shared/classes/list-resolved'
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service'
-import { MessageLabelService } from 'src/app/shared/services/message-label.service'
-import { DialogService } from 'src/app/shared/services/modal-dialog.service'
 import { MessageDialogService } from 'src/app/shared/services/message-dialog.service'
 import { MessageInputHintService } from 'src/app/shared/services/message-input-hint.service'
+import { MessageLabelService } from 'src/app/shared/services/message-label.service'
 
 @Component({
     selector: 'quote-list',
@@ -21,46 +20,34 @@ import { MessageInputHintService } from 'src/app/shared/services/message-input-h
 
 export class QuoteListComponent {
 
-    //#region variables
+    //#region public variables
 
-    @ViewChild('table') table: Table | undefined
-
-    private selectedRecordIndex: number
-    public selectedRecords: Item[] = []
-    private unsubscribe = new Subject<void>()
     public feature = 'quoteList'
+    public featureIcon = 'quotes'
     public form: FormGroup
     public icon = 'home'
-    public netPrice = 0
-    public parentUrl = '/'
+    public parentUrl = '/home'
     public records: Item[] = []
     public selected = []
+    public selectedRecords: Item[] = []
     public totalAmount = 0
 
     //#endregion
 
-    constructor(
-        private activatedRoute: ActivatedRoute,
-        private dialogService: DialogService,
-        private formBuilder: FormBuilder,
-        private localStorageService: LocalStorageService,
-        private messageDialogService: MessageDialogService,
-        private messageLabelService: MessageLabelService,
-        private messageHintService: MessageInputHintService,
-        private router: Router
-    ) { }
+    //#region private variables
+
+    private selectedRecordIndex: number
+
+    //#endregion
+
+    constructor(private activatedRoute: ActivatedRoute, private formBuilder: FormBuilder, private helperService: HelperService, private localStorageService: LocalStorageService, private messageDialogService: MessageDialogService, private messageHintService: MessageInputHintService, private messageLabelService: MessageLabelService, private modalDialogService: ModalDialogService, private router: Router) { } Φ
 
     //#region lifecycle hooks
 
     ngOnInit(): void {
         this.initForm()
-        this.initQuote()
         this.loadRecords()
-        this.doInitialCalculations()
-    }
-
-    ngOnDestroy(): void {
-        this.cleanup()
+        this.initQuote()
     }
 
     //#endregion
@@ -71,18 +58,18 @@ export class QuoteListComponent {
         if (field == 'qty') {
             const qty = isNaN($event.target.value) ? 0 : parseInt($event.target.value)
             this.records[this.selectedRecordIndex].totalGrossPrice = qty * this.records[this.selectedRecordIndex].grossPrice
-            this.calculatePriceSum()
+            this.calculateSum()
         }
         if (field == 'grossPrice') {
             const grossPrice = isNaN($event.target.value) ? 0 : parseFloat($event.target.value)
             this.records[this.selectedRecordIndex].totalGrossPrice = this.records[this.selectedRecordIndex].qty * grossPrice
-            this.calculatePriceSum()
+            this.calculateSum()
         }
     }
 
     public doReportTasks(): void {
         if (this.selectedRecords.length == 0) {
-            this.dialogService.open(this.messageDialogService.noRecordsSelected(), 'error', ['ok']).subscribe(() => {
+            this.modalDialogService.open(this.messageDialogService.noRecordsSelected(), 'error', ['ok']).subscribe(() => {
                 //
             })
         } else {
@@ -106,6 +93,10 @@ export class QuoteListComponent {
         return parseFloat(amount) > 0 ? 'inuse' : ''
     }
 
+    public highlightRow(id: any): void {
+        this.helperService.highlightRow(id)
+    }
+
     public initQuote(): void {
         this.selected = []
         this.selectedRecords = []
@@ -118,12 +109,12 @@ export class QuoteListComponent {
     }
 
     public rowSelect(row: any): void {
-        this.calculatePriceSum()
+        this.calculateSum()
         this.updateSelectedItemsArray(row.data, 'add')
     }
 
     public rowUnselect(row: any): void {
-        this.calculatePriceSum()
+        this.calculateSum()
         this.updateSelectedItemsArray(row.data, 'remove')
     }
 
@@ -139,27 +130,15 @@ export class QuoteListComponent {
 
     //#region private methods
 
-    private calculatePriceSum(): void {
+    private calculateSum(): void {
         this.totalAmount = 0
         this.records.forEach(record => {
             this.totalAmount += record.totalGrossPrice
         })
     }
 
-    private cleanup(): void {
-        this.unsubscribe.next()
-        this.unsubscribe.unsubscribe()
-    }
-
     private createPdf(): void {
         // this.quotePdfService.createPDF(this.form.value, this.selectedRecords)
-    }
-
-    private doInitialCalculations(): void {
-        this.records.forEach(record => {
-            record.qty = 0
-            record.totalGrossPrice = 0
-        })
     }
 
     private goBack(): void {
@@ -179,7 +158,7 @@ export class QuoteListComponent {
                 this.records = listResolved.list
                 resolve(this.records)
             } else {
-                this.dialogService.open(this.messageDialogService.filterResponse(listResolved.error), 'error', ['ok']).subscribe(() => {
+                this.modalDialogService.open(this.messageDialogService.filterResponse(listResolved.error), 'error', ['ok']).subscribe(() => {
                     this.goBack()
                 })
             }

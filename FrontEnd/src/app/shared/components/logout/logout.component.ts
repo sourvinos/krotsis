@@ -2,7 +2,7 @@ import { Component } from '@angular/core'
 import { Menu } from 'src/app/shared/classes/menu'
 // Custom
 import { AccountService } from 'src/app/shared/services/account.service'
-import { DialogService } from '../../services/modal-dialog.service'
+import { ModalDialogService } from '../../services/modal-dialog.service'
 import { InteractionService } from 'src/app/shared/services/interaction.service'
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service'
 import { MessageDialogService } from '../../services/message-dialog.service'
@@ -23,7 +23,7 @@ export class LogoutComponent {
 
     //#endregion
 
-    constructor(private accountService: AccountService, private dialogService: DialogService, private interactionService: InteractionService, private localStorageService: LocalStorageService, private messageDialogService: MessageDialogService, private sessionStorageService: SessionStorageService, private tooltipService: TooltipService) { }
+    constructor(private accountService: AccountService, private dialogService: ModalDialogService, private interactionService: InteractionService, private localStorageService: LocalStorageService, private messageDialogService: MessageDialogService, private sessionStorageService: SessionStorageService, private tooltipService: TooltipService) { }
 
     //#region lifecycle hooks
 
