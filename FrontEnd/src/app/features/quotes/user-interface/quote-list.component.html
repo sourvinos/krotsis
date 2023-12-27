@@ -15,7 +15,7 @@
         </div>
 
         <div id="table-wrapper">
-            <p-table (onRowSelect)="rowSelect($event)" (onRowUnselect)="rowUnselect($event)" [(selection)]="selected" [scrollable]="true" [value]="records" [virtualScrollItemSize]="32" [virtualScroll]="true" scrollHeight="flex" selectionMode="multiple" sortMode="multiple">
+            <p-table (onRowSelect)="rowSelect($event)" (onRowUnselect)="rowUnselect($event)" [(selection)]="selectedRecords" [scrollable]="true" [value]="records" [virtualScrollItemSize]="32" [virtualScroll]="true" scrollHeight="flex" selectionMode="multiple" sortMode="multiple">
                 <ng-template pTemplate="header">
                     <tr>
                         <th class="width-2"></th>
@@ -35,8 +35,8 @@
                 <ng-template let-record pTemplate="body" let-rowIndex="rowIndex">
                     <tr (click)="highlightRow(record.id)" [attr.id]=record.id class="without-footer" style="height: 32px;">
                         <td class="width-2"><span class="center"><p-tableCheckbox [value]="record"></p-tableCheckbox></span></td>
-                        <td class="width-18" [ngClass]="hasAmount( record.totalGrossPrice)"><span>{{ record.description }}</span></td>
-                        <td class="width-2" [ngClass]="hasAmount( record.totalGrossPrice)" pEditableColumn (click)="storeSelectedRowIndex(rowIndex)">
+                        <td class="width-18" [ngClass]="colorizeCellValue( record.totalGrossPrice)"><span>{{ record.description }}</span></td>
+                        <td class="width-2" [ngClass]="colorizeCellValue( record.totalGrossPrice)" pEditableColumn (click)="storeSelectedRowIndex(rowIndex)">
                             <span class="number" style="justify-content: end;">
                                 <p-cellEditor>
                                     <ng-template pTemplate="input">
@@ -48,7 +48,7 @@
                                 </p-cellEditor>
                             </span>
                         </td>
-                        <td class="width-2" [ngClass]="hasAmount( record.totalGrossPrice)" pEditableColumn (click)="storeSelectedRowIndex(rowIndex)">
+                        <td class="width-2" [ngClass]="colorizeCellValue( record.totalGrossPrice)" pEditableColumn (click)="storeSelectedRowIndex(rowIndex)">
                             <span class="number" style="justify-content: end;">
                                 <p-cellEditor>
                                     <ng-template pTemplate="input">
@@ -60,7 +60,7 @@
                                 </p-cellEditor>
                             </span>
                         </td>
-                        <td class="width-2" [ngClass]="hasAmount( record.totalGrossPrice)">
+                        <td class="width-2" [ngClass]="colorizeCellValue( record.totalGrossPrice)">
                             <span class="number" style="justify-content: end;">
                                 {{ formatNumberToLocale(record.totalGrossPrice) }}
                             </span>
@@ -81,7 +81,10 @@
         </div>
         <div id="align-right">
             <button (click)="initQuote()" class="secondary" mat-flat-button>{{ getLabel("resetButton") | uppercase }}</button>
-            <button [disabled]="!form.valid" (click)="doReportTasks()" class="primary" mat-flat-button>{{ getLabel("printButton") | uppercase }}</button>
+            <button (click)="doReportTasks()" [disabled]="!isQuoteValid()" class="primary" mat-flat-button>
+                <mat-icon *ngIf="!isQuoteValid()" class="material-icons-outlined">lock</mat-icon>
+                <span>{{ getLabel("printButton") | uppercase }}</span>
+            </button>
         </div>
     </div>
 

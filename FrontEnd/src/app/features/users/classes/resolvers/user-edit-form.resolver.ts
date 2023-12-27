@@ -12,7 +12,7 @@ export class UserEditFormResolver {
     constructor(private userService: UserService) { }
 
     resolve(route: ActivatedRouteSnapshot): any {
-        return this.userService.getSingle(route.params.id).pipe(
+        return this.userService.getById(route.params.id).pipe(
             map((userEditForm) => new FormResolved(userEditForm)),
             catchError((err: any) => of(new FormResolved(null, err)))
         )

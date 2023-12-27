@@ -9,7 +9,11 @@ export class HttpDataService {
         return this.http.get<any[]>(this.url)
     }
 
-    public getSingle(id: string | number): Observable<any> {
+    public getSingle(): Observable<any> {
+        return this.http.get<any>(this.url)
+    }
+
+    public getById(id: string | number): Observable<any> {
         if (id != undefined)
             return this.http.get<any>(this.url + '/' + id)
     }

@@ -1,13 +1,11 @@
 * {
     --color-background: #595959;
-    --color-calendar-day: #7BB7DD;
+    --color-quote-with-value: #d6ff00;
     --color-dialog-areas-seperator: #858585;
     --color-dialog-background: #6b6b6b;
-    --color-flag-border: #ffffff;
     --color-input-background: #636161;
     --color-input-error: #ff7878;
     --color-secondary: #7BB7DD;
-    --color-table-row-percentage: #b5838d;
     --color-text: #ffffff;
     --color-transparent-button: #ffffff;
 }

@@ -40,9 +40,7 @@
                     "options": {
                         "allowedCommonJsDependencies": [
                             "crypto-js",
-                            "moment",
-                            "pdfmake",
-                            "qrcode"
+                            "pdfmake"
                         ],
                         "assets": [
                             "src/favicon.ico",
@@ -174,9 +172,6 @@
                     "configurations": {
                         "development": {
                             "browserTarget": "FrontEnd:build:development"
-                        },
-                        "production-local": {
-                            "browserTarget": "FrontEnd:build:production-local"
                         },
                         "production": {
                             "browserTarget": "FrontEnd:build:production"

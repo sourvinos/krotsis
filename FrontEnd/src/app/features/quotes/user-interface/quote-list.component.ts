@@ -3,7 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router'
 import { Component } from '@angular/core'
 import { formatNumber } from '@angular/common'
 // Custom
-import { ModalDialogService } from 'src/app/shared/services/modal-dialog.service'
 import { HelperService } from 'src/app/shared/services/helper.service'
 import { Item } from '../classes/models/item'
 import { ListResolved } from '../../../shared/classes/list-resolved'
@@ -11,6 +10,8 @@ import { LocalStorageService } from 'src/app/shared/services/local-storage.servi
 import { MessageDialogService } from 'src/app/shared/services/message-dialog.service'
 import { MessageInputHintService } from 'src/app/shared/services/message-input-hint.service'
 import { MessageLabelService } from 'src/app/shared/services/message-label.service'
+import { ModalDialogService } from 'src/app/shared/services/modal-dialog.service'
+import { QuotePDFService } from '../classes/services/quote-pdf.service'
 
 @Component({
     selector: 'quote-list',
@@ -28,7 +29,6 @@ export class QuoteListComponent {
     public icon = 'home'
     public parentUrl = '/home'
     public records: Item[] = []
-    public selected = []
     public selectedRecords: Item[] = []
     public totalAmount = 0
 
@@ -40,7 +40,7 @@ export class QuoteListComponent {
 
     //#endregion
 
-    constructor(private activatedRoute: ActivatedRoute, private formBuilder: FormBuilder, private helperService: HelperService, private localStorageService: LocalStorageService, private messageDialogService: MessageDialogService, private messageHintService: MessageInputHintService, private messageLabelService: MessageLabelService, private modalDialogService: ModalDialogService, private router: Router) { } Φ
+    constructor(private activatedRoute: ActivatedRoute, private formBuilder: FormBuilder, private helperService: HelperService, private localStorageService: LocalStorageService, private messageDialogService: MessageDialogService, private messageHintService: MessageInputHintService, private messageLabelService: MessageLabelService, private modalDialogService: ModalDialogService, private quotePdfService: QuotePDFService, private router: Router) { }
 
     //#region lifecycle hooks
 
@@ -56,25 +56,23 @@ export class QuoteListComponent {
 
     public calculateTotalGrossPrice(field: string, $event: any): void {
         if (field == 'qty') {
-            const qty = isNaN($event.target.value) ? 0 : parseInt($event.target.value)
+            const qty = isNaN($event.target.value) || $event.target.value == '' ? 0 : parseInt($event.target.value)
             this.records[this.selectedRecordIndex].totalGrossPrice = qty * this.records[this.selectedRecordIndex].grossPrice
             this.calculateSum()
         }
         if (field == 'grossPrice') {
-            const grossPrice = isNaN($event.target.value) ? 0 : parseFloat($event.target.value)
+            const grossPrice = isNaN($event.target.value) || $event.target.value == '' ? 0 : parseFloat($event.target.value)
             this.records[this.selectedRecordIndex].totalGrossPrice = this.records[this.selectedRecordIndex].qty * grossPrice
             this.calculateSum()
         }
     }
 
+    public colorizeCellValue(amount: string): string {
+        return parseFloat(amount) > 0 ? 'quote-with-value' : ''
+    }
+
     public doReportTasks(): void {
-        if (this.selectedRecords.length == 0) {
-            this.modalDialogService.open(this.messageDialogService.noRecordsSelected(), 'error', ['ok']).subscribe(() => {
-                //
-            })
-        } else {
-            this.createPdf()
-        }
+        this.createPdf()
     }
 
     public formatNumberToLocale(number: number, decimals = true): string {
@@ -89,16 +87,11 @@ export class QuoteListComponent {
         return this.messageLabelService.getDescription(this.feature, id)
     }
 
-    public hasAmount(amount: string): string {
-        return parseFloat(amount) > 0 ? 'inuse' : ''
-    }
-
     public highlightRow(id: any): void {
         this.helperService.highlightRow(id)
     }
 
     public initQuote(): void {
-        this.selected = []
         this.selectedRecords = []
         this.totalAmount = 0
         this.form.reset()
@@ -106,6 +99,10 @@ export class QuoteListComponent {
             record.qty = 0
             record.totalGrossPrice = 0
         })
+    }
+
+    public isQuoteValid(): boolean {
+        return this.form.valid && this.selectedRecords.length > 0 && this.totalAmount > 0
     }
 
     public rowSelect(row: any): void {
@@ -138,7 +135,7 @@ export class QuoteListComponent {
     }
 
     private createPdf(): void {
-        // this.quotePdfService.createPDF(this.form.value, this.selectedRecords)
+        this.quotePdfService.createPDF(this.form.value, this.selectedRecords)
     }
 
     private goBack(): void {
