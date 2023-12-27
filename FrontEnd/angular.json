@@ -173,8 +173,8 @@
                         "development": {
                             "browserTarget": "FrontEnd:build:development"
                         },
-                        "production": {
-                            "browserTarget": "FrontEnd:build:production"
+                        "production-demo": {
+                            "browserTarget": "FrontEnd:build:production-demo"
                         }
                     },
                     "defaultConfiguration": "development"

@@ -27,7 +27,7 @@
     flex-direction: row;
     font-family: var(--font-family-asty) !important;
     font-size: var(--font-size-dialog-text);
-    font-weight: var(--font-weight-dialog-content) !important;
+    font-weight: 300 !important;
     justify-content: center;
     line-height: 2rem;
     overflow: hidden;

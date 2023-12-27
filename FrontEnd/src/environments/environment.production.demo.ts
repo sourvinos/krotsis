@@ -8,8 +8,7 @@ export const environment = {
     defaultLanguage: 'el-GR',
     dialogShieldsDirectory: 'assets/images/dialog-shields',
     featuresIconDirectory: 'assets/images/features/',
-    nationalitiesIconDirectory: 'assets/images/nationalities/',
-    portStopOrdersDirectory: 'assets/images/port-stop-orders/',
+    logoDirectory: 'assets/images/logo/',
     cssUserSelect: 'auto',
     minWidth: 1280,
     login: {

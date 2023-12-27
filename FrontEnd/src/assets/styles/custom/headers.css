@@ -8,12 +8,3 @@ h1 {
     transform: scale(1, 1.5);
     transition: color var(--theme-delay);
 }
-
-h6 {
-    font-family: var(--font-family-asty) !important;
-    font-size: var(--font-size-h6) !important;
-    font-weight: 300 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    transition: color var(--theme-delay);
-}

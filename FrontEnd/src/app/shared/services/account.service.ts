@@ -8,7 +8,6 @@ import { ChangePasswordViewModel } from 'src/app/features/users/classes/view-mod
 import { CryptoService } from './crypto.service'
 import { DotNetVersion } from '../classes/dotnet-version'
 import { HttpDataService } from './http-data.service'
-import { InteractionService } from './interaction.service'
 import { ResetPasswordViewModel } from 'src/app/features/users/classes/view-models/reset-password-view-model'
 import { SessionStorageService } from './session-storage.service'
 import { environment } from 'src/environments/environment'
@@ -26,7 +25,7 @@ export class AccountService extends HttpDataService {
 
     //#endregion
 
-    constructor(private cryptoService: CryptoService, httpClient: HttpClient, private interactionService: InteractionService, private ngZone: NgZone, private router: Router, private sessionStorageService: SessionStorageService) {
+    constructor(private cryptoService: CryptoService, httpClient: HttpClient, private ngZone: NgZone, private router: Router, private sessionStorageService: SessionStorageService) {
         super(httpClient, environment.apiUrl)
     }
 
@@ -75,13 +74,11 @@ export class AccountService extends HttpDataService {
             this.setUserData(response)
             this.setDotNetVersion(response)
             this.setAuthSettings(response)
-            this.refreshMenus()
         }))
     }
 
     public logout(): void {
         this.clearSessionStorage()
-        this.refreshMenus()
         this.navigateToLogin()
     }
 
@@ -97,10 +94,6 @@ export class AccountService extends HttpDataService {
         this.ngZone.run(() => {
             this.router.navigate(['/'])
         })
-    }
-
-    private refreshMenus(): void {
-        this.interactionService.updateMenus()
     }
 
     private setAuthSettings(response: any): void {

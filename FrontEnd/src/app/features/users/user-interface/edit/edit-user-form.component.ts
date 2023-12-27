@@ -1,7 +1,6 @@
 import { ActivatedRoute, Router } from '@angular/router'
 import { Component } from '@angular/core'
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms'
-import { MatAutocompleteTrigger } from '@angular/material/autocomplete'
 // Custom
 import { CryptoService } from 'src/app/shared/services/crypto.service'
 import { ModalDialogService } from 'src/app/shared/services/modal-dialog.service'
@@ -108,10 +107,6 @@ export class EditUserFormComponent {
             this.mustGoBackAfterSave = false
             this.dialogService.open(this.messageDialogService.formIsDirty(), 'error', ['ok'])
         }
-    }
-
-    public openOrCloseAutoComplete(trigger: MatAutocompleteTrigger, element: any): void {
-        this.helperService.openOrCloseAutocomplete(this.form, element, trigger)
     }
 
     //#endregion

@@ -1,9 +1,5 @@
 [
     {
-        "id": "reservations",
-        "description": "Κρατήσεις"
-    },
-    {
         "id": "tables",
         "description": "Πίνακες"
     },
@@ -20,23 +16,11 @@
         "description": "Αποσύνδεση"
     },
     {
-        "id": "search",
-        "description": "Αναζήτηση κράτησης"
-    },
-    {
-        "id": "language",
-        "description": "Γλώσσα εμφάνισης"
-    },
-    {
         "id": "theme",
         "description": "Εναλλαγή θέματος"
     },
     {
         "id": "myAccount",
         "description": "Ο λογαριασμός μου"
-    },
-    {
-        "id": "gotoCurrentYear",
-        "description": "Μετάβαση στο τρέχον έτος"
     }
 ]

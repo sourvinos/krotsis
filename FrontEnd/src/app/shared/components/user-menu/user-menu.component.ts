@@ -2,7 +2,6 @@ import { Component } from '@angular/core'
 import { Router } from '@angular/router'
 // Custom
 import { CryptoService } from 'src/app/shared/services/crypto.service'
-import { InteractionService } from 'src/app/shared/services/interaction.service'
 import { Menu } from 'src/app/shared/classes/menu'
 import { SessionStorageService } from 'src/app/shared/services/session-storage.service'
 import { TooltipService } from 'src/app/shared/services/tooltip.service'
@@ -21,7 +20,7 @@ export class UserMenuComponent {
 
     //#endregion
 
-    constructor(private cryptoService: CryptoService, private interactionService: InteractionService, private router: Router, private sessionStorageService: SessionStorageService, private tooltipService: TooltipService) { }
+    constructor(private cryptoService: CryptoService, private router: Router, private sessionStorageService: SessionStorageService, private tooltipService: TooltipService) { }
 
     //#region lifecycle hooks
 

@@ -3,7 +3,6 @@ import { Menu } from 'src/app/shared/classes/menu'
 // Custom
 import { AccountService } from 'src/app/shared/services/account.service'
 import { ModalDialogService } from '../../services/modal-dialog.service'
-import { InteractionService } from 'src/app/shared/services/interaction.service'
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service'
 import { MessageDialogService } from '../../services/message-dialog.service'
 import { SessionStorageService } from 'src/app/shared/services/session-storage.service'
@@ -23,7 +22,7 @@ export class LogoutComponent {
 
     //#endregion
 
-    constructor(private accountService: AccountService, private dialogService: ModalDialogService, private interactionService: InteractionService, private localStorageService: LocalStorageService, private messageDialogService: MessageDialogService, private sessionStorageService: SessionStorageService, private tooltipService: TooltipService) { }
+    constructor(private accountService: AccountService, private dialogService: ModalDialogService, private localStorageService: LocalStorageService, private messageDialogService: MessageDialogService, private sessionStorageService: SessionStorageService, private tooltipService: TooltipService) { }
 
     //#region lifecycle hooks
 

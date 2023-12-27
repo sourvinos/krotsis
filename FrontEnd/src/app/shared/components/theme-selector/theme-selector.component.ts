@@ -1,7 +1,6 @@
 import { Component, Inject } from '@angular/core'
 import { DOCUMENT } from '@angular/common'
 // Common
-import { InteractionService } from 'src/app/shared/services/interaction.service'
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service'
 import { Menu } from 'src/app/shared/classes/menu'
 import { TooltipService } from 'src/app/shared/services/tooltip.service'
@@ -21,7 +20,7 @@ export class ThemeSelectorComponent {
 
     //#endregion
 
-    constructor(@Inject(DOCUMENT) private document: Document, private interactionService: InteractionService, private localStorageService: LocalStorageService, private tooltipService: TooltipService) { }
+    constructor(@Inject(DOCUMENT) private document: Document, private localStorageService: LocalStorageService, private tooltipService: TooltipService) { }
 
     //#region lifecycle hooks
 

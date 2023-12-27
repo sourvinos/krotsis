@@ -1,15 +1,13 @@
 import { Injectable } from '@angular/core'
 import *  as CryptoJS from 'crypto-js'
-// Custom
-import { SessionStorageService } from './session-storage.service'
 
 @Injectable({ providedIn: 'root' })
 
 export class CryptoService {
 
-    private key = '123'
+    private key = '10140274-a7b1-4fd8-bc99-7bd267f385a0'
 
-    constructor(private sessionStorageService: SessionStorageService) { }
+    constructor() { }
 
     public encrypt(txt: string): string {
         return CryptoJS.AES.encrypt(txt.toString(), this.key).toString()

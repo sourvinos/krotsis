@@ -51,23 +51,8 @@ export class HelperService {
         return promise
     }
 
-    public enableOrDisableAutoComplete(event: { key: string }): boolean {
-        return (event.key == 'Enter' || event.key == 'ArrowUp' || event.key == 'ArrowDown' || event.key == 'ArrowRight' || event.key == 'ArrowLeft') ? true : false
-    }
-
     public getApplicationTitle(): any {
         return this.appName
-    }
-
-    public getDistinctRecords(records: any[], object: string, orderField = 'description'): any[] {
-        const distinctRecords = (Object.values(records.reduce(function (x, item) {
-            if (!x[item[object].id]) {
-                x[item[object].id] = item[object]
-            }
-            return x
-        }, {})))
-        distinctRecords.sort((a, b) => (a[orderField] > b[orderField]) ? 1 : -1)
-        return distinctRecords
     }
 
     public focusOnField(): void {
@@ -155,18 +140,6 @@ export class HelperService {
         return result
     }
 
-    public sortArray(array: any, field: string): any {
-        array.sort((a: any, b: any) => {
-            if (a[field] < b[field]) {
-                return -1
-            }
-            if (a[field] > b[field]) {
-                return 1
-            }
-            return 0
-        })
-    }
-
     public deepEqual(object1: any, object2: any): boolean {
         if (object1 == undefined || object2 == undefined) {
             return false
@@ -207,15 +180,6 @@ export class HelperService {
         }, 500)
     }
 
-    public clearTableCheckboxes(): void {
-        setTimeout(() => {
-            const x = document.querySelectorAll('tr td .p-element .p-checkbox .p-checkbox-box .p-checkbox-icon.pi')
-            x.forEach(row => {
-                row.classList.remove('pi-check')
-            })
-        }, 100)
-    }
-
     public scrollToSavedPosition(virtualElement: any, feature: string): void {
         if (virtualElement != undefined) {
             setTimeout(() => {
@@ -228,26 +192,8 @@ export class HelperService {
         }
     }
 
-    public openOrCloseAutocomplete(form: FormGroup<any>, element: any, trigger: MatAutocompleteTrigger): void {
-        trigger.panelOpen ? trigger.closePanel() : trigger.openPanel()
-    }
-
     public setTabTitle(feature: string): void {
         this.titleService.setTitle(environment.appName + ': ' + this.messageLabelService.getDescription(feature, 'header'))
-    }
-
-    public calculateDayCount(): number {
-        const elementWidth = document.getElementById('content').clientWidth
-        const dayCount = Math.trunc(elementWidth / 123.315) - 1
-        return dayCount
-    }
-
-    public toggleExpansionPanel(panels: QueryList<MatExpansionPanel> | { open: () => any; close: () => any }[], newState: boolean): void {
-        panels.forEach((panel: { open: () => any; close: () => any }) => {
-            setTimeout(() => {
-                newState == true ? panel.open() : panel.close()
-            }, 400)
-        })
     }
 
     public clearInvisibleFieldsAndRestoreVisibility(form: FormGroup<any>, fields: string[]): void {
@@ -272,10 +218,6 @@ export class HelperService {
         for (let i = 0; i < sidebars.length; i++) {
             sidebars[i].style.marginTop = margin + 'rem'
         }
-    }
-
-    public generateRandomString(): string {
-        return Math.floor(Math.random() * Date.now()).toString(36)
     }
 
     //#endregion
