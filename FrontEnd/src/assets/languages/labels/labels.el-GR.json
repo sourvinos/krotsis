@@ -127,7 +127,7 @@
             },
             {
                 "id": "headerGrossPrice",
-                "description": "Τιμή μονάδος με ΦΠΑ"
+                "description": "Τιμή"
             },
             {
                 "id": "headerTotalGrossPrice",

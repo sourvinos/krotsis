@@ -1,7 +1,9 @@
+import { Guid } from 'guid-typescript'
+
 export interface ParametersWriteDto {
 
     // PK
-    id: number
+    id: Guid
     // Fields
     lineA: string
     lineB: string
@@ -21,6 +23,7 @@ export interface ParametersWriteDto {
     customerH: string
     phones: string
     email: string
+    // Metadata
     putAt: string
 
 }

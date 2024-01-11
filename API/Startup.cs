@@ -37,20 +37,6 @@ namespace API {
             ConfigureServices(services);
         }
 
-        public void ConfigureLocalTestingServices(IServiceCollection services) {
-            services.AddDbContextFactory<AppDbContext>(options => {
-                options.UseMySql(Configuration.GetConnectionString("LocalTesting"), new MySqlServerVersion(new Version(8, 0, 19)), builder => builder.EnableStringComparisonTranslations());
-                options.EnableSensitiveDataLogging();
-            });
-            ConfigureServices(services);
-        }
-
-        public void ConfigureProductionLiveServices(IServiceCollection services) {
-            services.AddDbContextFactory<AppDbContext>(options => options.UseMySql(Configuration.GetConnectionString("ProductionLive"), new MySqlServerVersion(new Version(8, 0, 19)), builder =>
-                builder.EnableStringComparisonTranslations()));
-            ConfigureServices(services);
-        }
-
         public void ConfigureProductionDemoServices(IServiceCollection services) {
             services.AddDbContextFactory<AppDbContext>(options => options.UseMySql(Configuration.GetConnectionString("ProductionDemo"), new MySqlServerVersion(new Version(8, 0, 19)), builder => {
                 builder.EnableStringComparisonTranslations();
@@ -87,20 +73,6 @@ namespace API {
 
         public void ConfigureLocalDevelopment(IApplicationBuilder app) {
             app.UseDeveloperExceptionPage();
-            Configure(app);
-            app.UseEndpoints(endpoints => {
-                endpoints.MapControllers();
-            });
-        }
-
-        public void ConfigureLocalTesting(IApplicationBuilder app) {
-            app.UseDeveloperExceptionPage();
-            Configure(app);
-            app.UseEndpoints(endpoints => endpoints.MapControllers());
-        }
-
-        public void ConfigureProductionLive(IApplicationBuilder app) {
-            app.UseHsts();
             Configure(app);
             app.UseEndpoints(endpoints => {
                 endpoints.MapControllers();

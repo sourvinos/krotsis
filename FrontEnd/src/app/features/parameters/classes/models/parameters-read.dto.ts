@@ -1,8 +1,9 @@
+import { Guid } from 'guid-typescript'
 import { Metadata } from 'src/app/shared/classes/metadata'
 
 export interface ParametersReadDto extends Metadata {
 
-    id: number
+    id: Guid
     lineA: string
     lineB: string
     lineC: string
@@ -26,6 +27,5 @@ export interface ParametersReadDto extends Metadata {
     postUser: string
     putAt: string
     putUser: string
-
 
 }

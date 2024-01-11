@@ -60,20 +60,13 @@ namespace API.Features.Items {
         [Authorize(Roles = "admin")]
         [ServiceFilter(typeof(ModelValidationAttribute))]
         public Response Post([FromBody] ItemWriteDto item) {
-            var x = itemValidation.IsValid(null, item);
-            if (x == 200) {
-                var z = itemRepo.Create(mapper.Map<ItemWriteDto, Item>((ItemWriteDto)itemRepo.AttachMetadataToPostDto(item)));
-                return new Response {
-                    Code = 200,
-                    Icon = Icons.Success.ToString(),
-                    Id = z.Id.ToString(),
-                    Message = ApiMessages.OK()
-                };
-            } else {
-                throw new CustomException() {
-                    ResponseCode = x
-                };
-            }
+            var z = itemRepo.Create(mapper.Map<ItemWriteDto, Item>((ItemWriteDto)itemRepo.AttachMetadataToPostDto(item)));
+            return new Response {
+                Code = 200,
+                Icon = Icons.Success.ToString(),
+                Id = z.Id.ToString(),
+                Message = ApiMessages.OK()
+            };
         }
 
         [HttpPut]

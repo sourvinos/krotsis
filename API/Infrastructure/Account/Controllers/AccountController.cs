@@ -110,7 +110,7 @@ namespace API.Infrastructure.Account {
                 string tokenEncoded = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(token));
                 string baseUrl = environmentSettings.BaseUrl;
                 string returnUrl = Url.Content($"{baseUrl}#/resetPassword?email={model.Email}&token={tokenEncoded}");
-                var response = emailSender.SendForgotPasswordEmail(user.UserName, user.Displayname, user.Email, returnUrl, "Your reset password request");
+                var response = emailSender.SendForgotPasswordEmail(user.UserName, user.Displayname, user.Email, returnUrl, "Αίτηση για δημιουργία νέου κωδικού πρόσβασης");
                 if (response.Exception == null) {
                     return new Response {
                         Code = 200,
