@@ -105,14 +105,12 @@ export class QuoteListComponent {
         return this.form.valid && this.selectedRecords.length > 0 && this.totalAmount > 0
     }
 
-    public rowSelect(row: any): void {
+    public rowSelect(): void {
         this.calculateSum()
-        this.updateSelectedItemsArray(row.data, 'add')
     }
 
-    public rowUnselect(row: any): void {
+    public rowUnselect(): void {
         this.calculateSum()
-        this.updateSelectedItemsArray(row.data, 'remove')
     }
 
     public selectField(event: any): void {

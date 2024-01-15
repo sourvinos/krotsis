@@ -44,7 +44,7 @@ export class QuotePDFService {
                 {
                     table: {
                         headerRows: 1,
-                        widths: ['*', 20, 50, 50],
+                        widths: ['*', 20, 50, 50, 50],
                         body: this.detailLines(records),
                     },
                     margin: [11, 0, 0, 0],
@@ -133,6 +133,7 @@ export class QuotePDFService {
         rows.push([
             { text: 'ΠΕΡΙΓΡΑΦΗ', fontSize: 11, margin: [0, 0, 0, 0] },
             { text: 'ΠΟΣΟΤΗΤΑ', fontSize: 11, margin: [0, 0, 0, 0], alignment: 'right' },
+            { text: 'ΤΙΜΗ ΜΟΝΑΔΟΣ ΠΡΟ ΦΠΑ', fontSize: 11, alignment: 'right' },
             { text: 'ΤΙΜΗ ΜΟΝΑΔΟΣ ΜΕ ΦΠΑ', fontSize: 11, alignment: 'right' },
             { text: 'ΣΥΝΟΛΟ ΜΕ ΦΠΑ', fontSize: 11, alignment: 'right' },
         ])
@@ -140,6 +141,7 @@ export class QuotePDFService {
             rows.push([
                 { text: record.description, fontSize: 10 },
                 { text: record.qty, fontSize: 10, alignment: 'center' },
+                { text: record.netPrice.toFixed(2), alignment: 'right', fontSize: 10 },
                 { text: record.grossPrice.toFixed(2), alignment: 'right', fontSize: 10 },
                 { text: record.totalGrossPrice.toFixed(2), alignment: 'right', fontSize: 10 }
             ])

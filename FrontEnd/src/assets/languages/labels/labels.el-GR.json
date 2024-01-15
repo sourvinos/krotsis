@@ -126,8 +126,12 @@
                 "description": "Ποσότητα"
             },
             {
+                "id": "headerNetPrice",
+                "description": "Τιμή προ ΦΠΑ"
+            },
+            {
                 "id": "headerGrossPrice",
-                "description": "Τιμή"
+                "description": "Τιμή με ΦΠΑ"
             },
             {
                 "id": "headerTotalGrossPrice",

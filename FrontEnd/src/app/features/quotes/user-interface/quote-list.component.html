@@ -15,18 +15,20 @@
         </div>
 
         <div id="table-wrapper">
-            <p-table (onRowSelect)="rowSelect($event)" (onRowUnselect)="rowUnselect($event)" [(selection)]="selectedRecords" [scrollable]="true" [value]="records" [virtualScrollItemSize]="32" [virtualScroll]="true" scrollHeight="flex" selectionMode="multiple" sortMode="multiple">
+            <p-table (onRowSelect)="rowSelect()" (onRowUnselect)="rowUnselect()" [(selection)]="selectedRecords" [scrollable]="true" [value]="records" [virtualScrollItemSize]="32" [virtualScroll]="true" scrollHeight="flex" selectionMode="multiple" sortMode="multiple">
                 <ng-template pTemplate="header">
                     <tr>
                         <th class="width-2"></th>
                         <th class="width-18">{{ getLabel("headerDescription") }}</th>
                         <th class="width-2">{{ getLabel("headerQty") }}</th>
+                        <th class="width-2">{{ getLabel("headerNetPrice") }}</th>
                         <th class="width-2">{{ getLabel("headerGrossPrice") }}</th>
                         <th class="width-2">{{ getLabel("headerTotalGrossPrice") }}</th>
                     </tr>
                     <tr>
                         <th class="width-2"><span class="center" style="padding: 0.1875rem 0 0 0.3125rem !important"><p-tableHeaderCheckbox></p-tableHeaderCheckbox></span></th>
                         <th class="width-18"></th>
+                        <th class="width-2"></th>
                         <th class="width-2"></th>
                         <th class="width-2"></th>
                         <th class="width-2"></th>
@@ -44,6 +46,18 @@
                                     </ng-template>
                                     <ng-template pTemplate="output">
                                         {{ formatNumberToLocale(record.qty, false) }}
+                                    </ng-template>
+                                </p-cellEditor>
+                            </span>
+                        </td>
+                        <td class="width-2" [ngClass]="colorizeCellValue( record.totalGrossPrice)" pEditableColumn (click)="storeSelectedRowIndex(rowIndex)">
+                            <span class="number" style="justify-content: end;">
+                                <p-cellEditor>
+                                    <ng-template pTemplate="input">
+                                        <input (focus)="selectField($event)" (keyup)="calculateTotalGrossPrice('grossPrice', $event)" pInputText [(ngModel)]="record.netPrice" type="number">
+                                    </ng-template>
+                                    <ng-template pTemplate="output">
+                                        {{ formatNumberToLocale(record.netPrice) }}
                                     </ng-template>
                                 </p-cellEditor>
                             </span>

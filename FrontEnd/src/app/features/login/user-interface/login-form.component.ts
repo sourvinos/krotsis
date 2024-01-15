@@ -154,38 +154,4 @@ export class LoginFormComponent {
 
     //#endregion
 
-    public lines: string[]
-    private records: Record[] = []
-
-    public doStuff(): void {
-        this.records = []
-        this.lines = this.form.value.stuff.split('\n')
-        this.lines.forEach(line => {
-            const x = line.split('\t')
-            const record: Record = {
-                id: x[0],
-                date: x[1],
-                description: x[2],
-                branchNo: x[3],
-                dateValue: x[4],
-                orderNo: x[5],
-                amount: parseFloat(x[6])
-            }
-            this.records.push(record)
-        })
-        console.log(this.records)
-    }
-
-}
-
-export interface Record {
-
-    id: string
-    date: string
-    description: string
-    branchNo: string
-    dateValue: string
-    orderNo: string
-    amount: number
-
 }
