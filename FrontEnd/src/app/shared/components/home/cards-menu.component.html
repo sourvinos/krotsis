@@ -1,14 +1,14 @@
 <div id="cards-menu">
-    <mat-card routerLink="/items">
+    <mat-mdc-card routerLink="/items">
         <img (load)="loadImage()" [ngClass]="imageIsLoading()" [src]="getIcon('items')" style="height: 6.25rem; margin-left: 1rem;">
         <mat-card-title>{{ getLabel("itemsTitle") }}</mat-card-title>
         <mat-divider inset></mat-divider>
         <mat-card-subtitle>{{ getLabel("itemsSubTitle") }}</mat-card-subtitle>
-    </mat-card>
-    <mat-card routerLink="/quotes">
+    </mat-mdc-card>
+    <mat-mdc-card routerLink="/quotes">
         <img (load)="loadImage()" [ngClass]="imageIsLoading()" [src]="getIcon('quotes')" style="height: 6.25rem; margin-left: 1rem;">
         <mat-card-title>{{ getLabel("quotesTitle") }}</mat-card-title>
         <mat-divider inset></mat-divider>
         <mat-card-subtitle>{{ getLabel("quotesSubTitle") }}</mat-card-subtitle>
-    </mat-card>
+    </mat-mdc-card>
 </div>

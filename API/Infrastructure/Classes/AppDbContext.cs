@@ -1,10 +1,11 @@
-﻿using API.Features.Users;
+﻿using API.Features.Colors;
+using API.Features.Items;
+using API.Features.Parameters;
+using API.Features.Users;
 using API.Infrastructure.Auth;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using API.Features.Items;
-using API.Features.Parameters;
 
 namespace API.Infrastructure.Classes {
 
@@ -15,6 +16,7 @@ namespace API.Infrastructure.Classes {
         #region DbSets
 
         public DbSet<Item> Items { get; set; }
+        public DbSet<Color> Colors { get; set; }
         public DbSet<Parameter> Parameters { get; set; }
         public DbSet<Token> Tokens { get; set; }
 
@@ -29,6 +31,7 @@ namespace API.Infrastructure.Classes {
 
         private static void ApplyConfigurations(ModelBuilder modelBuilder) {
             modelBuilder.ApplyConfiguration(new ItemsConfig());
+            modelBuilder.ApplyConfiguration(new ColorsConfig());
             modelBuilder.ApplyConfiguration(new ParametersConfig());
             modelBuilder.ApplyConfiguration(new UsersConfig());
         }

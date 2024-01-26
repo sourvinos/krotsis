@@ -49,7 +49,7 @@ namespace API {
             Identity.AddIdentity(services);
             Authentication.AddAuthentication(Configuration, services);
             Interfaces.AddInterfaces(services);
-            services.AddTransient<ResponseMiddleware>();
+            // services.AddTransient<ResponseMiddleware>();
             services.AddAntiforgery(options => { options.Cookie.Name = "_af"; options.Cookie.HttpOnly = true; options.Cookie.SecurePolicy = CookieSecurePolicy.Always; options.HeaderName = "X-XSRF-TOKEN"; });
             services.AddAutoMapper(typeof(Startup));
             services.AddDbContext<AppDbContext>();
@@ -88,7 +88,7 @@ namespace API {
         }
 
         public virtual void Configure(IApplicationBuilder app) {
-            app.UseMiddleware<ResponseMiddleware>();
+            // app.UseMiddleware<ResponseMiddleware>();
             app.UseDefaultFiles();
             app.UseHttpsRedirection();
             app.UseStaticFiles();

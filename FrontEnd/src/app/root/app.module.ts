@@ -17,7 +17,6 @@ import { HomeComponent } from '../shared/components/home/home.component'
 import { LogoutComponent } from '../shared/components/logout/logout.component'
 import { ParametersMenuComponent } from '../shared/components/parameters-menu/parameters-menu.component'
 import { TablesMenuComponent } from '../shared/components/tables-menu/tables-menu.component'
-import { TasksMenuComponent } from '../shared/components/tasks-menu/tasks-menu.component'
 import { UserMenuComponent } from '../shared/components/user-menu/user-menu.component'
 // Services
 import { InterceptorService } from '../shared/services/interceptor.service'
@@ -34,7 +33,6 @@ registerLocaleData(localeEl)
         LogoutComponent,
         ParametersMenuComponent,
         TablesMenuComponent,
-        TasksMenuComponent,
         UserMenuComponent
     ],
     imports: [

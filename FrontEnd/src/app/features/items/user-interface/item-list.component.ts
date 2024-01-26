@@ -80,7 +80,7 @@ export class ItemListComponent {
     public getEmoji(anything: any): string {
         return typeof anything == 'string'
             ? this.emojiService.getEmoji(anything)
-            : anything ? this.emojiService.getEmoji('green-box') : this.emojiService.getEmoji('red-box')
+            : typeof anything == 'boolean' ? this.emojiService.getEmoji(String(anything)) : null
     }
 
     public getLabel(id: string): string {

@@ -81,6 +81,10 @@
                 "description": "Αξία με ΦΠΑ"
             },
             {
+                "id": "color",
+                "description": "Χρώμα"
+            },
+            {
                 "id": "isActive",
                 "description": "Ενεργό"
             },

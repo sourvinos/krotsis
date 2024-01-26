@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router'
 import { Component } from '@angular/core'
 import { formatNumber } from '@angular/common'
 // Custom
+import { EmojiService } from 'src/app/shared/services/emoji.service'
 import { HelperService } from 'src/app/shared/services/helper.service'
 import { Item } from '../classes/models/item'
 import { ListResolved } from '../../../shared/classes/list-resolved'
@@ -40,7 +41,7 @@ export class QuoteListComponent {
 
     //#endregion
 
-    constructor(private activatedRoute: ActivatedRoute, private formBuilder: FormBuilder, private helperService: HelperService, private localStorageService: LocalStorageService, private messageDialogService: MessageDialogService, private messageHintService: MessageInputHintService, private messageLabelService: MessageLabelService, private modalDialogService: ModalDialogService, private quotePdfService: QuotePDFService, private router: Router) { }
+    constructor(private activatedRoute: ActivatedRoute, private emojiService: EmojiService, private formBuilder: FormBuilder, private helperService: HelperService, private localStorageService: LocalStorageService, private messageDialogService: MessageDialogService, private messageHintService: MessageInputHintService, private messageLabelService: MessageLabelService, private modalDialogService: ModalDialogService, private quotePdfService: QuotePDFService, private router: Router) { }
 
     //#region lifecycle hooks
 
@@ -77,6 +78,12 @@ export class QuoteListComponent {
 
     public formatNumberToLocale(number: number, decimals = true): string {
         return formatNumber(number, this.localStorageService.getItem('language'), decimals ? '1.2' : '1.0')
+    }
+
+    public getEmoji(anything: any): string {
+        return typeof anything == 'string'
+            ? this.emojiService.getEmoji(anything)
+            : typeof anything == 'boolean' ? this.emojiService.getEmoji(String(anything)) : null
     }
 
     public getHint(id: string, minmax = 0): string {

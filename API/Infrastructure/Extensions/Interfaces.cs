@@ -1,3 +1,4 @@
+using API.Features.Colors;
 using API.Features.Items;
 using API.Features.Parameters;
 using API.Features.Users;
@@ -12,6 +13,7 @@ namespace API.Infrastructure.Extensions {
             services.AddScoped<Token>();
             // Tables
             services.AddTransient<IItemRepository, ItemRepository>();
+            services.AddTransient<IColorRepository, ColorRepository>();
             services.AddTransient<IUserRepository, UserRepository>();
             // Validations
             services.AddTransient<IItemValidation, ItemValidation>();

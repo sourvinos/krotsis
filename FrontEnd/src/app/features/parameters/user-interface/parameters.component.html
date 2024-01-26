@@ -96,27 +96,28 @@
                         <mat-error *ngIf="customerH.hasError('maxlength')">{{ getHint("maxLength", customerH.errors.maxlength.requiredLength) }}</mat-error>
                     </mat-form-field>
                 </div>
-            </mat-card>
-            <!-- Phones -->
-            <mat-form-field>
-                <mat-label>{{ getLabel('phones') }}</mat-label>
-                <input [inputTabStop]="input" dataTabIndex="1" formControlName="phones" matInput>
-                <mat-error *ngIf="phones.hasError('required')">{{ getHint("required") }}</mat-error>
-                <mat-error *ngIf="phones.hasError('maxlength')">{{ getHint("maxLength", phones.errors.maxlength.requiredLength) }}</mat-error>
-            </mat-form-field>
-            <!-- Email -->
-            <mat-form-field>
-                <mat-label>{{ getLabel('email') }}</mat-label>
-                <input [inputTabStop]="input" dataTabIndex="2" formControlName="email" matInput>
-                <mat-error *ngIf="email.hasError('maxlength')">{{ getHint("maxLength", email.errors.maxlength.requiredLength) }}</mat-error>
-                <mat-error *ngIf="!email.hasError('maxlength') && email.hasError('email')">{{ getHint("invalid") }}</mat-error>
-            </mat-form-field>
-            <div class="align-bottom">
-                <!-- Metadata -->
-                <metadata-panel [feature]="feature" [postAt]="form.value.postAt" [postUser]="form.value.postUser" [putAt]="form.value.putAt" [putUser]="form.value.putUser"></metadata-panel>
-            </div>
 
+                <!-- Phones -->
+                <mat-form-field>
+                    <mat-label>{{ getLabel('phones') }}</mat-label>
+                    <input [inputTabStop]="input" dataTabIndex="1" formControlName="phones" matInput>
+                    <mat-error *ngIf="phones.hasError('required')">{{ getHint("required") }}</mat-error>
+                    <mat-error *ngIf="phones.hasError('maxlength')">{{ getHint("maxLength", phones.errors.maxlength.requiredLength) }}</mat-error>
+                </mat-form-field>
+                <!-- Email -->
+                <mat-form-field>
+                    <mat-label>{{ getLabel('email') }}</mat-label>
+                    <input [inputTabStop]="input" dataTabIndex="2" formControlName="email" matInput>
+                    <mat-error *ngIf="email.hasError('maxlength')">{{ getHint("maxLength", email.errors.maxlength.requiredLength) }}</mat-error>
+                    <mat-error *ngIf="!email.hasError('maxlength') && email.hasError('email')">{{ getHint("invalid") }}</mat-error>
+                </mat-form-field>
+            </mat-card>
         </form>
+
+        <div class="align-bottom">
+            <!-- Metadata -->
+            <metadata-panel [feature]="feature" [postAt]="form.value.postAt" [postUser]="form.value.postUser" [putAt]="form.value.putAt" [putUser]="form.value.putUser"></metadata-panel>
+        </div>
 
     </div>
 

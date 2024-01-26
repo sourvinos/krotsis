@@ -23,6 +23,7 @@ namespace API.Features.Items {
         public async Task<IEnumerable<ItemListVM>> Get() {
             var items = await context.Items
                 .AsNoTracking()
+                .Include(x => x.Color)
                 .OrderBy(x => x.Description)
                 .ToListAsync();
             return mapper.Map<IEnumerable<Item>, IEnumerable<ItemListVM>>(items);
@@ -31,8 +32,9 @@ namespace API.Features.Items {
         public async Task<IEnumerable<ItemListVM>> GetActive() {
             var items = await context.Items
                 .AsNoTracking()
+                .Include(x => x.Color)
                 .Where(x => x.IsActive)
-                .OrderBy(x => x.Description)
+                .OrderBy(x => x.Color.Description).ThenBy(x => x.Description)
                 .ToListAsync();
             return mapper.Map<IEnumerable<Item>, IEnumerable<ItemListVM>>(items);
         }
@@ -40,6 +42,7 @@ namespace API.Features.Items {
         public async Task<Item> GetById(int id) {
             return await context.Items
                 .AsNoTracking()
+                .Include(x => x.Color)
                 .SingleOrDefaultAsync(x => x.Id == id);
         }
 

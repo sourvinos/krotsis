@@ -58,10 +58,6 @@ export class ResetPasswordFormComponent {
 
     //#region public methods
 
-    public getEmoji(emoji: string): string {
-        return this.emojiService.getEmoji(emoji)
-    }
-
     public getHint(id: string, minmax = 0): string {
         return this.messageHintService.getDescription(id, minmax)
     }

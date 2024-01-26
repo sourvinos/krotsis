@@ -1,6 +1,9 @@
+import { SimpleEntity } from 'src/app/shared/classes/simple-entity'
+
 export interface Item {
 
     id: number
+    color: SimpleEntity
     description: string
     varPercent: number
     qty: number

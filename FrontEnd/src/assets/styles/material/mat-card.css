@@ -1,4 +1,4 @@
-.mdc-card {
+mat-mdc-card {
     align-items: flex-start;
     backdrop-filter: blur(--blur) !important;
     background-color: color-mix(in srgb, var(--color-background) 30%, transparent) !important;
@@ -11,7 +11,7 @@
     width: 17rem;
 }
 
-.mdc-card:hover {
+mat-mdc-card:hover {
     background-color: color-mix(in srgb, var(--color-secondary) 30%, transparent) !important;
     cursor: pointer;
 }
@@ -34,6 +34,6 @@
     transition: color var(--theme-delay);
 }
 
-.mat-mdc-card img {
+mat-mdc-card img {
     margin: 0 0 1rem 1rem;
 }

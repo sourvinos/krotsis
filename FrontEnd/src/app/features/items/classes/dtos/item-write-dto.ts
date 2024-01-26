@@ -2,6 +2,8 @@ export interface ItemWriteDto {
 
     // PK
     id: number
+    // FKs
+    colorId: number
     // Fields
     description: string
     vatPercent: number

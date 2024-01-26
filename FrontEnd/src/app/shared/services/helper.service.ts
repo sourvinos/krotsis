@@ -1,17 +1,16 @@
 import { FormGroup } from '@angular/forms'
-import { Injectable, QueryList } from '@angular/core'
+import { Injectable } from '@angular/core'
 import { MatAutocompleteTrigger } from '@angular/material/autocomplete'
-import { MatExpansionPanel } from '@angular/material/expansion'
 import { Observable, Subject, defer, finalize } from 'rxjs'
 import { Router } from '@angular/router'
 import { Table } from 'primeng/table'
 import { Title } from '@angular/platform-browser'
 // Custom
+import { LocalStorageService } from './local-storage.service'
 import { MessageLabelService } from './message-label.service'
 import { ModalDialogService } from './modal-dialog.service'
 import { SessionStorageService } from './session-storage.service'
 import { environment } from 'src/environments/environment'
-import { LocalStorageService } from './local-storage.service'
 
 export function prepare<T>(callback: () => void): (source: Observable<T>) => Observable<T> {
     return (source: Observable<T>): Observable<T> => defer(() => {
@@ -49,6 +48,10 @@ export class HelperService {
             })
         })
         return promise
+    }
+
+    public enableOrDisableAutoComplete(event: { key: string }): boolean {
+        return (event.key == 'Enter' || event.key == 'ArrowUp' || event.key == 'ArrowDown' || event.key == 'ArrowRight' || event.key == 'ArrowLeft') ? true : false
     }
 
     public getApplicationTitle(): any {
@@ -211,6 +214,10 @@ export class HelperService {
             .match(/.{1,3}/g)
             .join(this.getNumberLocaleSeperator()).split('')
             .reduce((acc, char) => char + acc, '')
+    }
+
+    public openOrCloseAutocomplete(form: FormGroup<any>, element: any, trigger: MatAutocompleteTrigger): void {
+        trigger.panelOpen ? trigger.closePanel() : trigger.openPanel()
     }
 
     public setSidebarsTopMargin(margin: string): void {

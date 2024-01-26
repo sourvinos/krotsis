@@ -5,7 +5,9 @@ import { Router } from '@angular/router'
 import { map } from 'rxjs/operators'
 // Custom
 import { ChangePasswordViewModel } from 'src/app/features/users/classes/view-models/change-password-view-model'
+import { ColorHttpService } from 'src/app/features/colors/classes/services/color-http.service'
 import { CryptoService } from './crypto.service'
+import { DexieService } from './dexie.service'
 import { DotNetVersion } from '../classes/dotnet-version'
 import { HttpDataService } from './http-data.service'
 import { ResetPasswordViewModel } from 'src/app/features/users/classes/view-models/reset-password-view-model'
@@ -25,7 +27,7 @@ export class AccountService extends HttpDataService {
 
     //#endregion
 
-    constructor(private cryptoService: CryptoService, httpClient: HttpClient, private ngZone: NgZone, private router: Router, private sessionStorageService: SessionStorageService) {
+    constructor(httpClient: HttpClient, private colorHttpService: ColorHttpService, private cryptoService: CryptoService, private dexieService: DexieService, private ngZone: NgZone, private router: Router, private sessionStorageService: SessionStorageService) {
         super(httpClient, environment.apiUrl)
     }
 
@@ -74,6 +76,7 @@ export class AccountService extends HttpDataService {
             this.setUserData(response)
             this.setDotNetVersion(response)
             this.setAuthSettings(response)
+            this.populateDexieFromAPI()
         }))
     }
 
@@ -94,6 +97,10 @@ export class AccountService extends HttpDataService {
         this.ngZone.run(() => {
             this.router.navigate(['/'])
         })
+    }
+
+    private populateDexieFromAPI(): void {
+        this.dexieService.populateTable('colors', this.colorHttpService)
     }
 
     private setAuthSettings(response: any): void {

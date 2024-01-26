@@ -19,6 +19,7 @@
                 <ng-template pTemplate="header">
                     <tr>
                         <th class="width-2"></th>
+                        <th class="width-1">{{ getLabel("headerColor") }}</th>
                         <th class="width-18">{{ getLabel("headerDescription") }}</th>
                         <th class="width-2">{{ getLabel("headerQty") }}</th>
                         <th class="width-2">{{ getLabel("headerNetPrice") }}</th>
@@ -27,6 +28,7 @@
                     </tr>
                     <tr>
                         <th class="width-2"><span class="center" style="padding: 0.1875rem 0 0 0.3125rem !important"><p-tableHeaderCheckbox></p-tableHeaderCheckbox></span></th>
+                        <th class="width-1"></th>
                         <th class="width-18"></th>
                         <th class="width-2"></th>
                         <th class="width-2"></th>
@@ -37,7 +39,8 @@
                 <ng-template let-record pTemplate="body" let-rowIndex="rowIndex">
                     <tr (click)="highlightRow(record.id)" [attr.id]=record.id class="without-footer" style="height: 32px;">
                         <td class="width-2"><span class="center"><p-tableCheckbox [value]="record"></p-tableCheckbox></span></td>
-                        <td class="width-18" [ngClass]="colorizeCellValue( record.totalGrossPrice)"><span>{{ record.description }}</span></td>
+                        <td class="width-1"><span class="center no-left-padding" style="font-size: 0.5rem; padding-top: 0 !important;">{{ getEmoji(record.color.description) }}</span></td>
+                        <td class="width-18"><span>{{ record.description }}</span></td>
                         <td class="width-2" [ngClass]="colorizeCellValue( record.totalGrossPrice)" pEditableColumn (click)="storeSelectedRowIndex(rowIndex)">
                             <span class="number" style="justify-content: end;">
                                 <p-cellEditor>

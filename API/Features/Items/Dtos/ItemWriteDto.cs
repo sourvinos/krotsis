@@ -6,6 +6,8 @@ namespace API.Features.Items {
 
         // PK
         public int Id { get; set; }
+        // FKs
+        public int ColorId { get; set; }
         // Fields
         public string Description { get; set; }
         public byte VatPercent { get; set; }
