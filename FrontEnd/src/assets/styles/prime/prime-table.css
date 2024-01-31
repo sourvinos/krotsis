@@ -96,7 +96,9 @@
 }
 
 .p-datatable .p-datatable-tbody > tr > td > span.number {
+    font-family: monospace !important;
     padding: 0 0.5rem 0 0.5rem !important;
+    text-align: right;
 }
 
 .p-datatable .p-datatable-tbody > tr > td > span > img {
@@ -203,15 +205,10 @@
 
 /* #region editable cell */
 
-.p-element > input {
-    background-clip: border-box !important;
-    border-color: var(--color-input-editable-table-border);
-    border-radius: 0;
-    color: var(--color-input-editable-table);
-    font-family: var(--font-family-roboto);
-    font-size: 1.1rem !important;
-    text-align: right;
-    width: 5rem;
+.p-element > input:focus-visible {
+    border: 0.0625rem solid var(--color-input-editable-table-border) !important;
+    outline: none !important;
+    width: 100% !important;
 }
 
 /* #endregion */
