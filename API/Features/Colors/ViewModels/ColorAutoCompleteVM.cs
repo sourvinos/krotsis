@@ -1,5 +1,3 @@
-using System;
-
 namespace API.Features.Colors {
 
     public class ColorAutoCompleteVM {
