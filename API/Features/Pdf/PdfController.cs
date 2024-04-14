@@ -20,11 +20,13 @@ namespace API.Features.Pdf {
             using var browser = await Puppeteer.LaunchAsync(new LaunchOptions { Headless = true });
             using var page = await browser.NewPageAsync();
             var x = LoadTemplateFromFile();
-            var z = x.Replace("@Model.Displayname", "John");
-            var i = z.Replace("@Model.Image", Create("Hello"));
-            await page.SetContentAsync(
-                i
-            );
+            var z = x
+                .Replace("@Model.Image", Create("https://appcorfucruises.com"))
+                .Replace("@Model.Displayname", "John")
+                .Replace("@Model.Username", "sourvinos")
+                .Replace("@Model.Email", "johnsourvinos@hotmail.com")
+                .Replace("@Model.CompanyPhones", "26620 61400");
+            await page.SetContentAsync(z);
             // Working
             // await page.AddStyleTagAsync(new AddTagOptions {
             //     Content = "table { width: 100% }; h1 { color: red; font-family:'Consolas'; display: flex; justify-content: center;}"

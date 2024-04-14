@@ -1,3 +1,30 @@
+html {
+    -webkit-print-color-adjust: exact;
+}
+
 #header {
     color: red;
+}
+
+#greeting {
+    font-family: 'Aka-Acid-CanterBold';
+    color: red;
+    font-size: 2rem;
+}
+
+#button {
+    background-color: aqua;
+    padding: 1rem;
+}
+
+td {
+    font-family: "Consolas";
+}
+
+.th {
+    background-color: darkgray;
+}
+
+.lightgray {
+    background-color: lightblue;
 }
