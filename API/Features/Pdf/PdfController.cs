@@ -1,11 +1,14 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Drawing.Imaging;
+using System.Globalization;
 using System.IO;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using PuppeteerSharp;
-using QRCoder;
+using PdfSharp.Drawing;
+using PdfSharp.Fonts;
+using PdfSharp.Pdf;
+using ZXing;
+using ZXing.QrCode;
+using ZXing.Windows.Compatibility;
 
 namespace API.Features.Pdf {
 
@@ -14,88 +17,63 @@ namespace API.Features.Pdf {
 
         public PdfController() { }
 
-        [HttpGet]
-        public async Task BuildPdfAsync() {
-            await new BrowserFetcher().DownloadAsync();
-            using var browser = await Puppeteer.LaunchAsync(new LaunchOptions { Headless = true });
-            using var page = await browser.NewPageAsync();
-            var x = LoadTemplateFromFile();
-            var z = x
-                .Replace("@Model.Image", Create("https://appcorfucruises.com"))
-                .Replace("@Model.Displayname", "John")
-                .Replace("@Model.Username", "sourvinos")
-                .Replace("@Model.Email", "johnsourvinos@hotmail.com")
-                .Replace("@Model.CompanyPhones", "26620 61400");
-            await page.SetContentAsync(z);
-            // Working
-            // await page.AddStyleTagAsync(new AddTagOptions {
-            //     Content = "table { width: 100% }; h1 { color: red; font-family:'Consolas'; display: flex; justify-content: center;}"
-            // });
-            await page.AddStyleTagAsync(new AddTagOptions {
-                Content = LoadStylesFromFile()
-            });
-            // // Not working
-            // await page.AddStyleTagAsync("custom.css");
-            await page.PdfAsync("CustomContent.pdf");
-            // Page size
-            // await page.pdf({path: 'hn.pdf', format: 'A4', printBackground: true});
+        [HttpGet("[action]")]
+        public void BuildPdf() {
+
+            var ledger = Seed.Init();
+
+            GlobalFontSettings.FontResolver = new FileFontResolver();
+            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+
+            PdfDocument document = new();
+            PdfPage page = document.AddPage();
+            XFont logoFont = new("ACCanterBold", 20);
+            XFont robotoMonoFont = new("RobotoMono", 6);
+            XFont monotypeFont = new("MonoType", 6);
+            XGraphics gfx = XGraphics.FromPdfPage(page);
+
+            var locale = CultureInfo.CreateSpecificCulture("el-GR");
+
+            gfx.DrawString("CORFU CRUISES", logoFont, XBrushes.Black, new XPoint(40, 40));
+            gfx.DrawString("ΚΑΡΤΕΛΑ ΠΕΛΑΤΗ: " + ledger.Description, robotoMonoFont, XBrushes.Black, new XPoint(40, 53));
+            gfx.DrawString("ΔΙΑΣΤΗΜΑ: " + ledger.FromDate + " - " + ledger.ToDate, robotoMonoFont, XBrushes.Black, new XPoint(40, 62));
+
+            gfx.DrawString("ΗΜΕΡΟΜΗΝΙΑ", robotoMonoFont, XBrushes.Black, new XPoint(40, 90));
+            gfx.DrawString("ΠΑΡΑΣΤΑΤΙΚΟ", robotoMonoFont, XBrushes.Black, new XPoint(80, 90));
+            gfx.DrawString("ΣΕΙΡΑ", robotoMonoFont, XBrushes.Black, new XPoint(218, 90));
+            gfx.DrawString("NO", robotoMonoFont, XBrushes.Black, new XPoint(270, 90));
+            gfx.DrawString("ΧΡΕΩΣΗ", robotoMonoFont, XBrushes.Black, new XPoint(434, 90));
+            gfx.DrawString("ΠΙΣΤΩΣΗ", robotoMonoFont, XBrushes.Black, new XPoint(490, 90));
+            gfx.DrawString("ΥΠΟΛΟΙΠΟ", robotoMonoFont, XBrushes.Black, new XPoint(547, 90));
+
+            int verticalPosition = 100;
+
+            for (int i = 0; i < ledger.Transactions.Count; i++) {
+                verticalPosition += 12;
+                gfx.DrawString(ledger.Transactions[i].Date, robotoMonoFont, XBrushes.Black, new XPoint(40, verticalPosition));
+                gfx.DrawString(ledger.Transactions[i].DocumentType, robotoMonoFont, XBrushes.Black, new XPoint(80, verticalPosition));
+                gfx.DrawString(ledger.Transactions[i].Series, robotoMonoFont, XBrushes.Black, new XPoint(220, verticalPosition));
+                gfx.DrawString(ledger.Transactions[i].DocumentNo, robotoMonoFont, XBrushes.Black, new XPoint(270, verticalPosition));
+                gfx.DrawString(ledger.Transactions[i].Debit.ToString("N2", locale), monotypeFont, XBrushes.Black, new XPoint(456 - ledger.Transactions[i].Debit.ToString("N2", locale).Length * 3, verticalPosition));
+                gfx.DrawString(ledger.Transactions[i].Credit.ToString("N2", locale), monotypeFont, XBrushes.Black, new XPoint(516 - ledger.Transactions[i].Credit.ToString("N2", locale).Length * 3, verticalPosition));
+                gfx.DrawString(ledger.Transactions[i].Balance.ToString("N2", locale), monotypeFont, XBrushes.Black, new XPoint(576 - ledger.Transactions[i].Balance.ToString("N2", locale).Length * 3, verticalPosition));
+            }
+
+            gfx.DrawImage(CreateQrCode(ledger.QrCode), 20, 750);
+
+            document.Save("Sample.pdf");
+
         }
 
-        private static string LoadTemplateFromFile() {
-            string FilePath = Directory.GetCurrentDirectory() + "\\Templates\\Test.cshtml";
-            StreamReader str = new(FilePath);
-            string template = str.ReadToEnd();
-            str.Close();
-            return template;
+        private static XImage CreateQrCode(string qrCode) {
+            QrCodeEncodingOptions options = new() { DisableECI = true, CharacterSet = "UTF-8", Width = 100, Height = 100 };
+            BarcodeWriter writer = new() { Format = BarcodeFormat.QR_CODE, Options = options };
+            Bitmap qrCodeBitmap = writer.Write(qrCode);
+            MemoryStream strm = new();
+            qrCodeBitmap.Save(strm, ImageFormat.Png);
+            return XImage.FromStream(strm);
         }
 
-        private static string LoadStylesFromFile() {
-            string FilePath = Directory.GetCurrentDirectory() + "\\Templates\\Styles.css";
-            StreamReader str = new(FilePath);
-            string template = str.ReadToEnd();
-            str.Close();
-            return template;
-        }
-
-        private static string ReplacePlaceHolders(string template) {
-            template.Replace("@Model.Displayname", "John");
-            // template.Replace("@Model.Image", Create("Hello"));
-            return template;
-        }
-
-        [HttpPost]
-        public string CreateQRCode([FromBody] QRCodeModel qRCode) {
-            QRCodeGenerator QrGenerator = new();
-            QRCodeData QrCodeInfo = QrGenerator.CreateQrCode(qRCode.QRCodeText, QRCodeGenerator.ECCLevel.Q);
-            QRCode QrCode = new(QrCodeInfo);
-            Bitmap QrBitmap = QrCode.GetGraphic(60);
-            byte[] BitmapArray = QrBitmap.BitmapToByteArray();
-            string QrUri = string.Format("data:image/png;base64,{0}", Convert.ToBase64String(BitmapArray));
-            return QrUri;
-        }
-
-        private static string Create(string qRCode) {
-            QRCodeGenerator QrGenerator = new();
-            QRCodeData QrCodeInfo = QrGenerator.CreateQrCode(qRCode, QRCodeGenerator.ECCLevel.Q);
-            QRCode QrCode = new(QrCodeInfo);
-            Bitmap QrBitmap = QrCode.GetGraphic(60);
-            byte[] BitmapArray = QrBitmap.BitmapToByteArray();
-            string QrUri = string.Format("data:image/png;base64,{0}", Convert.ToBase64String(BitmapArray));
-            return QrUri;
-        }
-
-    }
-
-    public static class BitmapExtension {
-        public static byte[] BitmapToByteArray(this Bitmap bitmap) {
-            using MemoryStream ms = new();
-            bitmap.Save(ms, ImageFormat.Png);
-            return ms.ToArray();
-        }
-    }
-
-    public class QRCodeModel {
-        public string QRCodeText { get; set; }
     }
 
 }

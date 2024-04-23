@@ -2,16 +2,16 @@
     <div id="wrapper">
         <div id="header">
             <div id="logo">
-                <img src="@Model.Image" width="100px" alt="Image placeholder">
+                <img src="@Model.Image" width="100px" alt="Hi!">
             </div>
         </div>
         <div id="content">
-            <div id="greeting">👋 Hello, @Model.Displayname!</div>
+            <div>👋 Hello @Model.Displayname,</div>
             <div id="description">
                 <span>You are receiving this email because someone (hopefully you) requested to set a new password for your account. If you did not initiate this, you can disregard this email.</span>
                 <span>However, if you would like to continue and set a new password, please click the button below.</span>
             </div>
-            <div id="button">
+            <div id=button>
                 <a class="primary" href="@Model.ReturnUrl">Set new password</a>
             </div>
             <div>⚠️ This email will expire after five minutes or upon successful password reset.</div>
@@ -23,20 +23,6 @@
                 </ul>
             </div>
         </div>
-        <table>
-            <thead>
-                <tr>
-                    <th class="th">Info</th>
-                    <th class="th">Also info</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="td">A1</td>
-                    <td class="lightgray">A2</td>
-                </tr>
-            </tbody>
-        </table>
         <div id="footer">
             <div>Problems or questions? Please call</div>
             <div>@Model.CompanyPhones</div>
