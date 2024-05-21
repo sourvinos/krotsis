@@ -5,7 +5,7 @@ export interface Item {
     id: number
     color: SimpleEntity
     description: string
-    varPercent: number
+    vatPercent: number
     qty: number
     netPrice: number
     grossPrice: number

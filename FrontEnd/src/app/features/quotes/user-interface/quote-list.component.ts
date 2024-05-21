@@ -63,7 +63,9 @@ export class QuoteListComponent {
         }
         if (field == 'grossPrice') {
             const grossPrice = isNaN($event.target.value) || $event.target.value == '' ? 0 : parseFloat($event.target.value)
+            const vatPercent = 1 + (this.records[this.selectedRecordIndex].vatPercent / 100)
             this.records[this.selectedRecordIndex].totalGrossPrice = this.records[this.selectedRecordIndex].qty * grossPrice
+            this.records[this.selectedRecordIndex].netPrice = parseFloat((grossPrice / vatPercent).toFixed(2))
             this.calculateSum()
         }
     }

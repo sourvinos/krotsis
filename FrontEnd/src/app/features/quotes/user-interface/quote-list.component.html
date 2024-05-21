@@ -53,7 +53,7 @@
                                 </p-cellEditor>
                             </span>
                         </td>
-                        <td class="width-2" [ngClass]="colorizeCellValue( record.totalGrossPrice)" pEditableColumn (click)="storeSelectedRowIndex(rowIndex)">
+                        <td class="width-2" [ngClass]="colorizeCellValue( record.totalGrossPrice)" (click)="storeSelectedRowIndex(rowIndex)">
                             <span class="number" style="justify-content: end;">
                                 <p-cellEditor>
                                     <ng-template pTemplate="input">

@@ -34,7 +34,7 @@ namespace API.Features.Items {
                 .AsNoTracking()
                 .Include(x => x.Color)
                 .Where(x => x.IsActive)
-                .OrderBy(x => x.Color.Description).ThenBy(x => x.Description)
+                .OrderBy(x => x.Color.Id).ThenBy(x => x.Description)
                 .ToListAsync();
             return mapper.Map<IEnumerable<Item>, IEnumerable<ItemListVM>>(items);
         }
