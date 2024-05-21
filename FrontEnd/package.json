@@ -3,7 +3,7 @@
     "version": "2.0.0",
     "scripts": {
         "ng": "ng",
-        "start": "ng serve --hmr --host=127.0.0.1 --ssl --ssl-cert ssl\\localhost.pem --ssl-key ssl\\localhost-key.pem",
+        "start": "ng serve --hmr --host=127.0.0.1 --ssl --ssl-cert ssl\\localhost.crt --ssl-key ssl\\localhost.key",
         "build": "ng build",
         "lint": "eslint ./"
     },
@@ -20,6 +20,7 @@
         "@angular/platform-browser-dynamic": "16.2.9",
         "@angular/router": "16.2.9",
         "crypto-js": "4.2.0",
+        "dexie": "4.0.4",
         "guid-typescript": "1.0.9",
         "jwt-decode": "3.1.2",
         "pdfmake": "0.2.7",
@@ -30,7 +31,7 @@
         "zone.js": "0.13.0"
     },
     "devDependencies": {
-        "@angular-devkit/build-angular": "16.2.11",
+        "@angular-devkit/build-angular": "16.2.14",
         "@angular/cli": "16.2.6",
         "@angular/compiler-cli": "16.2.9",
         "@types/pdfmake": "0.2.5",

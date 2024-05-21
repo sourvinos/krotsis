@@ -90,11 +90,11 @@ namespace API.Infrastructure.Auth {
             var tokenHandler = new JwtSecurityTokenHandler();
             var tokenDescriptor = new SecurityTokenDescriptor {
                 Subject = new ClaimsIdentity(new Claim[] {
-                    new Claim(ClaimTypes.NameIdentifier, user.Id),
-                    new Claim(ClaimTypes.Role, roles.FirstOrDefault()),
-                    new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                    new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
-                    new Claim("LoggedOn", DateTime.UtcNow.ToString())
+                    new(ClaimTypes.NameIdentifier, user.Id),
+                    new(ClaimTypes.Role, roles.FirstOrDefault()),
+                    new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                    new(JwtRegisteredClaimNames.Sub, user.UserName),
+                    new("LoggedOn", DateTime.UtcNow.ToString())
                     }),
                 SigningCredentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256Signature),
                 Issuer = settings.Site,

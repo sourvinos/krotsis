@@ -6,9 +6,9 @@ import Dexie from 'dexie'
 export class DexieService extends Dexie {
 
     constructor() {
-        super('DexieDB')
-        this.version(5).stores({
-            colors: 'id, description, isActive'
+        super('KrotsisDB')
+        this.version(1).stores({
+            colors: 'id, description'
         })
         this.open()
     }
@@ -16,8 +16,11 @@ export class DexieService extends Dexie {
     public populateTable(table: string, httpService: any): void {
         httpService.getAutoComplete().subscribe((records: any) => {
             this.table(table)
-                .bulkAdd(records)
-                .catch(Dexie.BulkError, () => { })
+                .clear().then(() => {
+                    this.table(table)
+                        .bulkAdd(records)
+                        .catch(Dexie.BulkError, () => { })
+                })
         })
     }
 

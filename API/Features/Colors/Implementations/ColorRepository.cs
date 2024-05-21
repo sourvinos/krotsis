@@ -21,11 +21,11 @@ namespace API.Features.Colors {
         }
 
         public async Task<IEnumerable<ColorListVM>> Get() {
-            var Colors = await context.Colors
+            var colors = await context.Colors
                 .AsNoTracking()
                 .OrderBy(x => x.Description)
                 .ToListAsync();
-            return mapper.Map<IEnumerable<Color>, IEnumerable<ColorListVM>>(Colors);
+            return mapper.Map<IEnumerable<Color>, IEnumerable<ColorListVM>>(colors);
         }
 
         public async Task<IEnumerable<ColorAutoCompleteVM>> GetAutoCompleteAsync() {
